@@ -21,8 +21,12 @@
 
 ### DEMO
 
-<a href="url"><img src="https://i.imgur.com/11WRs3h.png" width="60%" ></a>
-<a href="url"><img src="https://i.imgur.com/ox0agaP.png" width="60%" ></a>
+#### V2
+<a href="url"><img src="https://raw.githubusercontent.com/vitormorais/3phase_inverter/master/z_junk/img3.jpg" width="60%" ></a>
+
+#### V1
+<a href="url"><img src="https://raw.githubusercontent.com/vitormorais/3phase_inverter/master/z_junk/img1.png" width="40%" ></a>
+<a href="url"><img src="https://raw.githubusercontent.com/vitormorais/3phase_inverter/master/z_junk/img2.jpg" width="40%" ></a>
 
 
 ------------
@@ -33,15 +37,50 @@
 
 | FOLDER   | DESCRIPTION  | comments  |
 | :------------ | :------------ | :------------ |
-|  1. DEV@bib XMC4700  |  development of the setup at library rooftop for PQ measurement |   |
-|  2. Hardware PCB  |  development of PCB for 3PH measurment of voltages and currents  |   |
-|  3. Software STM32  |  development of STM32 code for interaction of C# app   |   |
-|  4. Software C#  |  development of C# code to display voltages and currents waveforms from STM32  |    relevant file:  ` \4. Software C#\C#_DEV\VI_MEAS\bin\Debug.VI_MEAS.exe `|    
+|  1. Functional  |  Documentation folder for functional requirements of this project |   |
+|  2. Hardware PCB  |  Development folder for the PCB hardware  |   |
+|  3. Design  |  Documentation for the hardware design requirements and BOM   |   |
+|  4. Software_WS  |  Development folder having the DAVE workspace for XMC4500 programming  |    |
+|  5. Implementation | Documentation and simulation of the simulated models/algorithms |  |
+|  6. Testing&Validation | Documentation of the product testing |   |
+|  z_junk   |  folder for not-structured content |   |    
 
 
 
 ### Folder structure (tree)
 
 ```bash
-
+├── 1. Functional
+├── 2. Hardware PCB
+│   ├── CAMtastic_controlo_rev21.Cam
+│   ├── CAMtastic_controlo_rev22.Cam
+│   ├── CAMtastic_inversor_rev21.Cam
+│   ├── CAMtastic_inversor_rev22.Cam
+│   ├── History
+│   ├── PCB_controlo_rev2.zip
+│   ├── PCB_inversor_rev2.zip
+│   ├── __Previews
+│   ├── accets
+│   ├── controlo_rev2.PcbDoc
+│   ├── controlo_rev2.PrjPcb
+│   ├── controlo_rev2.PrjPcbStructure
+│   ├── controlo_rev2.SchDoc
+│   ├── debug.log
+│   ├── inversor_rev2.PcbDoc
+│   ├── inversor_rev2.PrjPcb
+│   ├── inversor_rev2.PrjPcbStructure
+│   ├── inversor_rev2.SchDoc
+│   ├── vmorais_libraries.PcbLib
+│   └── vmorais_libraries.SchLib
+├── 3. Design
+├── 4. Software_WS
+│   └── OL_VSC_vitor
+├── 5. Implementation
+├── 6. Testing&Validation
+├── README.md
+├── folder_structure_binary.txt
+└── z_junk
+    ├── img1.png
+    ├── img2.jpg
+    └── img3.jpg
 ```
