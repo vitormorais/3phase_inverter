@@ -1,0 +1,1169 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "xmc_eth_mac.c"
+  16              	 .section .text.XMC_ETH_MAC_InitRxDescriptors,"ax",%progbits
+  17              	 .align 1
+  18              	 .global XMC_ETH_MAC_InitRxDescriptors
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	XMC_ETH_MAC_InitRxDescriptors:
+  23              	 
+  24              	 
+  25 0000 30B5     	 push {r4,r5,lr}
+  26 0002 0023     	 movs r3,#0
+  27              	.L2:
+  28 0004 90F82420 	 ldrb r2,[r0,#36]
+  29 0008 9342     	 cmp r3,r2
+  30 000a 0269     	 ldr r2,[r0,#16]
+  31 000c 18D2     	 bcs .L7
+  32 000e 5C01     	 lsls r4,r3,#5
+  33 0010 1119     	 adds r1,r2,r4
+  34 0012 4FF00045 	 mov r5,#-2147483648
+  35 0016 1551     	 str r5,[r2,r4]
+  36 0018 8569     	 ldr r5,[r0,#24]
+  37 001a 44F2F454 	 movw r4,#17908
+  38 001e 4C60     	 str r4,[r1,#4]
+  39 0020 40F2F454 	 movw r4,#1524
+  40 0024 04FB0354 	 mla r4,r4,r3,r5
+  41 0028 8C60     	 str r4,[r1,#8]
+  42 002a 90F82440 	 ldrb r4,[r0,#36]
+  43 002e 0133     	 adds r3,r3,#1
+  44 0030 A342     	 cmp r3,r4
+  45 0032 14BF     	 ite ne
+  46 0034 1C46     	 movne r4,r3
+  47 0036 0024     	 moveq r4,#0
+  48 0038 02EB4412 	 add r2,r2,r4,lsl#5
+  49 003c CA60     	 str r2,[r1,#12]
+  50 003e E1E7     	 b .L2
+  51              	.L7:
+  52 0040 41F20C03 	 movw r3,#4108
+  53 0044 0168     	 ldr r1,[r0]
+  54 0046 CA50     	 str r2,[r1,r3]
+  55 0048 0023     	 movs r3,#0
+  56 004a 80F82730 	 strb r3,[r0,#39]
+  57 004e 30BD     	 pop {r4,r5,pc}
+  59              	 .section .text.XMC_ETH_MAC_InitTxDescriptors,"ax",%progbits
+  60              	 .align 1
+  61              	 .global XMC_ETH_MAC_InitTxDescriptors
+  62              	 .thumb
+  63              	 .thumb_func
+  65              	XMC_ETH_MAC_InitTxDescriptors:
+  66              	 
+  67              	 
+  68 0000 30B5     	 push {r4,r5,lr}
+  69 0002 0023     	 movs r3,#0
+  70              	.L9:
+  71 0004 90F82520 	 ldrb r2,[r0,#37]
+  72 0008 9342     	 cmp r3,r2
+  73 000a 4269     	 ldr r2,[r0,#20]
+  74 000c 14D2     	 bcs .L13
+  75 000e 5901     	 lsls r1,r3,#5
+  76 0010 0D4D     	 ldr r5,.L14
+  77 0012 5550     	 str r5,[r2,r1]
+  78 0014 C569     	 ldr r5,[r0,#28]
+  79 0016 5418     	 adds r4,r2,r1
+  80 0018 40F2F451 	 movw r1,#1524
+  81 001c 01FB0351 	 mla r1,r1,r3,r5
+  82 0020 A160     	 str r1,[r4,#8]
+  83 0022 90F82510 	 ldrb r1,[r0,#37]
+  84 0026 0133     	 adds r3,r3,#1
+  85 0028 8B42     	 cmp r3,r1
+  86 002a 14BF     	 ite ne
+  87 002c 1946     	 movne r1,r3
+  88 002e 0021     	 moveq r1,#0
+  89 0030 02EB4112 	 add r2,r2,r1,lsl#5
+  90 0034 E260     	 str r2,[r4,#12]
+  91 0036 E5E7     	 b .L9
+  92              	.L13:
+  93 0038 41F21003 	 movw r3,#4112
+  94 003c 0168     	 ldr r1,[r0]
+  95 003e CA50     	 str r2,[r1,r3]
+  96 0040 0023     	 movs r3,#0
+  97 0042 80F82630 	 strb r3,[r0,#38]
+  98 0046 30BD     	 pop {r4,r5,pc}
+  99              	.L15:
+ 100              	 .align 2
+ 101              	.L14:
+ 102 0048 00001030 	 .word 806354944
+ 104              	 .section .text.XMC_ETH_MAC_SetAddressPerfectFilter,"ax",%progbits
+ 105              	 .align 1
+ 106              	 .global XMC_ETH_MAC_SetAddressPerfectFilter
+ 107              	 .thumb
+ 108              	 .thumb_func
+ 110              	XMC_ETH_MAC_SetAddressPerfectFilter:
+ 111              	 
+ 112              	 
+ 113 0000 30B5     	 push {r4,r5,lr}
+ 114 0002 0068     	 ldr r0,[r0]
+ 115 0004 039D     	 ldr r5,[sp,#12]
+ 116 0006 8C00     	 lsls r4,r1,#2
+ 117 0008 4030     	 adds r0,r0,#64
+ 118 000a 0434     	 adds r4,r4,#4
+ 119 000c 2B43     	 orrs r3,r3,r5
+ 120 000e 40F82130 	 str r3,[r0,r1,lsl#2]
+ 121 0012 0251     	 str r2,[r0,r4]
+ 122 0014 30BD     	 pop {r4,r5,pc}
+ 124              	 .section .text.XMC_ETH_MAC_SetAddressHashFilter,"ax",%progbits
+ 125              	 .align 1
+ 126              	 .global XMC_ETH_MAC_SetAddressHashFilter
+ 127              	 .thumb
+ 128              	 .thumb_func
+ 130              	XMC_ETH_MAC_SetAddressHashFilter:
+ 131              	 
+ 132              	 
+ 133              	 
+ 134 0000 0168     	 ldr r1,[r0]
+ 135 0002 8B60     	 str r3,[r1,#8]
+ 136 0004 CA60     	 str r2,[r1,#12]
+ 137 0006 7047     	 bx lr
+ 139              	 .section .text.XMC_ETH_MAC_SendFrame,"ax",%progbits
+ 140              	 .align 1
+ 141              	 .global XMC_ETH_MAC_SendFrame
+ 142              	 .thumb
+ 143              	 .thumb_func
+ 145              	XMC_ETH_MAC_SendFrame:
+ 146              	 
+ 147              	 
+ 148 0000 F8B5     	 push {r3,r4,r5,r6,r7,lr}
+ 149 0002 90F82660 	 ldrb r6,[r0,#38]
+ 150 0006 056A     	 ldr r5,[r0,#32]
+ 151 0008 7601     	 lsls r6,r6,#5
+ 152 000a 1F46     	 mov r7,r3
+ 153 000c 4369     	 ldr r3,[r0,#20]
+ 154 000e 0446     	 mov r4,r0
+ 155 0010 9819     	 adds r0,r3,r6
+ 156 0012 9B59     	 ldr r3,[r3,r6]
+ 157 0014 002B     	 cmp r3,#0
+ 158 0016 0CDA     	 bge .L19
+ 159 0018 2368     	 ldr r3,[r4]
+ 160 001a 41F21402 	 movw r2,#4116
+ 161 001e 9958     	 ldr r1,[r3,r2]
+ 162 0020 4907     	 lsls r1,r1,#29
+ 163 0022 46D5     	 bpl .L28
+ 164 0024 0421     	 movs r1,#4
+ 165 0026 9950     	 str r1,[r3,r2]
+ 166 0028 41F20402 	 movw r2,#4100
+ 167 002c 0021     	 movs r1,#0
+ 168 002e 9950     	 str r1,[r3,r2]
+ 169 0030 3FE0     	 b .L28
+ 170              	.L19:
+ 171 0032 15B9     	 cbnz r5,.L21
+ 172 0034 8568     	 ldr r5,[r0,#8]
+ 173 0036 4260     	 str r2,[r0,#4]
+ 174 0038 02E0     	 b .L22
+ 175              	.L21:
+ 176 003a 4368     	 ldr r3,[r0,#4]
+ 177 003c 1344     	 add r3,r3,r2
+ 178 003e 4360     	 str r3,[r0,#4]
+ 179              	.L22:
+ 180 0040 2846     	 mov r0,r5
+ 181 0042 FFF7FEFF 	 bl memcpy
+ 182 0046 FB07     	 lsls r3,r7,#31
+ 183 0048 01D5     	 bpl .L23
+ 184 004a 2562     	 str r5,[r4,#32]
+ 185 004c 2FE0     	 b .L32
+ 186              	.L23:
+ 187 004e 94F82600 	 ldrb r0,[r4,#38]
+ 188 0052 6169     	 ldr r1,[r4,#20]
+ 189 0054 4301     	 lsls r3,r0,#5
+ 190 0056 BE07     	 lsls r6,r7,#30
+ 191 0058 CA58     	 ldr r2,[r1,r3]
+ 192 005a 84F82800 	 strb r0,[r4,#40]
+ 193 005e 22F08442 	 bic r2,r2,#1107296256
+ 194 0062 46BF     	 itte mi
+ 195 0064 42F08142 	 orrmi r2,r2,#1082130432
+ 196 0068 42F48002 	 orrmi r2,r2,#4194304
+ 197 006c 42F44002 	 orrpl r2,r2,#12582912
+ 198 0070 7D07     	 lsls r5,r7,#29
+ 199 0072 48BF     	 it mi
+ 200 0074 42F00072 	 orrmi r2,r2,#33554432
+ 201 0078 42F00042 	 orr r2,r2,#-2147483648
+ 202 007c CA50     	 str r2,[r1,r3]
+ 203 007e 94F82630 	 ldrb r3,[r4,#38]
+ 204 0082 94F82520 	 ldrb r2,[r4,#37]
+ 205 0086 0133     	 adds r3,r3,#1
+ 206 0088 DBB2     	 uxtb r3,r3
+ 207 008a 9A42     	 cmp r2,r3
+ 208 008c 41F21401 	 movw r1,#4116
+ 209 0090 2268     	 ldr r2,[r4]
+ 210 0092 84F82630 	 strb r3,[r4,#38]
+ 211 0096 4FF00200 	 mov r0,#2
+ 212 009a 4FF00003 	 mov r3,#0
+ 213 009e 08BF     	 it eq
+ 214 00a0 84F82630 	 strbeq r3,[r4,#38]
+ 215 00a4 2362     	 str r3,[r4,#32]
+ 216 00a6 5050     	 str r0,[r2,r1]
+ 217 00a8 41F20401 	 movw r1,#4100
+ 218 00ac 5350     	 str r3,[r2,r1]
+ 219              	.L32:
+ 220 00ae 0020     	 movs r0,#0
+ 221 00b0 F8BD     	 pop {r3,r4,r5,r6,r7,pc}
+ 222              	.L28:
+ 223 00b2 0120     	 movs r0,#1
+ 224 00b4 F8BD     	 pop {r3,r4,r5,r6,r7,pc}
+ 226              	 .section .text.XMC_ETH_MAC_ReadFrame,"ax",%progbits
+ 227              	 .align 1
+ 228              	 .global XMC_ETH_MAC_ReadFrame
+ 229              	 .thumb
+ 230              	 .thumb_func
+ 232              	XMC_ETH_MAC_ReadFrame:
+ 233              	 
+ 234              	 
+ 235 0000 38B5     	 push {r3,r4,r5,lr}
+ 236 0002 0446     	 mov r4,r0
+ 237 0004 90F82700 	 ldrb r0,[r0,#39]
+ 238 0008 2369     	 ldr r3,[r4,#16]
+ 239 000a 03EB4013 	 add r3,r3,r0,lsl#5
+ 240 000e 0846     	 mov r0,r1
+ 241 0010 9968     	 ldr r1,[r3,#8]
+ 242 0012 1546     	 mov r5,r2
+ 243 0014 FFF7FEFF 	 bl memcpy
+ 244 0018 94F82730 	 ldrb r3,[r4,#39]
+ 245 001c 2269     	 ldr r2,[r4,#16]
+ 246 001e 5B01     	 lsls r3,r3,#5
+ 247 0020 4FF00041 	 mov r1,#-2147483648
+ 248 0024 D150     	 str r1,[r2,r3]
+ 249 0026 94F82730 	 ldrb r3,[r4,#39]
+ 250 002a 94F82420 	 ldrb r2,[r4,#36]
+ 251 002e 0133     	 adds r3,r3,#1
+ 252 0030 DBB2     	 uxtb r3,r3
+ 253 0032 9A42     	 cmp r2,r3
+ 254 0034 84F82730 	 strb r3,[r4,#39]
+ 255 0038 04BF     	 itt eq
+ 256 003a 0023     	 moveq r3,#0
+ 257 003c 84F82730 	 strbeq r3,[r4,#39]
+ 258 0040 41F21402 	 movw r2,#4116
+ 259 0044 2368     	 ldr r3,[r4]
+ 260 0046 9958     	 ldr r1,[r3,r2]
+ 261 0048 0906     	 lsls r1,r1,#24
+ 262 004a 41BF     	 itttt mi
+ 263 004c 8021     	 movmi r1,#128
+ 264 004e 9950     	 strmi r1,[r3,r2]
+ 265 0050 41F20802 	 movwmi r2,#4104
+ 266 0054 0021     	 movmi r1,#0
+ 267 0056 48BF     	 it mi
+ 268 0058 9950     	 strmi r1,[r3,r2]
+ 269 005a 2846     	 mov r0,r5
+ 270 005c 38BD     	 pop {r3,r4,r5,pc}
+ 272              	 .section .text.XMC_ETH_MAC_GetRxFrameSize,"ax",%progbits
+ 273              	 .align 1
+ 274              	 .global XMC_ETH_MAC_GetRxFrameSize
+ 275              	 .thumb
+ 276              	 .thumb_func
+ 278              	XMC_ETH_MAC_GetRxFrameSize:
+ 279              	 
+ 280              	 
+ 281              	 
+ 282 0000 90F82730 	 ldrb r3,[r0,#39]
+ 283 0004 0269     	 ldr r2,[r0,#16]
+ 284 0006 5B01     	 lsls r3,r3,#5
+ 285 0008 D058     	 ldr r0,[r2,r3]
+ 286 000a 0028     	 cmp r0,#0
+ 287 000c 08DB     	 blt .L41
+ 288 000e 00F40343 	 and r3,r0,#33536
+ 289 0012 B3F5407F 	 cmp r3,#768
+ 290 0016 05D1     	 bne .L42
+ 291 0018 C0F30D40 	 ubfx r0,r0,#16,#14
+ 292 001c 0438     	 subs r0,r0,#4
+ 293 001e 7047     	 bx lr
+ 294              	.L41:
+ 295 0020 0020     	 movs r0,#0
+ 296 0022 7047     	 bx lr
+ 297              	.L42:
+ 298 0024 4FF0FF30 	 mov r0,#-1
+ 299 0028 7047     	 bx lr
+ 301              	 .section .text.XMC_ETH_MAC_SetManagmentClockDivider,"ax",%progbits
+ 302              	 .align 1
+ 303              	 .global XMC_ETH_MAC_SetManagmentClockDivider
+ 304              	 .thumb
+ 305              	 .thumb_func
+ 307              	XMC_ETH_MAC_SetManagmentClockDivider:
+ 308              	 
+ 309              	 
+ 310              	 
+ 311 0000 154B     	 ldr r3,.L52
+ 312 0002 1649     	 ldr r1,.L52+4
+ 313 0004 1A69     	 ldr r2,[r3,#16]
+ 314 0006 164B     	 ldr r3,.L52+8
+ 315 0008 1B68     	 ldr r3,[r3]
+ 316 000a 02F00102 	 and r2,r2,#1
+ 317 000e 9340     	 lsls r3,r3,r2
+ 318 0010 5B08     	 lsrs r3,r3,#1
+ 319 0012 8B42     	 cmp r3,r1
+ 320 0014 0268     	 ldr r2,[r0]
+ 321 0016 01D8     	 bhi .L44
+ 322 0018 0823     	 movs r3,#8
+ 323 001a 18E0     	 b .L51
+ 324              	.L44:
+ 325 001c 1149     	 ldr r1,.L52+12
+ 326 001e 8B42     	 cmp r3,r1
+ 327 0020 01D8     	 bhi .L46
+ 328 0022 0C23     	 movs r3,#12
+ 329 0024 13E0     	 b .L51
+ 330              	.L46:
+ 331 0026 1049     	 ldr r1,.L52+16
+ 332 0028 8B42     	 cmp r3,r1
+ 333 002a 02D8     	 bhi .L47
+ 334 002c 0020     	 movs r0,#0
+ 335 002e 1061     	 str r0,[r2,#16]
+ 336 0030 7047     	 bx lr
+ 337              	.L47:
+ 338 0032 0E49     	 ldr r1,.L52+20
+ 339 0034 8B42     	 cmp r3,r1
+ 340 0036 01D8     	 bhi .L48
+ 341 0038 0423     	 movs r3,#4
+ 342 003a 08E0     	 b .L51
+ 343              	.L48:
+ 344 003c 0C49     	 ldr r1,.L52+24
+ 345 003e 8B42     	 cmp r3,r1
+ 346 0040 01D8     	 bhi .L49
+ 347 0042 1023     	 movs r3,#16
+ 348 0044 03E0     	 b .L51
+ 349              	.L49:
+ 350 0046 0B49     	 ldr r1,.L52+28
+ 351 0048 8B42     	 cmp r3,r1
+ 352 004a 03D8     	 bhi .L50
+ 353 004c 1423     	 movs r3,#20
+ 354              	.L51:
+ 355 004e 1361     	 str r3,[r2,#16]
+ 356 0050 0020     	 movs r0,#0
+ 357 0052 7047     	 bx lr
+ 358              	.L50:
+ 359 0054 0220     	 movs r0,#2
+ 360 0056 7047     	 bx lr
+ 361              	.L53:
+ 362              	 .align 2
+ 363              	.L52:
+ 364 0058 00460050 	 .word 1342195200
+ 365 005c C00E1602 	 .word 35000000
+ 366 0060 00000000 	 .word SystemCoreClock
+ 367 0064 00879303 	 .word 60000000
+ 368 0068 00E1F505 	 .word 100000000
+ 369 006c 80D1F008 	 .word 150000000
+ 370 0070 00C2EB0B 	 .word 200000000
+ 371 0074 80B2E60E 	 .word 250000000
+ 373              	 .section .text.XMC_ETH_MAC_Enable,"ax",%progbits
+ 374              	 .align 1
+ 375              	 .global XMC_ETH_MAC_Enable
+ 376              	 .thumb
+ 377              	 .thumb_func
+ 379              	XMC_ETH_MAC_Enable:
+ 380              	 
+ 381              	 
+ 382 0000 08B5     	 push {r3,lr}
+ 383 0002 0420     	 movs r0,#4
+ 384 0004 FFF7FEFF 	 bl XMC_SCU_CLOCK_EnableClock
+ 385 0008 0248     	 ldr r0,.L55
+ 386 000a BDE80840 	 pop {r3,lr}
+ 387 000e FFF7FEBF 	 b XMC_SCU_RESET_DeassertPeripheralReset
+ 388              	.L56:
+ 389 0012 00BF     	 .align 2
+ 390              	.L55:
+ 391 0014 04000020 	 .word 536870916
+ 393              	 .section .text.XMC_ETH_MAC_Init,"ax",%progbits
+ 394              	 .align 1
+ 395              	 .global XMC_ETH_MAC_Init
+ 396              	 .thumb
+ 397              	 .thumb_func
+ 399              	XMC_ETH_MAC_Init:
+ 400              	 
+ 401              	 
+ 402 0000 70B5     	 push {r4,r5,r6,lr}
+ 403 0002 0446     	 mov r4,r0
+ 404 0004 FFF7FEFF 	 bl XMC_ETH_MAC_Enable
+ 405 0008 2368     	 ldr r3,[r4]
+ 406 000a 03F58053 	 add r3,r3,#4096
+ 407 000e 1A68     	 ldr r2,[r3]
+ 408 0010 42F00102 	 orr r2,r2,#1
+ 409 0014 1A60     	 str r2,[r3]
+ 410              	.L58:
+ 411 0016 1A68     	 ldr r2,[r3]
+ 412 0018 12F00105 	 ands r5,r2,#1
+ 413 001c FBD1     	 bne .L58
+ 414 001e 2046     	 mov r0,r4
+ 415 0020 FFF7FEFF 	 bl XMC_ETH_MAC_SetManagmentClockDivider
+ 416 0024 2368     	 ldr r3,[r4]
+ 417 0026 A268     	 ldr r2,[r4,#8]
+ 418 0028 E168     	 ldr r1,[r4,#12]
+ 419 002a 1964     	 str r1,[r3,#64]
+ 420 002c 5A64     	 str r2,[r3,#68]
+ 421 002e 4FF48062 	 mov r2,#1024
+ 422 0032 1A60     	 str r2,[r3]
+ 423 0034 8022     	 movs r2,#128
+ 424 0036 9A61     	 str r2,[r3,#24]
+ 425 0038 41F21802 	 movw r2,#4120
+ 426 003c 1149     	 ldr r1,.L60
+ 427 003e 9950     	 str r1,[r3,r2]
+ 428 0040 03F58053 	 add r3,r3,#4096
+ 429 0044 104A     	 ldr r2,.L60+4
+ 430 0046 1A60     	 str r2,[r3]
+ 431 0048 0646     	 mov r6,r0
+ 432 004a 2046     	 mov r0,r4
+ 433 004c FFF7FEFF 	 bl XMC_ETH_MAC_InitRxDescriptors
+ 434 0050 2046     	 mov r0,r4
+ 435 0052 FFF7FEFF 	 bl XMC_ETH_MAC_InitTxDescriptors
+ 436 0056 2368     	 ldr r3,[r4]
+ 437 0058 41F21402 	 movw r2,#4116
+ 438 005c 4FF0FF31 	 mov r1,#-1
+ 439 0060 9950     	 str r1,[r3,r2]
+ 440 0062 6FF07C42 	 mvn r2,#-67108864
+ 441 0066 C3F81021 	 str r2,[r3,#272]
+ 442 006a C3F80C21 	 str r2,[r3,#268]
+ 443 006e 6FF0C022 	 mvn r2,#-1073692672
+ 444 0072 C3F80022 	 str r2,[r3,#512]
+ 445 0076 4FF40272 	 mov r2,#520
+ 446 007a DA63     	 str r2,[r3,#60]
+ 447 007c 3046     	 mov r0,r6
+ 448 007e 2562     	 str r5,[r4,#32]
+ 449 0080 70BD     	 pop {r4,r5,r6,pc}
+ 450              	.L61:
+ 451 0082 00BF     	 .align 2
+ 452              	.L60:
+ 453 0084 04002002 	 .word 35651588
+ 454 0088 80200102 	 .word 33628288
+ 456              	 .section .text.XMC_ETH_MAC_Disable,"ax",%progbits
+ 457              	 .align 1
+ 458              	 .global XMC_ETH_MAC_Disable
+ 459              	 .thumb
+ 460              	 .thumb_func
+ 462              	XMC_ETH_MAC_Disable:
+ 463              	 
+ 464              	 
+ 465 0000 08B5     	 push {r3,lr}
+ 466 0002 0448     	 ldr r0,.L63
+ 467 0004 FFF7FEFF 	 bl XMC_SCU_RESET_AssertPeripheralReset
+ 468 0008 0420     	 movs r0,#4
+ 469 000a BDE80840 	 pop {r3,lr}
+ 470 000e FFF7FEBF 	 b XMC_SCU_CLOCK_DisableClock
+ 471              	.L64:
+ 472 0012 00BF     	 .align 2
+ 473              	.L63:
+ 474 0014 04000020 	 .word 536870916
+ 476              	 .section .text.XMC_ETH_MAC_ReadPhy,"ax",%progbits
+ 477              	 .align 1
+ 478              	 .global XMC_ETH_MAC_ReadPhy
+ 479              	 .thumb
+ 480              	 .thumb_func
+ 482              	XMC_ETH_MAC_ReadPhy:
+ 483              	 
+ 484              	 
+ 485 0000 10B5     	 push {r4,lr}
+ 486 0002 0468     	 ldr r4,[r0]
+ 487 0004 2069     	 ldr r0,[r4,#16]
+ 488 0006 00F03C00 	 and r0,r0,#60
+ 489 000a 40F00100 	 orr r0,r0,#1
+ 490 000e 40EA8212 	 orr r2,r0,r2,lsl#6
+ 491 0012 42EAC121 	 orr r1,r2,r1,lsl#11
+ 492 0016 2161     	 str r1,[r4,#16]
+ 493 0018 4FF6FF72 	 movw r2,#65535
+ 494              	.L68:
+ 495 001c 2069     	 ldr r0,[r4,#16]
+ 496 001e 10F00100 	 ands r0,r0,#1
+ 497 0022 02D1     	 bne .L66
+ 498 0024 6269     	 ldr r2,[r4,#20]
+ 499 0026 1A80     	 strh r2,[r3]
+ 500 0028 10BD     	 pop {r4,pc}
+ 501              	.L66:
+ 502 002a 013A     	 subs r2,r2,#1
+ 503 002c F6D1     	 bne .L68
+ 504 002e 0220     	 movs r0,#2
+ 505 0030 10BD     	 pop {r4,pc}
+ 507              	 .section .text.XMC_ETH_MAC_WritePhy,"ax",%progbits
+ 508              	 .align 1
+ 509              	 .global XMC_ETH_MAC_WritePhy
+ 510              	 .thumb
+ 511              	 .thumb_func
+ 513              	XMC_ETH_MAC_WritePhy:
+ 514              	 
+ 515              	 
+ 516 0000 10B5     	 push {r4,lr}
+ 517 0002 0468     	 ldr r4,[r0]
+ 518 0004 6361     	 str r3,[r4,#20]
+ 519 0006 2369     	 ldr r3,[r4,#16]
+ 520 0008 03F03C03 	 and r3,r3,#60
+ 521 000c 43F00303 	 orr r3,r3,#3
+ 522 0010 43EA8212 	 orr r2,r3,r2,lsl#6
+ 523 0014 42EAC121 	 orr r1,r2,r1,lsl#11
+ 524 0018 2161     	 str r1,[r4,#16]
+ 525 001a 4FF6FF73 	 movw r3,#65535
+ 526              	.L72:
+ 527 001e 2069     	 ldr r0,[r4,#16]
+ 528 0020 10F00100 	 ands r0,r0,#1
+ 529 0024 02D0     	 beq .L71
+ 530 0026 013B     	 subs r3,r3,#1
+ 531 0028 F9D1     	 bne .L72
+ 532 002a 0220     	 movs r0,#2
+ 533              	.L71:
+ 534 002c 10BD     	 pop {r4,pc}
+ 536              	 .section .text.XMC_ETH_MAC_FlushTx,"ax",%progbits
+ 537              	 .align 1
+ 538              	 .global XMC_ETH_MAC_FlushTx
+ 539              	 .thumb
+ 540              	 .thumb_func
+ 542              	XMC_ETH_MAC_FlushTx:
+ 543              	 
+ 544              	 
+ 545 0000 38B5     	 push {r3,r4,r5,lr}
+ 546 0002 0268     	 ldr r2,[r0]
+ 547 0004 41F21804 	 movw r4,#4120
+ 548 0008 0546     	 mov r5,r0
+ 549 000a 1359     	 ldr r3,[r2,r4]
+ 550 000c 23F40053 	 bic r3,r3,#8192
+ 551 0010 1351     	 str r3,[r2,r4]
+ 552 0012 FFF7FEFF 	 bl XMC_ETH_MAC_InitTxDescriptors
+ 553 0016 2A68     	 ldr r2,[r5]
+ 554 0018 1359     	 ldr r3,[r2,r4]
+ 555 001a 43F40053 	 orr r3,r3,#8192
+ 556 001e 1351     	 str r3,[r2,r4]
+ 557 0020 38BD     	 pop {r3,r4,r5,pc}
+ 559              	 .section .text.XMC_ETH_MAC_FlushRx,"ax",%progbits
+ 560              	 .align 1
+ 561              	 .global XMC_ETH_MAC_FlushRx
+ 562              	 .thumb
+ 563              	 .thumb_func
+ 565              	XMC_ETH_MAC_FlushRx:
+ 566              	 
+ 567              	 
+ 568 0000 38B5     	 push {r3,r4,r5,lr}
+ 569 0002 0268     	 ldr r2,[r0]
+ 570 0004 41F21804 	 movw r4,#4120
+ 571 0008 0546     	 mov r5,r0
+ 572 000a 1359     	 ldr r3,[r2,r4]
+ 573 000c 23F00203 	 bic r3,r3,#2
+ 574 0010 1351     	 str r3,[r2,r4]
+ 575 0012 FFF7FEFF 	 bl XMC_ETH_MAC_InitRxDescriptors
+ 576 0016 2A68     	 ldr r2,[r5]
+ 577 0018 1359     	 ldr r3,[r2,r4]
+ 578 001a 43F00203 	 orr r3,r3,#2
+ 579 001e 1351     	 str r3,[r2,r4]
+ 580 0020 38BD     	 pop {r3,r4,r5,pc}
+ 582              	 .section .text.XMC_ETH_MAC_SetWakeUpFrameFilter,"ax",%progbits
+ 583              	 .align 1
+ 584              	 .global XMC_ETH_MAC_SetWakeUpFrameFilter
+ 585              	 .thumb
+ 586              	 .thumb_func
+ 588              	XMC_ETH_MAC_SetWakeUpFrameFilter:
+ 589              	 
+ 590              	 
+ 591              	 
+ 592 0000 0268     	 ldr r2,[r0]
+ 593 0002 0B1F     	 subs r3,r1,#4
+ 594 0004 1C31     	 adds r1,r1,#28
+ 595              	.L78:
+ 596 0006 53F8040F 	 ldr r0,[r3,#4]!
+ 597 000a 9062     	 str r0,[r2,#40]
+ 598 000c 8B42     	 cmp r3,r1
+ 599 000e FAD1     	 bne .L78
+ 600 0010 7047     	 bx lr
+ 602              	 .section .text.XMC_ETH_MAC_EnableEvent,"ax",%progbits
+ 603              	 .align 1
+ 604              	 .global XMC_ETH_MAC_EnableEvent
+ 605              	 .thumb
+ 606              	 .thumb_func
+ 608              	XMC_ETH_MAC_EnableEvent:
+ 609              	 
+ 610              	 
+ 611              	 
+ 612 0000 0268     	 ldr r2,[r0]
+ 613 0002 D36B     	 ldr r3,[r2,#60]
+ 614 0004 44F24500 	 movw r0,#16453
+ 615 0008 23EA1143 	 bic r3,r3,r1,lsr#16
+ 616 000c 0840     	 ands r0,r0,r1
+ 617 000e D363     	 str r3,[r2,#60]
+ 618 0010 C1F30E03 	 ubfx r3,r1,#0,#15
+ 619 0014 08B1     	 cbz r0,.L81
+ 620 0016 43F48033 	 orr r3,r3,#65536
+ 621              	.L81:
+ 622 001a 42F2BA71 	 movw r1,#10170
+ 623 001e 1940     	 ands r1,r1,r3
+ 624 0020 09B1     	 cbz r1,.L82
+ 625 0022 43F40043 	 orr r3,r3,#32768
+ 626              	.L82:
+ 627 0026 41F21C00 	 movw r0,#4124
+ 628 002a 1158     	 ldr r1,[r2,r0]
+ 629 002c 0B43     	 orrs r3,r3,r1
+ 630 002e 1350     	 str r3,[r2,r0]
+ 631 0030 7047     	 bx lr
+ 633              	 .section .text.XMC_ETH_MAC_DisableEvent,"ax",%progbits
+ 634              	 .align 1
+ 635              	 .global XMC_ETH_MAC_DisableEvent
+ 636              	 .thumb
+ 637              	 .thumb_func
+ 639              	XMC_ETH_MAC_DisableEvent:
+ 640              	 
+ 641              	 
+ 642              	 
+ 643 0000 0368     	 ldr r3,[r0]
+ 644 0002 DA6B     	 ldr r2,[r3,#60]
+ 645 0004 41F21C00 	 movw r0,#4124
+ 646 0008 42EA1142 	 orr r2,r2,r1,lsr#16
+ 647 000c DA63     	 str r2,[r3,#60]
+ 648 000e 1A58     	 ldr r2,[r3,r0]
+ 649 0010 C1F30E01 	 ubfx r1,r1,#0,#15
+ 650 0014 22EA0101 	 bic r1,r2,r1
+ 651 0018 1950     	 str r1,[r3,r0]
+ 652 001a 7047     	 bx lr
+ 654              	 .section .text.XMC_ETH_MAC_ClearEventStatus,"ax",%progbits
+ 655              	 .align 1
+ 656              	 .global XMC_ETH_MAC_ClearEventStatus
+ 657              	 .thumb
+ 658              	 .thumb_func
+ 660              	XMC_ETH_MAC_ClearEventStatus:
+ 661              	 
+ 662              	 
+ 663              	 
+ 664 0000 0268     	 ldr r2,[r0]
+ 665 0002 41F21403 	 movw r3,#4116
+ 666 0006 D058     	 ldr r0,[r2,r3]
+ 667 0008 D358     	 ldr r3,[r2,r3]
+ 668 000a C003     	 lsls r0,r0,#15
+ 669 000c 48BF     	 it mi
+ 670 000e 41F48031 	 orrmi r1,r1,#65536
+ 671 0012 1B04     	 lsls r3,r3,#16
+ 672 0014 48BF     	 it mi
+ 673 0016 41F40041 	 orrmi r1,r1,#32768
+ 674 001a 41F21403 	 movw r3,#4116
+ 675 001e C1F31001 	 ubfx r1,r1,#0,#17
+ 676 0022 D150     	 str r1,[r2,r3]
+ 677 0024 7047     	 bx lr
+ 679              	 .section .text.XMC_ETH_MAC_GetEventStatus,"ax",%progbits
+ 680              	 .align 1
+ 681              	 .global XMC_ETH_MAC_GetEventStatus
+ 682              	 .thumb
+ 683              	 .thumb_func
+ 685              	XMC_ETH_MAC_GetEventStatus:
+ 686              	 
+ 687              	 
+ 688              	 
+ 689 0000 0268     	 ldr r2,[r0]
+ 690 0002 41F21403 	 movw r3,#4116
+ 691 0006 D358     	 ldr r3,[r2,r3]
+ 692 0008 906B     	 ldr r0,[r2,#56]
+ 693 000a C3F30A03 	 ubfx r3,r3,#0,#11
+ 694 000e 00F40270 	 and r0,r0,#520
+ 695 0012 43EA0040 	 orr r0,r3,r0,lsl#16
+ 696 0016 7047     	 bx lr
+ 698              	 .section .text.XMC_ETH_MAC_ReturnRxDescriptor,"ax",%progbits
+ 699              	 .align 1
+ 700              	 .global XMC_ETH_MAC_ReturnRxDescriptor
+ 701              	 .thumb
+ 702              	 .thumb_func
+ 704              	XMC_ETH_MAC_ReturnRxDescriptor:
+ 705              	 
+ 706              	 
+ 707              	 
+ 708 0000 90F82730 	 ldrb r3,[r0,#39]
+ 709 0004 0169     	 ldr r1,[r0,#16]
+ 710 0006 5B01     	 lsls r3,r3,#5
+ 711 0008 CA58     	 ldr r2,[r1,r3]
+ 712 000a 42F00042 	 orr r2,r2,#-2147483648
+ 713 000e CA50     	 str r2,[r1,r3]
+ 714 0010 90F82730 	 ldrb r3,[r0,#39]
+ 715 0014 90F82420 	 ldrb r2,[r0,#36]
+ 716 0018 0133     	 adds r3,r3,#1
+ 717 001a DBB2     	 uxtb r3,r3
+ 718 001c 9A42     	 cmp r2,r3
+ 719 001e 80F82730 	 strb r3,[r0,#39]
+ 720 0022 04BF     	 itt eq
+ 721 0024 0023     	 moveq r3,#0
+ 722 0026 80F82730 	 strbeq r3,[r0,#39]
+ 723 002a 7047     	 bx lr
+ 725              	 .section .text.XMC_ETH_MAC_ReturnTxDescriptor,"ax",%progbits
+ 726              	 .align 1
+ 727              	 .global XMC_ETH_MAC_ReturnTxDescriptor
+ 728              	 .thumb
+ 729              	 .thumb_func
+ 731              	XMC_ETH_MAC_ReturnTxDescriptor:
+ 732              	 
+ 733              	 
+ 734              	 
+ 735 0000 90F82630 	 ldrb r3,[r0,#38]
+ 736 0004 80F82830 	 strb r3,[r0,#40]
+ 737 0008 4169     	 ldr r1,[r0,#20]
+ 738 000a 5B01     	 lsls r3,r3,#5
+ 739 000c CA58     	 ldr r2,[r1,r3]
+ 740 000e 42F00042 	 orr r2,r2,#-2147483648
+ 741 0012 42F44002 	 orr r2,r2,#12582912
+ 742 0016 CA50     	 str r2,[r1,r3]
+ 743 0018 90F82630 	 ldrb r3,[r0,#38]
+ 744 001c 90F82520 	 ldrb r2,[r0,#37]
+ 745 0020 0133     	 adds r3,r3,#1
+ 746 0022 DBB2     	 uxtb r3,r3
+ 747 0024 80F82630 	 strb r3,[r0,#38]
+ 748 0028 9A42     	 cmp r2,r3
+ 749 002a 4FF00003 	 mov r3,#0
+ 750 002e 08BF     	 it eq
+ 751 0030 80F82630 	 strbeq r3,[r0,#38]
+ 752 0034 0362     	 str r3,[r0,#32]
+ 753 0036 7047     	 bx lr
+ 755              	 .section .text.XMC_ETH_MAC_SetVLANTag,"ax",%progbits
+ 756              	 .align 1
+ 757              	 .global XMC_ETH_MAC_SetVLANTag
+ 758              	 .thumb
+ 759              	 .thumb_func
+ 761              	XMC_ETH_MAC_SetVLANTag:
+ 762              	 
+ 763              	 
+ 764              	 
+ 765 0000 0368     	 ldr r3,[r0]
+ 766 0002 D961     	 str r1,[r3,#28]
+ 767 0004 7047     	 bx lr
+ 769              	 .section .text.XMC_ETH_MAC_InitPTP,"ax",%progbits
+ 770              	 .align 1
+ 771              	 .global XMC_ETH_MAC_InitPTP
+ 772              	 .thumb
+ 773              	 .thumb_func
+ 775              	XMC_ETH_MAC_InitPTP:
+ 776              	 
+ 777              	 
+ 778              	 
+ 779 0000 0368     	 ldr r3,[r0]
+ 780 0002 9FED1F7A 	 flds s14,.L112
+ 781 0006 DA6B     	 ldr r2,[r3,#60]
+ 782 0008 42F40072 	 orr r2,r2,#512
+ 783 000c DA63     	 str r2,[r3,#60]
+ 784 000e 0122     	 movs r2,#1
+ 785 0010 C3F80027 	 str r2,[r3,#1792]
+ 786 0014 1B4A     	 ldr r2,.L112+4
+ 787 0016 1069     	 ldr r0,[r2,#16]
+ 788 0018 1B4A     	 ldr r2,.L112+8
+ 789 001a 1268     	 ldr r2,[r2]
+ 790 001c 00F00100 	 and r0,r0,#1
+ 791 0020 8240     	 lsls r2,r2,r0
+ 792 0022 5208     	 lsrs r2,r2,#1
+ 793 0024 07EE902A 	 fmsr s15,r2
+ 794 0028 F8EEE77A 	 fsitos s15,s15
+ 795 002c C7EE277A 	 fdivs s15,s14,s15
+ 796 0030 B6EE007A 	 fconsts s14,#96
+ 797 0034 77EE877A 	 fadds s15,s15,s14
+ 798 0038 FCEEE77A 	 ftouizs s15,s15
+ 799 003c 17EE902A 	 fmrs r2,s15
+ 800 0040 C3F80427 	 str r2,[r3,#1796]
+ 801 0044 8A07     	 lsls r2,r1,#30
+ 802 0046 07D4     	 bmi .L106
+ 803              	.L109:
+ 804 0048 D3F80027 	 ldr r2,[r3,#1792]
+ 805 004c 42F00402 	 orr r2,r2,#4
+ 806 0050 1143     	 orrs r1,r1,r2
+ 807 0052 C3F80017 	 str r1,[r3,#1792]
+ 808 0056 0EE0     	 b .L107
+ 809              	.L106:
+ 810 0058 4FF00042 	 mov r2,#-2147483648
+ 811 005c C3F81827 	 str r2,[r3,#1816]
+ 812 0060 D3F80027 	 ldr r2,[r3,#1792]
+ 813 0064 42F02002 	 orr r2,r2,#32
+ 814 0068 C3F80027 	 str r2,[r3,#1792]
+ 815              	.L108:
+ 816 006c D3F80027 	 ldr r2,[r3,#1792]
+ 817 0070 9006     	 lsls r0,r2,#26
+ 818 0072 FBD4     	 bmi .L108
+ 819 0074 E8E7     	 b .L109
+ 820              	.L107:
+ 821 0076 D3F80027 	 ldr r2,[r3,#1792]
+ 822 007a 5207     	 lsls r2,r2,#29
+ 823 007c FBD4     	 bmi .L107
+ 824 007e 7047     	 bx lr
+ 825              	.L113:
+ 826              	 .align 2
+ 827              	.L112:
+ 828 0080 0000004F 	 .word 1325400064
+ 829 0084 00460050 	 .word 1342195200
+ 830 0088 00000000 	 .word SystemCoreClock
+ 832              	 .section .text.XMC_ETH_MAC_InitPTPEx,"ax",%progbits
+ 833              	 .align 1
+ 834              	 .global XMC_ETH_MAC_InitPTPEx
+ 835              	 .thumb
+ 836              	 .thumb_func
+ 838              	XMC_ETH_MAC_InitPTPEx:
+ 839              	 
+ 840              	 
+ 841 0000 0368     	 ldr r3,[r0]
+ 842 0002 9FED237A 	 flds s14,.L121
+ 843 0006 D86B     	 ldr r0,[r3,#60]
+ 844 0008 40F40070 	 orr r0,r0,#512
+ 845 000c 10B5     	 push {r4,lr}
+ 846 000e D863     	 str r0,[r3,#60]
+ 847 0010 0120     	 movs r0,#1
+ 848 0012 C3F80007 	 str r0,[r3,#1792]
+ 849 0016 1F48     	 ldr r0,.L121+4
+ 850 0018 0469     	 ldr r4,[r0,#16]
+ 851 001a 1F48     	 ldr r0,.L121+8
+ 852 001c 0068     	 ldr r0,[r0]
+ 853 001e 04F00104 	 and r4,r4,#1
+ 854 0022 A040     	 lsls r0,r0,r4
+ 855 0024 4008     	 lsrs r0,r0,#1
+ 856 0026 07EE900A 	 fmsr s15,r0
+ 857 002a F8EEE77A 	 fsitos s15,s15
+ 858 002e 8C07     	 lsls r4,r1,#30
+ 859 0030 C7EE277A 	 fdivs s15,s14,s15
+ 860 0034 B6EE007A 	 fconsts s14,#96
+ 861 0038 77EE877A 	 fadds s15,s15,s14
+ 862 003c FCEEE77A 	 ftouizs s15,s15
+ 863 0040 17EE900A 	 fmrs r0,s15
+ 864 0044 C3F80407 	 str r0,[r3,#1796]
+ 865 0048 0DD4     	 bmi .L115
+ 866              	.L118:
+ 867 004a 5068     	 ldr r0,[r2,#4]
+ 868 004c 1268     	 ldr r2,[r2]
+ 869 004e C3F81407 	 str r0,[r3,#1812]
+ 870 0052 C3F81027 	 str r2,[r3,#1808]
+ 871 0056 D3F80027 	 ldr r2,[r3,#1792]
+ 872 005a 42F00402 	 orr r2,r2,#4
+ 873 005e 1143     	 orrs r1,r1,r2
+ 874 0060 C3F80017 	 str r1,[r3,#1792]
+ 875 0064 0EE0     	 b .L116
+ 876              	.L115:
+ 877 0066 4FF00040 	 mov r0,#-2147483648
+ 878 006a C3F81807 	 str r0,[r3,#1816]
+ 879 006e D3F80007 	 ldr r0,[r3,#1792]
+ 880 0072 40F02000 	 orr r0,r0,#32
+ 881 0076 C3F80007 	 str r0,[r3,#1792]
+ 882              	.L117:
+ 883 007a D3F80007 	 ldr r0,[r3,#1792]
+ 884 007e 8006     	 lsls r0,r0,#26
+ 885 0080 FBD4     	 bmi .L117
+ 886 0082 E2E7     	 b .L118
+ 887              	.L116:
+ 888 0084 D3F80027 	 ldr r2,[r3,#1792]
+ 889 0088 5207     	 lsls r2,r2,#29
+ 890 008a FBD4     	 bmi .L116
+ 891 008c 10BD     	 pop {r4,pc}
+ 892              	.L122:
+ 893 008e 00BF     	 .align 2
+ 894              	.L121:
+ 895 0090 0000004F 	 .word 1325400064
+ 896 0094 00460050 	 .word 1342195200
+ 897 0098 00000000 	 .word SystemCoreClock
+ 899              	 .section .text.XMC_ETH_MAC_GetPTPTime,"ax",%progbits
+ 900              	 .align 1
+ 901              	 .global XMC_ETH_MAC_GetPTPTime
+ 902              	 .thumb
+ 903              	 .thumb_func
+ 905              	XMC_ETH_MAC_GetPTPTime:
+ 906              	 
+ 907              	 
+ 908              	 
+ 909 0000 0368     	 ldr r3,[r0]
+ 910 0002 9FED097A 	 flds s14,.L124
+ 911 0006 D3F80C27 	 ldr r2,[r3,#1804]
+ 912 000a D3F80837 	 ldr r3,[r3,#1800]
+ 913 000e 0B60     	 str r3,[r1]
+ 914 0010 07EE902A 	 fmsr s15,r2
+ 915 0014 F8EE677A 	 fuitos s15,s15
+ 916 0018 67EE877A 	 fmuls s15,s15,s14
+ 917 001c FCEEE77A 	 ftouizs s15,s15
+ 918 0020 C1ED017A 	 fsts s15,[r1,#4]
+ 919 0024 7047     	 bx lr
+ 920              	.L125:
+ 921 0026 00BF     	 .align 2
+ 922              	.L124:
+ 923 0028 286BEE3E 	 .word 1055812392
+ 925              	 .section .text.XMC_ETH_MAC_SetPTPTime,"ax",%progbits
+ 926              	 .align 1
+ 927              	 .global XMC_ETH_MAC_SetPTPTime
+ 928              	 .thumb
+ 929              	 .thumb_func
+ 931              	XMC_ETH_MAC_SetPTPTime:
+ 932              	 
+ 933              	 
+ 934              	 
+ 935 0000 0368     	 ldr r3,[r0]
+ 936 0002 0A68     	 ldr r2,[r1]
+ 937 0004 C3F81027 	 str r2,[r3,#1808]
+ 938 0008 4A68     	 ldr r2,[r1,#4]
+ 939 000a 0749     	 ldr r1,.L129
+ 940 000c C3F81427 	 str r2,[r3,#1812]
+ 941 0010 D1F80027 	 ldr r2,[r1,#1792]
+ 942 0014 42F00402 	 orr r2,r2,#4
+ 943 0018 C1F80027 	 str r2,[r1,#1792]
+ 944              	.L127:
+ 945 001c D3F80027 	 ldr r2,[r3,#1792]
+ 946 0020 5207     	 lsls r2,r2,#29
+ 947 0022 FBD4     	 bmi .L127
+ 948 0024 7047     	 bx lr
+ 949              	.L130:
+ 950 0026 00BF     	 .align 2
+ 951              	.L129:
+ 952 0028 00C00050 	 .word 1342226432
+ 954              	 .section .text.XMC_ETH_MAC_UpdatePTPTime,"ax",%progbits
+ 955              	 .align 1
+ 956              	 .global XMC_ETH_MAC_UpdatePTPTime
+ 957              	 .thumb
+ 958              	 .thumb_func
+ 960              	XMC_ETH_MAC_UpdatePTPTime:
+ 961              	 
+ 962              	 
+ 963              	 
+ 964 0000 4A68     	 ldr r2,[r1,#4]
+ 965 0002 9FED107A 	 flds s14,.L133
+ 966 0006 82EAE273 	 eor r3,r2,r2,asr#31
+ 967 000a A3EBE273 	 sub r3,r3,r2,asr#31
+ 968 000e 07EE903A 	 fmsr s15,r3
+ 969 0012 F8EEE77A 	 fsitos s15,s15
+ 970 0016 002A     	 cmp r2,#0
+ 971 0018 67EE877A 	 fmuls s15,s15,s14
+ 972 001c 0268     	 ldr r2,[r0]
+ 973 001e FCEEE77A 	 ftouizs s15,s15
+ 974 0022 17EE903A 	 fmrs r3,s15
+ 975 0026 B8BF     	 it lt
+ 976 0028 43F00043 	 orrlt r3,r3,#-2147483648
+ 977 002c C2F81437 	 str r3,[r2,#1812]
+ 978 0030 0B68     	 ldr r3,[r1]
+ 979 0032 C2F81037 	 str r3,[r2,#1808]
+ 980 0036 D2F80037 	 ldr r3,[r2,#1792]
+ 981 003a 43F00803 	 orr r3,r3,#8
+ 982 003e C2F80037 	 str r3,[r2,#1792]
+ 983 0042 7047     	 bx lr
+ 984              	.L134:
+ 985              	 .align 2
+ 986              	.L133:
+ 987 0044 5F700940 	 .word 1074360415
+ 989              	 .section .text.XMC_ETH_MAC_SetPTPAlarm,"ax",%progbits
+ 990              	 .align 1
+ 991              	 .global XMC_ETH_MAC_SetPTPAlarm
+ 992              	 .thumb
+ 993              	 .thumb_func
+ 995              	XMC_ETH_MAC_SetPTPAlarm:
+ 996              	 
+ 997              	 
+ 998              	 
+ 999 0000 D1ED017A 	 flds s15,[r1,#4]
+ 1000 0004 9FED087A 	 flds s14,.L136
+ 1001 0008 0368     	 ldr r3,[r0]
+ 1002 000a F8EEE77A 	 fsitos s15,s15
+ 1003 000e 67EE877A 	 fmuls s15,s15,s14
+ 1004 0012 FCEEE77A 	 ftouizs s15,s15
+ 1005 0016 17EE902A 	 fmrs r2,s15
+ 1006 001a C3F82027 	 str r2,[r3,#1824]
+ 1007 001e 0A68     	 ldr r2,[r1]
+ 1008 0020 C3F81C27 	 str r2,[r3,#1820]
+ 1009 0024 7047     	 bx lr
+ 1010              	.L137:
+ 1011 0026 00BF     	 .align 2
+ 1012              	.L136:
+ 1013 0028 5F700940 	 .word 1074360415
+ 1015              	 .section .text.XMC_ETH_MAC_AdjustPTPClock,"ax",%progbits
+ 1016              	 .align 1
+ 1017              	 .global XMC_ETH_MAC_AdjustPTPClock
+ 1018              	 .thumb
+ 1019              	 .thumb_func
+ 1021              	XMC_ETH_MAC_AdjustPTPClock:
+ 1022              	 
+ 1023              	 
+ 1024              	 
+ 1025 0000 0368     	 ldr r3,[r0]
+ 1026 0002 D3F81807 	 ldr r0,[r3,#1816]
+ 1027 0006 A1FB0001 	 umull r0,r1,r1,r0
+ 1028 000a C20F     	 lsrs r2,r0,#31
+ 1029 000c 42EA4102 	 orr r2,r2,r1,lsl#1
+ 1030 0010 C3F81827 	 str r2,[r3,#1816]
+ 1031 0014 D3F80027 	 ldr r2,[r3,#1792]
+ 1032 0018 42F02002 	 orr r2,r2,#32
+ 1033 001c C3F80027 	 str r2,[r3,#1792]
+ 1034              	.L139:
+ 1035 0020 D3F80027 	 ldr r2,[r3,#1792]
+ 1036 0024 9206     	 lsls r2,r2,#26
+ 1037 0026 FBD4     	 bmi .L139
+ 1038 0028 7047     	 bx lr
+ 1040              	 .section .text.XMC_ETH_MAC_UpdateAddend,"ax",%progbits
+ 1041              	 .align 1
+ 1042              	 .global XMC_ETH_MAC_UpdateAddend
+ 1043              	 .thumb
+ 1044              	 .thumb_func
+ 1046              	XMC_ETH_MAC_UpdateAddend:
+ 1047              	 
+ 1048              	 
+ 1049              	 
+ 1050 0000 0368     	 ldr r3,[r0]
+ 1051 0002 C3F81817 	 str r1,[r3,#1816]
+ 1052 0006 D3F80027 	 ldr r2,[r3,#1792]
+ 1053 000a 42F02002 	 orr r2,r2,#32
+ 1054 000e C3F80027 	 str r2,[r3,#1792]
+ 1055              	.L142:
+ 1056 0012 D3F80027 	 ldr r2,[r3,#1792]
+ 1057 0016 9206     	 lsls r2,r2,#26
+ 1058 0018 FBD4     	 bmi .L142
+ 1059 001a 7047     	 bx lr
+ 1061              	 .section .text.XMC_ETH_MAC_GetPTPStatus,"ax",%progbits
+ 1062              	 .align 1
+ 1063              	 .global XMC_ETH_MAC_GetPTPStatus
+ 1064              	 .thumb
+ 1065              	 .thumb_func
+ 1067              	XMC_ETH_MAC_GetPTPStatus:
+ 1068              	 
+ 1069              	 
+ 1070              	 
+ 1071 0000 0368     	 ldr r3,[r0]
+ 1072 0002 D3F82807 	 ldr r0,[r3,#1832]
+ 1073 0006 7047     	 bx lr
+ 1075              	 .section .text.XMC_ETH_MAC_GetRxTimeStamp,"ax",%progbits
+ 1076              	 .align 1
+ 1077              	 .global XMC_ETH_MAC_GetRxTimeStamp
+ 1078              	 .thumb
+ 1079              	 .thumb_func
+ 1081              	XMC_ETH_MAC_GetRxTimeStamp:
+ 1082              	 
+ 1083              	 
+ 1084              	 
+ 1085 0000 90F82730 	 ldrb r3,[r0,#39]
+ 1086 0004 0069     	 ldr r0,[r0,#16]
+ 1087 0006 5B01     	 lsls r3,r3,#5
+ 1088 0008 C218     	 adds r2,r0,r3
+ 1089 000a C358     	 ldr r3,[r0,r3]
+ 1090 000c 002B     	 cmp r3,#0
+ 1091 000e 0ADB     	 blt .L147
+ 1092 0010 03F4C073 	 and r3,r3,#384
+ 1093 0014 B3F5C07F 	 cmp r3,#384
+ 1094 0018 07D1     	 bne .L148
+ 1095 001a 9369     	 ldr r3,[r2,#24]
+ 1096 001c 4B60     	 str r3,[r1,#4]
+ 1097 001e D369     	 ldr r3,[r2,#28]
+ 1098 0020 0B60     	 str r3,[r1]
+ 1099 0022 0020     	 movs r0,#0
+ 1100 0024 7047     	 bx lr
+ 1101              	.L147:
+ 1102 0026 0120     	 movs r0,#1
+ 1103 0028 7047     	 bx lr
+ 1104              	.L148:
+ 1105 002a 0220     	 movs r0,#2
+ 1106 002c 7047     	 bx lr
+ 1108              	 .section .text.XMC_ETH_MAC_GetTxTimeStamp,"ax",%progbits
+ 1109              	 .align 1
+ 1110              	 .global XMC_ETH_MAC_GetTxTimeStamp
+ 1111              	 .thumb
+ 1112              	 .thumb_func
+ 1114              	XMC_ETH_MAC_GetTxTimeStamp:
+ 1115              	 
+ 1116              	 
+ 1117              	 
+ 1118 0000 90F82830 	 ldrb r3,[r0,#40]
+ 1119 0004 4069     	 ldr r0,[r0,#20]
+ 1120 0006 5B01     	 lsls r3,r3,#5
+ 1121 0008 C218     	 adds r2,r0,r3
+ 1122 000a C058     	 ldr r0,[r0,r3]
+ 1123 000c 0028     	 cmp r0,#0
+ 1124 000e 0ADB     	 blt .L151
+ 1125 0010 074B     	 ldr r3,.L153
+ 1126 0012 0340     	 ands r3,r3,r0
+ 1127 0014 0648     	 ldr r0,.L153
+ 1128 0016 8342     	 cmp r3,r0
+ 1129 0018 07D1     	 bne .L152
+ 1130 001a 9369     	 ldr r3,[r2,#24]
+ 1131 001c 4B60     	 str r3,[r1,#4]
+ 1132 001e D369     	 ldr r3,[r2,#28]
+ 1133 0020 0B60     	 str r3,[r1]
+ 1134 0022 0020     	 movs r0,#0
+ 1135 0024 7047     	 bx lr
+ 1136              	.L151:
+ 1137 0026 0120     	 movs r0,#1
+ 1138 0028 7047     	 bx lr
+ 1139              	.L152:
+ 1140 002a 0220     	 movs r0,#2
+ 1141 002c 7047     	 bx lr
+ 1142              	.L154:
+ 1143 002e 00BF     	 .align 2
+ 1144              	.L153:
+ 1145 0030 00000220 	 .word 537001984
+ 1147              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 xmc_eth_mac.c
+    {standard input}:17     .text.XMC_ETH_MAC_InitRxDescriptors:00000000 $t
+    {standard input}:22     .text.XMC_ETH_MAC_InitRxDescriptors:00000000 XMC_ETH_MAC_InitRxDescriptors
+    {standard input}:60     .text.XMC_ETH_MAC_InitTxDescriptors:00000000 $t
+    {standard input}:65     .text.XMC_ETH_MAC_InitTxDescriptors:00000000 XMC_ETH_MAC_InitTxDescriptors
+    {standard input}:102    .text.XMC_ETH_MAC_InitTxDescriptors:00000048 $d
+    {standard input}:105    .text.XMC_ETH_MAC_SetAddressPerfectFilter:00000000 $t
+    {standard input}:110    .text.XMC_ETH_MAC_SetAddressPerfectFilter:00000000 XMC_ETH_MAC_SetAddressPerfectFilter
+    {standard input}:125    .text.XMC_ETH_MAC_SetAddressHashFilter:00000000 $t
+    {standard input}:130    .text.XMC_ETH_MAC_SetAddressHashFilter:00000000 XMC_ETH_MAC_SetAddressHashFilter
+    {standard input}:140    .text.XMC_ETH_MAC_SendFrame:00000000 $t
+    {standard input}:145    .text.XMC_ETH_MAC_SendFrame:00000000 XMC_ETH_MAC_SendFrame
+    {standard input}:227    .text.XMC_ETH_MAC_ReadFrame:00000000 $t
+    {standard input}:232    .text.XMC_ETH_MAC_ReadFrame:00000000 XMC_ETH_MAC_ReadFrame
+    {standard input}:273    .text.XMC_ETH_MAC_GetRxFrameSize:00000000 $t
+    {standard input}:278    .text.XMC_ETH_MAC_GetRxFrameSize:00000000 XMC_ETH_MAC_GetRxFrameSize
+    {standard input}:302    .text.XMC_ETH_MAC_SetManagmentClockDivider:00000000 $t
+    {standard input}:307    .text.XMC_ETH_MAC_SetManagmentClockDivider:00000000 XMC_ETH_MAC_SetManagmentClockDivider
+    {standard input}:364    .text.XMC_ETH_MAC_SetManagmentClockDivider:00000058 $d
+    {standard input}:374    .text.XMC_ETH_MAC_Enable:00000000 $t
+    {standard input}:379    .text.XMC_ETH_MAC_Enable:00000000 XMC_ETH_MAC_Enable
+    {standard input}:391    .text.XMC_ETH_MAC_Enable:00000014 $d
+    {standard input}:394    .text.XMC_ETH_MAC_Init:00000000 $t
+    {standard input}:399    .text.XMC_ETH_MAC_Init:00000000 XMC_ETH_MAC_Init
+    {standard input}:453    .text.XMC_ETH_MAC_Init:00000084 $d
+    {standard input}:457    .text.XMC_ETH_MAC_Disable:00000000 $t
+    {standard input}:462    .text.XMC_ETH_MAC_Disable:00000000 XMC_ETH_MAC_Disable
+    {standard input}:474    .text.XMC_ETH_MAC_Disable:00000014 $d
+    {standard input}:477    .text.XMC_ETH_MAC_ReadPhy:00000000 $t
+    {standard input}:482    .text.XMC_ETH_MAC_ReadPhy:00000000 XMC_ETH_MAC_ReadPhy
+    {standard input}:508    .text.XMC_ETH_MAC_WritePhy:00000000 $t
+    {standard input}:513    .text.XMC_ETH_MAC_WritePhy:00000000 XMC_ETH_MAC_WritePhy
+    {standard input}:537    .text.XMC_ETH_MAC_FlushTx:00000000 $t
+    {standard input}:542    .text.XMC_ETH_MAC_FlushTx:00000000 XMC_ETH_MAC_FlushTx
+    {standard input}:560    .text.XMC_ETH_MAC_FlushRx:00000000 $t
+    {standard input}:565    .text.XMC_ETH_MAC_FlushRx:00000000 XMC_ETH_MAC_FlushRx
+    {standard input}:583    .text.XMC_ETH_MAC_SetWakeUpFrameFilter:00000000 $t
+    {standard input}:588    .text.XMC_ETH_MAC_SetWakeUpFrameFilter:00000000 XMC_ETH_MAC_SetWakeUpFrameFilter
+    {standard input}:603    .text.XMC_ETH_MAC_EnableEvent:00000000 $t
+    {standard input}:608    .text.XMC_ETH_MAC_EnableEvent:00000000 XMC_ETH_MAC_EnableEvent
+    {standard input}:634    .text.XMC_ETH_MAC_DisableEvent:00000000 $t
+    {standard input}:639    .text.XMC_ETH_MAC_DisableEvent:00000000 XMC_ETH_MAC_DisableEvent
+    {standard input}:655    .text.XMC_ETH_MAC_ClearEventStatus:00000000 $t
+    {standard input}:660    .text.XMC_ETH_MAC_ClearEventStatus:00000000 XMC_ETH_MAC_ClearEventStatus
+    {standard input}:680    .text.XMC_ETH_MAC_GetEventStatus:00000000 $t
+    {standard input}:685    .text.XMC_ETH_MAC_GetEventStatus:00000000 XMC_ETH_MAC_GetEventStatus
+    {standard input}:699    .text.XMC_ETH_MAC_ReturnRxDescriptor:00000000 $t
+    {standard input}:704    .text.XMC_ETH_MAC_ReturnRxDescriptor:00000000 XMC_ETH_MAC_ReturnRxDescriptor
+    {standard input}:726    .text.XMC_ETH_MAC_ReturnTxDescriptor:00000000 $t
+    {standard input}:731    .text.XMC_ETH_MAC_ReturnTxDescriptor:00000000 XMC_ETH_MAC_ReturnTxDescriptor
+    {standard input}:756    .text.XMC_ETH_MAC_SetVLANTag:00000000 $t
+    {standard input}:761    .text.XMC_ETH_MAC_SetVLANTag:00000000 XMC_ETH_MAC_SetVLANTag
+    {standard input}:770    .text.XMC_ETH_MAC_InitPTP:00000000 $t
+    {standard input}:775    .text.XMC_ETH_MAC_InitPTP:00000000 XMC_ETH_MAC_InitPTP
+    {standard input}:828    .text.XMC_ETH_MAC_InitPTP:00000080 $d
+    {standard input}:833    .text.XMC_ETH_MAC_InitPTPEx:00000000 $t
+    {standard input}:838    .text.XMC_ETH_MAC_InitPTPEx:00000000 XMC_ETH_MAC_InitPTPEx
+    {standard input}:895    .text.XMC_ETH_MAC_InitPTPEx:00000090 $d
+    {standard input}:900    .text.XMC_ETH_MAC_GetPTPTime:00000000 $t
+    {standard input}:905    .text.XMC_ETH_MAC_GetPTPTime:00000000 XMC_ETH_MAC_GetPTPTime
+    {standard input}:923    .text.XMC_ETH_MAC_GetPTPTime:00000028 $d
+    {standard input}:926    .text.XMC_ETH_MAC_SetPTPTime:00000000 $t
+    {standard input}:931    .text.XMC_ETH_MAC_SetPTPTime:00000000 XMC_ETH_MAC_SetPTPTime
+    {standard input}:952    .text.XMC_ETH_MAC_SetPTPTime:00000028 $d
+    {standard input}:955    .text.XMC_ETH_MAC_UpdatePTPTime:00000000 $t
+    {standard input}:960    .text.XMC_ETH_MAC_UpdatePTPTime:00000000 XMC_ETH_MAC_UpdatePTPTime
+    {standard input}:987    .text.XMC_ETH_MAC_UpdatePTPTime:00000044 $d
+    {standard input}:990    .text.XMC_ETH_MAC_SetPTPAlarm:00000000 $t
+    {standard input}:995    .text.XMC_ETH_MAC_SetPTPAlarm:00000000 XMC_ETH_MAC_SetPTPAlarm
+    {standard input}:1013   .text.XMC_ETH_MAC_SetPTPAlarm:00000028 $d
+    {standard input}:1016   .text.XMC_ETH_MAC_AdjustPTPClock:00000000 $t
+    {standard input}:1021   .text.XMC_ETH_MAC_AdjustPTPClock:00000000 XMC_ETH_MAC_AdjustPTPClock
+    {standard input}:1041   .text.XMC_ETH_MAC_UpdateAddend:00000000 $t
+    {standard input}:1046   .text.XMC_ETH_MAC_UpdateAddend:00000000 XMC_ETH_MAC_UpdateAddend
+    {standard input}:1062   .text.XMC_ETH_MAC_GetPTPStatus:00000000 $t
+    {standard input}:1067   .text.XMC_ETH_MAC_GetPTPStatus:00000000 XMC_ETH_MAC_GetPTPStatus
+    {standard input}:1076   .text.XMC_ETH_MAC_GetRxTimeStamp:00000000 $t
+    {standard input}:1081   .text.XMC_ETH_MAC_GetRxTimeStamp:00000000 XMC_ETH_MAC_GetRxTimeStamp
+    {standard input}:1109   .text.XMC_ETH_MAC_GetTxTimeStamp:00000000 $t
+    {standard input}:1114   .text.XMC_ETH_MAC_GetTxTimeStamp:00000000 XMC_ETH_MAC_GetTxTimeStamp
+    {standard input}:1145   .text.XMC_ETH_MAC_GetTxTimeStamp:00000030 $d
+
+UNDEFINED SYMBOLS
+memcpy
+SystemCoreClock
+XMC_SCU_CLOCK_EnableClock
+XMC_SCU_RESET_DeassertPeripheralReset
+XMC_SCU_RESET_AssertPeripheralReset
+XMC_SCU_CLOCK_DisableClock

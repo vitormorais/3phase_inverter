@@ -1,0 +1,180 @@
+/*
+ * main.c
+ *
+ *  Created on: 2017 Jun 13 13:31:34
+ *  Author: JORGE
+ */
+
+#include <DAVE.h>                 //Declarations from DAVE Code Generation (includes SFR declaration)
+#include <probe_scope.h>
+#include "init.h"
+
+float scope1, scope2, scope3;
+uint32_t scopeu1, scopeu2, scopeu3;
+uint32_t counter=1u;
+
+float fw_integ(float val, float *buff, float Ti){
+	float out=*buff+val*Ti;
+	if (out>2*PI){
+		out=out-2.0f*PI+out*Ti;
+	}
+	*buff=out;
+	return out;
+}
+
+void abc_AB(float *abc, float *AB){
+	// Conventional conversion into orthogonal components
+	*AB=K23*(*abc-0.5f**(abc+1)-0.5f**(abc+2));
+	*(AB+1)=K23*(Ksqr32**(abc+1)-Ksqr32**(abc+2));
+}
+
+void AB_dq(float *AB, float *dq, float wt){
+	// Conventional conversion into orthogonal components
+	*dq=arm_cos_f32(wt)**AB+arm_sin_f32(wt)**(AB+1);
+	*(dq+1)=-arm_sin_f32(wt)**AB+arm_cos_f32(wt)**(AB+1);
+}
+
+void dq_AB(float *dq, float *AB, float wt){
+	// Conventional conversion into orthogonal components
+	float C=arm_cos_f32(wt);
+	float S=arm_sin_f32(wt);
+	*AB=C**dq-S**(dq+1);
+	*(AB+1)=S**dq+C**(dq+1);
+}
+
+void AB_abc(float *AB, float *abc){
+	// Conventional conversion into orthogonal components
+	*abc=*AB;
+	*(abc+1)=-0.5f**(AB)+Ksqr32**(AB+1);
+	*(abc+2)=-0.5f**(AB)-Ksqr32**(AB+1);
+}
+
+float LPF1(float val, float *LPFbuff, const float LPF_K[3]){
+	float out=*(LPF_K+2)**(LPFbuff+1)+*LPF_K**(LPF_K+1)*(val+*LPFbuff);
+	*LPFbuff=val;		// x[k-1]
+	*(LPFbuff+1)=out;	// y[k-1]
+	return out;
+}
+
+uint32_t conv2DAC(float *value){
+	*value=fmax(*value,1.0);
+	*value=fmin(*value,-1.0);
+	return ((uint16_t)(*value*2048.0f));
+}
+
+void Update_PWM(void){
+
+	DIGITAL_IO_SetOutputHigh(&P_1_0);
+
+	// emulate phase angle
+	wt=fw_integ(w,&wt_buffer,Ts);
+
+	// Acquire DC bus voltage
+	V_DC_adc=ADC_MEASUREMENT_ADV_GetResult(&ADC_MEASUREMENT_Vdc);
+	// Acquire AC currents
+	I_abc_adc[0]=ADC_MEASUREMENT_ADV_GetResult(&ADC_MEASUREMENT_Ia);
+	I_abc_adc[1]=ADC_MEASUREMENT_ADV_GetResult(&ADC_MEASUREMENT_Ib);
+	I_abc_adc[2]=ADC_MEASUREMENT_ADV_GetResult(&ADC_MEASUREMENT_Ic);
+
+	// Convert acquisitions to floats and filter
+	V_DC=V_DC_adc*ADC2Vdc;
+	I_abc[0]=(I_abc_adc[0]*ADCconv-ADCoffset)*ADC2I;
+	I_abc[1]=(I_abc_adc[1]*ADCconv-ADCoffset)*ADC2I;
+	I_abc[2]=(I_abc_adc[2]*ADCconv-ADCoffset)*ADC2I;
+	scope1=I_abc[0];
+	scope2=I_abc[1];
+	scope3=I_abc[2];
+	V_DCf=LPF1(V_DC, LPF_buff_Vdc, LPF_K_Vdc);
+	abc_AB(I_abc, I_AB);
+	I_ABf[0]=LPF1(I_AB[0], LPF_buff_IA, LPF_K_Iabc);
+	I_ABf[1]=LPF1(I_AB[1], LPF_buff_IB, LPF_K_Iabc);
+	//scope3=I_ABf[1];
+
+	// Loop during switching
+	if (state==1u){
+		dq_AB(V_dq_ref, Vm_AB, wt);
+		Vm_AB[0]=Vm_AB[0]*2/V_DCf;
+		Vm_AB[1]=Vm_AB[1]*2/V_DCf;
+		fmax(Vm_AB[0],1.15);
+		fmax(Vm_AB[1],1.15);
+		fmin(Vm_AB[0],-1.15);
+		fmin(Vm_AB[1],-1.15);
+		Vm_AB2=(Vm_AB[0]*Vm_AB[0]+Vm_AB[1]*Vm_AB[1]);
+		AB_abc(Vm_AB, Vm_abc);
+		for (int i=0; i<3; i++){
+			// THI, comment line for sinusoidal PWM
+			Vm_abc[i]=1.5f*Vm_abc[i]-K23*Vm_abc[i]*Vm_abc[i]*Vm_abc[i]/Vm_AB2;
+			fmax(Vm_abc[i],ma_max);
+			fmin(Vm_abc[1],-ma_max);
+			// Convert float to uint32 voltage modulator wave
+			m_abc[i]=((int32_t)(9000.0f*Vm_abc[i])>>1)+5000u;
+		}
+		DIGITAL_IO_SetOutputLow(&P_1_0);
+		scopeu1=m_abc[0];
+		scopeu2=m_abc[1];
+		scopeu3=m_abc[2];
+		// update PWM duty cycles
+		PWM_SetDutyCycle(&PWM_a,m_abc[0]);
+		PWM_SetDutyCycle(&PWM_b,m_abc[1]);
+		PWM_SetDutyCycle(&PWM_c,m_abc[2]);
+	}
+	// DAC values between -1 and 1
+	// DAC_SingleValue_SetValue_u16(&DAC_0,conv2DAC(&value));
+
+}
+
+int main(void)
+{
+  DAVE_STATUS_t status;
+  status = DAVE_Init();           /* Initialization of DAVE APPs  */
+  if(status != DAVE_STATUS_SUCCESS)
+  {
+    /* Placeholder for error handler code. The while loop below can be replaced with an user error handler. */
+    XMC_DEBUG("DAVE APPs initialisation failed\n");
+    while(1U)
+    {
+    }
+  }
+  ProbeScope_Init(SystemCoreClock/TICKS_PER_SECOND);
+  DIGITAL_IO_SetOutputLow(&ENABLE);
+  PWM_Start(&PWM_update);
+  PWM_Stop(&PWM_a);
+  PWM_Stop(&PWM_b);
+  PWM_Stop(&PWM_c);
+  /* Placeholder for user application code. The while loop below can be replaced with user application code. */
+  while(1U)
+  {
+	  /*
+	  if(DIGITAL_IO_GetInput(&Button_1))
+		  DIGITAL_IO_SetOutputHigh(&P_0_9);
+	  else
+		  DIGITAL_IO_SetOutputLow(&P_0_9);
+	  */
+	  if (counter>1000000u){
+		  if (state==0u){		// Initialisation state
+			  if (V_DCf>DCV_low && V_DCf<DCV_high){
+				  PWM_Start(&PWM_a);
+				  PWM_Start(&PWM_b);
+				  PWM_Start(&PWM_c);
+				  state=1u;
+				  DIGITAL_IO_SetOutputHigh(&ENABLE);
+			  }
+		  // Add state for PLL synchronisation
+		  }
+		  else if (state==1u){	// Running state
+			  if (V_DCf<DCV_low || V_DCf>DCV_high){
+				  PWM_Stop(&PWM_a);
+				  PWM_Stop(&PWM_b);
+				  PWM_Stop(&PWM_c);
+				  state=0u;
+				  DIGITAL_IO_SetOutputLow(&ENABLE);
+			  }
+		  }
+		  counter=1u;
+	  }
+	  else{
+		  counter++;
+	  }
+	  ProbeScope_Sampling();
+  }
+}

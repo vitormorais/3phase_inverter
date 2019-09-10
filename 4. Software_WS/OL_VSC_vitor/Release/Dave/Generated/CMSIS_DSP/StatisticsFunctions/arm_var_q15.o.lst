@@ -1,0 +1,93 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "arm_var_q15.c"
+  16              	 .global __aeabi_ldivmod
+  17              	 .section .text.arm_var_q15,"ax",%progbits
+  18              	 .align 1
+  19              	 .global arm_var_q15
+  20              	 .thumb
+  21              	 .thumb_func
+  23              	arm_var_q15:
+  24              	 
+  25              	 
+  26 0000 0129     	 cmp r1,#1
+  27 0002 2DE9F041 	 push {r4,r5,r6,r7,r8,lr}
+  28 0006 0346     	 mov r3,r0
+  29 0008 0D46     	 mov r5,r1
+  30 000a 1646     	 mov r6,r2
+  31 000c 4FF00000 	 mov r0,#0
+  32 0010 3BD0     	 beq .L8
+  33 0012 4FEA910C 	 lsr ip,r1,#2
+  34 0016 03F10807 	 add r7,r3,#8
+  35 001a E646     	 mov lr,ip
+  36 001c 0146     	 mov r1,r0
+  37 001e 0446     	 mov r4,r0
+  38              	.L4:
+  39 0020 BEF1000F 	 cmp lr,#0
+  40 0024 13D0     	 beq .L10
+  41 0026 57F8082C 	 ldr r2,[r7,#-8]
+  42 002a 04FA82F4 	 sxtah r4,r4,r2
+  43 002e 04EB2244 	 add r4,r4,r2,asr#16
+  44              	
+  45 0032 C2FBC201 	 smlald r0,r1,r2,r2
+  46              	
+  47              	 .thumb
+  48 0036 57F8042C 	 ldr r2,[r7,#-4]
+  49 003a 04FA82F4 	 sxtah r4,r4,r2
+  50 003e 04EB2244 	 add r4,r4,r2,asr#16
+  51              	
+  52 0042 C2FBC201 	 smlald r0,r1,r2,r2
+  53              	
+  54              	 .thumb
+  55 0046 0EF1FF3E 	 add lr,lr,#-1
+  56 004a 0837     	 adds r7,r7,#8
+  57 004c E8E7     	 b .L4
+  58              	.L10:
+  59 004e 03EBCC03 	 add r3,r3,ip,lsl#3
+  60 0052 05F00307 	 and r7,r5,#3
+  61 0056 03EB4707 	 add r7,r3,r7,lsl#1
+  62              	.L6:
+  63 005a BB42     	 cmp r3,r7
+  64 005c 05D0     	 beq .L11
+  65 005e 33F9022B 	 ldrsh r2,[r3],#2
+  66              	
+  67 0062 C2FBC201 	 smlald r0,r1,r2,r2
+  68              	
+  69              	 .thumb
+  70 0066 1444     	 add r4,r4,r2
+  71 0068 F7E7     	 b .L6
+  72              	.L11:
+  73 006a 05F1FF38 	 add r8,r5,#-1
+  74 006e 4246     	 mov r2,r8
+  75 0070 0023     	 movs r3,#0
+  76 0072 FFF7FEFF 	 bl __aeabi_ldivmod
+  77 0076 05FB08F2 	 mul r2,r5,r8
+  78 007a 0746     	 mov r7,r0
+  79 007c 0023     	 movs r3,#0
+  80 007e 84FB0401 	 smull r0,r1,r4,r4
+  81 0082 FFF7FEFF 	 bl __aeabi_ldivmod
+  82 0086 381A     	 subs r0,r7,r0
+  83 0088 C013     	 asrs r0,r0,#15
+  84              	.L8:
+  85 008a 3080     	 strh r0,[r6]
+  86 008c BDE8F081 	 pop {r4,r5,r6,r7,r8,pc}
+  88              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 arm_var_q15.c
+    {standard input}:18     .text.arm_var_q15:00000000 $t
+    {standard input}:23     .text.arm_var_q15:00000000 arm_var_q15
+
+UNDEFINED SYMBOLS
+__aeabi_ldivmod

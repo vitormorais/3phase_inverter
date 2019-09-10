@@ -1,0 +1,357 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "xmc_ledts.c"
+  16              	 .section .text.XMC_LEDTS_InitGlobal,"ax",%progbits
+  17              	 .align 1
+  18              	 .global XMC_LEDTS_InitGlobal
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	XMC_LEDTS_InitGlobal:
+  23              	 
+  24              	 
+  25 0000 38B5     	 push {r3,r4,r5,lr}
+  26 0002 084B     	 ldr r3,.L6
+  27 0004 9842     	 cmp r0,r3
+  28 0006 0446     	 mov r4,r0
+  29 0008 0D46     	 mov r5,r1
+  30 000a 02D1     	 bne .L2
+  31 000c 0648     	 ldr r0,.L6+4
+  32 000e FFF7FEFF 	 bl XMC_SCU_RESET_DeassertPeripheralReset
+  33              	.L2:
+  34 0012 6068     	 ldr r0,[r4,#4]
+  35 0014 000C     	 lsrs r0,r0,#16
+  36 0016 0004     	 lsls r0,r0,#16
+  37 0018 10B9     	 cbnz r0,.L4
+  38 001a 2B68     	 ldr r3,[r5]
+  39 001c 6360     	 str r3,[r4,#4]
+  40 001e 38BD     	 pop {r3,r4,r5,pc}
+  41              	.L4:
+  42 0020 0120     	 movs r0,#1
+  43 0022 38BD     	 pop {r3,r4,r5,pc}
+  44              	.L7:
+  45              	 .align 2
+  46              	.L6:
+  47 0024 00000148 	 .word 1208025088
+  48 0028 08000010 	 .word 268435464
+  50              	 .section .text.XMC_LEDTS_InitLED,"ax",%progbits
+  51              	 .align 1
+  52              	 .global XMC_LEDTS_InitLED
+  53              	 .thumb
+  54              	 .thumb_func
+  56              	XMC_LEDTS_InitLED:
+  57              	 
+  58              	 
+  59 0000 4368     	 ldr r3,[r0,#4]
+  60 0002 1B0C     	 lsrs r3,r3,#16
+  61 0004 1B04     	 lsls r3,r3,#16
+  62 0006 10B5     	 push {r4,lr}
+  63 0008 6BB9     	 cbnz r3,.L10
+  64 000a 8268     	 ldr r2,[r0,#8]
+  65 000c 22F07042 	 bic r2,r2,#-268435456
+  66 0010 8260     	 str r2,[r0,#8]
+  67 0012 8468     	 ldr r4,[r0,#8]
+  68 0014 0A68     	 ldr r2,[r1]
+  69 0016 2243     	 orrs r2,r2,r4
+  70 0018 8260     	 str r2,[r0,#8]
+  71 001a 4268     	 ldr r2,[r0,#4]
+  72 001c 42F00202 	 orr r2,r2,#2
+  73 0020 4260     	 str r2,[r0,#4]
+  74 0022 1846     	 mov r0,r3
+  75 0024 10BD     	 pop {r4,pc}
+  76              	.L10:
+  77 0026 0120     	 movs r0,#1
+  78 0028 10BD     	 pop {r4,pc}
+  80              	 .section .text.XMC_LEDTS_InitTSBasic,"ax",%progbits
+  81              	 .align 1
+  82              	 .global XMC_LEDTS_InitTSBasic
+  83              	 .thumb
+  84              	 .thumb_func
+  86              	XMC_LEDTS_InitTSBasic:
+  87              	 
+  88              	 
+  89 0000 4368     	 ldr r3,[r0,#4]
+  90 0002 1B0C     	 lsrs r3,r3,#16
+  91 0004 1B04     	 lsls r3,r3,#16
+  92 0006 10B5     	 push {r4,lr}
+  93 0008 7BB9     	 cbnz r3,.L13
+  94 000a 8268     	 ldr r2,[r0,#8]
+  95 000c 22F07962 	 bic r2,r2,#261095424
+  96 0010 22F47022 	 bic r2,r2,#983040
+  97 0014 8260     	 str r2,[r0,#8]
+  98 0016 8468     	 ldr r4,[r0,#8]
+  99 0018 0A68     	 ldr r2,[r1]
+ 100 001a 2243     	 orrs r2,r2,r4
+ 101 001c 8260     	 str r2,[r0,#8]
+ 102 001e 4268     	 ldr r2,[r0,#4]
+ 103 0020 42F00102 	 orr r2,r2,#1
+ 104 0024 4260     	 str r2,[r0,#4]
+ 105 0026 1846     	 mov r0,r3
+ 106 0028 10BD     	 pop {r4,pc}
+ 107              	.L13:
+ 108 002a 0120     	 movs r0,#1
+ 109 002c 10BD     	 pop {r4,pc}
+ 111              	 .section .text.XMC_LEDTS_InitTSAdvanced,"ax",%progbits
+ 112              	 .align 1
+ 113              	 .global XMC_LEDTS_InitTSAdvanced
+ 114              	 .thumb
+ 115              	 .thumb_func
+ 117              	XMC_LEDTS_InitTSAdvanced:
+ 118              	 
+ 119              	 
+ 120 0000 4368     	 ldr r3,[r0,#4]
+ 121 0002 1B0C     	 lsrs r3,r3,#16
+ 122 0004 1B04     	 lsls r3,r3,#16
+ 123 0006 10B5     	 push {r4,lr}
+ 124 0008 9BB9     	 cbnz r3,.L16
+ 125 000a 4268     	 ldr r2,[r0,#4]
+ 126 000c 22F4F052 	 bic r2,r2,#7680
+ 127 0010 4260     	 str r2,[r0,#4]
+ 128 0012 4468     	 ldr r4,[r0,#4]
+ 129 0014 0A68     	 ldr r2,[r1]
+ 130 0016 2243     	 orrs r2,r2,r4
+ 131 0018 4260     	 str r2,[r0,#4]
+ 132 001a 8268     	 ldr r2,[r0,#8]
+ 133 001c 22F4C002 	 bic r2,r2,#6291456
+ 134 0020 22F01F02 	 bic r2,r2,#31
+ 135 0024 8260     	 str r2,[r0,#8]
+ 136 0026 8468     	 ldr r4,[r0,#8]
+ 137 0028 4A68     	 ldr r2,[r1,#4]
+ 138 002a 2243     	 orrs r2,r2,r4
+ 139 002c 8260     	 str r2,[r0,#8]
+ 140 002e 1846     	 mov r0,r3
+ 141 0030 10BD     	 pop {r4,pc}
+ 142              	.L16:
+ 143 0032 0120     	 movs r0,#1
+ 144 0034 10BD     	 pop {r4,pc}
+ 146              	 .section .text.XMC_LEDTS_StartCounter,"ax",%progbits
+ 147              	 .align 1
+ 148              	 .global XMC_LEDTS_StartCounter
+ 149              	 .thumb
+ 150              	 .thumb_func
+ 152              	XMC_LEDTS_StartCounter:
+ 153              	 
+ 154              	 
+ 155              	 
+ 156 0000 4368     	 ldr r3,[r0,#4]
+ 157 0002 43EA0141 	 orr r1,r3,r1,lsl#16
+ 158 0006 4160     	 str r1,[r0,#4]
+ 159 0008 7047     	 bx lr
+ 161              	 .section .text.XMC_LEDTS_StopCounter,"ax",%progbits
+ 162              	 .align 1
+ 163              	 .global XMC_LEDTS_StopCounter
+ 164              	 .thumb
+ 165              	 .thumb_func
+ 167              	XMC_LEDTS_StopCounter:
+ 168              	 
+ 169              	 
+ 170              	 
+ 171 0000 4368     	 ldr r3,[r0,#4]
+ 172 0002 9BB2     	 uxth r3,r3
+ 173 0004 4360     	 str r3,[r0,#4]
+ 174 0006 7047     	 bx lr
+ 176              	 .section .text.XMC_LEDTS_ReadInterruptFlag,"ax",%progbits
+ 177              	 .align 1
+ 178              	 .global XMC_LEDTS_ReadInterruptFlag
+ 179              	 .thumb
+ 180              	 .thumb_func
+ 182              	XMC_LEDTS_ReadInterruptFlag:
+ 183              	 
+ 184              	 
+ 185              	 
+ 186 0000 C068     	 ldr r0,[r0,#12]
+ 187 0002 00F00F00 	 and r0,r0,#15
+ 188 0006 7047     	 bx lr
+ 190              	 .section .text.XMC_LEDTS_SetActivePADNo,"ax",%progbits
+ 191              	 .align 1
+ 192              	 .global XMC_LEDTS_SetActivePADNo
+ 193              	 .thumb
+ 194              	 .thumb_func
+ 196              	XMC_LEDTS_SetActivePADNo:
+ 197              	 
+ 198              	 
+ 199              	 
+ 200 0000 8368     	 ldr r3,[r0,#8]
+ 201 0002 23F00703 	 bic r3,r3,#7
+ 202 0006 1943     	 orrs r1,r1,r3
+ 203 0008 8160     	 str r1,[r0,#8]
+ 204 000a 7047     	 bx lr
+ 206              	 .section .text.XMC_LEDTS_ClearInterruptFlag,"ax",%progbits
+ 207              	 .align 1
+ 208              	 .global XMC_LEDTS_ClearInterruptFlag
+ 209              	 .thumb
+ 210              	 .thumb_func
+ 212              	XMC_LEDTS_ClearInterruptFlag:
+ 213              	 
+ 214              	 
+ 215              	 
+ 216 0000 0904     	 lsls r1,r1,#16
+ 217 0002 C160     	 str r1,[r0,#12]
+ 218 0004 7047     	 bx lr
+ 220              	 .section .text.XMC_LEDTS_SetLEDLinePattern,"ax",%progbits
+ 221              	 .align 1
+ 222              	 .global XMC_LEDTS_SetLEDLinePattern
+ 223              	 .thumb
+ 224              	 .thumb_func
+ 226              	XMC_LEDTS_SetLEDLinePattern:
+ 227              	 
+ 228              	 
+ 229 0000 01F0FC03 	 and r3,r1,#252
+ 230 0004 1844     	 add r0,r0,r3
+ 231 0006 10B5     	 push {r4,lr}
+ 232 0008 01F00301 	 and r1,r1,#3
+ 233 000c 4469     	 ldr r4,[r0,#20]
+ 234 000e C900     	 lsls r1,r1,#3
+ 235 0010 FF23     	 movs r3,#255
+ 236 0012 8B40     	 lsls r3,r3,r1
+ 237 0014 24EA0303 	 bic r3,r4,r3
+ 238 0018 8A40     	 lsls r2,r2,r1
+ 239 001a 1A43     	 orrs r2,r2,r3
+ 240 001c 4261     	 str r2,[r0,#20]
+ 241 001e 10BD     	 pop {r4,pc}
+ 243              	 .section .text.XMC_LEDTS_SetColumnBrightness,"ax",%progbits
+ 244              	 .align 1
+ 245              	 .global XMC_LEDTS_SetColumnBrightness
+ 246              	 .thumb
+ 247              	 .thumb_func
+ 249              	XMC_LEDTS_SetColumnBrightness:
+ 250              	 
+ 251              	 
+ 252 0000 01F0FC03 	 and r3,r1,#252
+ 253 0004 1844     	 add r0,r0,r3
+ 254 0006 10B5     	 push {r4,lr}
+ 255 0008 01F00301 	 and r1,r1,#3
+ 256 000c C469     	 ldr r4,[r0,#28]
+ 257 000e C900     	 lsls r1,r1,#3
+ 258 0010 FF23     	 movs r3,#255
+ 259 0012 8B40     	 lsls r3,r3,r1
+ 260 0014 24EA0303 	 bic r3,r4,r3
+ 261 0018 8A40     	 lsls r2,r2,r1
+ 262 001a 1A43     	 orrs r2,r2,r3
+ 263 001c C261     	 str r2,[r0,#28]
+ 264 001e 10BD     	 pop {r4,pc}
+ 266              	 .section .text.XMC_LEDTS_SetCommonOscillationWindow,"ax",%progbits
+ 267              	 .align 1
+ 268              	 .global XMC_LEDTS_SetCommonOscillationWindow
+ 269              	 .thumb
+ 270              	 .thumb_func
+ 272              	XMC_LEDTS_SetCommonOscillationWindow:
+ 273              	 
+ 274              	 
+ 275              	 
+ 276 0000 036A     	 ldr r3,[r0,#32]
+ 277 0002 23F07F43 	 bic r3,r3,#-16777216
+ 278 0006 43EA0161 	 orr r1,r3,r1,lsl#24
+ 279 000a 0162     	 str r1,[r0,#32]
+ 280 000c 7047     	 bx lr
+ 282              	 .section .text.XMC_LEDTS_ReadFNCOL,"ax",%progbits
+ 283              	 .align 1
+ 284              	 .global XMC_LEDTS_ReadFNCOL
+ 285              	 .thumb
+ 286              	 .thumb_func
+ 288              	XMC_LEDTS_ReadFNCOL:
+ 289              	 
+ 290              	 
+ 291              	 
+ 292 0000 8068     	 ldr r0,[r0,#8]
+ 293 0002 C0F34210 	 ubfx r0,r0,#5,#3
+ 294 0006 7047     	 bx lr
+ 296              	 .section .text.XMC_LEDTS_SetNumOfLEDColumns,"ax",%progbits
+ 297              	 .align 1
+ 298              	 .global XMC_LEDTS_SetNumOfLEDColumns
+ 299              	 .thumb
+ 300              	 .thumb_func
+ 302              	XMC_LEDTS_SetNumOfLEDColumns:
+ 303              	 
+ 304              	 
+ 305              	 
+ 306 0000 8368     	 ldr r3,[r0,#8]
+ 307 0002 23F06043 	 bic r3,r3,#-536870912
+ 308 0006 8360     	 str r3,[r0,#8]
+ 309 0008 8368     	 ldr r3,[r0,#8]
+ 310 000a 43EA4171 	 orr r1,r3,r1,lsl#29
+ 311 000e 8160     	 str r1,[r0,#8]
+ 312 0010 7047     	 bx lr
+ 314              	 .section .text.XMC_LEDTS_ReadTSVAL,"ax",%progbits
+ 315              	 .align 1
+ 316              	 .global XMC_LEDTS_ReadTSVAL
+ 317              	 .thumb
+ 318              	 .thumb_func
+ 320              	XMC_LEDTS_ReadTSVAL:
+ 321              	 
+ 322              	 
+ 323              	 
+ 324 0000 0069     	 ldr r0,[r0,#16]
+ 325 0002 80B2     	 uxth r0,r0
+ 326 0004 7047     	 bx lr
+ 328              	 .section .text.XMC_LEDTS_SetOscillationWindow,"ax",%progbits
+ 329              	 .align 1
+ 330              	 .global XMC_LEDTS_SetOscillationWindow
+ 331              	 .thumb
+ 332              	 .thumb_func
+ 334              	XMC_LEDTS_SetOscillationWindow:
+ 335              	 
+ 336              	 
+ 337 0000 01F0FC03 	 and r3,r1,#252
+ 338 0004 1844     	 add r0,r0,r3
+ 339 0006 10B5     	 push {r4,lr}
+ 340 0008 01F00301 	 and r1,r1,#3
+ 341 000c 446A     	 ldr r4,[r0,#36]
+ 342 000e C900     	 lsls r1,r1,#3
+ 343 0010 FF23     	 movs r3,#255
+ 344 0012 8B40     	 lsls r3,r3,r1
+ 345 0014 24EA0303 	 bic r3,r4,r3
+ 346 0018 8A40     	 lsls r2,r2,r1
+ 347 001a 1A43     	 orrs r2,r2,r3
+ 348 001c 4262     	 str r2,[r0,#36]
+ 349 001e 10BD     	 pop {r4,pc}
+ 351              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 xmc_ledts.c
+    {standard input}:17     .text.XMC_LEDTS_InitGlobal:00000000 $t
+    {standard input}:22     .text.XMC_LEDTS_InitGlobal:00000000 XMC_LEDTS_InitGlobal
+    {standard input}:47     .text.XMC_LEDTS_InitGlobal:00000024 $d
+    {standard input}:51     .text.XMC_LEDTS_InitLED:00000000 $t
+    {standard input}:56     .text.XMC_LEDTS_InitLED:00000000 XMC_LEDTS_InitLED
+    {standard input}:81     .text.XMC_LEDTS_InitTSBasic:00000000 $t
+    {standard input}:86     .text.XMC_LEDTS_InitTSBasic:00000000 XMC_LEDTS_InitTSBasic
+    {standard input}:112    .text.XMC_LEDTS_InitTSAdvanced:00000000 $t
+    {standard input}:117    .text.XMC_LEDTS_InitTSAdvanced:00000000 XMC_LEDTS_InitTSAdvanced
+    {standard input}:147    .text.XMC_LEDTS_StartCounter:00000000 $t
+    {standard input}:152    .text.XMC_LEDTS_StartCounter:00000000 XMC_LEDTS_StartCounter
+    {standard input}:162    .text.XMC_LEDTS_StopCounter:00000000 $t
+    {standard input}:167    .text.XMC_LEDTS_StopCounter:00000000 XMC_LEDTS_StopCounter
+    {standard input}:177    .text.XMC_LEDTS_ReadInterruptFlag:00000000 $t
+    {standard input}:182    .text.XMC_LEDTS_ReadInterruptFlag:00000000 XMC_LEDTS_ReadInterruptFlag
+    {standard input}:191    .text.XMC_LEDTS_SetActivePADNo:00000000 $t
+    {standard input}:196    .text.XMC_LEDTS_SetActivePADNo:00000000 XMC_LEDTS_SetActivePADNo
+    {standard input}:207    .text.XMC_LEDTS_ClearInterruptFlag:00000000 $t
+    {standard input}:212    .text.XMC_LEDTS_ClearInterruptFlag:00000000 XMC_LEDTS_ClearInterruptFlag
+    {standard input}:221    .text.XMC_LEDTS_SetLEDLinePattern:00000000 $t
+    {standard input}:226    .text.XMC_LEDTS_SetLEDLinePattern:00000000 XMC_LEDTS_SetLEDLinePattern
+    {standard input}:244    .text.XMC_LEDTS_SetColumnBrightness:00000000 $t
+    {standard input}:249    .text.XMC_LEDTS_SetColumnBrightness:00000000 XMC_LEDTS_SetColumnBrightness
+    {standard input}:267    .text.XMC_LEDTS_SetCommonOscillationWindow:00000000 $t
+    {standard input}:272    .text.XMC_LEDTS_SetCommonOscillationWindow:00000000 XMC_LEDTS_SetCommonOscillationWindow
+    {standard input}:283    .text.XMC_LEDTS_ReadFNCOL:00000000 $t
+    {standard input}:288    .text.XMC_LEDTS_ReadFNCOL:00000000 XMC_LEDTS_ReadFNCOL
+    {standard input}:297    .text.XMC_LEDTS_SetNumOfLEDColumns:00000000 $t
+    {standard input}:302    .text.XMC_LEDTS_SetNumOfLEDColumns:00000000 XMC_LEDTS_SetNumOfLEDColumns
+    {standard input}:315    .text.XMC_LEDTS_ReadTSVAL:00000000 $t
+    {standard input}:320    .text.XMC_LEDTS_ReadTSVAL:00000000 XMC_LEDTS_ReadTSVAL
+    {standard input}:329    .text.XMC_LEDTS_SetOscillationWindow:00000000 $t
+    {standard input}:334    .text.XMC_LEDTS_SetOscillationWindow:00000000 XMC_LEDTS_SetOscillationWindow
+
+UNDEFINED SYMBOLS
+XMC_SCU_RESET_DeassertPeripheralReset

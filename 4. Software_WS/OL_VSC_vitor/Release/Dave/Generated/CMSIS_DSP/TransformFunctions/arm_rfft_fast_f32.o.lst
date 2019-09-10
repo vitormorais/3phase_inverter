@@ -1,0 +1,171 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "arm_rfft_fast_f32.c"
+  16              	 .section .text.stage_rfft_f32,"ax",%progbits
+  17              	 .align 1
+  18              	 .global stage_rfft_f32
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	stage_rfft_f32:
+  23              	 
+  24              	 
+  25 0000 D1ED017A 	 flds s15,[r1,#4]
+  26 0004 D1ED005A 	 flds s11,[r1]
+  27 0008 0388     	 ldrh r3,[r0]
+  28 000a 77EEA77A 	 fadds s15,s15,s15
+  29 000e B0EE006A 	 fconsts s12,#0
+  30 0012 F0EE676A 	 fcpys s13,s15
+  31 0016 E5EE866A 	 vfma.f32 s13,s11,s12
+  32 001a 10B5     	 push {r4,lr}
+  33 001c D5EE867A 	 vfnms.f32 s15,s11,s12
+  34 0020 4469     	 ldr r4,[r0,#20]
+  35 0022 B6EE007A 	 fconsts s14,#96
+  36 0026 66EE876A 	 fmuls s13,s13,s14
+  37 002a 013B     	 subs r3,r3,#1
+  38 002c 67EE877A 	 fmuls s15,s15,s14
+  39 0030 04F11000 	 add r0,r4,#16
+  40 0034 01F11004 	 add r4,r1,#16
+  41 0038 01EBC301 	 add r1,r1,r3,lsl#3
+  42 003c C2ED006A 	 fsts s13,[r2]
+  43 0040 C2ED017A 	 fsts s15,[r2,#4]
+  44 0044 0839     	 subs r1,r1,#8
+  45 0046 1032     	 adds r2,r2,#16
+  46 0048 F0EE476A 	 fcpys s13,s14
+  47              	.L2:
+  48 004c 91ED034A 	 flds s8,[r1,#12]
+  49 0050 D1ED023A 	 flds s7,[r1,#8]
+  50 0054 14ED027A 	 flds s14,[r4,#-8]
+  51 0058 54ED017A 	 flds s15,[r4,#-4]
+  52 005c 50ED025A 	 flds s11,[r0,#-8]
+  53 0060 50ED014A 	 flds s9,[r0,#-4]
+  54 0064 33EEC75A 	 fsubs s10,s7,s14
+  55 0068 34EE276A 	 fadds s12,s8,s15
+  56 006c 37EE237A 	 fadds s14,s14,s7
+  57 0070 77EEC47A 	 fsubs s15,s15,s8
+  58 0074 A5EE857A 	 vfma.f32 s14,s11,s10
+  59 0078 013B     	 subs r3,r3,#1
+  60 007a 00F10800 	 add r0,r0,#8
+  61 007e E4EE857A 	 vfma.f32 s15,s9,s10
+  62 0082 02F10802 	 add r2,r2,#8
+  63 0086 04F10804 	 add r4,r4,#8
+  64 008a A4EE867A 	 vfma.f32 s14,s9,s12
+  65 008e A1F10801 	 sub r1,r1,#8
+  66 0092 E5EEC67A 	 vfms.f32 s15,s11,s12
+  67 0096 27EE267A 	 fmuls s14,s14,s13
+  68 009a 67EEA67A 	 fmuls s15,s15,s13
+  69 009e 02ED047A 	 fsts s14,[r2,#-16]
+  70 00a2 42ED037A 	 fsts s15,[r2,#-12]
+  71 00a6 D1D1     	 bne .L2
+  72 00a8 10BD     	 pop {r4,pc}
+  74              	 .section .text.merge_rfft_f32,"ax",%progbits
+  75              	 .align 1
+  76              	 .global merge_rfft_f32
+  77              	 .thumb
+  78              	 .thumb_func
+  80              	merge_rfft_f32:
+  81              	 
+  82              	 
+  83 0000 91ED007A 	 flds s14,[r1]
+  84 0004 91ED016A 	 flds s12,[r1,#4]
+  85 0008 0388     	 ldrh r3,[r0]
+  86 000a 77EE066A 	 fadds s13,s14,s12
+  87 000e 37EE467A 	 fsubs s14,s14,s12
+  88 0012 F6EE007A 	 fconsts s15,#96
+  89 0016 30B5     	 push {r4,r5,lr}
+  90 0018 66EEA76A 	 fmuls s13,s13,s15
+  91 001c 4469     	 ldr r4,[r0,#20]
+  92 001e C2ED006A 	 fsts s13,[r2]
+  93 0022 27EE277A 	 fmuls s14,s14,s15
+  94 0026 5D1E     	 subs r5,r3,#1
+  95 0028 82ED017A 	 fsts s14,[r2,#4]
+  96 002c 04F10800 	 add r0,r4,#8
+  97 0030 0832     	 adds r2,r2,#8
+  98 0032 01F10804 	 add r4,r1,#8
+  99 0036 F0EE676A 	 fcpys s13,s15
+ 100 003a 01EBC501 	 add r1,r1,r5,lsl#3
+ 101              	.L6:
+ 102 003e 013B     	 subs r3,r3,#1
+ 103 0040 02F10802 	 add r2,r2,#8
+ 104 0044 00F10800 	 add r0,r0,#8
+ 105 0048 04F10804 	 add r4,r4,#8
+ 106 004c A1F10801 	 sub r1,r1,#8
+ 107 0050 26D0     	 beq .L8
+ 108 0052 91ED034A 	 flds s8,[r1,#12]
+ 109 0056 D1ED023A 	 flds s7,[r1,#8]
+ 110 005a 14ED027A 	 flds s14,[r4,#-8]
+ 111 005e 54ED017A 	 flds s15,[r4,#-4]
+ 112 0062 10ED026A 	 flds s12,[r0,#-8]
+ 113 0066 50ED014A 	 flds s9,[r0,#-4]
+ 114 006a 37EE635A 	 fsubs s10,s14,s7
+ 115 006e 77EE845A 	 fadds s11,s15,s8
+ 116 0072 37EE237A 	 fadds s14,s14,s7
+ 117 0076 77EEC47A 	 fsubs s15,s15,s8
+ 118 007a B1EE466A 	 fnegs s12,s12
+ 119 007e A6EE057A 	 vfma.f32 s14,s12,s10
+ 120 0082 E4EE857A 	 vfma.f32 s15,s9,s10
+ 121 0086 A4EEE57A 	 vfms.f32 s14,s9,s11
+ 122 008a E6EE257A 	 vfma.f32 s15,s12,s11
+ 123 008e 27EE267A 	 fmuls s14,s14,s13
+ 124 0092 67EEA67A 	 fmuls s15,s15,s13
+ 125 0096 02ED027A 	 fsts s14,[r2,#-8]
+ 126 009a 42ED017A 	 fsts s15,[r2,#-4]
+ 127 009e CEE7     	 b .L6
+ 128              	.L8:
+ 129 00a0 30BD     	 pop {r4,r5,pc}
+ 131              	 .section .text.arm_rfft_fast_f32,"ax",%progbits
+ 132              	 .align 1
+ 133              	 .global arm_rfft_fast_f32
+ 134              	 .thumb
+ 135              	 .thumb_func
+ 137              	arm_rfft_fast_f32:
+ 138              	 
+ 139              	 
+ 140 0000 2DE9F041 	 push {r4,r5,r6,r7,r8,lr}
+ 141 0004 058A     	 ldrh r5,[r0,#16]
+ 142 0006 6D08     	 lsrs r5,r5,#1
+ 143 0008 0580     	 strh r5,[r0]
+ 144 000a 0446     	 mov r4,r0
+ 145 000c 0F46     	 mov r7,r1
+ 146 000e 1646     	 mov r6,r2
+ 147 0010 1D46     	 mov r5,r3
+ 148 0012 4BB1     	 cbz r3,.L10
+ 149 0014 FFF7FEFF 	 bl merge_rfft_f32
+ 150 0018 2046     	 mov r0,r4
+ 151 001a 3146     	 mov r1,r6
+ 152 001c 2A46     	 mov r2,r5
+ 153 001e 0123     	 movs r3,#1
+ 154 0020 BDE8F041 	 pop {r4,r5,r6,r7,r8,lr}
+ 155 0024 FFF7FEBF 	 b arm_cfft_f32
+ 156              	.L10:
+ 157 0028 1A46     	 mov r2,r3
+ 158 002a 0123     	 movs r3,#1
+ 159 002c FFF7FEFF 	 bl arm_cfft_f32
+ 160 0030 2046     	 mov r0,r4
+ 161 0032 3946     	 mov r1,r7
+ 162 0034 3246     	 mov r2,r6
+ 163 0036 BDE8F041 	 pop {r4,r5,r6,r7,r8,lr}
+ 164 003a FFF7FEBF 	 b stage_rfft_f32
+ 166              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 arm_rfft_fast_f32.c
+    {standard input}:17     .text.stage_rfft_f32:00000000 $t
+    {standard input}:22     .text.stage_rfft_f32:00000000 stage_rfft_f32
+    {standard input}:75     .text.merge_rfft_f32:00000000 $t
+    {standard input}:80     .text.merge_rfft_f32:00000000 merge_rfft_f32
+    {standard input}:132    .text.arm_rfft_fast_f32:00000000 $t
+    {standard input}:137    .text.arm_rfft_fast_f32:00000000 arm_rfft_fast_f32
+
+UNDEFINED SYMBOLS
+arm_cfft_f32

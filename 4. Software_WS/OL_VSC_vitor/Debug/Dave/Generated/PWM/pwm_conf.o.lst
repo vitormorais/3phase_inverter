@@ -1,0 +1,230 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "pwm_conf.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .global PWM_a_compare_config
+  20              	 .section .rodata.PWM_a_compare_config,"a",%progbits
+  21              	 .align 2
+  24              	PWM_a_compare_config:
+  25 0000 00000000 	 .space 16
+  25      00000000 
+  25      00000000 
+  25      00000000 
+  26              	 .global PWM_a_gpio_out_config
+  27              	 .section .rodata.PWM_a_gpio_out_config,"a",%progbits
+  28              	 .align 2
+  31              	PWM_a_gpio_out_config:
+  32 0000 98       	 .byte -104
+  33 0001 000000   	 .space 3
+  34 0004 00000100 	 .word 65536
+  35 0008 04       	 .byte 4
+  36 0009 000000   	 .space 3
+  37              	 .global PWM_a
+  38              	 .section .data.PWM_a,"aw",%progbits
+  39              	 .align 2
+  42              	PWM_a:
+  43 0000 00000000 	 .word GLOBAL_CCU8_0
+  44 0004 00000240 	 .word 1073872896
+  45 0008 00010240 	 .word 1073873152
+  46 000c 00000000 	 .word PWM_a_compare_config
+  47 0010 00800248 	 .word 1208123392
+  48 0014 00000000 	 .word PWM_a_gpio_out_config
+  49 0018 E02E0000 	 .word 12000
+  50 001c DF2E0000 	 .word 11999
+  51 0020 00000000 	 .word 0
+  52 0024 05000000 	 .word 5
+  53 0028 01       	 .byte 1
+  54 0029 02       	 .byte 2
+  55 002a 00       	 .byte 0
+  56 002b 00       	 .byte 0
+  57 002c 05       	 .byte 5
+  58 002d 00       	 .byte 0
+  59 002e 00       	 .byte 0
+  60 002f 00       	 .byte 0
+  61 0030 00       	 .byte 0
+  62 0031 00       	 .byte 0
+  63 0032 0000     	 .space 2
+  64              	 .global PWM_c_compare_config
+  65              	 .section .rodata.PWM_c_compare_config,"a",%progbits
+  66              	 .align 2
+  69              	PWM_c_compare_config:
+  70 0000 00000000 	 .space 16
+  70      00000000 
+  70      00000000 
+  70      00000000 
+  71              	 .global PWM_c_gpio_out_config
+  72              	 .section .rodata.PWM_c_gpio_out_config,"a",%progbits
+  73              	 .align 2
+  76              	PWM_c_gpio_out_config:
+  77 0000 98       	 .byte -104
+  78 0001 000000   	 .space 3
+  79 0004 00000100 	 .word 65536
+  80 0008 04       	 .byte 4
+  81 0009 000000   	 .space 3
+  82              	 .global PWM_c
+  83              	 .section .data.PWM_c,"aw",%progbits
+  84              	 .align 2
+  87              	PWM_c:
+  88 0000 00000000 	 .word GLOBAL_CCU8_0
+  89 0004 00000240 	 .word 1073872896
+  90 0008 00020240 	 .word 1073873408
+  91 000c 00000000 	 .word PWM_c_compare_config
+  92 0010 00800248 	 .word 1208123392
+  93 0014 00000000 	 .word PWM_c_gpio_out_config
+  94 0018 E02E0000 	 .word 12000
+  95 001c DF2E0000 	 .word 11999
+  96 0020 00000000 	 .word 0
+  97 0024 50000000 	 .word 80
+  98 0028 01       	 .byte 1
+  99 0029 02       	 .byte 2
+ 100 002a 00       	 .byte 0
+ 101 002b 00       	 .byte 0
+ 102 002c 04       	 .byte 4
+ 103 002d 00       	 .byte 0
+ 104 002e 01       	 .byte 1
+ 105 002f 00       	 .byte 0
+ 106 0030 00       	 .byte 0
+ 107 0031 00       	 .byte 0
+ 108 0032 0000     	 .space 2
+ 109              	 .global PWM_b_compare_config
+ 110              	 .section .rodata.PWM_b_compare_config,"a",%progbits
+ 111              	 .align 2
+ 114              	PWM_b_compare_config:
+ 115 0000 00000000 	 .space 16
+ 115      00000000 
+ 115      00000000 
+ 115      00000000 
+ 116              	 .global PWM_b_gpio_out_config
+ 117              	 .section .rodata.PWM_b_gpio_out_config,"a",%progbits
+ 118              	 .align 2
+ 121              	PWM_b_gpio_out_config:
+ 122 0000 98       	 .byte -104
+ 123 0001 000000   	 .space 3
+ 124 0004 00000100 	 .word 65536
+ 125 0008 04       	 .byte 4
+ 126 0009 000000   	 .space 3
+ 127              	 .global PWM_b
+ 128              	 .section .data.PWM_b,"aw",%progbits
+ 129              	 .align 2
+ 132              	PWM_b:
+ 133 0000 00000000 	 .word GLOBAL_CCU8_0
+ 134 0004 00000240 	 .word 1073872896
+ 135 0008 00040240 	 .word 1073873920
+ 136 000c 00000000 	 .word PWM_b_compare_config
+ 137 0010 00800248 	 .word 1208123392
+ 138 0014 00000000 	 .word PWM_b_gpio_out_config
+ 139 0018 E02E0000 	 .word 12000
+ 140 001c DF2E0000 	 .word 11999
+ 141 0020 00000000 	 .word 0
+ 142 0024 00500000 	 .word 20480
+ 143 0028 01       	 .byte 1
+ 144 0029 02       	 .byte 2
+ 145 002a 00       	 .byte 0
+ 146 002b 00       	 .byte 0
+ 147 002c 06       	 .byte 6
+ 148 002d 00       	 .byte 0
+ 149 002e 03       	 .byte 3
+ 150 002f 00       	 .byte 0
+ 151 0030 00       	 .byte 0
+ 152 0031 00       	 .byte 0
+ 153 0032 0000     	 .space 2
+ 154              	 .global PWM_update_compare_config
+ 155              	 .section .rodata.PWM_update_compare_config,"a",%progbits
+ 156              	 .align 2
+ 159              	PWM_update_compare_config:
+ 160 0000 00000000 	 .space 16
+ 160      00000000 
+ 160      00000000 
+ 160      00000000 
+ 161              	 .global PWM_update_gpio_out_config
+ 162              	 .section .rodata.PWM_update_gpio_out_config,"a",%progbits
+ 163              	 .align 2
+ 166              	PWM_update_gpio_out_config:
+ 167 0000 98       	 .byte -104
+ 168 0001 000000   	 .space 3
+ 169 0004 00000100 	 .word 65536
+ 170 0008 04       	 .byte 4
+ 171 0009 000000   	 .space 3
+ 172              	 .global PWM_update
+ 173              	 .section .data.PWM_update,"aw",%progbits
+ 174              	 .align 2
+ 177              	PWM_update:
+ 178 0000 00000000 	 .word GLOBAL_CCU8_0
+ 179 0004 00000240 	 .word 1073872896
+ 180 0008 00030240 	 .word 1073873664
+ 181 000c 00000000 	 .word PWM_update_compare_config
+ 182 0010 00800248 	 .word 1208123392
+ 183 0014 00000000 	 .word PWM_update_gpio_out_config
+ 184 0018 70170000 	 .word 6000
+ 185 001c DF2E0000 	 .word 11999
+ 186 0020 88130000 	 .word 5000
+ 187 0024 00050000 	 .word 1280
+ 188 0028 01       	 .byte 1
+ 189 0029 02       	 .byte 2
+ 190 002a 03       	 .byte 3
+ 191 002b 00       	 .byte 0
+ 192 002c 03       	 .byte 3
+ 193 002d 00       	 .byte 0
+ 194 002e 02       	 .byte 2
+ 195 002f 00       	 .byte 0
+ 196 0030 01       	 .byte 1
+ 197 0031 00       	 .byte 0
+ 198 0032 0000     	 .space 2
+ 199              	 .text
+ 200              	.Letext0:
+ 201              	 .file 1 "c:\\program files (x86)\\dave\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 202              	 .file 2 "c:\\program files (x86)\\dave\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 203              	 .file 3 "F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Libraries/CMSIS/Infineon/XMC4500_series/Include/XMC4500.h"
+ 204              	 .file 4 "F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Libraries/XMCLib/inc/xmc_gpio.h"
+ 205              	 .file 5 "F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Libraries/XMCLib/inc/xmc4_gpio.h"
+ 206              	 .file 6 "F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Libraries/XMCLib/inc/xmc_ccu8.h"
+ 207              	 .file 7 "F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Libraries/XMCLib/inc/xmc4_scu.h"
+ 208              	 .file 8 "F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/GLOBAL_CCU8/global_ccu8.h"
+ 209              	 .file 9 "../Dave/Generated/PWM/pwm.h"
+ 210              	 .file 10 "F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Libraries/CMSIS/Include/core_cm4.h"
+ 211              	 .file 11 "F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Libraries/CMSIS/Infineon/XMC4500_series/Include/system_XMC4500.h"
+ 212              	 .file 12 "F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/GLOBAL_CCU8/global_ccu8_extern.h"
+ 213              	 .file 13 "../Dave/Generated/PWM/pwm_conf.c"
+DEFINED SYMBOLS
+                            *ABS*:00000000 pwm_conf.c
+    {standard input}:24     .rodata.PWM_a_compare_config:00000000 PWM_a_compare_config
+    {standard input}:21     .rodata.PWM_a_compare_config:00000000 $d
+    {standard input}:31     .rodata.PWM_a_gpio_out_config:00000000 PWM_a_gpio_out_config
+    {standard input}:28     .rodata.PWM_a_gpio_out_config:00000000 $d
+    {standard input}:42     .data.PWM_a:00000000 PWM_a
+    {standard input}:39     .data.PWM_a:00000000 $d
+    {standard input}:69     .rodata.PWM_c_compare_config:00000000 PWM_c_compare_config
+    {standard input}:66     .rodata.PWM_c_compare_config:00000000 $d
+    {standard input}:76     .rodata.PWM_c_gpio_out_config:00000000 PWM_c_gpio_out_config
+    {standard input}:73     .rodata.PWM_c_gpio_out_config:00000000 $d
+    {standard input}:87     .data.PWM_c:00000000 PWM_c
+    {standard input}:84     .data.PWM_c:00000000 $d
+    {standard input}:114    .rodata.PWM_b_compare_config:00000000 PWM_b_compare_config
+    {standard input}:111    .rodata.PWM_b_compare_config:00000000 $d
+    {standard input}:121    .rodata.PWM_b_gpio_out_config:00000000 PWM_b_gpio_out_config
+    {standard input}:118    .rodata.PWM_b_gpio_out_config:00000000 $d
+    {standard input}:132    .data.PWM_b:00000000 PWM_b
+    {standard input}:129    .data.PWM_b:00000000 $d
+    {standard input}:159    .rodata.PWM_update_compare_config:00000000 PWM_update_compare_config
+    {standard input}:156    .rodata.PWM_update_compare_config:00000000 $d
+    {standard input}:166    .rodata.PWM_update_gpio_out_config:00000000 PWM_update_gpio_out_config
+    {standard input}:163    .rodata.PWM_update_gpio_out_config:00000000 $d
+    {standard input}:177    .data.PWM_update:00000000 PWM_update
+    {standard input}:174    .data.PWM_update:00000000 $d
+
+UNDEFINED SYMBOLS
+GLOBAL_CCU8_0

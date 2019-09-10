@@ -1,0 +1,148 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "arm_cmplx_mult_real_q31.c"
+  16              	 .section .text.arm_cmplx_mult_real_q31,"ax",%progbits
+  17              	 .align 1
+  18              	 .global arm_cmplx_mult_real_q31
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	arm_cmplx_mult_real_q31:
+  23              	 
+  24              	 
+  25 0000 2DE9F74F 	 push {r0,r1,r2,r4,r5,r6,r7,r8,r9,r10,fp,lr}
+  26 0004 4FEA930C 	 lsr ip,r3,#2
+  27 0008 9346     	 mov fp,r2
+  28 000a 0193     	 str r3,[sp,#4]
+  29 000c 8146     	 mov r9,r0
+  30 000e 8A46     	 mov r10,r1
+  31 0010 0246     	 mov r2,r0
+  32 0012 5B46     	 mov r3,fp
+  33 0014 E646     	 mov lr,ip
+  34              	.L2:
+  35 0016 2032     	 adds r2,r2,#32
+  36 0018 1031     	 adds r1,r1,#16
+  37 001a 2033     	 adds r3,r3,#32
+  38 001c BEF1000F 	 cmp lr,#0
+  39 0020 54D0     	 beq .L7
+  40 0022 51F8104C 	 ldr r4,[r1,#-16]
+  41 0026 52F81C5C 	 ldr r5,[r2,#-28]
+  42 002a 52F8206C 	 ldr r6,[r2,#-32]
+  43 002e 51F80C0C 	 ldr r0,[r1,#-12]
+  44 0032 86FB0467 	 smull r6,r7,r6,r4
+  45              	
+  46 0036 07F31E08 	 ssat r8,#31,r7
+  47              	
+  48              	 .thumb
+  49 003a 85FB0467 	 smull r6,r7,r5,r4
+  50 003e 52F8184C 	 ldr r4,[r2,#-24]
+  51              	
+  52 0042 07F31E06 	 ssat r6,#31,r7
+  53              	
+  54              	 .thumb
+  55 0046 84FB0045 	 smull r4,r5,r4,r0
+  56 004a 52F8144C 	 ldr r4,[r2,#-20]
+  57              	
+  58 004e 05F31E07 	 ssat r7,#31,r5
+  59              	
+  60              	 .thumb
+  61 0052 7600     	 lsls r6,r6,#1
+  62 0054 84FB0045 	 smull r4,r5,r4,r0
+  63 0058 7F00     	 lsls r7,r7,#1
+  64 005a 4FEA4804 	 lsl r4,r8,#1
+  65              	
+  66 005e 05F31E00 	 ssat r0,#31,r5
+  67              	
+  68              	 .thumb
+  69 0062 4000     	 lsls r0,r0,#1
+  70 0064 43F8187C 	 str r7,[r3,#-24]
+  71 0068 43F8204C 	 str r4,[r3,#-32]
+  72 006c 43F81C6C 	 str r6,[r3,#-28]
+  73 0070 43F8140C 	 str r0,[r3,#-20]
+  74 0074 51F8084C 	 ldr r4,[r1,#-8]
+  75 0078 52F80C5C 	 ldr r5,[r2,#-12]
+  76 007c 52F8106C 	 ldr r6,[r2,#-16]
+  77 0080 51F8040C 	 ldr r0,[r1,#-4]
+  78 0084 86FB0467 	 smull r6,r7,r6,r4
+  79              	
+  80 0088 07F31E08 	 ssat r8,#31,r7
+  81              	
+  82              	 .thumb
+  83 008c 85FB0467 	 smull r6,r7,r5,r4
+  84 0090 52F8084C 	 ldr r4,[r2,#-8]
+  85              	
+  86 0094 07F31E06 	 ssat r6,#31,r7
+  87              	
+  88              	 .thumb
+  89 0098 84FB0045 	 smull r4,r5,r4,r0
+  90 009c 52F8044C 	 ldr r4,[r2,#-4]
+  91              	
+  92 00a0 05F31E07 	 ssat r7,#31,r5
+  93              	
+  94              	 .thumb
+  95 00a4 7600     	 lsls r6,r6,#1
+  96 00a6 84FB0045 	 smull r4,r5,r4,r0
+  97 00aa 7F00     	 lsls r7,r7,#1
+  98              	
+  99 00ac 05F31E00 	 ssat r0,#31,r5
+ 100              	
+ 101              	 .thumb
+ 102 00b0 4FEA4804 	 lsl r4,r8,#1
+ 103 00b4 4000     	 lsls r0,r0,#1
+ 104 00b6 43F8104C 	 str r4,[r3,#-16]
+ 105 00ba 43F80C6C 	 str r6,[r3,#-12]
+ 106 00be 43F8087C 	 str r7,[r3,#-8]
+ 107 00c2 43F8040C 	 str r0,[r3,#-4]
+ 108 00c6 0EF1FF3E 	 add lr,lr,#-1
+ 109 00ca A4E7     	 b .L2
+ 110              	.L7:
+ 111 00cc 019B     	 ldr r3,[sp,#4]
+ 112 00ce 4FEA4C12 	 lsl r2,ip,#5
+ 113 00d2 9144     	 add r9,r9,r2
+ 114 00d4 03F00303 	 and r3,r3,#3
+ 115 00d8 0AEB0C1C 	 add ip,r10,ip,lsl#4
+ 116 00dc 9344     	 add fp,fp,r2
+ 117 00de 09EBC303 	 add r3,r9,r3,lsl#3
+ 118              	.L4:
+ 119 00e2 9945     	 cmp r9,r3
+ 120 00e4 0BF1080B 	 add fp,fp,#8
+ 121 00e8 14D0     	 beq .L8
+ 122 00ea 59F8080B 	 ldr r0,[r9],#8
+ 123 00ee 5CF8044B 	 ldr r4,[ip],#4
+ 124 00f2 59F8042C 	 ldr r2,[r9,#-4]
+ 125 00f6 80FB0401 	 smull r0,r1,r0,r4
+ 126 00fa 82FB0445 	 smull r4,r5,r2,r4
+ 127              	
+ 128 00fe 01F31E00 	 ssat r0,#31,r1
+ 129              	
+ 130              	
+ 131 0102 05F31E02 	 ssat r2,#31,r5
+ 132              	
+ 133              	 .thumb
+ 134 0106 4000     	 lsls r0,r0,#1
+ 135 0108 5200     	 lsls r2,r2,#1
+ 136 010a 4BF8080C 	 str r0,[fp,#-8]
+ 137 010e 4BF8042C 	 str r2,[fp,#-4]
+ 138 0112 E6E7     	 b .L4
+ 139              	.L8:
+ 140 0114 03B0     	 add sp,sp,#12
+ 141              	 
+ 142 0116 BDE8F08F 	 pop {r4,r5,r6,r7,r8,r9,r10,fp,pc}
+ 144              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 arm_cmplx_mult_real_q31.c
+    {standard input}:17     .text.arm_cmplx_mult_real_q31:00000000 $t
+    {standard input}:22     .text.arm_cmplx_mult_real_q31:00000000 arm_cmplx_mult_real_q31
+
+NO UNDEFINED SYMBOLS

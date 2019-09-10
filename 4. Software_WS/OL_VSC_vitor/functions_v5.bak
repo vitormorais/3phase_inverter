@@ -1,0 +1,103 @@
+// v2.1.1
+// Updated in 24/10/2017
+
+// Needs to be validated!
+float HPF1(float val, float *HPF_buff, const float *HPF_K){
+	float res=(*(HPF_K+3)**HPF_buff+*HPF_K*val+*(HPF_K+1)**(HPF_buff+1))/(*HPF_K);
+	*HPF_buff=res;
+	*(HPF_buff+1)=val;
+	return res;
+}
+
+float fw_integ(float val, float *buff, float Ti){
+	float out=*buff+val*Ti;
+	if (out>2.0f*PI){
+		out=out-2.0f*PI+out*Ti;
+	}
+	else if (out<0.0f){
+		out=out+2.0f*PI-out*Ti;
+	}
+	*buff=out;
+	return out;
+}
+
+float deriv(float val, float *buff, float Ti){
+	float out=(val-*buff)/Ti;
+	*buff=val;
+	return out;
+}
+
+void abc_AB(float *abc, float *AB){
+	// Conventional conversion into orthogonal components
+	*AB=K23*(*abc-0.5f**(abc+1)-0.5f**(abc+2));
+	*(AB+1)=K23*(Ksqr32**(abc+1)-Ksqr32**(abc+2));
+}
+
+void abc_AB_Dy(float *abc, float *AB){
+	// Conversion into orthogonal components converting triangle to star
+	*AB=K23sqr3*(Ksqr32**abc-Ksqr32**(abc+2));
+	*(AB+1)=K23sqr3*(-0.5f**abc+*(abc+1)-0.5f**(abc+2));
+}
+
+void AB_dq(float *AB, float *dq, float wt){
+	// Conventional conversion into orthogonal components
+	*dq=*AB*arm_cos_f32(wt)+*(AB+1)*arm_sin_f32(wt);
+	*(dq+1)=-*AB*arm_sin_f32(wt)+*(AB+1)*arm_cos_f32(wt);
+}
+
+void dq_AB(float *dq, float *AB, float wt){
+	// Conventional conversion into orthogonal components
+	float C=arm_cos_f32(wt);
+	float S=arm_sin_f32(wt);
+	*AB=C**dq-S**(dq+1);
+	*(AB+1)=S**dq+C**(dq+1);
+}
+
+void AB_abc(float *AB, float *abc){
+	// Conventional conversion into orthogonal components
+	*abc=*AB;
+	*(abc+1)=-0.5f**(AB)+Ksqr32**(AB+1);
+	*(abc+2)=-0.5f**(AB)-Ksqr32**(AB+1);
+}
+
+float LPF1(float val, float *LPFbuff, const float LPF_K[3]){
+	float out=*(LPF_K+2)**(LPFbuff+1)+*LPF_K**(LPF_K+1)*(val+*LPFbuff);
+	*LPFbuff=val;		// x[k-1]
+	*(LPFbuff+1)=out;	// y[k-1]
+	return out;
+}
+
+int16_t conv2DAC(float value){
+	float aux = value;//fmax(value,1.0f);
+	aux=(aux>1.0f)?1.0f:aux;    //fmax()
+	aux=(aux<-1.0f) ?-1.0f:aux; //fmin()
+	return ((int16_t)(aux*2047.0f));
+}
+
+float PI_FW(float val, float *PI_buff, const float *PI_K){
+	float res=*PI_buff+*PI_K*val+*PI_K**(PI_buff+1);
+	*PI_buff=res;
+	*(PI_buff+1)=val;
+	return res;
+}
+
+float PI_TR(float val, float *PIbuff, float Ti, const float PI_K[2]){
+	float error=val;
+	float integ_error=*PIbuff+(error+*(PIbuff+1))*0.5f*Ti;
+	float out;
+	// saturation of integral accumulator:
+	if (integ_error>0)
+		integ_error=fmin(integ_error,7853.98f);		// 7853.98=(pi/4)/Ti
+	else if (integ_error<0)
+		integ_error=fmax(integ_error,-7853.98f);
+	*PIbuff=integ_error;
+	*(PIbuff+1)=error;
+	out=PI_K[0]*(error+PI_K[1]*integ_error);
+	// saturation of output:
+	/*if (out>0.0f)									// 7853.98=(pi/4)/Ti
+		out=fmin(out,7854.0f);
+	else if (out<0.0f)
+		out=fmax(out,-7854.0f);*/
+	return out;
+}
+

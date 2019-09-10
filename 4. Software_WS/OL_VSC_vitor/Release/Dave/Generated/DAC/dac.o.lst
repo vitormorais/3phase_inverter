@@ -1,0 +1,891 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "dac.c"
+  16              	 .section .text.XMC_DAC_CH_SetRampStop,"ax",%progbits
+  17              	 .align 1
+  18              	 .thumb
+  19              	 .thumb_func
+  21              	XMC_DAC_CH_SetRampStop:
+  22              	 
+  23              	 
+  24 0000 10B5     	 push {r4,lr}
+  25 0002 C369     	 ldr r3,[r0,#28]
+  26 0004 0901     	 lsls r1,r1,#4
+  27 0006 40F6FF74 	 movw r4,#4095
+  28 000a 8C40     	 lsls r4,r4,r1
+  29 000c 23EA0403 	 bic r3,r3,r4
+  30 0010 8A40     	 lsls r2,r2,r1
+  31 0012 1A43     	 orrs r2,r2,r3
+  32 0014 C261     	 str r2,[r0,#28]
+  33 0016 10BD     	 pop {r4,pc}
+  35              	 .section .text.DAC_Ramp_StartStopConfigure,"ax",%progbits
+  36              	 .align 1
+  37              	 .global DAC_Ramp_StartStopConfigure
+  38              	 .thumb
+  39              	 .thumb_func
+  41              	DAC_Ramp_StartStopConfigure:
+  42              	 
+  43              	 
+  44 0000 30B5     	 push {r4,r5,lr}
+  45 0002 0446     	 mov r4,r0
+  46 0004 808B     	 ldrh r0,[r0,#28]
+  47 0006 E38B     	 ldrh r3,[r4,#30]
+  48 0008 9842     	 cmp r0,r3
+  49 000a 94F82230 	 ldrb r3,[r4,#34]
+  50 000e 2068     	 ldr r0,[r4]
+  51 0010 0ED9     	 bls .L3
+  52 0012 00EBC303 	 add r3,r0,r3,lsl#3
+  53 0016 C1F57F61 	 rsb r1,r1,#4080
+  54 001a 0F31     	 adds r1,r1,#15
+  55 001c C2F57F65 	 rsb r5,r2,#4080
+  56 0020 8AB2     	 uxth r2,r1
+  57 0022 5968     	 ldr r1,[r3,#4]
+  58 0024 0F35     	 adds r5,r5,#15
+  59 0026 41F08051 	 orr r1,r1,#268435456
+  60 002a 5960     	 str r1,[r3,#4]
+  61 002c A9B2     	 uxth r1,r5
+  62 002e 05E0     	 b .L4
+  63              	.L3:
+  64 0030 00EBC303 	 add r3,r0,r3,lsl#3
+  65 0034 5D68     	 ldr r5,[r3,#4]
+  66 0036 25F08055 	 bic r5,r5,#268435456
+  67 003a 5D60     	 str r5,[r3,#4]
+  68              	.L4:
+  69 003c 94F82230 	 ldrb r3,[r4,#34]
+  70 0040 0433     	 adds r3,r3,#4
+  71 0042 00EB8303 	 add r3,r0,r3,lsl#2
+  72 0046 5960     	 str r1,[r3,#4]
+  73 0048 94F82210 	 ldrb r1,[r4,#34]
+  74 004c BDE83040 	 pop {r4,r5,lr}
+  75 0050 FFF7FEBF 	 b XMC_DAC_CH_SetRampStop
+  77              	 .section .text.DAC_Ramp_ScaleUp,"ax",%progbits
+  78              	 .align 1
+  79              	 .global DAC_Ramp_ScaleUp
+  80              	 .thumb
+  81              	 .thumb_func
+  83              	DAC_Ramp_ScaleUp:
+  84              	 
+  85              	 
+  86 0000 2DE9F047 	 push {r4,r5,r6,r7,r8,r9,r10,lr}
+  87 0004 551A     	 subs r5,r2,r1
+  88 0006 0135     	 adds r5,r5,#1
+  89 0008 9A46     	 mov r10,r3
+  90 000a ADB2     	 uxth r5,r5
+  91 000c 0024     	 movs r4,#0
+  92 000e 9046     	 mov r8,r2
+  93 0010 0646     	 mov r6,r0
+  94 0012 8946     	 mov r9,r1
+  95 0014 0AFB05F7 	 mul r7,r10,r5
+  96 0018 FFF7FEFF 	 bl XMC_SCU_CLOCK_GetPeripheralClockFrequency
+  97 001c 2246     	 mov r2,r4
+  98              	.L7:
+  99 001e 224B     	 ldr r3,.L24
+ 100 0020 9F42     	 cmp r7,r3
+ 101 0022 21D9     	 bls .L11
+ 102 0024 022A     	 cmp r2,#2
+ 103 0026 3BD0     	 beq .L8
+ 104 0028 022D     	 cmp r5,#2
+ 105 002a 39D9     	 bls .L8
+ 106 002c 062C     	 cmp r4,#6
+ 107 002e 19D8     	 bhi .L16
+ 108 0030 4FEA5808 	 lsr r8,r8,#1
+ 109 0034 4FEA5909 	 lsr r9,r9,#1
+ 110 0038 08F10105 	 add r5,r8,#1
+ 111 003c 0134     	 adds r4,r4,#1
+ 112 003e C9EB0505 	 rsb r5,r9,r5
+ 113 0042 C845     	 cmp r8,r9
+ 114 0044 E4B2     	 uxtb r4,r4
+ 115 0046 ADB2     	 uxth r5,r5
+ 116 0048 0CD0     	 beq .L16
+ 117 004a 0AFB05F7 	 mul r7,r10,r5
+ 118 004e B0FBF7F7 	 udiv r7,r0,r7
+ 119 0052 17B1     	 cbz r7,.L17
+ 120 0054 B0FBF7F7 	 udiv r7,r0,r7
+ 121 0058 00E0     	 b .L10
+ 122              	.L17:
+ 123 005a 0746     	 mov r7,r0
+ 124              	.L10:
+ 125 005c 002F     	 cmp r7,#0
+ 126 005e 08BF     	 it eq
+ 127 0060 0222     	 moveq r2,#2
+ 128 0062 DCE7     	 b .L7
+ 129              	.L16:
+ 130 0064 0222     	 movs r2,#2
+ 131 0066 DAE7     	 b .L7
+ 132              	.L11:
+ 133 0068 022A     	 cmp r2,#2
+ 134 006a 19D0     	 beq .L8
+ 135 006c 3046     	 mov r0,r6
+ 136 006e 4946     	 mov r1,r9
+ 137 0070 4246     	 mov r2,r8
+ 138 0072 FFF7FEFF 	 bl DAC_Ramp_StartStopConfigure
+ 139 0076 5CB1     	 cbz r4,.L13
+ 140 0078 3368     	 ldr r3,[r6]
+ 141 007a 96F82220 	 ldrb r2,[r6,#34]
+ 142 007e 03EBC202 	 add r2,r3,r2,lsl#3
+ 143 0082 0834     	 adds r4,r4,#8
+ 144 0084 9368     	 ldr r3,[r2,#8]
+ 145 0086 E4B2     	 uxtb r4,r4
+ 146 0088 23F00F03 	 bic r3,r3,#15
+ 147 008c 1C43     	 orrs r4,r4,r3
+ 148 008e 9460     	 str r4,[r2,#8]
+ 149              	.L13:
+ 150 0090 3068     	 ldr r0,[r6]
+ 151 0092 96F82210 	 ldrb r1,[r6,#34]
+ 152 0096 3A46     	 mov r2,r7
+ 153 0098 BDE8F047 	 pop {r4,r5,r6,r7,r8,r9,r10,lr}
+ 154 009c FFF7FEBF 	 b XMC_DAC_CH_SetFrequency
+ 155              	.L8:
+ 156 00a0 0220     	 movs r0,#2
+ 157 00a2 BDE8F087 	 pop {r4,r5,r6,r7,r8,r9,r10,pc}
+ 158              	.L25:
+ 159 00a6 00BF     	 .align 2
+ 160              	.L24:
+ 161 00a8 80841E00 	 .word 2000000
+ 163              	 .section .text.DAC_Ramp_ScaleDown,"ax",%progbits
+ 164              	 .align 1
+ 165              	 .global DAC_Ramp_ScaleDown
+ 166              	 .thumb
+ 167              	 .thumb_func
+ 169              	DAC_Ramp_ScaleDown:
+ 170              	 
+ 171              	 
+ 172 0000 2DE9F047 	 push {r4,r5,r6,r7,r8,r9,r10,lr}
+ 173 0004 9A46     	 mov r10,r3
+ 174 0006 541A     	 subs r4,r2,r1
+ 175 0008 8046     	 mov r8,r0
+ 176 000a 0E46     	 mov r6,r1
+ 177 000c 1546     	 mov r5,r2
+ 178 000e FFF7FEFF 	 bl XMC_SCU_CLOCK_GetPeripheralClockFrequency
+ 179 0012 0134     	 adds r4,r4,#1
+ 180 0014 0027     	 movs r7,#0
+ 181 0016 A4B2     	 uxth r4,r4
+ 182 0018 BE46     	 mov lr,r7
+ 183 001a 0AFB04F9 	 mul r9,r10,r4
+ 184 001e B0FBF9F3 	 udiv r3,r0,r9
+ 185              	.L27:
+ 186 0022 B3F5801F 	 cmp r3,#1048576
+ 187 0026 2AD3     	 bcc .L31
+ 188 0028 BEF1020F 	 cmp lr,#2
+ 189 002c 44D0     	 beq .L28
+ 190 002e B4F5805F 	 cmp r4,#4096
+ 191 0032 41D2     	 bcs .L28
+ 192 0034 062F     	 cmp r7,#6
+ 193 0036 1FD8     	 bhi .L38
+ 194 0038 6D00     	 lsls r5,r5,#1
+ 195 003a ADB2     	 uxth r5,r5
+ 196 003c 7600     	 lsls r6,r6,#1
+ 197 003e B6B2     	 uxth r6,r6
+ 198 0040 6C1C     	 adds r4,r5,#1
+ 199 0042 A41B     	 subs r4,r4,r6
+ 200 0044 B5F5805F 	 cmp r5,#4096
+ 201 0048 A4B2     	 uxth r4,r4
+ 202 004a 15D2     	 bcs .L38
+ 203 004c B6F5805F 	 cmp r6,#4096
+ 204 0050 12D2     	 bcs .L38
+ 205 0052 B542     	 cmp r5,r6
+ 206 0054 10D0     	 beq .L38
+ 207 0056 0AFB04F3 	 mul r3,r10,r4
+ 208 005a B0FBF3F3 	 udiv r3,r0,r3
+ 209 005e 002B     	 cmp r3,#0
+ 210 0060 08BF     	 it eq
+ 211 0062 0123     	 moveq r3,#1
+ 212 0064 0137     	 adds r7,r7,#1
+ 213 0066 B0FBF3F9 	 udiv r9,r0,r3
+ 214 006a B9F1000F 	 cmp r9,#0
+ 215 006e FFB2     	 uxtb r7,r7
+ 216 0070 08BF     	 it eq
+ 217 0072 4FF0020E 	 moveq lr,#2
+ 218 0076 D4E7     	 b .L27
+ 219              	.L38:
+ 220 0078 4FF0020E 	 mov lr,#2
+ 221 007c D1E7     	 b .L27
+ 222              	.L31:
+ 223 007e BEF1020F 	 cmp lr,#2
+ 224 0082 19D0     	 beq .L28
+ 225 0084 4046     	 mov r0,r8
+ 226 0086 3146     	 mov r1,r6
+ 227 0088 2A46     	 mov r2,r5
+ 228 008a FFF7FEFF 	 bl DAC_Ramp_StartStopConfigure
+ 229 008e 57B1     	 cbz r7,.L33
+ 230 0090 D8F80030 	 ldr r3,[r8]
+ 231 0094 98F82220 	 ldrb r2,[r8,#34]
+ 232 0098 03EBC202 	 add r2,r3,r2,lsl#3
+ 233 009c 9368     	 ldr r3,[r2,#8]
+ 234 009e 23F00F03 	 bic r3,r3,#15
+ 235 00a2 1F43     	 orrs r7,r7,r3
+ 236 00a4 9760     	 str r7,[r2,#8]
+ 237              	.L33:
+ 238 00a6 D8F80000 	 ldr r0,[r8]
+ 239 00aa 98F82210 	 ldrb r1,[r8,#34]
+ 240 00ae 4A46     	 mov r2,r9
+ 241 00b0 BDE8F047 	 pop {r4,r5,r6,r7,r8,r9,r10,lr}
+ 242 00b4 FFF7FEBF 	 b XMC_DAC_CH_SetFrequency
+ 243              	.L28:
+ 244 00b8 0220     	 movs r0,#2
+ 245 00ba BDE8F087 	 pop {r4,r5,r6,r7,r8,r9,r10,pc}
+ 247              	 .section .text.DAC_ModeConfig,"ax",%progbits
+ 248              	 .align 1
+ 249              	 .global DAC_ModeConfig
+ 250              	 .thumb
+ 251              	 .thumb_func
+ 253              	DAC_ModeConfig:
+ 254              	 
+ 255              	 
+ 256 0000 8368     	 ldr r3,[r0,#8]
+ 257 0002 B3F5401F 	 cmp r3,#3145728
+ 258 0006 13B5     	 push {r0,r1,r4,lr}
+ 259 0008 0446     	 mov r4,r0
+ 260 000a 0BD1     	 bne .L46
+ 261 000c C268     	 ldr r2,[r0,#12]
+ 262 000e 90F82210 	 ldrb r1,[r0,#34]
+ 263 0012 037C     	 ldrb r3,[r0,#16]
+ 264 0014 0092     	 str r2,[sp]
+ 265 0016 4269     	 ldr r2,[r0,#20]
+ 266 0018 0192     	 str r2,[sp,#4]
+ 267 001a 0068     	 ldr r0,[r0]
+ 268 001c 626A     	 ldr r2,[r4,#36]
+ 269 001e FFF7FEFF 	 bl XMC_DAC_CH_StartPatternMode
+ 270 0022 59E0     	 b .L47
+ 271              	.L46:
+ 272 0024 B3F5801F 	 cmp r3,#1048576
+ 273 0028 0BD1     	 bne .L48
+ 274 002a 0068     	 ldr r0,[r0]
+ 275 002c 94F82210 	 ldrb r1,[r4,#34]
+ 276 0030 FFF7FEFF 	 bl XMC_DAC_CH_StartSingleValueMode
+ 277 0034 94F82230 	 ldrb r3,[r4,#34]
+ 278 0038 2268     	 ldr r2,[r4]
+ 279 003a 0433     	 adds r3,r3,#4
+ 280 003c 02EB8303 	 add r3,r2,r3,lsl#2
+ 281 0040 1CE0     	 b .L53
+ 282              	.L48:
+ 283 0042 B3F5001F 	 cmp r3,#2097152
+ 284 0046 1CD1     	 bne .L49
+ 285 0048 E268     	 ldr r2,[r4,#12]
+ 286 004a 94F82210 	 ldrb r1,[r4,#34]
+ 287 004e 6369     	 ldr r3,[r4,#20]
+ 288 0050 0068     	 ldr r0,[r0]
+ 289 0052 FFF7FEFF 	 bl XMC_DAC_CH_StartDataMode
+ 290 0056 94F82030 	 ldrb r3,[r4,#32]
+ 291 005a 012B     	 cmp r3,#1
+ 292 005c 08BF     	 it eq
+ 293 005e 94F82220 	 ldrbeq r2,[r4,#34]
+ 294 0062 2368     	 ldr r3,[r4]
+ 295 0064 01BF     	 itttt eq
+ 296 0066 03EBC202 	 addeq r2,r3,r2,lsl#3
+ 297 006a 5168     	 ldreq r1,[r2,#4]
+ 298 006c 41F08041 	 orreq r1,r1,#1073741824
+ 299 0070 5160     	 streq r1,[r2,#4]
+ 300 0072 94F82220 	 ldrb r2,[r4,#34]
+ 301 0076 0432     	 adds r2,r2,#4
+ 302 0078 03EB8203 	 add r3,r3,r2,lsl#2
+ 303              	.L53:
+ 304 007c 0022     	 movs r2,#0
+ 305 007e 5A60     	 str r2,[r3,#4]
+ 306 0080 2AE0     	 b .L47
+ 307              	.L49:
+ 308 0082 B3F5A00F 	 cmp r3,#5242880
+ 309 0086 19D1     	 bne .L51
+ 310 0088 90F82210 	 ldrb r1,[r0,#34]
+ 311 008c 028B     	 ldrh r2,[r0,#24]
+ 312 008e 438B     	 ldrh r3,[r0,#26]
+ 313 0090 C068     	 ldr r0,[r0,#12]
+ 314 0092 0090     	 str r0,[sp]
+ 315 0094 6069     	 ldr r0,[r4,#20]
+ 316 0096 0190     	 str r0,[sp,#4]
+ 317 0098 2068     	 ldr r0,[r4]
+ 318 009a FFF7FEFF 	 bl XMC_DAC_CH_StartRampMode
+ 319 009e 2368     	 ldr r3,[r4]
+ 320 00a0 94F82220 	 ldrb r2,[r4,#34]
+ 321 00a4 6168     	 ldr r1,[r4,#4]
+ 322 00a6 03EBC202 	 add r2,r3,r2,lsl#3
+ 323 00aa 0979     	 ldrb r1,[r1,#4]
+ 324 00ac 9368     	 ldr r3,[r2,#8]
+ 325 00ae 01F00F01 	 and r1,r1,#15
+ 326 00b2 23F00F03 	 bic r3,r3,#15
+ 327 00b6 0B43     	 orrs r3,r3,r1
+ 328 00b8 9360     	 str r3,[r2,#8]
+ 329 00ba 0DE0     	 b .L47
+ 330              	.L51:
+ 331 00bc B3F5800F 	 cmp r3,#4194304
+ 332 00c0 09D1     	 bne .L52
+ 333 00c2 0068     	 ldr r0,[r0]
+ 334 00c4 94F82210 	 ldrb r1,[r4,#34]
+ 335 00c8 E268     	 ldr r2,[r4,#12]
+ 336 00ca 6369     	 ldr r3,[r4,#20]
+ 337 00cc 02B0     	 add sp,sp,#8
+ 338              	 
+ 339 00ce BDE81040 	 pop {r4,lr}
+ 340 00d2 FFF7FEBF 	 b XMC_DAC_CH_StartNoiseMode
+ 341              	.L52:
+ 342 00d6 0020     	 movs r0,#0
+ 343              	.L47:
+ 344 00d8 02B0     	 add sp,sp,#8
+ 345              	 
+ 346 00da 10BD     	 pop {r4,pc}
+ 348              	 .section .text.DAC_GetAppVersion,"ax",%progbits
+ 349              	 .align 1
+ 350              	 .global DAC_GetAppVersion
+ 351              	 .thumb
+ 352              	 .thumb_func
+ 354              	DAC_GetAppVersion:
+ 355              	 
+ 356              	 
+ 357              	 
+ 358 0000 0023     	 movs r3,#0
+ 359 0002 1846     	 mov r0,r3
+ 360 0004 0422     	 movs r2,#4
+ 361 0006 62F30700 	 bfi r0,r2,#0,#8
+ 362 000a 63F30F20 	 bfi r0,r3,#8,#8
+ 363 000e 1023     	 movs r3,#16
+ 364 0010 63F31740 	 bfi r0,r3,#16,#8
+ 365 0014 82B0     	 sub sp,sp,#8
+ 366 0016 02B0     	 add sp,sp,#8
+ 367              	 
+ 368 0018 7047     	 bx lr
+ 370              	 .section .text.DAC_Init,"ax",%progbits
+ 371              	 .align 1
+ 372              	 .global DAC_Init
+ 373              	 .thumb
+ 374              	 .thumb_func
+ 376              	DAC_Init:
+ 377              	 
+ 378              	 
+ 379 0000 10B5     	 push {r4,lr}
+ 380 0002 0446     	 mov r4,r0
+ 381 0004 0068     	 ldr r0,[r0]
+ 382 0006 94F82210 	 ldrb r1,[r4,#34]
+ 383 000a 6268     	 ldr r2,[r4,#4]
+ 384 000c FFF7FEFF 	 bl XMC_DAC_CH_Init
+ 385 0010 2046     	 mov r0,r4
+ 386 0012 FFF7FEFF 	 bl DAC_ModeConfig
+ 387 0016 94F82830 	 ldrb r3,[r4,#40]
+ 388 001a 43B9     	 cbnz r3,.L56
+ 389 001c 94F82220 	 ldrb r2,[r4,#34]
+ 390 0020 2368     	 ldr r3,[r4]
+ 391 0022 03EBC203 	 add r3,r3,r2,lsl#3
+ 392 0026 5A68     	 ldr r2,[r3,#4]
+ 393 0028 22F4E002 	 bic r2,r2,#7340032
+ 394 002c 5A60     	 str r2,[r3,#4]
+ 395              	.L56:
+ 396 002e 94F82130 	 ldrb r3,[r4,#33]
+ 397 0032 012B     	 cmp r3,#1
+ 398 0034 01BF     	 itttt eq
+ 399 0036 2268     	 ldreq r2,[r4]
+ 400 0038 9368     	 ldreq r3,[r2,#8]
+ 401 003a 43F40043 	 orreq r3,r3,#32768
+ 402 003e 9360     	 streq r3,[r2,#8]
+ 403 0040 0030     	 adds r0,r0,#0
+ 404 0042 18BF     	 it ne
+ 405 0044 0120     	 movne r0,#1
+ 406 0046 10BD     	 pop {r4,pc}
+ 408              	 .section .text.DAC_Pattern_SetAmplitude,"ax",%progbits
+ 409              	 .align 1
+ 410              	 .global DAC_Pattern_SetAmplitude
+ 411              	 .thumb
+ 412              	 .thumb_func
+ 414              	DAC_Pattern_SetAmplitude:
+ 415              	 
+ 416              	 
+ 417              	 
+ 418 0000 0529     	 cmp r1,#5
+ 419 0002 01D9     	 bls .L59
+ 420 0004 0331     	 adds r1,r1,#3
+ 421 0006 02E0     	 b .L62
+ 422              	.L59:
+ 423 0008 03D0     	 beq .L61
+ 424 000a C1F10501 	 rsb r1,r1,#5
+ 425              	.L62:
+ 426 000e C9B2     	 uxtb r1,r1
+ 427 0010 00E0     	 b .L60
+ 428              	.L61:
+ 429 0012 0021     	 movs r1,#0
+ 430              	.L60:
+ 431 0014 0368     	 ldr r3,[r0]
+ 432 0016 90F82220 	 ldrb r2,[r0,#34]
+ 433 001a 03EBC202 	 add r2,r3,r2,lsl#3
+ 434 001e 9368     	 ldr r3,[r2,#8]
+ 435 0020 23F00F03 	 bic r3,r3,#15
+ 436 0024 1943     	 orrs r1,r1,r3
+ 437 0026 9160     	 str r1,[r2,#8]
+ 438 0028 7047     	 bx lr
+ 440              	 .section .text.DAC_Pattern_SetOffset,"ax",%progbits
+ 441              	 .align 1
+ 442              	 .global DAC_Pattern_SetOffset
+ 443              	 .thumb
+ 444              	 .thumb_func
+ 446              	DAC_Pattern_SetOffset:
+ 447              	 
+ 448              	 
+ 449 0000 10B5     	 push {r4,lr}
+ 450 0002 0368     	 ldr r3,[r0]
+ 451 0004 90F82220 	 ldrb r2,[r0,#34]
+ 452 0008 03EBC202 	 add r2,r3,r2,lsl#3
+ 453 000c A1F5AF61 	 sub r1,r1,#1400
+ 454 0010 9468     	 ldr r4,[r2,#8]
+ 455 0012 E4B2     	 uxtb r4,r4
+ 456 0014 14F0080F 	 tst r4,#8
+ 457 0018 4FF02203 	 mov r3,#34
+ 458 001c 04F00704 	 and r4,r4,#7
+ 459 0020 09B2     	 sxth r1,r1
+ 460 0022 14BF     	 ite ne
+ 461 0024 A340     	 lslne r3,r3,r4
+ 462 0026 2341     	 asreq r3,r3,r4
+ 463 0028 C1EB4111 	 rsb r1,r1,r1,lsl#5
+ 464 002c 4900     	 lsls r1,r1,#1
+ 465 002e 9BB2     	 uxth r3,r3
+ 466 0030 91FBF3F3 	 sdiv r3,r1,r3
+ 467 0034 9BB2     	 uxth r3,r3
+ 468 0036 03F18001 	 add r1,r3,#128
+ 469 003a 89B2     	 uxth r1,r1
+ 470 003c FF29     	 cmp r1,#255
+ 471 003e 0FD8     	 bhi .L71
+ 472 0040 4168     	 ldr r1,[r0,#4]
+ 473 0042 C978     	 ldrb r1,[r1,#3]
+ 474 0044 C906     	 lsls r1,r1,#27
+ 475 0046 48BF     	 it mi
+ 476 0048 5B42     	 rsbmi r3,r3,#0
+ 477 004a 9168     	 ldr r1,[r2,#8]
+ 478 004c 48BF     	 it mi
+ 479 004e 9BB2     	 uxthmi r3,r3
+ 480 0050 21F47F61 	 bic r1,r1,#4080
+ 481 0054 DBB2     	 uxtb r3,r3
+ 482 0056 41EA0313 	 orr r3,r1,r3,lsl#4
+ 483 005a 9360     	 str r3,[r2,#8]
+ 484 005c 0020     	 movs r0,#0
+ 485 005e 10BD     	 pop {r4,pc}
+ 486              	.L71:
+ 487 0060 0220     	 movs r0,#2
+ 488 0062 10BD     	 pop {r4,pc}
+ 490              	 .section .text.DAC_SingleValue_SetValue_s16,"ax",%progbits
+ 491              	 .align 1
+ 492              	 .global DAC_SingleValue_SetValue_s16
+ 493              	 .thumb
+ 494              	 .thumb_func
+ 496              	DAC_SingleValue_SetValue_s16:
+ 497              	 
+ 498              	 
+ 499 0000 8BB2     	 uxth r3,r1
+ 500 0002 03F2FF72 	 addw r2,r3,#2047
+ 501 0006 10B5     	 push {r4,lr}
+ 502 0008 92B2     	 uxth r2,r2
+ 503 000a 40F6FE74 	 movw r4,#4094
+ 504 000e A242     	 cmp r2,r4
+ 505 0010 0FD8     	 bhi .L76
+ 506 0012 0029     	 cmp r1,#0
+ 507 0014 B8BF     	 it lt
+ 508 0016 03F58051 	 addlt r1,r3,#4096
+ 509 001a 90F82230 	 ldrb r3,[r0,#34]
+ 510 001e 0268     	 ldr r2,[r0]
+ 511 0020 03F10403 	 add r3,r3,#4
+ 512 0024 02EB8303 	 add r3,r2,r3,lsl#2
+ 513 0028 B8BF     	 it lt
+ 514 002a 09B2     	 sxthlt r1,r1
+ 515 002c 5960     	 str r1,[r3,#4]
+ 516 002e 0020     	 movs r0,#0
+ 517 0030 10BD     	 pop {r4,pc}
+ 518              	.L76:
+ 519 0032 0220     	 movs r0,#2
+ 520 0034 10BD     	 pop {r4,pc}
+ 522              	 .section .text.DAC_SingleValue_SetValue_s16_Coupled,"ax",%progbits
+ 523              	 .align 1
+ 524              	 .global DAC_SingleValue_SetValue_s16_Coupled
+ 525              	 .thumb
+ 526              	 .thumb_func
+ 528              	DAC_SingleValue_SetValue_s16_Coupled:
+ 529              	 
+ 530              	 
+ 531 0000 70B5     	 push {r4,r5,r6,lr}
+ 532 0002 8CB2     	 uxth r4,r1
+ 533 0004 04F2FF73 	 addw r3,r4,#2047
+ 534 0008 9BB2     	 uxth r3,r3
+ 535 000a 40F6FE76 	 movw r6,#4094
+ 536 000e B342     	 cmp r3,r6
+ 537 0010 15D8     	 bhi .L82
+ 538 0012 93B2     	 uxth r3,r2
+ 539 0014 03F2FF75 	 addw r5,r3,#2047
+ 540 0018 ADB2     	 uxth r5,r5
+ 541 001a B542     	 cmp r5,r6
+ 542 001c 0FD8     	 bhi .L82
+ 543 001e 0029     	 cmp r1,#0
+ 544 0020 BCBF     	 itt lt
+ 545 0022 04F58051 	 addlt r1,r4,#4096
+ 546 0026 09B2     	 sxthlt r1,r1
+ 547 0028 002A     	 cmp r2,#0
+ 548 002a BCBF     	 itt lt
+ 549 002c 03F58052 	 addlt r2,r3,#4096
+ 550 0030 12B2     	 sxthlt r2,r2
+ 551 0032 0368     	 ldr r3,[r0]
+ 552 0034 41EA0241 	 orr r1,r1,r2,lsl#16
+ 553 0038 D961     	 str r1,[r3,#28]
+ 554 003a 0020     	 movs r0,#0
+ 555 003c 70BD     	 pop {r4,r5,r6,pc}
+ 556              	.L82:
+ 557 003e 0220     	 movs r0,#2
+ 558 0040 70BD     	 pop {r4,r5,r6,pc}
+ 560              	 .section .text.DAC_SingleValue_SetValue_u16,"ax",%progbits
+ 561              	 .align 1
+ 562              	 .global DAC_SingleValue_SetValue_u16
+ 563              	 .thumb
+ 564              	 .thumb_func
+ 566              	DAC_SingleValue_SetValue_u16:
+ 567              	 
+ 568              	 
+ 569              	 
+ 570 0000 B1F5805F 	 cmp r1,#4096
+ 571 0004 3FBF     	 itttt cc
+ 572 0006 90F82230 	 ldrbcc r3,[r0,#34]
+ 573 000a 0268     	 ldrcc r2,[r0]
+ 574 000c 0433     	 addcc r3,r3,#4
+ 575 000e 02EB8303 	 addcc r3,r2,r3,lsl#2
+ 576 0012 3ABF     	 itte cc
+ 577 0014 0020     	 movcc r0,#0
+ 578 0016 5960     	 strcc r1,[r3,#4]
+ 579 0018 0220     	 movcs r0,#2
+ 580 001a 7047     	 bx lr
+ 582              	 .section .text.DAC_SingleValue_SetValue_u16_Coupled,"ax",%progbits
+ 583              	 .align 1
+ 584              	 .global DAC_SingleValue_SetValue_u16_Coupled
+ 585              	 .thumb
+ 586              	 .thumb_func
+ 588              	DAC_SingleValue_SetValue_u16_Coupled:
+ 589              	 
+ 590              	 
+ 591              	 
+ 592 0000 B1F5805F 	 cmp r1,#4096
+ 593 0004 08D2     	 bcs .L89
+ 594 0006 B2F5805F 	 cmp r2,#4096
+ 595 000a 05D2     	 bcs .L89
+ 596 000c 0368     	 ldr r3,[r0]
+ 597 000e 41EA0241 	 orr r1,r1,r2,lsl#16
+ 598 0012 D961     	 str r1,[r3,#28]
+ 599 0014 0020     	 movs r0,#0
+ 600 0016 7047     	 bx lr
+ 601              	.L89:
+ 602 0018 0220     	 movs r0,#2
+ 603 001a 7047     	 bx lr
+ 605              	 .section .text.DAC_Ramp_SetStart,"ax",%progbits
+ 606              	 .align 1
+ 607              	 .global DAC_Ramp_SetStart
+ 608              	 .thumb
+ 609              	 .thumb_func
+ 611              	DAC_Ramp_SetStart:
+ 612              	 
+ 613              	 
+ 614 0000 38B5     	 push {r3,r4,r5,lr}
+ 615 0002 A1F59673 	 sub r3,r1,#300
+ 616 0006 9BB2     	 uxth r3,r3
+ 617 0008 40F69802 	 movw r2,#2200
+ 618 000c 9342     	 cmp r3,r2
+ 619 000e 0546     	 mov r5,r0
+ 620 0010 27D8     	 bhi .L98
+ 621 0012 C08B     	 ldrh r0,[r0,#30]
+ 622 0014 8142     	 cmp r1,r0
+ 623 0016 24D2     	 bcs .L98
+ 624 0018 134C     	 ldr r4,.L99
+ 625 001a A983     	 strh r1,[r5,#28]
+ 626 001c C1EB0133 	 rsb r3,r1,r1,lsl#12
+ 627 0020 1C44     	 add r4,r4,r3
+ 628 0022 114B     	 ldr r3,.L99
+ 629 0024 B4FBF2F4 	 udiv r4,r4,r2
+ 630 0028 C0EB0030 	 rsb r0,r0,r0,lsl#12
+ 631 002c 0344     	 add r3,r3,r0
+ 632 002e 2868     	 ldr r0,[r5]
+ 633 0030 B3FBF2F2 	 udiv r2,r3,r2
+ 634 0034 95F82230 	 ldrb r3,[r5,#34]
+ 635 0038 00EBC303 	 add r3,r0,r3,lsl#3
+ 636 003c 92B2     	 uxth r2,r2
+ 637 003e 5968     	 ldr r1,[r3,#4]
+ 638 0040 21F08051 	 bic r1,r1,#268435456
+ 639 0044 5960     	 str r1,[r3,#4]
+ 640 0046 95F82210 	 ldrb r1,[r5,#34]
+ 641 004a FFF7FEFF 	 bl XMC_DAC_CH_SetRampStop
+ 642 004e 95F82230 	 ldrb r3,[r5,#34]
+ 643 0052 2A68     	 ldr r2,[r5]
+ 644 0054 0433     	 adds r3,r3,#4
+ 645 0056 02EB8303 	 add r3,r2,r3,lsl#2
+ 646 005a A4B2     	 uxth r4,r4
+ 647 005c 5C60     	 str r4,[r3,#4]
+ 648 005e 0020     	 movs r0,#0
+ 649 0060 38BD     	 pop {r3,r4,r5,pc}
+ 650              	.L98:
+ 651 0062 0220     	 movs r0,#2
+ 652 0064 38BD     	 pop {r3,r4,r5,pc}
+ 653              	.L100:
+ 654 0066 00BF     	 .align 2
+ 655              	.L99:
+ 656 0068 2C41EDFF 	 .word -1228500
+ 658              	 .section .text.DAC_Ramp_SetStop,"ax",%progbits
+ 659              	 .align 1
+ 660              	 .global DAC_Ramp_SetStop
+ 661              	 .thumb
+ 662              	 .thumb_func
+ 664              	DAC_Ramp_SetStop:
+ 665              	 
+ 666              	 
+ 667 0000 A1F59672 	 sub r2,r1,#300
+ 668 0004 92B2     	 uxth r2,r2
+ 669 0006 40F69803 	 movw r3,#2200
+ 670 000a 9A42     	 cmp r2,r3
+ 671 000c 70B5     	 push {r4,r5,r6,lr}
+ 672 000e 0446     	 mov r4,r0
+ 673 0010 02D8     	 bhi .L109
+ 674 0012 808B     	 ldrh r0,[r0,#28]
+ 675 0014 8142     	 cmp r1,r0
+ 676 0016 01D8     	 bhi .L115
+ 677              	.L109:
+ 678 0018 0220     	 movs r0,#2
+ 679 001a 70BD     	 pop {r4,r5,r6,pc}
+ 680              	.L115:
+ 681 001c 8842     	 cmp r0,r1
+ 682 001e 4FEA0035 	 lsl r5,r0,#12
+ 683 0022 4FEA0136 	 lsl r6,r1,#12
+ 684 0026 0BD9     	 bls .L116
+ 685 0028 244A     	 ldr r2,.L117
+ 686 002a 2D1A     	 subs r5,r5,r0
+ 687 002c 2A44     	 add r2,r2,r5
+ 688 002e 234D     	 ldr r5,.L117
+ 689 0030 B2FBF3F2 	 udiv r2,r2,r3
+ 690 0034 761A     	 subs r6,r6,r1
+ 691 0036 3544     	 add r5,r5,r6
+ 692 0038 92B2     	 uxth r2,r2
+ 693 003a B5FBF3F3 	 udiv r3,r5,r3
+ 694 003e 0AE0     	 b .L113
+ 695              	.L116:
+ 696 0040 1E4A     	 ldr r2,.L117
+ 697 0042 761A     	 subs r6,r6,r1
+ 698 0044 3244     	 add r2,r2,r6
+ 699 0046 1D4E     	 ldr r6,.L117
+ 700 0048 B2FBF3F2 	 udiv r2,r2,r3
+ 701 004c 2D1A     	 subs r5,r5,r0
+ 702 004e 92B2     	 uxth r2,r2
+ 703 0050 2E44     	 add r6,r6,r5
+ 704 0052 B6FBF3F3 	 udiv r3,r6,r3
+ 705              	.L113:
+ 706 0056 8842     	 cmp r0,r1
+ 707 0058 E183     	 strh r1,[r4,#30]
+ 708 005a 9BB2     	 uxth r3,r3
+ 709 005c 2068     	 ldr r0,[r4]
+ 710 005e 94F82210 	 ldrb r1,[r4,#34]
+ 711 0062 19D9     	 bls .L105
+ 712 0064 C2F57F62 	 rsb r2,r2,#4080
+ 713 0068 0431     	 adds r1,r1,#4
+ 714 006a 00EB8101 	 add r1,r0,r1,lsl#2
+ 715 006e 0F32     	 adds r2,r2,#15
+ 716 0070 92B2     	 uxth r2,r2
+ 717 0072 4A60     	 str r2,[r1,#4]
+ 718 0074 C3F57F62 	 rsb r2,r3,#4080
+ 719 0078 0F32     	 adds r2,r2,#15
+ 720 007a 92B2     	 uxth r2,r2
+ 721 007c 94F82210 	 ldrb r1,[r4,#34]
+ 722 0080 FFF7FEFF 	 bl XMC_DAC_CH_SetRampStop
+ 723 0084 94F82220 	 ldrb r2,[r4,#34]
+ 724 0088 2368     	 ldr r3,[r4]
+ 725 008a 03EBC203 	 add r3,r3,r2,lsl#3
+ 726 008e 5A68     	 ldr r2,[r3,#4]
+ 727 0090 42F08052 	 orr r2,r2,#268435456
+ 728 0094 5A60     	 str r2,[r3,#4]
+ 729 0096 0FE0     	 b .L114
+ 730              	.L105:
+ 731 0098 00EBC101 	 add r1,r0,r1,lsl#3
+ 732 009c 4D68     	 ldr r5,[r1,#4]
+ 733 009e 25F08055 	 bic r5,r5,#268435456
+ 734 00a2 4D60     	 str r5,[r1,#4]
+ 735 00a4 94F82210 	 ldrb r1,[r4,#34]
+ 736 00a8 0431     	 adds r1,r1,#4
+ 737 00aa 00EB8101 	 add r1,r0,r1,lsl#2
+ 738 00ae 4B60     	 str r3,[r1,#4]
+ 739 00b0 94F82210 	 ldrb r1,[r4,#34]
+ 740 00b4 FFF7FEFF 	 bl XMC_DAC_CH_SetRampStop
+ 741              	.L114:
+ 742 00b8 0020     	 movs r0,#0
+ 743 00ba 70BD     	 pop {r4,r5,r6,pc}
+ 744              	.L118:
+ 745              	 .align 2
+ 746              	.L117:
+ 747 00bc 2C41EDFF 	 .word -1228500
+ 749              	 .section .text.DAC_Ramp_SetFrequency,"ax",%progbits
+ 750              	 .align 1
+ 751              	 .global DAC_Ramp_SetFrequency
+ 752              	 .thumb
+ 753              	 .thumb_func
+ 755              	DAC_Ramp_SetFrequency:
+ 756              	 
+ 757              	 
+ 758 0000 C368     	 ldr r3,[r0,#12]
+ 759 0002 2DE9F041 	 push {r4,r5,r6,r7,r8,lr}
+ 760 0006 0746     	 mov r7,r0
+ 761 0008 8846     	 mov r8,r1
+ 762 000a 002B     	 cmp r3,#0
+ 763 000c 5AD1     	 bne .L120
+ 764 000e 0029     	 cmp r1,#0
+ 765 0010 58D0     	 beq .L120
+ 766 0012 818B     	 ldrh r1,[r0,#28]
+ 767 0014 C28B     	 ldrh r2,[r0,#30]
+ 768 0016 9142     	 cmp r1,r2
+ 769 0018 4FEA0230 	 lsl r0,r2,#12
+ 770 001c 40F69804 	 movw r4,#2200
+ 771 0020 4FEA0133 	 lsl r3,r1,#12
+ 772 0024 0BD9     	 bls .L121
+ 773 0026 5B1A     	 subs r3,r3,r1
+ 774 0028 284D     	 ldr r5,.L131
+ 775 002a 2849     	 ldr r1,.L131
+ 776 002c 801A     	 subs r0,r0,r2
+ 777 002e 0544     	 add r5,r5,r0
+ 778 0030 1944     	 add r1,r1,r3
+ 779 0032 B5FBF4F5 	 udiv r5,r5,r4
+ 780 0036 B1FBF4F4 	 udiv r4,r1,r4
+ 781 003a ADB2     	 uxth r5,r5
+ 782 003c 0AE0     	 b .L130
+ 783              	.L121:
+ 784 003e 234D     	 ldr r5,.L131
+ 785 0040 5B1A     	 subs r3,r3,r1
+ 786 0042 1D44     	 add r5,r5,r3
+ 787 0044 214B     	 ldr r3,.L131
+ 788 0046 B5FBF4F5 	 udiv r5,r5,r4
+ 789 004a 801A     	 subs r0,r0,r2
+ 790 004c ADB2     	 uxth r5,r5
+ 791 004e 0344     	 add r3,r3,r0
+ 792 0050 B3FBF4F4 	 udiv r4,r3,r4
+ 793              	.L130:
+ 794 0054 A4B2     	 uxth r4,r4
+ 795 0056 AC42     	 cmp r4,r5
+ 796 0058 34D0     	 beq .L120
+ 797 005a FFF7FEFF 	 bl XMC_SCU_CLOCK_GetPeripheralClockFrequency
+ 798 005e 661C     	 adds r6,r4,#1
+ 799 0060 761B     	 subs r6,r6,r5
+ 800 0062 B6B2     	 uxth r6,r6
+ 801 0064 08FB06F6 	 mul r6,r8,r6
+ 802 0068 B0FBF6F6 	 udiv r6,r0,r6
+ 803 006c 002E     	 cmp r6,#0
+ 804 006e 08BF     	 it eq
+ 805 0070 0126     	 moveq r6,#1
+ 806 0072 FFF7FEFF 	 bl XMC_SCU_CLOCK_GetPeripheralClockFrequency
+ 807 0076 B6F5801F 	 cmp r6,#1048576
+ 808 007a 1BD2     	 bcs .L124
+ 809 007c B0FBF6F2 	 udiv r2,r0,r6
+ 810 0080 134B     	 ldr r3,.L131+4
+ 811 0082 9A42     	 cmp r2,r3
+ 812 0084 07D9     	 bls .L125
+ 813 0086 3846     	 mov r0,r7
+ 814 0088 2946     	 mov r1,r5
+ 815 008a 2246     	 mov r2,r4
+ 816 008c 4346     	 mov r3,r8
+ 817 008e BDE8F041 	 pop {r4,r5,r6,r7,r8,lr}
+ 818 0092 FFF7FEBF 	 b DAC_Ramp_ScaleUp
+ 819              	.L125:
+ 820 0096 3868     	 ldr r0,[r7]
+ 821 0098 97F82230 	 ldrb r3,[r7,#34]
+ 822 009c 00EBC303 	 add r3,r0,r3,lsl#3
+ 823 00a0 9968     	 ldr r1,[r3,#8]
+ 824 00a2 21F00F01 	 bic r1,r1,#15
+ 825 00a6 9960     	 str r1,[r3,#8]
+ 826 00a8 97F82210 	 ldrb r1,[r7,#34]
+ 827 00ac BDE8F041 	 pop {r4,r5,r6,r7,r8,lr}
+ 828 00b0 FFF7FEBF 	 b XMC_DAC_CH_SetFrequency
+ 829              	.L124:
+ 830 00b4 3846     	 mov r0,r7
+ 831 00b6 2946     	 mov r1,r5
+ 832 00b8 2246     	 mov r2,r4
+ 833 00ba 4346     	 mov r3,r8
+ 834 00bc BDE8F041 	 pop {r4,r5,r6,r7,r8,lr}
+ 835 00c0 FFF7FEBF 	 b DAC_Ramp_ScaleDown
+ 836              	.L120:
+ 837 00c4 0220     	 movs r0,#2
+ 838 00c6 BDE8F081 	 pop {r4,r5,r6,r7,r8,pc}
+ 839              	.L132:
+ 840 00ca 00BF     	 .align 2
+ 841              	.L131:
+ 842 00cc 2C41EDFF 	 .word -1228500
+ 843 00d0 80841E00 	 .word 2000000
+ 845              	 .section .text.DAC_Noise_SetAmplitude,"ax",%progbits
+ 846              	 .align 1
+ 847              	 .global DAC_Noise_SetAmplitude
+ 848              	 .thumb
+ 849              	 .thumb_func
+ 851              	DAC_Noise_SetAmplitude:
+ 852              	 
+ 853              	 
+ 854              	 
+ 855 0000 0329     	 cmp r1,#3
+ 856 0002 11D9     	 bls .L136
+ 857 0004 0368     	 ldr r3,[r0]
+ 858 0006 90F82220 	 ldrb r2,[r0,#34]
+ 859 000a 03EBC202 	 add r2,r3,r2,lsl#3
+ 860 000e 0B29     	 cmp r1,#11
+ 861 0010 9368     	 ldr r3,[r2,#8]
+ 862 0012 1ABF     	 itte ne
+ 863 0014 C1F10B01 	 rsbne r1,r1,#11
+ 864 0018 C9B2     	 uxtbne r1,r1
+ 865 001a 0021     	 moveq r1,#0
+ 866 001c 23F00F03 	 bic r3,r3,#15
+ 867 0020 1943     	 orrs r1,r1,r3
+ 868 0022 9160     	 str r1,[r2,#8]
+ 869 0024 0020     	 movs r0,#0
+ 870 0026 7047     	 bx lr
+ 871              	.L136:
+ 872 0028 0220     	 movs r0,#2
+ 873 002a 7047     	 bx lr
+ 875              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 dac.c
+    {standard input}:17     .text.XMC_DAC_CH_SetRampStop:00000000 $t
+    {standard input}:21     .text.XMC_DAC_CH_SetRampStop:00000000 XMC_DAC_CH_SetRampStop
+    {standard input}:36     .text.DAC_Ramp_StartStopConfigure:00000000 $t
+    {standard input}:41     .text.DAC_Ramp_StartStopConfigure:00000000 DAC_Ramp_StartStopConfigure
+    {standard input}:78     .text.DAC_Ramp_ScaleUp:00000000 $t
+    {standard input}:83     .text.DAC_Ramp_ScaleUp:00000000 DAC_Ramp_ScaleUp
+    {standard input}:161    .text.DAC_Ramp_ScaleUp:000000a8 $d
+    {standard input}:164    .text.DAC_Ramp_ScaleDown:00000000 $t
+    {standard input}:169    .text.DAC_Ramp_ScaleDown:00000000 DAC_Ramp_ScaleDown
+    {standard input}:248    .text.DAC_ModeConfig:00000000 $t
+    {standard input}:253    .text.DAC_ModeConfig:00000000 DAC_ModeConfig
+    {standard input}:349    .text.DAC_GetAppVersion:00000000 $t
+    {standard input}:354    .text.DAC_GetAppVersion:00000000 DAC_GetAppVersion
+    {standard input}:371    .text.DAC_Init:00000000 $t
+    {standard input}:376    .text.DAC_Init:00000000 DAC_Init
+    {standard input}:409    .text.DAC_Pattern_SetAmplitude:00000000 $t
+    {standard input}:414    .text.DAC_Pattern_SetAmplitude:00000000 DAC_Pattern_SetAmplitude
+    {standard input}:441    .text.DAC_Pattern_SetOffset:00000000 $t
+    {standard input}:446    .text.DAC_Pattern_SetOffset:00000000 DAC_Pattern_SetOffset
+    {standard input}:491    .text.DAC_SingleValue_SetValue_s16:00000000 $t
+    {standard input}:496    .text.DAC_SingleValue_SetValue_s16:00000000 DAC_SingleValue_SetValue_s16
+    {standard input}:523    .text.DAC_SingleValue_SetValue_s16_Coupled:00000000 $t
+    {standard input}:528    .text.DAC_SingleValue_SetValue_s16_Coupled:00000000 DAC_SingleValue_SetValue_s16_Coupled
+    {standard input}:561    .text.DAC_SingleValue_SetValue_u16:00000000 $t
+    {standard input}:566    .text.DAC_SingleValue_SetValue_u16:00000000 DAC_SingleValue_SetValue_u16
+    {standard input}:583    .text.DAC_SingleValue_SetValue_u16_Coupled:00000000 $t
+    {standard input}:588    .text.DAC_SingleValue_SetValue_u16_Coupled:00000000 DAC_SingleValue_SetValue_u16_Coupled
+    {standard input}:606    .text.DAC_Ramp_SetStart:00000000 $t
+    {standard input}:611    .text.DAC_Ramp_SetStart:00000000 DAC_Ramp_SetStart
+    {standard input}:656    .text.DAC_Ramp_SetStart:00000068 $d
+    {standard input}:659    .text.DAC_Ramp_SetStop:00000000 $t
+    {standard input}:664    .text.DAC_Ramp_SetStop:00000000 DAC_Ramp_SetStop
+    {standard input}:747    .text.DAC_Ramp_SetStop:000000bc $d
+    {standard input}:750    .text.DAC_Ramp_SetFrequency:00000000 $t
+    {standard input}:755    .text.DAC_Ramp_SetFrequency:00000000 DAC_Ramp_SetFrequency
+    {standard input}:842    .text.DAC_Ramp_SetFrequency:000000cc $d
+    {standard input}:846    .text.DAC_Noise_SetAmplitude:00000000 $t
+    {standard input}:851    .text.DAC_Noise_SetAmplitude:00000000 DAC_Noise_SetAmplitude
+
+UNDEFINED SYMBOLS
+XMC_SCU_CLOCK_GetPeripheralClockFrequency
+XMC_DAC_CH_SetFrequency
+XMC_DAC_CH_StartPatternMode
+XMC_DAC_CH_StartSingleValueMode
+XMC_DAC_CH_StartDataMode
+XMC_DAC_CH_StartRampMode
+XMC_DAC_CH_StartNoiseMode
+XMC_DAC_CH_Init

@@ -1,0 +1,171 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "digital_io_conf.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .global P_1_0
+  20              	 .section .rodata.P_1_0,"a",%progbits
+  21              	 .align 2
+  24              	P_1_0:
+  25 0000 00810248 	 .word 1208123648
+  26 0004 80       	 .byte -128
+  27 0005 000000   	 .space 3
+  28 0008 00000100 	 .word 65536
+  29 000c 00000000 	 .space 4
+  30 0010 00       	 .byte 0
+  31 0011 00       	 .byte 0
+  32 0012 0000     	 .space 2
+  33              	 .global P_1_1
+  34              	 .section .rodata.P_1_1,"a",%progbits
+  35              	 .align 2
+  38              	P_1_1:
+  39 0000 00810248 	 .word 1208123648
+  40 0004 80       	 .byte -128
+  41 0005 000000   	 .space 3
+  42 0008 00000100 	 .word 65536
+  43 000c 00000000 	 .space 4
+  44 0010 01       	 .byte 1
+  45 0011 00       	 .byte 0
+  46 0012 0000     	 .space 2
+  47              	 .global ENABLE
+  48              	 .section .rodata.ENABLE,"a",%progbits
+  49              	 .align 2
+  52              	ENABLE:
+  53 0000 00850248 	 .word 1208124672
+  54 0004 80       	 .byte -128
+  55 0005 000000   	 .space 3
+  56 0008 00000100 	 .word 65536
+  57 000c 00000000 	 .space 4
+  58 0010 07       	 .byte 7
+  59 0011 00       	 .byte 0
+  60 0012 0000     	 .space 2
+  61              	 .global Button_1
+  62              	 .section .rodata.Button_1,"a",%progbits
+  63              	 .align 2
+  66              	Button_1:
+  67 0000 00810248 	 .word 1208123648
+  68 0004 08       	 .byte 8
+  69 0005 00000000 	 .space 11
+  69      00000000 
+  69      000000
+  70 0010 0F       	 .byte 15
+  71 0011 00       	 .byte 0
+  72 0012 0000     	 .space 2
+  73              	 .global P_0_9
+  74              	 .section .rodata.P_0_9,"a",%progbits
+  75              	 .align 2
+  78              	P_0_9:
+  79 0000 00800248 	 .word 1208123392
+  80 0004 80       	 .byte -128
+  81 0005 000000   	 .space 3
+  82 0008 00000100 	 .word 65536
+  83 000c 00000000 	 .space 4
+  84 0010 09       	 .byte 9
+  85 0011 00       	 .byte 0
+  86 0012 0000     	 .space 2
+  87              	 .global EN_1
+  88              	 .section .rodata.EN_1,"a",%progbits
+  89              	 .align 2
+  92              	EN_1:
+  93 0000 00800248 	 .word 1208123392
+  94 0004 80       	 .byte -128
+  95 0005 000000   	 .space 3
+  96 0008 00000100 	 .word 65536
+  97 000c 00000000 	 .space 4
+  98 0010 08       	 .byte 8
+  99 0011 00       	 .byte 0
+ 100 0012 0000     	 .space 2
+ 101              	 .global EN_2
+ 102              	 .section .rodata.EN_2,"a",%progbits
+ 103              	 .align 2
+ 106              	EN_2:
+ 107 0000 00800248 	 .word 1208123392
+ 108 0004 80       	 .byte -128
+ 109 0005 000000   	 .space 3
+ 110 0008 00000100 	 .word 65536
+ 111 000c 00000000 	 .space 4
+ 112 0010 0C       	 .byte 12
+ 113 0011 00       	 .byte 0
+ 114 0012 0000     	 .space 2
+ 115              	 .global EN_3
+ 116              	 .section .rodata.EN_3,"a",%progbits
+ 117              	 .align 2
+ 120              	EN_3:
+ 121 0000 00800248 	 .word 1208123392
+ 122 0004 80       	 .byte -128
+ 123 0005 000000   	 .space 3
+ 124 0008 00000100 	 .word 65536
+ 125 000c 00000000 	 .space 4
+ 126 0010 02       	 .byte 2
+ 127 0011 00       	 .byte 0
+ 128 0012 0000     	 .space 2
+ 129              	 .global FAULT_IN
+ 130              	 .section .rodata.FAULT_IN,"a",%progbits
+ 131              	 .align 2
+ 134              	FAULT_IN:
+ 135 0000 00830248 	 .word 1208124160
+ 136 0004 08       	 .byte 8
+ 137 0005 00000000 	 .space 11
+ 137      00000000 
+ 137      000000
+ 138 0010 03       	 .byte 3
+ 139 0011 00       	 .byte 0
+ 140 0012 0000     	 .space 2
+ 141              	 .global FAULT_RST
+ 142              	 .section .rodata.FAULT_RST,"a",%progbits
+ 143              	 .align 2
+ 146              	FAULT_RST:
+ 147 0000 00830248 	 .word 1208124160
+ 148 0004 80       	 .byte -128
+ 149 0005 000000   	 .space 3
+ 150 0008 00000100 	 .word 65536
+ 151 000c 00000000 	 .space 4
+ 152 0010 02       	 .byte 2
+ 153 0011 00       	 .byte 0
+ 154 0012 0000     	 .space 2
+ 155              	 .text
+ 156              	.Letext0:
+ 157              	 .file 1 "c:\\program files (x86)\\dave\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 158              	 .file 2 "c:\\program files (x86)\\dave\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 159              	 .file 3 "F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Libraries/XMCLib/inc/xmc_gpio.h"
+ 160              	 .file 4 "F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Libraries/XMCLib/inc/xmc4_gpio.h"
+ 161              	 .file 5 "../Dave/Generated/DIGITAL_IO/digital_io.h"
+ 162              	 .file 6 "F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Libraries/CMSIS/Include/core_cm4.h"
+ 163              	 .file 7 "../Dave/Generated/DIGITAL_IO/digital_io_conf.c"
+DEFINED SYMBOLS
+                            *ABS*:00000000 digital_io_conf.c
+    {standard input}:24     .rodata.P_1_0:00000000 P_1_0
+    {standard input}:21     .rodata.P_1_0:00000000 $d
+    {standard input}:38     .rodata.P_1_1:00000000 P_1_1
+    {standard input}:35     .rodata.P_1_1:00000000 $d
+    {standard input}:52     .rodata.ENABLE:00000000 ENABLE
+    {standard input}:49     .rodata.ENABLE:00000000 $d
+    {standard input}:66     .rodata.Button_1:00000000 Button_1
+    {standard input}:63     .rodata.Button_1:00000000 $d
+    {standard input}:78     .rodata.P_0_9:00000000 P_0_9
+    {standard input}:75     .rodata.P_0_9:00000000 $d
+    {standard input}:92     .rodata.EN_1:00000000 EN_1
+    {standard input}:89     .rodata.EN_1:00000000 $d
+    {standard input}:106    .rodata.EN_2:00000000 EN_2
+    {standard input}:103    .rodata.EN_2:00000000 $d
+    {standard input}:120    .rodata.EN_3:00000000 EN_3
+    {standard input}:117    .rodata.EN_3:00000000 $d
+    {standard input}:134    .rodata.FAULT_IN:00000000 FAULT_IN
+    {standard input}:131    .rodata.FAULT_IN:00000000 $d
+    {standard input}:146    .rodata.FAULT_RST:00000000 FAULT_RST
+    {standard input}:143    .rodata.FAULT_RST:00000000 $d
+
+NO UNDEFINED SYMBOLS

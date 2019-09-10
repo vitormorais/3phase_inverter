@@ -1,0 +1,78 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "arm_cmplx_mag_squared_f32.c"
+  16              	 .section .text.arm_cmplx_mag_squared_f32,"ax",%progbits
+  17              	 .align 1
+  18              	 .global arm_cmplx_mag_squared_f32
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	arm_cmplx_mag_squared_f32:
+  23              	 
+  24              	 
+  25 0000 70B5     	 push {r4,r5,r6,lr}
+  26 0002 9508     	 lsrs r5,r2,#2
+  27 0004 0346     	 mov r3,r0
+  28 0006 0C46     	 mov r4,r1
+  29 0008 2E46     	 mov r6,r5
+  30              	.L2:
+  31 000a 2033     	 adds r3,r3,#32
+  32 000c 1034     	 adds r4,r4,#16
+  33 000e 4EB3     	 cbz r6,.L7
+  34 0010 13ED076A 	 flds s12,[r3,#-28]
+  35 0014 53ED056A 	 flds s13,[r3,#-20]
+  36 0018 13ED037A 	 flds s14,[r3,#-12]
+  37 001c 53ED017A 	 flds s15,[r3,#-4]
+  38 0020 13ED084A 	 flds s8,[r3,#-32]
+  39 0024 53ED064A 	 flds s9,[r3,#-24]
+  40 0028 13ED045A 	 flds s10,[r3,#-16]
+  41 002c 53ED025A 	 flds s11,[r3,#-8]
+  42 0030 26EE066A 	 fmuls s12,s12,s12
+  43 0034 66EEA66A 	 fmuls s13,s13,s13
+  44 0038 27EE077A 	 fmuls s14,s14,s14
+  45 003c 67EEA77A 	 fmuls s15,s15,s15
+  46 0040 A4EE046A 	 vfma.f32 s12,s8,s8
+  47 0044 013E     	 subs r6,r6,#1
+  48 0046 E4EEA46A 	 vfma.f32 s13,s9,s9
+  49 004a A5EE057A 	 vfma.f32 s14,s10,s10
+  50 004e E5EEA57A 	 vfma.f32 s15,s11,s11
+  51 0052 04ED046A 	 fsts s12,[r4,#-16]
+  52 0056 44ED036A 	 fsts s13,[r4,#-12]
+  53 005a 04ED027A 	 fsts s14,[r4,#-8]
+  54 005e 44ED017A 	 fsts s15,[r4,#-4]
+  55 0062 D2E7     	 b .L2
+  56              	.L7:
+  57 0064 01EB0511 	 add r1,r1,r5,lsl#4
+  58 0068 02F00302 	 and r2,r2,#3
+  59 006c 00EB4510 	 add r0,r0,r5,lsl#5
+  60 0070 01EB8202 	 add r2,r1,r2,lsl#2
+  61              	.L4:
+  62 0074 9142     	 cmp r1,r2
+  63 0076 00F10800 	 add r0,r0,#8
+  64 007a 0AD0     	 beq .L8
+  65 007c 50ED017A 	 flds s15,[r0,#-4]
+  66 0080 10ED027A 	 flds s14,[r0,#-8]
+  67 0084 67EEA77A 	 fmuls s15,s15,s15
+  68 0088 E7EE077A 	 vfma.f32 s15,s14,s14
+  69 008c E1EC017A 	 fstmias r1!,{s15}
+  70 0090 F0E7     	 b .L4
+  71              	.L8:
+  72 0092 70BD     	 pop {r4,r5,r6,pc}
+  74              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 arm_cmplx_mag_squared_f32.c
+    {standard input}:17     .text.arm_cmplx_mag_squared_f32:00000000 $t
+    {standard input}:22     .text.arm_cmplx_mag_squared_f32:00000000 arm_cmplx_mag_squared_f32
+
+NO UNDEFINED SYMBOLS

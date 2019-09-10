@@ -1,0 +1,1601 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "arm_mat_cmplx_mult_q31.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .section .text.arm_mat_cmplx_mult_q31,"ax",%progbits
+  20              	 .align 2
+  21              	 .global arm_mat_cmplx_mult_q31
+  22              	 .thumb
+  23              	 .thumb_func
+  25              	arm_mat_cmplx_mult_q31:
+  26              	.LFB135:
+  27              	 .file 1 "../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c"
+   1:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** /* ----------------------------------------------------------------------
+   2:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * Project:      CMSIS DSP Library
+   3:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * Title:        arm_mat_cmplx_mult_q31.c
+   4:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * Description:  Floating-point matrix multiplication
+   5:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  *
+   6:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * $Date:        27. January 2017
+   7:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * $Revision:    V.1.5.1
+   8:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  *
+   9:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * Target Processor: Cortex-M cores
+  10:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * -------------------------------------------------------------------- */
+  11:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** /*
+  12:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * Copyright (C) 2010-2017 ARM Limited or its affiliates. All rights reserved.
+  13:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  *
+  14:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * SPDX-License-Identifier: Apache-2.0
+  15:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  *
+  16:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * Licensed under the Apache License, Version 2.0 (the License); you may
+  17:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * not use this file except in compliance with the License.
+  18:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * You may obtain a copy of the License at
+  19:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  *
+  20:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * www.apache.org/licenses/LICENSE-2.0
+  21:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  *
+  22:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * Unless required by applicable law or agreed to in writing, software
+  23:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * distributed under the License is distributed on an AS IS BASIS, WITHOUT
+  24:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  25:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * See the License for the specific language governing permissions and
+  26:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * limitations under the License.
+  27:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  */
+  28:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+  29:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** #include "CMSIS_DSP/cmsis_dsp.h"
+  30:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+  31:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** /**
+  32:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * @ingroup groupMatrix
+  33:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  */
+  34:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+  35:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** /**
+  36:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * @addtogroup CmplxMatrixMult
+  37:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * @{
+  38:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  */
+  39:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+  40:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** /**
+  41:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * @brief Q31 Complex matrix multiplication
+  42:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * @param[in]       *pSrcA points to the first input complex matrix structure
+  43:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * @param[in]       *pSrcB points to the second input complex matrix structure
+  44:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * @param[out]      *pDst points to output complex matrix structure
+  45:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * @return     		The function returns either
+  46:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * <code>ARM_MATH_SIZE_MISMATCH</code> or <code>ARM_MATH_SUCCESS</code> based on the outcome of siz
+  47:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  *
+  48:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * @details
+  49:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * <b>Scaling and Overflow Behavior:</b>
+  50:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  *
+  51:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * \par
+  52:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * The function is implemented using an internal 64-bit accumulator.
+  53:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * The accumulator has a 2.62 format and maintains full precision of the intermediate
+  54:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * multiplication results but provides only a single guard bit. There is no saturation
+  55:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * on intermediate additions. Thus, if the accumulator overflows it wraps around and
+  56:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * distorts the result. The input signals should be scaled down to avoid intermediate
+  57:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * overflows. The input is thus scaled down by log2(numColsA) bits
+  58:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * to avoid overflows, as a total of numColsA additions are performed internally.
+  59:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  * The 2.62 accumulator is right shifted by 31 bits and saturated to 1.31 format to yield the final
+  60:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  *
+  61:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  *
+  62:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****  */
+  63:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+  64:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** arm_status arm_mat_cmplx_mult_q31(
+  65:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****   const arm_matrix_instance_q31 * pSrcA,
+  66:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****   const arm_matrix_instance_q31 * pSrcB,
+  67:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****   arm_matrix_instance_q31 * pDst)
+  68:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** {
+  28              	 .loc 1 68 0
+  29              	 .cfi_startproc
+  30              	 
+  31              	 
+  32              	 
+  33 0000 2DE9B00F 	 push {r4,r5,r7,r8,r9,r10,fp}
+  34              	.LCFI0:
+  35              	 .cfi_def_cfa_offset 28
+  36              	 .cfi_offset 4,-28
+  37              	 .cfi_offset 5,-24
+  38              	 .cfi_offset 7,-20
+  39              	 .cfi_offset 8,-16
+  40              	 .cfi_offset 9,-12
+  41              	 .cfi_offset 10,-8
+  42              	 .cfi_offset 11,-4
+  43 0004 A7B0     	 sub sp,sp,#156
+  44              	.LCFI1:
+  45              	 .cfi_def_cfa_offset 184
+  46 0006 00AF     	 add r7,sp,#0
+  47              	.LCFI2:
+  48              	 .cfi_def_cfa_register 7
+  49 0008 F862     	 str r0,[r7,#44]
+  50 000a B962     	 str r1,[r7,#40]
+  51 000c 7A62     	 str r2,[r7,#36]
+  69:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****   q31_t *pIn1 = pSrcA->pData;                    /* input data matrix pointer A */
+  52              	 .loc 1 69 0
+  53 000e FB6A     	 ldr r3,[r7,#44]
+  54 0010 5B68     	 ldr r3,[r3,#4]
+  55 0012 C7F89430 	 str r3,[r7,#148]
+  70:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****   q31_t *pIn2 = pSrcB->pData;                    /* input data matrix pointer B */
+  56              	 .loc 1 70 0
+  57 0016 BB6A     	 ldr r3,[r7,#40]
+  58 0018 5B68     	 ldr r3,[r3,#4]
+  59 001a C7F89030 	 str r3,[r7,#144]
+  71:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****   q31_t *pInA = pSrcA->pData;                    /* input data matrix pointer A  */
+  60              	 .loc 1 71 0
+  61 001e FB6A     	 ldr r3,[r7,#44]
+  62 0020 5B68     	 ldr r3,[r3,#4]
+  63 0022 C7F88C30 	 str r3,[r7,#140]
+  72:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****   q31_t *pOut = pDst->pData;                     /* output data matrix pointer */
+  64              	 .loc 1 72 0
+  65 0026 7B6A     	 ldr r3,[r7,#36]
+  66 0028 5B68     	 ldr r3,[r3,#4]
+  67 002a BB66     	 str r3,[r7,#104]
+  73:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****   q31_t *px;                                     /* Temporary output data matrix pointer */
+  74:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****   uint16_t numRowsA = pSrcA->numRows;            /* number of rows of input matrix A */
+  68              	 .loc 1 74 0
+  69 002c FB6A     	 ldr r3,[r7,#44]
+  70 002e 1B88     	 ldrh r3,[r3]
+  71 0030 A7F86630 	 strh r3,[r7,#102]
+  75:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****   uint16_t numColsB = pSrcB->numCols;            /* number of columns of input matrix B */
+  72              	 .loc 1 75 0
+  73 0034 BB6A     	 ldr r3,[r7,#40]
+  74 0036 5B88     	 ldrh r3,[r3,#2]
+  75 0038 A7F86430 	 strh r3,[r7,#100]
+  76:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****   uint16_t numColsA = pSrcA->numCols;            /* number of columns of input matrix A */
+  76              	 .loc 1 76 0
+  77 003c FB6A     	 ldr r3,[r7,#44]
+  78 003e 5B88     	 ldrh r3,[r3,#2]
+  79 0040 A7F86230 	 strh r3,[r7,#98]
+  77:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****   q63_t sumReal1, sumImag1;                      /* accumulator */
+  78:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****   q31_t a0, b0, c0, d0;
+  79:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****   q31_t a1, b1, c1, d1;
+  80:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+  81:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+  82:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****   /* Run the below code for Cortex-M4 and Cortex-M3 */
+  83:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+  84:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****   uint16_t col, i = 0u, j, row = numRowsA, colCnt;      /* loop counters */
+  80              	 .loc 1 84 0
+  81 0044 0023     	 movs r3,#0
+  82 0046 A7F87430 	 strh r3,[r7,#116]
+  83 004a B7F86630 	 ldrh r3,[r7,#102]
+  84 004e A7F87030 	 strh r3,[r7,#112]
+  85:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****   arm_status status;                             /* status of matrix multiplication */
+  86:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+  87:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** #ifdef ARM_MATH_MATRIX_CHECK
+  88:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+  89:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+  90:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****   /* Check for matrix mismatch condition */
+  91:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****   if ((pSrcA->numCols != pSrcB->numRows) ||
+  85              	 .loc 1 91 0
+  86 0052 FB6A     	 ldr r3,[r7,#44]
+  87 0054 5A88     	 ldrh r2,[r3,#2]
+  88 0056 BB6A     	 ldr r3,[r7,#40]
+  89 0058 1B88     	 ldrh r3,[r3]
+  90 005a 9A42     	 cmp r2,r3
+  91 005c 0BD1     	 bne .L2
+  92:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****      (pSrcA->numRows != pDst->numRows) || (pSrcB->numCols != pDst->numCols))
+  92              	 .loc 1 92 0 discriminator 1
+  93 005e FB6A     	 ldr r3,[r7,#44]
+  94 0060 1A88     	 ldrh r2,[r3]
+  95 0062 7B6A     	 ldr r3,[r7,#36]
+  96 0064 1B88     	 ldrh r3,[r3]
+  91:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****      (pSrcA->numRows != pDst->numRows) || (pSrcB->numCols != pDst->numCols))
+  97              	 .loc 1 91 0 discriminator 1
+  98 0066 9A42     	 cmp r2,r3
+  99 0068 05D1     	 bne .L2
+ 100              	 .loc 1 92 0
+ 101 006a BB6A     	 ldr r3,[r7,#40]
+ 102 006c 5A88     	 ldrh r2,[r3,#2]
+ 103 006e 7B6A     	 ldr r3,[r7,#36]
+ 104 0070 5B88     	 ldrh r3,[r3,#2]
+ 105 0072 9A42     	 cmp r2,r3
+ 106 0074 03D0     	 beq .L3
+ 107              	.L2:
+  93:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****   {
+  94:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+  95:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****     /* Set status as ARM_MATH_SIZE_MISMATCH */
+  96:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****     status = ARM_MATH_SIZE_MISMATCH;
+ 108              	 .loc 1 96 0
+ 109 0076 FD23     	 movs r3,#253
+ 110 0078 87F86D30 	 strb r3,[r7,#109]
+ 111 007c 3BE3     	 b .L4
+ 112              	.L3:
+  97:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****   }
+  98:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****   else
+  99:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** #endif /*      #ifdef ARM_MATH_MATRIX_CHECK    */
+ 100:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 101:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****   {
+ 102:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****     /* The following loop performs the dot-product of each row in pSrcA with each column in pSrcB *
+ 103:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****     /* row loop */
+ 104:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****     do
+ 105:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****     {
+ 106:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****       /* Output pointer is set to starting address of the row being processed */
+ 107:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****       px = pOut + 2 * i;
+ 113              	 .loc 1 107 0
+ 114 007e B7F87430 	 ldrh r3,[r7,#116]
+ 115 0082 DB00     	 lsls r3,r3,#3
+ 116 0084 1A46     	 mov r2,r3
+ 117 0086 BB6E     	 ldr r3,[r7,#104]
+ 118 0088 1344     	 add r3,r3,r2
+ 119 008a C7F88830 	 str r3,[r7,#136]
+ 108:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 109:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****       /* For every row wise process, the column loop counter is to be initiated */
+ 110:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****       col = numColsB;
+ 120              	 .loc 1 110 0
+ 121 008e B7F86430 	 ldrh r3,[r7,#100]
+ 122 0092 A7F87630 	 strh r3,[r7,#118]
+ 111:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 112:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****       /* For every row wise process, the pIn2 pointer is set
+ 113:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****        ** to the starting address of the pSrcB data */
+ 114:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****       pIn2 = pSrcB->pData;
+ 123              	 .loc 1 114 0
+ 124 0096 BB6A     	 ldr r3,[r7,#40]
+ 125 0098 5B68     	 ldr r3,[r3,#4]
+ 126 009a C7F89030 	 str r3,[r7,#144]
+ 115:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 116:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****       j = 0u;
+ 127              	 .loc 1 116 0
+ 128 009e 0023     	 movs r3,#0
+ 129 00a0 A7F87230 	 strh r3,[r7,#114]
+ 130              	.L15:
+ 117:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 118:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****       /* column loop */
+ 119:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****       do
+ 120:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****       {
+ 121:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****         /* Set the variable sum, that acts as accumulator, to zero */
+ 122:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****         sumReal1 = 0.0;
+ 131              	 .loc 1 122 0
+ 132 00a4 4FF00002 	 mov r2,#0
+ 133 00a8 4FF00003 	 mov r3,#0
+ 134 00ac C7E92023 	 strd r2,[r7,#128]
+ 123:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****         sumImag1 = 0.0;
+ 135              	 .loc 1 123 0
+ 136 00b0 4FF00002 	 mov r2,#0
+ 137 00b4 4FF00003 	 mov r3,#0
+ 138 00b8 C7E91E23 	 strd r2,[r7,#120]
+ 124:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 125:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****         /* Initiate the pointer pIn1 to point to the starting address of the column being processed
+ 126:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****         pIn1 = pInA;
+ 139              	 .loc 1 126 0
+ 140 00bc D7F88C30 	 ldr r3,[r7,#140]
+ 141 00c0 C7F89430 	 str r3,[r7,#148]
+ 127:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 128:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****         /* Apply loop unrolling and compute 4 MACs simultaneously. */
+ 129:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****         colCnt = numColsA >> 2;
+ 142              	 .loc 1 129 0
+ 143 00c4 B7F86230 	 ldrh r3,[r7,#98]
+ 144 00c8 9B08     	 lsrs r3,r3,#2
+ 145 00ca A7F86E30 	 strh r3,[r7,#110]
+ 130:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 131:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****         /* matrix multiplication        */
+ 132:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****         while (colCnt > 0u)
+ 146              	 .loc 1 132 0
+ 147 00ce FCE1     	 b .L5
+ 148              	.L6:
+ 133:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****         {
+ 134:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 135:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           /* Reading real part of complex matrix A */
+ 136:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           a0 = *pIn1;
+ 149              	 .loc 1 136 0
+ 150 00d0 D7F89430 	 ldr r3,[r7,#148]
+ 151 00d4 1B68     	 ldr r3,[r3]
+ 152 00d6 FB65     	 str r3,[r7,#92]
+ 137:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 138:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           /* Reading real part of complex matrix B */
+ 139:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           c0 = *pIn2;
+ 153              	 .loc 1 139 0
+ 154 00d8 D7F89030 	 ldr r3,[r7,#144]
+ 155 00dc 1B68     	 ldr r3,[r3]
+ 156 00de BB65     	 str r3,[r7,#88]
+ 140:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 141:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           /* Reading imaginary part of complex matrix A */
+ 142:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           b0 = *(pIn1 + 1u);
+ 157              	 .loc 1 142 0
+ 158 00e0 D7F89430 	 ldr r3,[r7,#148]
+ 159 00e4 5B68     	 ldr r3,[r3,#4]
+ 160 00e6 7B65     	 str r3,[r7,#84]
+ 143:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 144:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           /* Reading imaginary part of complex matrix B */
+ 145:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           d0 = *(pIn2 + 1u);
+ 161              	 .loc 1 145 0
+ 162 00e8 D7F89030 	 ldr r3,[r7,#144]
+ 163 00ec 5B68     	 ldr r3,[r3,#4]
+ 164 00ee 3B65     	 str r3,[r7,#80]
+ 146:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 147:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           /* Multiply and Accumlates */
+ 148:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           sumReal1 += (q63_t) a0 *c0;
+ 165              	 .loc 1 148 0
+ 166 00f0 FB6D     	 ldr r3,[r7,#92]
+ 167 00f2 1846     	 mov r0,r3
+ 168 00f4 4FEAE071 	 asr r1,r0,#31
+ 169 00f8 BB6D     	 ldr r3,[r7,#88]
+ 170 00fa 1A46     	 mov r2,r3
+ 171 00fc 4FEAE273 	 asr r3,r2,#31
+ 172 0100 02FB01F5 	 mul r5,r2,r1
+ 173 0104 00FB03F4 	 mul r4,r0,r3
+ 174 0108 2C44     	 add r4,r4,r5
+ 175 010a A0FB0223 	 umull r2,r3,r0,r2
+ 176 010e E118     	 adds r1,r4,r3
+ 177 0110 0B46     	 mov r3,r1
+ 178 0112 D7E92001 	 ldrd r0,[r7,#128]
+ 179 0116 1218     	 adds r2,r2,r0
+ 180 0118 43EB0103 	 adc r3,r3,r1
+ 181 011c C7E92023 	 strd r2,[r7,#128]
+ 149:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           sumImag1 += (q63_t) b0 *c0;
+ 182              	 .loc 1 149 0
+ 183 0120 7B6D     	 ldr r3,[r7,#84]
+ 184 0122 1846     	 mov r0,r3
+ 185 0124 4FEAE071 	 asr r1,r0,#31
+ 186 0128 BB6D     	 ldr r3,[r7,#88]
+ 187 012a 1A46     	 mov r2,r3
+ 188 012c 4FEAE273 	 asr r3,r2,#31
+ 189 0130 02FB01F5 	 mul r5,r2,r1
+ 190 0134 00FB03F4 	 mul r4,r0,r3
+ 191 0138 2C44     	 add r4,r4,r5
+ 192 013a A0FB0223 	 umull r2,r3,r0,r2
+ 193 013e E118     	 adds r1,r4,r3
+ 194 0140 0B46     	 mov r3,r1
+ 195 0142 D7E91E01 	 ldrd r0,[r7,#120]
+ 196 0146 1218     	 adds r2,r2,r0
+ 197 0148 43EB0103 	 adc r3,r3,r1
+ 198 014c C7E91E23 	 strd r2,[r7,#120]
+ 150:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 151:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           /* update pointers */
+ 152:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           pIn1 += 2u;
+ 199              	 .loc 1 152 0
+ 200 0150 D7F89430 	 ldr r3,[r7,#148]
+ 201 0154 0833     	 adds r3,r3,#8
+ 202 0156 C7F89430 	 str r3,[r7,#148]
+ 153:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           pIn2 += 2 * numColsB;
+ 203              	 .loc 1 153 0
+ 204 015a B7F86430 	 ldrh r3,[r7,#100]
+ 205 015e DB00     	 lsls r3,r3,#3
+ 206 0160 1A46     	 mov r2,r3
+ 207 0162 D7F89030 	 ldr r3,[r7,#144]
+ 208 0166 1344     	 add r3,r3,r2
+ 209 0168 C7F89030 	 str r3,[r7,#144]
+ 154:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 155:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           /* Multiply and Accumlates */
+ 156:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           sumReal1 -= (q63_t) b0 *d0;
+ 210              	 .loc 1 156 0
+ 211 016c 7B6D     	 ldr r3,[r7,#84]
+ 212 016e 1846     	 mov r0,r3
+ 213 0170 4FEAE071 	 asr r1,r0,#31
+ 214 0174 3B6D     	 ldr r3,[r7,#80]
+ 215 0176 1A46     	 mov r2,r3
+ 216 0178 4FEAE273 	 asr r3,r2,#31
+ 217 017c 02FB01F5 	 mul r5,r2,r1
+ 218 0180 00FB03F4 	 mul r4,r0,r3
+ 219 0184 2C44     	 add r4,r4,r5
+ 220 0186 A0FB0223 	 umull r2,r3,r0,r2
+ 221 018a E118     	 adds r1,r4,r3
+ 222 018c 0B46     	 mov r3,r1
+ 223 018e D7E92001 	 ldrd r0,[r7,#128]
+ 224 0192 821A     	 subs r2,r0,r2
+ 225 0194 61EB0303 	 sbc r3,r1,r3
+ 226 0198 C7E92023 	 strd r2,[r7,#128]
+ 157:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           sumImag1 += (q63_t) a0 *d0;
+ 227              	 .loc 1 157 0
+ 228 019c FB6D     	 ldr r3,[r7,#92]
+ 229 019e 1846     	 mov r0,r3
+ 230 01a0 4FEAE071 	 asr r1,r0,#31
+ 231 01a4 3B6D     	 ldr r3,[r7,#80]
+ 232 01a6 1A46     	 mov r2,r3
+ 233 01a8 4FEAE273 	 asr r3,r2,#31
+ 234 01ac 02FB01F5 	 mul r5,r2,r1
+ 235 01b0 00FB03F4 	 mul r4,r0,r3
+ 236 01b4 2C44     	 add r4,r4,r5
+ 237 01b6 A0FB0223 	 umull r2,r3,r0,r2
+ 238 01ba E118     	 adds r1,r4,r3
+ 239 01bc 0B46     	 mov r3,r1
+ 240 01be D7E91E01 	 ldrd r0,[r7,#120]
+ 241 01c2 1218     	 adds r2,r2,r0
+ 242 01c4 43EB0103 	 adc r3,r3,r1
+ 243 01c8 C7E91E23 	 strd r2,[r7,#120]
+ 158:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 159:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           /* c(m,n) = a(1,1)*b(1,1) + a(1,2) * b(2,1) + .... + a(m,p)*b(p,n) */
+ 160:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 161:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           /* read real and imag values from pSrcA and pSrcB buffer */
+ 162:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           a1 = *pIn1;
+ 244              	 .loc 1 162 0
+ 245 01cc D7F89430 	 ldr r3,[r7,#148]
+ 246 01d0 1B68     	 ldr r3,[r3]
+ 247 01d2 FB64     	 str r3,[r7,#76]
+ 163:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           c1 = *pIn2;
+ 248              	 .loc 1 163 0
+ 249 01d4 D7F89030 	 ldr r3,[r7,#144]
+ 250 01d8 1B68     	 ldr r3,[r3]
+ 251 01da BB64     	 str r3,[r7,#72]
+ 164:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           b1 = *(pIn1 + 1u);
+ 252              	 .loc 1 164 0
+ 253 01dc D7F89430 	 ldr r3,[r7,#148]
+ 254 01e0 5B68     	 ldr r3,[r3,#4]
+ 255 01e2 7B64     	 str r3,[r7,#68]
+ 165:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           d1 = *(pIn2 + 1u);
+ 256              	 .loc 1 165 0
+ 257 01e4 D7F89030 	 ldr r3,[r7,#144]
+ 258 01e8 5B68     	 ldr r3,[r3,#4]
+ 259 01ea 3B64     	 str r3,[r7,#64]
+ 166:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 167:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           /* Multiply and Accumlates */
+ 168:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           sumReal1 += (q63_t) a1 *c1;
+ 260              	 .loc 1 168 0
+ 261 01ec FB6C     	 ldr r3,[r7,#76]
+ 262 01ee 1846     	 mov r0,r3
+ 263 01f0 4FEAE071 	 asr r1,r0,#31
+ 264 01f4 BB6C     	 ldr r3,[r7,#72]
+ 265 01f6 1A46     	 mov r2,r3
+ 266 01f8 4FEAE273 	 asr r3,r2,#31
+ 267 01fc 02FB01F5 	 mul r5,r2,r1
+ 268 0200 00FB03F4 	 mul r4,r0,r3
+ 269 0204 2C44     	 add r4,r4,r5
+ 270 0206 A0FB0223 	 umull r2,r3,r0,r2
+ 271 020a E118     	 adds r1,r4,r3
+ 272 020c 0B46     	 mov r3,r1
+ 273 020e D7E92001 	 ldrd r0,[r7,#128]
+ 274 0212 1218     	 adds r2,r2,r0
+ 275 0214 43EB0103 	 adc r3,r3,r1
+ 276 0218 C7E92023 	 strd r2,[r7,#128]
+ 169:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           sumImag1 += (q63_t) b1 *c1;
+ 277              	 .loc 1 169 0
+ 278 021c 7B6C     	 ldr r3,[r7,#68]
+ 279 021e 1846     	 mov r0,r3
+ 280 0220 4FEAE071 	 asr r1,r0,#31
+ 281 0224 BB6C     	 ldr r3,[r7,#72]
+ 282 0226 1A46     	 mov r2,r3
+ 283 0228 4FEAE273 	 asr r3,r2,#31
+ 284 022c 02FB01F5 	 mul r5,r2,r1
+ 285 0230 00FB03F4 	 mul r4,r0,r3
+ 286 0234 2C44     	 add r4,r4,r5
+ 287 0236 A0FB0223 	 umull r2,r3,r0,r2
+ 288 023a E118     	 adds r1,r4,r3
+ 289 023c 0B46     	 mov r3,r1
+ 290 023e D7E91E01 	 ldrd r0,[r7,#120]
+ 291 0242 1218     	 adds r2,r2,r0
+ 292 0244 43EB0103 	 adc r3,r3,r1
+ 293 0248 C7E91E23 	 strd r2,[r7,#120]
+ 170:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 171:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           /* update pointers */
+ 172:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           pIn1 += 2u;
+ 294              	 .loc 1 172 0
+ 295 024c D7F89430 	 ldr r3,[r7,#148]
+ 296 0250 0833     	 adds r3,r3,#8
+ 297 0252 C7F89430 	 str r3,[r7,#148]
+ 173:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           pIn2 += 2 * numColsB;
+ 298              	 .loc 1 173 0
+ 299 0256 B7F86430 	 ldrh r3,[r7,#100]
+ 300 025a DB00     	 lsls r3,r3,#3
+ 301 025c 1A46     	 mov r2,r3
+ 302 025e D7F89030 	 ldr r3,[r7,#144]
+ 303 0262 1344     	 add r3,r3,r2
+ 304 0264 C7F89030 	 str r3,[r7,#144]
+ 174:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 175:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           /* Multiply and Accumlates */
+ 176:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           sumReal1 -= (q63_t) b1 *d1;
+ 305              	 .loc 1 176 0
+ 306 0268 7B6C     	 ldr r3,[r7,#68]
+ 307 026a 1846     	 mov r0,r3
+ 308 026c 4FEAE071 	 asr r1,r0,#31
+ 309 0270 3B6C     	 ldr r3,[r7,#64]
+ 310 0272 1A46     	 mov r2,r3
+ 311 0274 4FEAE273 	 asr r3,r2,#31
+ 312 0278 02FB01F5 	 mul r5,r2,r1
+ 313 027c 00FB03F4 	 mul r4,r0,r3
+ 314 0280 2C44     	 add r4,r4,r5
+ 315 0282 A0FB0223 	 umull r2,r3,r0,r2
+ 316 0286 E118     	 adds r1,r4,r3
+ 317 0288 0B46     	 mov r3,r1
+ 318 028a D7E92001 	 ldrd r0,[r7,#128]
+ 319 028e 821A     	 subs r2,r0,r2
+ 320 0290 61EB0303 	 sbc r3,r1,r3
+ 321 0294 C7E92023 	 strd r2,[r7,#128]
+ 177:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           sumImag1 += (q63_t) a1 *d1;
+ 322              	 .loc 1 177 0
+ 323 0298 FB6C     	 ldr r3,[r7,#76]
+ 324 029a 1846     	 mov r0,r3
+ 325 029c 4FEAE071 	 asr r1,r0,#31
+ 326 02a0 3B6C     	 ldr r3,[r7,#64]
+ 327 02a2 1A46     	 mov r2,r3
+ 328 02a4 4FEAE273 	 asr r3,r2,#31
+ 329 02a8 02FB01F5 	 mul r5,r2,r1
+ 330 02ac 00FB03F4 	 mul r4,r0,r3
+ 331 02b0 2C44     	 add r4,r4,r5
+ 332 02b2 A0FB0223 	 umull r2,r3,r0,r2
+ 333 02b6 E118     	 adds r1,r4,r3
+ 334 02b8 0B46     	 mov r3,r1
+ 335 02ba D7E91E01 	 ldrd r0,[r7,#120]
+ 336 02be 1218     	 adds r2,r2,r0
+ 337 02c0 43EB0103 	 adc r3,r3,r1
+ 338 02c4 C7E91E23 	 strd r2,[r7,#120]
+ 178:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 179:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           a0 = *pIn1;
+ 339              	 .loc 1 179 0
+ 340 02c8 D7F89430 	 ldr r3,[r7,#148]
+ 341 02cc 1B68     	 ldr r3,[r3]
+ 342 02ce FB65     	 str r3,[r7,#92]
+ 180:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           c0 = *pIn2;
+ 343              	 .loc 1 180 0
+ 344 02d0 D7F89030 	 ldr r3,[r7,#144]
+ 345 02d4 1B68     	 ldr r3,[r3]
+ 346 02d6 BB65     	 str r3,[r7,#88]
+ 181:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 182:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           b0 = *(pIn1 + 1u);
+ 347              	 .loc 1 182 0
+ 348 02d8 D7F89430 	 ldr r3,[r7,#148]
+ 349 02dc 5B68     	 ldr r3,[r3,#4]
+ 350 02de 7B65     	 str r3,[r7,#84]
+ 183:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           d0 = *(pIn2 + 1u);
+ 351              	 .loc 1 183 0
+ 352 02e0 D7F89030 	 ldr r3,[r7,#144]
+ 353 02e4 5B68     	 ldr r3,[r3,#4]
+ 354 02e6 3B65     	 str r3,[r7,#80]
+ 184:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 185:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           /* Multiply and Accumlates */
+ 186:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           sumReal1 += (q63_t) a0 *c0;
+ 355              	 .loc 1 186 0
+ 356 02e8 FB6D     	 ldr r3,[r7,#92]
+ 357 02ea 1846     	 mov r0,r3
+ 358 02ec 4FEAE071 	 asr r1,r0,#31
+ 359 02f0 BB6D     	 ldr r3,[r7,#88]
+ 360 02f2 1A46     	 mov r2,r3
+ 361 02f4 4FEAE273 	 asr r3,r2,#31
+ 362 02f8 02FB01F5 	 mul r5,r2,r1
+ 363 02fc 00FB03F4 	 mul r4,r0,r3
+ 364 0300 2C44     	 add r4,r4,r5
+ 365 0302 A0FB0223 	 umull r2,r3,r0,r2
+ 366 0306 E118     	 adds r1,r4,r3
+ 367 0308 0B46     	 mov r3,r1
+ 368 030a D7E92001 	 ldrd r0,[r7,#128]
+ 369 030e 1218     	 adds r2,r2,r0
+ 370 0310 43EB0103 	 adc r3,r3,r1
+ 371 0314 C7E92023 	 strd r2,[r7,#128]
+ 187:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           sumImag1 += (q63_t) b0 *c0;
+ 372              	 .loc 1 187 0
+ 373 0318 7B6D     	 ldr r3,[r7,#84]
+ 374 031a 1846     	 mov r0,r3
+ 375 031c 4FEAE071 	 asr r1,r0,#31
+ 376 0320 BB6D     	 ldr r3,[r7,#88]
+ 377 0322 1A46     	 mov r2,r3
+ 378 0324 4FEAE273 	 asr r3,r2,#31
+ 379 0328 02FB01F5 	 mul r5,r2,r1
+ 380 032c 00FB03F4 	 mul r4,r0,r3
+ 381 0330 2C44     	 add r4,r4,r5
+ 382 0332 A0FB0223 	 umull r2,r3,r0,r2
+ 383 0336 E118     	 adds r1,r4,r3
+ 384 0338 0B46     	 mov r3,r1
+ 385 033a D7E91E01 	 ldrd r0,[r7,#120]
+ 386 033e 1218     	 adds r2,r2,r0
+ 387 0340 43EB0103 	 adc r3,r3,r1
+ 388 0344 C7E91E23 	 strd r2,[r7,#120]
+ 188:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 189:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           /* update pointers */
+ 190:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           pIn1 += 2u;
+ 389              	 .loc 1 190 0
+ 390 0348 D7F89430 	 ldr r3,[r7,#148]
+ 391 034c 0833     	 adds r3,r3,#8
+ 392 034e C7F89430 	 str r3,[r7,#148]
+ 191:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           pIn2 += 2 * numColsB;
+ 393              	 .loc 1 191 0
+ 394 0352 B7F86430 	 ldrh r3,[r7,#100]
+ 395 0356 DB00     	 lsls r3,r3,#3
+ 396 0358 1A46     	 mov r2,r3
+ 397 035a D7F89030 	 ldr r3,[r7,#144]
+ 398 035e 1344     	 add r3,r3,r2
+ 399 0360 C7F89030 	 str r3,[r7,#144]
+ 192:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 193:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           /* Multiply and Accumlates */
+ 194:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           sumReal1 -= (q63_t) b0 *d0;
+ 400              	 .loc 1 194 0
+ 401 0364 7B6D     	 ldr r3,[r7,#84]
+ 402 0366 1846     	 mov r0,r3
+ 403 0368 4FEAE071 	 asr r1,r0,#31
+ 404 036c 3B6D     	 ldr r3,[r7,#80]
+ 405 036e 1A46     	 mov r2,r3
+ 406 0370 4FEAE273 	 asr r3,r2,#31
+ 407 0374 02FB01F5 	 mul r5,r2,r1
+ 408 0378 00FB03F4 	 mul r4,r0,r3
+ 409 037c 2C44     	 add r4,r4,r5
+ 410 037e A0FB0223 	 umull r2,r3,r0,r2
+ 411 0382 E118     	 adds r1,r4,r3
+ 412 0384 0B46     	 mov r3,r1
+ 413 0386 D7E92001 	 ldrd r0,[r7,#128]
+ 414 038a 821A     	 subs r2,r0,r2
+ 415 038c 61EB0303 	 sbc r3,r1,r3
+ 416 0390 C7E92023 	 strd r2,[r7,#128]
+ 195:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           sumImag1 += (q63_t) a0 *d0;
+ 417              	 .loc 1 195 0
+ 418 0394 FB6D     	 ldr r3,[r7,#92]
+ 419 0396 1846     	 mov r0,r3
+ 420 0398 4FEAE071 	 asr r1,r0,#31
+ 421 039c 3B6D     	 ldr r3,[r7,#80]
+ 422 039e 1A46     	 mov r2,r3
+ 423 03a0 4FEAE273 	 asr r3,r2,#31
+ 424 03a4 02FB01F5 	 mul r5,r2,r1
+ 425 03a8 00FB03F4 	 mul r4,r0,r3
+ 426 03ac 2C44     	 add r4,r4,r5
+ 427 03ae A0FB0223 	 umull r2,r3,r0,r2
+ 428 03b2 E118     	 adds r1,r4,r3
+ 429 03b4 0B46     	 mov r3,r1
+ 430 03b6 D7E91E01 	 ldrd r0,[r7,#120]
+ 431 03ba 1218     	 adds r2,r2,r0
+ 432 03bc 43EB0103 	 adc r3,r3,r1
+ 433 03c0 C7E91E23 	 strd r2,[r7,#120]
+ 196:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 197:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           /* c(m,n) = a(1,1)*b(1,1) + a(1,2) * b(2,1) + .... + a(m,p)*b(p,n) */
+ 198:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 199:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           a1 = *pIn1;
+ 434              	 .loc 1 199 0
+ 435 03c4 D7F89430 	 ldr r3,[r7,#148]
+ 436 03c8 1B68     	 ldr r3,[r3]
+ 437 03ca FB64     	 str r3,[r7,#76]
+ 200:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           c1 = *pIn2;
+ 438              	 .loc 1 200 0
+ 439 03cc D7F89030 	 ldr r3,[r7,#144]
+ 440 03d0 1B68     	 ldr r3,[r3]
+ 441 03d2 BB64     	 str r3,[r7,#72]
+ 201:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 202:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           b1 = *(pIn1 + 1u);
+ 442              	 .loc 1 202 0
+ 443 03d4 D7F89430 	 ldr r3,[r7,#148]
+ 444 03d8 5B68     	 ldr r3,[r3,#4]
+ 445 03da 7B64     	 str r3,[r7,#68]
+ 203:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           d1 = *(pIn2 + 1u);
+ 446              	 .loc 1 203 0
+ 447 03dc D7F89030 	 ldr r3,[r7,#144]
+ 448 03e0 5B68     	 ldr r3,[r3,#4]
+ 449 03e2 3B64     	 str r3,[r7,#64]
+ 204:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 205:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           /* Multiply and Accumlates */
+ 206:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           sumReal1 += (q63_t) a1 *c1;
+ 450              	 .loc 1 206 0
+ 451 03e4 FB6C     	 ldr r3,[r7,#76]
+ 452 03e6 1846     	 mov r0,r3
+ 453 03e8 4FEAE071 	 asr r1,r0,#31
+ 454 03ec BB6C     	 ldr r3,[r7,#72]
+ 455 03ee 1A46     	 mov r2,r3
+ 456 03f0 4FEAE273 	 asr r3,r2,#31
+ 457 03f4 02FB01F5 	 mul r5,r2,r1
+ 458 03f8 00FB03F4 	 mul r4,r0,r3
+ 459 03fc 2C44     	 add r4,r4,r5
+ 460 03fe A0FB0223 	 umull r2,r3,r0,r2
+ 461 0402 E118     	 adds r1,r4,r3
+ 462 0404 0B46     	 mov r3,r1
+ 463 0406 D7E92001 	 ldrd r0,[r7,#128]
+ 464 040a 1218     	 adds r2,r2,r0
+ 465 040c 43EB0103 	 adc r3,r3,r1
+ 466 0410 C7E92023 	 strd r2,[r7,#128]
+ 207:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           sumImag1 += (q63_t) b1 *c1;
+ 467              	 .loc 1 207 0
+ 468 0414 7B6C     	 ldr r3,[r7,#68]
+ 469 0416 1846     	 mov r0,r3
+ 470 0418 4FEAE071 	 asr r1,r0,#31
+ 471 041c BB6C     	 ldr r3,[r7,#72]
+ 472 041e 1A46     	 mov r2,r3
+ 473 0420 4FEAE273 	 asr r3,r2,#31
+ 474 0424 02FB01F5 	 mul r5,r2,r1
+ 475 0428 00FB03F4 	 mul r4,r0,r3
+ 476 042c 2C44     	 add r4,r4,r5
+ 477 042e A0FB0223 	 umull r2,r3,r0,r2
+ 478 0432 E118     	 adds r1,r4,r3
+ 479 0434 0B46     	 mov r3,r1
+ 480 0436 D7E91E01 	 ldrd r0,[r7,#120]
+ 481 043a 1218     	 adds r2,r2,r0
+ 482 043c 43EB0103 	 adc r3,r3,r1
+ 483 0440 C7E91E23 	 strd r2,[r7,#120]
+ 208:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 209:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           /* update pointers */
+ 210:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           pIn1 += 2u;
+ 484              	 .loc 1 210 0
+ 485 0444 D7F89430 	 ldr r3,[r7,#148]
+ 486 0448 0833     	 adds r3,r3,#8
+ 487 044a C7F89430 	 str r3,[r7,#148]
+ 211:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           pIn2 += 2 * numColsB;
+ 488              	 .loc 1 211 0
+ 489 044e B7F86430 	 ldrh r3,[r7,#100]
+ 490 0452 DB00     	 lsls r3,r3,#3
+ 491 0454 1A46     	 mov r2,r3
+ 492 0456 D7F89030 	 ldr r3,[r7,#144]
+ 493 045a 1344     	 add r3,r3,r2
+ 494 045c C7F89030 	 str r3,[r7,#144]
+ 212:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 213:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           /* Multiply and Accumlates */
+ 214:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           sumReal1 -= (q63_t) b1 *d1;
+ 495              	 .loc 1 214 0
+ 496 0460 7B6C     	 ldr r3,[r7,#68]
+ 497 0462 1846     	 mov r0,r3
+ 498 0464 4FEAE071 	 asr r1,r0,#31
+ 499 0468 3B6C     	 ldr r3,[r7,#64]
+ 500 046a 1A46     	 mov r2,r3
+ 501 046c 4FEAE273 	 asr r3,r2,#31
+ 502 0470 02FB01F5 	 mul r5,r2,r1
+ 503 0474 00FB03F4 	 mul r4,r0,r3
+ 504 0478 2C44     	 add r4,r4,r5
+ 505 047a A0FB0223 	 umull r2,r3,r0,r2
+ 506 047e E118     	 adds r1,r4,r3
+ 507 0480 0B46     	 mov r3,r1
+ 508 0482 D7E92001 	 ldrd r0,[r7,#128]
+ 509 0486 821A     	 subs r2,r0,r2
+ 510 0488 61EB0303 	 sbc r3,r1,r3
+ 511 048c C7E92023 	 strd r2,[r7,#128]
+ 215:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           sumImag1 += (q63_t) a1 *d1;
+ 512              	 .loc 1 215 0
+ 513 0490 FB6C     	 ldr r3,[r7,#76]
+ 514 0492 1846     	 mov r0,r3
+ 515 0494 4FEAE071 	 asr r1,r0,#31
+ 516 0498 3B6C     	 ldr r3,[r7,#64]
+ 517 049a 1A46     	 mov r2,r3
+ 518 049c 4FEAE273 	 asr r3,r2,#31
+ 519 04a0 02FB01F5 	 mul r5,r2,r1
+ 520 04a4 00FB03F4 	 mul r4,r0,r3
+ 521 04a8 2C44     	 add r4,r4,r5
+ 522 04aa A0FB0223 	 umull r2,r3,r0,r2
+ 523 04ae E118     	 adds r1,r4,r3
+ 524 04b0 0B46     	 mov r3,r1
+ 525 04b2 D7E91E01 	 ldrd r0,[r7,#120]
+ 526 04b6 1218     	 adds r2,r2,r0
+ 527 04b8 43EB0103 	 adc r3,r3,r1
+ 528 04bc C7E91E23 	 strd r2,[r7,#120]
+ 216:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 217:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           /* Decrement the loop count */
+ 218:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           colCnt--;
+ 529              	 .loc 1 218 0
+ 530 04c0 B7F86E30 	 ldrh r3,[r7,#110]
+ 531 04c4 013B     	 subs r3,r3,#1
+ 532 04c6 A7F86E30 	 strh r3,[r7,#110]
+ 533              	.L5:
+ 132:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****         {
+ 534              	 .loc 1 132 0
+ 535 04ca B7F86E30 	 ldrh r3,[r7,#110]
+ 536 04ce 002B     	 cmp r3,#0
+ 537 04d0 7FF4FEAD 	 bne .L6
+ 219:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****         }
+ 220:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 221:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****         /* If the columns of pSrcA is not a multiple of 4, compute any remaining MACs here.
+ 222:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****          ** No loop unrolling is used. */
+ 223:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****         colCnt = numColsA % 0x4u;
+ 538              	 .loc 1 223 0
+ 539 04d4 B7F86230 	 ldrh r3,[r7,#98]
+ 540 04d8 03F00303 	 and r3,r3,#3
+ 541 04dc A7F86E30 	 strh r3,[r7,#110]
+ 224:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 225:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****         while (colCnt > 0u)
+ 542              	 .loc 1 225 0
+ 543 04e0 82E0     	 b .L7
+ 544              	.L8:
+ 226:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****         {
+ 227:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           /* c(m,n) = a(1,1)*b(1,1) + a(1,2) * b(2,1) + .... + a(m,p)*b(p,n) */
+ 228:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           a1 = *pIn1;
+ 545              	 .loc 1 228 0
+ 546 04e2 D7F89430 	 ldr r3,[r7,#148]
+ 547 04e6 1B68     	 ldr r3,[r3]
+ 548 04e8 FB64     	 str r3,[r7,#76]
+ 229:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           c1 = *pIn2;
+ 549              	 .loc 1 229 0
+ 550 04ea D7F89030 	 ldr r3,[r7,#144]
+ 551 04ee 1B68     	 ldr r3,[r3]
+ 552 04f0 BB64     	 str r3,[r7,#72]
+ 230:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 231:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           b1 = *(pIn1 + 1u);
+ 553              	 .loc 1 231 0
+ 554 04f2 D7F89430 	 ldr r3,[r7,#148]
+ 555 04f6 5B68     	 ldr r3,[r3,#4]
+ 556 04f8 7B64     	 str r3,[r7,#68]
+ 232:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           d1 = *(pIn2 + 1u);
+ 557              	 .loc 1 232 0
+ 558 04fa D7F89030 	 ldr r3,[r7,#144]
+ 559 04fe 5B68     	 ldr r3,[r3,#4]
+ 560 0500 3B64     	 str r3,[r7,#64]
+ 233:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 234:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           /* Multiply and Accumlates */
+ 235:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           sumReal1 += (q63_t) a1 *c1;
+ 561              	 .loc 1 235 0
+ 562 0502 FB6C     	 ldr r3,[r7,#76]
+ 563 0504 1846     	 mov r0,r3
+ 564 0506 4FEAE071 	 asr r1,r0,#31
+ 565 050a BB6C     	 ldr r3,[r7,#72]
+ 566 050c 1A46     	 mov r2,r3
+ 567 050e 4FEAE273 	 asr r3,r2,#31
+ 568 0512 02FB01F5 	 mul r5,r2,r1
+ 569 0516 00FB03F4 	 mul r4,r0,r3
+ 570 051a 2C44     	 add r4,r4,r5
+ 571 051c A0FB0223 	 umull r2,r3,r0,r2
+ 572 0520 E118     	 adds r1,r4,r3
+ 573 0522 0B46     	 mov r3,r1
+ 574 0524 D7E92001 	 ldrd r0,[r7,#128]
+ 575 0528 1218     	 adds r2,r2,r0
+ 576 052a 43EB0103 	 adc r3,r3,r1
+ 577 052e C7E92023 	 strd r2,[r7,#128]
+ 236:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           sumImag1 += (q63_t) b1 *c1;
+ 578              	 .loc 1 236 0
+ 579 0532 7B6C     	 ldr r3,[r7,#68]
+ 580 0534 1846     	 mov r0,r3
+ 581 0536 4FEAE071 	 asr r1,r0,#31
+ 582 053a BB6C     	 ldr r3,[r7,#72]
+ 583 053c 1A46     	 mov r2,r3
+ 584 053e 4FEAE273 	 asr r3,r2,#31
+ 585 0542 02FB01F5 	 mul r5,r2,r1
+ 586 0546 00FB03F4 	 mul r4,r0,r3
+ 587 054a 2C44     	 add r4,r4,r5
+ 588 054c A0FB0223 	 umull r2,r3,r0,r2
+ 589 0550 E118     	 adds r1,r4,r3
+ 590 0552 0B46     	 mov r3,r1
+ 591 0554 D7E91E01 	 ldrd r0,[r7,#120]
+ 592 0558 1218     	 adds r2,r2,r0
+ 593 055a 43EB0103 	 adc r3,r3,r1
+ 594 055e C7E91E23 	 strd r2,[r7,#120]
+ 237:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 238:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           /* update pointers */
+ 239:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           pIn1 += 2u;
+ 595              	 .loc 1 239 0
+ 596 0562 D7F89430 	 ldr r3,[r7,#148]
+ 597 0566 0833     	 adds r3,r3,#8
+ 598 0568 C7F89430 	 str r3,[r7,#148]
+ 240:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           pIn2 += 2 * numColsB;
+ 599              	 .loc 1 240 0
+ 600 056c B7F86430 	 ldrh r3,[r7,#100]
+ 601 0570 DB00     	 lsls r3,r3,#3
+ 602 0572 1A46     	 mov r2,r3
+ 603 0574 D7F89030 	 ldr r3,[r7,#144]
+ 604 0578 1344     	 add r3,r3,r2
+ 605 057a C7F89030 	 str r3,[r7,#144]
+ 241:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 242:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           /* Multiply and Accumlates */
+ 243:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           sumReal1 -= (q63_t) b1 *d1;
+ 606              	 .loc 1 243 0
+ 607 057e 7B6C     	 ldr r3,[r7,#68]
+ 608 0580 1846     	 mov r0,r3
+ 609 0582 4FEAE071 	 asr r1,r0,#31
+ 610 0586 3B6C     	 ldr r3,[r7,#64]
+ 611 0588 1A46     	 mov r2,r3
+ 612 058a 4FEAE273 	 asr r3,r2,#31
+ 613 058e 02FB01F5 	 mul r5,r2,r1
+ 614 0592 00FB03F4 	 mul r4,r0,r3
+ 615 0596 2C44     	 add r4,r4,r5
+ 616 0598 A0FB0223 	 umull r2,r3,r0,r2
+ 617 059c E118     	 adds r1,r4,r3
+ 618 059e 0B46     	 mov r3,r1
+ 619 05a0 D7E92001 	 ldrd r0,[r7,#128]
+ 620 05a4 821A     	 subs r2,r0,r2
+ 621 05a6 61EB0303 	 sbc r3,r1,r3
+ 622 05aa C7E92023 	 strd r2,[r7,#128]
+ 244:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           sumImag1 += (q63_t) a1 *d1;
+ 623              	 .loc 1 244 0
+ 624 05ae FB6C     	 ldr r3,[r7,#76]
+ 625 05b0 1846     	 mov r0,r3
+ 626 05b2 4FEAE071 	 asr r1,r0,#31
+ 627 05b6 3B6C     	 ldr r3,[r7,#64]
+ 628 05b8 1A46     	 mov r2,r3
+ 629 05ba 4FEAE273 	 asr r3,r2,#31
+ 630 05be 02FB01F5 	 mul r5,r2,r1
+ 631 05c2 00FB03F4 	 mul r4,r0,r3
+ 632 05c6 2C44     	 add r4,r4,r5
+ 633 05c8 A0FB0223 	 umull r2,r3,r0,r2
+ 634 05cc E118     	 adds r1,r4,r3
+ 635 05ce 0B46     	 mov r3,r1
+ 636 05d0 D7E91E01 	 ldrd r0,[r7,#120]
+ 637 05d4 1218     	 adds r2,r2,r0
+ 638 05d6 43EB0103 	 adc r3,r3,r1
+ 639 05da C7E91E23 	 strd r2,[r7,#120]
+ 245:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 246:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           /* Decrement the loop counter */
+ 247:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****           colCnt--;
+ 640              	 .loc 1 247 0
+ 641 05de B7F86E30 	 ldrh r3,[r7,#110]
+ 642 05e2 013B     	 subs r3,r3,#1
+ 643 05e4 A7F86E30 	 strh r3,[r7,#110]
+ 644              	.L7:
+ 225:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****         {
+ 645              	 .loc 1 225 0
+ 646 05e8 B7F86E30 	 ldrh r3,[r7,#110]
+ 647 05ec 002B     	 cmp r3,#0
+ 648 05ee 7FF478AF 	 bne .L8
+ 248:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****         }
+ 249:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 250:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****         /* Store the result in the destination buffer */
+ 251:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****         *px++ = (q31_t) clip_q63_to_q31(sumReal1 >> 31);
+ 649              	 .loc 1 251 0
+ 650 05f2 D7F88810 	 ldr r1,[r7,#136]
+ 651 05f6 0B1D     	 adds r3,r1,#4
+ 652 05f8 C7F88830 	 str r3,[r7,#136]
+ 653 05fc D7E92023 	 ldrd r2,[r7,#128]
+ 654 0600 4FEAD278 	 lsr r8,r2,#31
+ 655 0604 48EA4308 	 orr r8,r8,r3,lsl#1
+ 656 0608 4FEAE379 	 asr r9,r3,#31
+ 657 060c C7E90E89 	 strd r8,[r7,#56]
+ 658              	.LBB6:
+ 659              	.LBB7:
+ 660              	 .file 2 "F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP/arm_math.h"
+   1:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** /* ----------------------------------------------------------------------
+   2:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * Project:      CMSIS DSP Library
+   3:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * Title:        CMSIS_DSP/cmsis_dsp.h
+   4:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * Description:  Public header file for CMSIS DSP Library
+   5:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  *
+   6:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * $Date:        27. January 2017
+   7:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * $Revision:    V.1.5.1
+   8:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  *
+   9:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * Target Processor: Cortex-M cores
+  10:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * -------------------------------------------------------------------- */
+  11:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** /*
+  12:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * Copyright (C) 2010-2017 ARM Limited or its affiliates. All rights reserved.
+  13:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  *
+  14:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * SPDX-License-Identifier: Apache-2.0
+  15:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  *
+  16:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * Licensed under the Apache License, Version 2.0 (the License); you may
+  17:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * not use this file except in compliance with the License.
+  18:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * You may obtain a copy of the License at
+  19:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  *
+  20:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * www.apache.org/licenses/LICENSE-2.0
+  21:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  *
+  22:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * Unless required by applicable law or agreed to in writing, software
+  23:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * distributed under the License is distributed on an AS IS BASIS, WITHOUT
+  24:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  25:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * See the License for the specific language governing permissions and
+  26:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * limitations under the License.
+  27:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  */
+  28:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+  29:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** /**
+  30:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    \mainpage CMSIS DSP Software Library
+  31:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+  32:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * Introduction
+  33:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * ------------
+  34:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+  35:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * This user manual describes the CMSIS DSP software library,
+  36:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * a suite of common signal processing functions for use on Cortex-M processor based devices.
+  37:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+  38:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * The library is divided into a number of functions each covering a specific category:
+  39:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - Basic math functions
+  40:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - Fast math functions
+  41:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - Complex math functions
+  42:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - Filters
+  43:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - Matrix functions
+  44:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - Transforms
+  45:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - Motor control functions
+  46:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - Statistical functions
+  47:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - Support functions
+  48:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - Interpolation functions
+  49:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+  50:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * The library has separate functions for operating on 8-bit integers, 16-bit integers,
+  51:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * 32-bit integer and 32-bit floating-point values.
+  52:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+  53:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * Using the Library
+  54:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * ------------
+  55:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+  56:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * The library installer contains prebuilt versions of the libraries in the <code>Lib</code> fold
+  57:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - arm_cortexM7lfdp_math.lib (Cortex-M7, Little endian, Double Precision Floating Point Unit)
+  58:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - arm_cortexM7bfdp_math.lib (Cortex-M7, Big endian, Double Precision Floating Point Unit)
+  59:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - arm_cortexM7lfsp_math.lib (Cortex-M7, Little endian, Single Precision Floating Point Unit)
+  60:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - arm_cortexM7bfsp_math.lib (Cortex-M7, Big endian and Single Precision Floating Point Unit on
+  61:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - arm_cortexM7l_math.lib (Cortex-M7, Little endian)
+  62:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - arm_cortexM7b_math.lib (Cortex-M7, Big endian)
+  63:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - arm_cortexM4lf_math.lib (Cortex-M4, Little endian, Floating Point Unit)
+  64:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - arm_cortexM4bf_math.lib (Cortex-M4, Big endian, Floating Point Unit)
+  65:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - arm_cortexM4l_math.lib (Cortex-M4, Little endian)
+  66:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - arm_cortexM4b_math.lib (Cortex-M4, Big endian)
+  67:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - arm_cortexM3l_math.lib (Cortex-M3, Little endian)
+  68:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - arm_cortexM3b_math.lib (Cortex-M3, Big endian)
+  69:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - arm_cortexM0l_math.lib (Cortex-M0 / Cortex-M0+, Little endian)
+  70:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - arm_cortexM0b_math.lib (Cortex-M0 / Cortex-M0+, Big endian)
+  71:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - arm_ARMv8MBLl_math.lib (ARMv8M Baseline, Little endian)
+  72:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - arm_ARMv8MMLl_math.lib (ARMv8M Mainline, Little endian)
+  73:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - arm_ARMv8MMLlfsp_math.lib (ARMv8M Mainline, Little endian, Single Precision Floating Point U
+  74:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - arm_ARMv8MMLld_math.lib (ARMv8M Mainline, Little endian, DSP instructions)
+  75:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - arm_ARMv8MMLldfsp_math.lib (ARMv8M Mainline, Little endian, DSP instructions, Single Precisi
+  76:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+  77:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * The library functions are declared in the public file <code>CMSIS_DSP/cmsis_dsp.h</code> which
+  78:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * Simply include this file and link the appropriate library in the application and begin calling
+  79:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * public header file <code> CMSIS_DSP/cmsis_dsp.h</code> for Cortex-M cores with little endian a
+  80:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * Define the appropriate pre processor MACRO ARM_MATH_CM7 or ARM_MATH_CM4 or  ARM_MATH_CM3 or
+  81:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * ARM_MATH_CM0 or ARM_MATH_CM0PLUS depending on the target processor in the application.
+  82:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * For ARMv8M cores define pre processor MACRO ARM_MATH_ARMV8MBL or ARM_MATH_ARMV8MML.
+  83:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * Set Pre processor MACRO __DSP_PRESENT if ARMv8M Mainline core supports DSP instructions.
+  84:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * 
+  85:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+  86:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * Examples
+  87:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * --------
+  88:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+  89:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * The library ships with a number of examples which demonstrate how to use the library functions
+  90:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+  91:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * Toolchain Support
+  92:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * ------------
+  93:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+  94:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * The library has been developed and tested with MDK-ARM version 5.14.0.0
+  95:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * The library is being tested in GCC and IAR toolchains and updates on this activity will be mad
+  96:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+  97:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * Building the Library
+  98:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * ------------
+  99:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+ 100:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * The library installer contains a project file to re build libraries on MDK-ARM Tool chain in t
+ 101:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - arm_cortexM_math.uvprojx
+ 102:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+ 103:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+ 104:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * The libraries can be built by opening the arm_cortexM_math.uvprojx project in MDK-ARM, selecti
+ 105:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+ 106:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * Pre-processor Macros
+ 107:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * ------------
+ 108:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+ 109:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * Each library project have differant pre-processor macros.
+ 110:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+ 111:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - UNALIGNED_SUPPORT_DISABLE:
+ 112:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+ 113:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * Define macro UNALIGNED_SUPPORT_DISABLE, If the silicon does not support unaligned memory acces
+ 114:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+ 115:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - ARM_MATH_BIG_ENDIAN:
+ 116:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+ 117:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * Define macro ARM_MATH_BIG_ENDIAN to build the library for big endian targets. By default libra
+ 118:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+ 119:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - ARM_MATH_MATRIX_CHECK:
+ 120:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+ 121:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * Define macro ARM_MATH_MATRIX_CHECK for checking on the input and output sizes of matrices
+ 122:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+ 123:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - ARM_MATH_ROUNDING:
+ 124:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+ 125:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * Define macro ARM_MATH_ROUNDING for rounding on support functions
+ 126:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+ 127:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - ARM_MATH_CMx:
+ 128:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+ 129:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * Define macro ARM_MATH_CM4 for building the library on Cortex-M4 target, ARM_MATH_CM3 for build
+ 130:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * and ARM_MATH_CM0 for building library on Cortex-M0 target, ARM_MATH_CM0PLUS for building libra
+ 131:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * ARM_MATH_CM7 for building the library on cortex-M7.
+ 132:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+ 133:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - ARM_MATH_ARMV8MxL:
+ 134:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+ 135:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * Define macro ARM_MATH_ARMV8MBL for building the library on ARMv8M Baseline target, ARM_MATH_AR
+ 136:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * on ARMv8M Mainline target.
+ 137:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+ 138:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - __FPU_PRESENT:
+ 139:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+ 140:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * Initialize macro __FPU_PRESENT = 1 when building on FPU supported Targets. Enable this macro f
+ 141:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+ 142:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * - __DSP_PRESENT:
+ 143:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+ 144:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * Initialize macro __DSP_PRESENT = 1 when ARMv8M Mainline core supports DSP instructions.
+ 145:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+ 146:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * <hr>
+ 147:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * CMSIS-DSP in ARM::CMSIS Pack
+ 148:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * -----------------------------
+ 149:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+ 150:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * The following files relevant to CMSIS-DSP are present in the <b>ARM::CMSIS</b> Pack directorie
+ 151:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * |File/Folder                   |Content                                                       
+ 152:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * |------------------------------|--------------------------------------------------------------
+ 153:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * |\b CMSIS\\Documentation\\DSP  | This documentation                                           
+ 154:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * |\b CMSIS\\DSP_Lib             | Software license agreement (license.txt)                     
+ 155:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * |\b CMSIS\\DSP_Lib\\Examples   | Example projects demonstrating the usage of the library funct
+ 156:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * |\b CMSIS\\DSP_Lib\\Source     | Source files for rebuilding the library                      
+ 157:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+ 158:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * <hr>
+ 159:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * Revision History of CMSIS-DSP
+ 160:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * ------------
+ 161:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * Please refer to \ref ChangeLog_pg.
+ 162:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+ 163:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * Copyright Notice
+ 164:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * ------------
+ 165:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    *
+ 166:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * Copyright (C) 2010-2015 ARM Limited. All rights reserved.
+ 167:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    */
+ 168:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 169:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 170:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** /**
+ 171:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * @defgroup groupMath Basic Math Functions
+ 172:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  */
+ 173:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 174:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** /**
+ 175:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * @defgroup groupFastMath Fast Math Functions
+ 176:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * This set of functions provides a fast approximation to sine, cosine, and square root.
+ 177:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * As compared to most of the other functions in the CMSIS math library, the fast math functions
+ 178:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * operate on individual values and not arrays.
+ 179:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * There are separate functions for Q15, Q31, and floating-point data.
+ 180:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  *
+ 181:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  */
+ 182:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 183:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** /**
+ 184:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * @defgroup groupCmplxMath Complex Math Functions
+ 185:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * This set of functions operates on complex data vectors.
+ 186:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * The data in the complex arrays is stored in an interleaved fashion
+ 187:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * (real, imag, real, imag, ...).
+ 188:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * In the API functions, the number of samples in a complex array refers
+ 189:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * to the number of complex values; the array contains twice this number of
+ 190:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * real values.
+ 191:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  */
+ 192:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 193:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** /**
+ 194:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * @defgroup groupFilters Filtering Functions
+ 195:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  */
+ 196:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 197:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** /**
+ 198:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * @defgroup groupMatrix Matrix Functions
+ 199:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  *
+ 200:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * This set of functions provides basic matrix math operations.
+ 201:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * The functions operate on matrix data structures.  For example,
+ 202:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * the type
+ 203:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * definition for the floating-point matrix structure is shown
+ 204:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * below:
+ 205:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * <pre>
+ 206:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  *     typedef struct
+ 207:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  *     {
+ 208:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  *       uint16_t numRows;     // number of rows of the matrix.
+ 209:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  *       uint16_t numCols;     // number of columns of the matrix.
+ 210:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  *       float32_t *pData;     // points to the data of the matrix.
+ 211:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  *     } arm_matrix_instance_f32;
+ 212:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * </pre>
+ 213:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * There are similar definitions for Q15 and Q31 data types.
+ 214:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  *
+ 215:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * The structure specifies the size of the matrix and then points to
+ 216:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * an array of data.  The array is of size <code>numRows X numCols</code>
+ 217:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * and the values are arranged in row order.  That is, the
+ 218:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * matrix element (i, j) is stored at:
+ 219:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * <pre>
+ 220:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  *     pData[i*numCols + j]
+ 221:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * </pre>
+ 222:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  *
+ 223:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * \par Init Functions
+ 224:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * There is an associated initialization function for each type of matrix
+ 225:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * data structure.
+ 226:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * The initialization function sets the values of the internal structure fields.
+ 227:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * Refer to the function <code>arm_mat_init_f32()</code>, <code>arm_mat_init_q31()</code>
+ 228:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * and <code>arm_mat_init_q15()</code> for floating-point, Q31 and Q15 types,  respectively.
+ 229:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  *
+ 230:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * \par
+ 231:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * Use of the initialization function is optional. However, if initialization function is used
+ 232:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * then the instance structure cannot be placed into a const data section.
+ 233:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * To place the instance structure in a const data
+ 234:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * section, manually initialize the data structure.  For example:
+ 235:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * <pre>
+ 236:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * <code>arm_matrix_instance_f32 S = {nRows, nColumns, pData};</code>
+ 237:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * <code>arm_matrix_instance_q31 S = {nRows, nColumns, pData};</code>
+ 238:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * <code>arm_matrix_instance_q15 S = {nRows, nColumns, pData};</code>
+ 239:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * </pre>
+ 240:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * where <code>nRows</code> specifies the number of rows, <code>nColumns</code>
+ 241:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * specifies the number of columns, and <code>pData</code> points to the
+ 242:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * data array.
+ 243:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  *
+ 244:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * \par Size Checking
+ 245:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * By default all of the matrix functions perform size checking on the input and
+ 246:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * output matrices.  For example, the matrix addition function verifies that the
+ 247:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * two input matrices and the output matrix all have the same number of rows and
+ 248:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * columns.  If the size check fails the functions return:
+ 249:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * <pre>
+ 250:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  *     ARM_MATH_SIZE_MISMATCH
+ 251:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * </pre>
+ 252:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * Otherwise the functions return
+ 253:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * <pre>
+ 254:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  *     ARM_MATH_SUCCESS
+ 255:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * </pre>
+ 256:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * There is some overhead associated with this matrix size checking.
+ 257:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * The matrix size checking is enabled via the \#define
+ 258:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * <pre>
+ 259:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  *     ARM_MATH_MATRIX_CHECK
+ 260:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * </pre>
+ 261:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * within the library project settings.  By default this macro is defined
+ 262:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * and size checking is enabled.  By changing the project settings and
+ 263:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * undefining this macro size checking is eliminated and the functions
+ 264:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * run a bit faster.  With size checking disabled the functions always
+ 265:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * return <code>ARM_MATH_SUCCESS</code>.
+ 266:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  */
+ 267:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 268:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** /**
+ 269:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * @defgroup groupTransforms Transform Functions
+ 270:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  */
+ 271:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 272:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** /**
+ 273:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * @defgroup groupController Controller Functions
+ 274:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  */
+ 275:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 276:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** /**
+ 277:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * @defgroup groupStats Statistics Functions
+ 278:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  */
+ 279:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** /**
+ 280:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * @defgroup groupSupport Support Functions
+ 281:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  */
+ 282:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 283:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** /**
+ 284:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * @defgroup groupInterpolation Interpolation Functions
+ 285:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * These functions perform 1- and 2-dimensional interpolation of data.
+ 286:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * Linear interpolation is used for 1-dimensional data and
+ 287:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * bilinear interpolation is used for 2-dimensional data.
+ 288:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  */
+ 289:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 290:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** /**
+ 291:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  * @defgroup groupExamples Examples
+ 292:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****  */
+ 293:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #ifndef _ARM_MATH_H
+ 294:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #define _ARM_MATH_H
+ 295:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 296:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** /* ignore some GCC warnings */
+ 297:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #if defined ( __GNUC__ )
+ 298:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #pragma GCC diagnostic push
+ 299:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #pragma GCC diagnostic ignored "-Wsign-conversion"
+ 300:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #pragma GCC diagnostic ignored "-Wconversion"
+ 301:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #pragma GCC diagnostic ignored "-Wunused-parameter"
+ 302:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #endif
+ 303:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 304:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #define __CMSIS_GENERIC         /* disable NVIC and Systick functions */
+ 305:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 306:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #if defined(ARM_MATH_CM7)
+ 307:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #include "core_cm7.h"
+ 308:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #define ARM_MATH_DSP
+ 309:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #elif defined (ARM_MATH_CM4)
+ 310:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #include "core_cm4.h"
+ 311:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #define ARM_MATH_DSP
+ 312:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #elif defined (ARM_MATH_CM3)
+ 313:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #include "core_cm3.h"
+ 314:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #elif defined (ARM_MATH_CM0)
+ 315:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #include "core_cm0.h"
+ 316:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #define ARM_MATH_CM0_FAMILY
+ 317:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #elif defined (ARM_MATH_CM0PLUS)
+ 318:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #include "core_cm0plus.h"
+ 319:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #define ARM_MATH_CM0_FAMILY
+ 320:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #elif defined (ARM_MATH_ARMV8MBL)
+ 321:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #include "core_armv8mbl.h"
+ 322:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #define ARM_MATH_CM0_FAMILY
+ 323:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #elif defined (ARM_MATH_ARMV8MML)
+ 324:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #include "core_armv8mml.h"
+ 325:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #if (defined (__DSP_PRESENT) && (__DSP_PRESENT == 1))
+ 326:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****     #define ARM_MATH_DSP
+ 327:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #endif
+ 328:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #else
+ 329:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #error "Define according the used Cortex core ARM_MATH_CM7, ARM_MATH_CM4, ARM_MATH_CM3, ARM_MATH_
+ 330:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #endif
+ 331:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 332:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #undef  __CMSIS_GENERIC         /* enable NVIC and Systick functions */
+ 333:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #include "string.h"
+ 334:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #include "math.h"
+ 335:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #ifdef   __cplusplus
+ 336:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** extern "C"
+ 337:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** {
+ 338:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #endif
+ 339:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 340:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 341:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   /**
+ 342:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * @brief Macros required for reciprocal calculation in Normalized LMS
+ 343:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    */
+ 344:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 345:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #define DELTA_Q31          (0x100)
+ 346:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #define DELTA_Q15          0x5
+ 347:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #define INDEX_MASK         0x0000003F
+ 348:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #ifndef PI
+ 349:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #define PI               3.14159265358979f
+ 350:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #endif
+ 351:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 352:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   /**
+ 353:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * @brief Macros required for SINE and COSINE Fast math approximations
+ 354:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    */
+ 355:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 356:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #define FAST_MATH_TABLE_SIZE  512
+ 357:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #define FAST_MATH_Q31_SHIFT   (32 - 10)
+ 358:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #define FAST_MATH_Q15_SHIFT   (16 - 10)
+ 359:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #define CONTROLLER_Q31_SHIFT  (32 - 9)
+ 360:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #define TABLE_SPACING_Q31     0x400000
+ 361:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #define TABLE_SPACING_Q15     0x80
+ 362:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 363:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   /**
+ 364:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * @brief Macros required for SINE and COSINE Controller functions
+ 365:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    */
+ 366:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   /* 1.31(q31) Fixed value of 2/360 */
+ 367:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   /* -1 to +1 is divided into 360 values so total spacing is (2/360) */
+ 368:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #define INPUT_SPACING         0xB60B61
+ 369:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 370:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   /**
+ 371:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * @brief Macro for Unaligned Support
+ 372:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    */
+ 373:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #ifndef UNALIGNED_SUPPORT_DISABLE
+ 374:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****     #define ALIGN4
+ 375:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #else
+ 376:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #if defined  (__GNUC__)
+ 377:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****     #define ALIGN4 __attribute__((aligned(4)))
+ 378:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #else
+ 379:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****     #define ALIGN4 __align(4)
+ 380:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #endif
+ 381:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #endif   /* #ifndef UNALIGNED_SUPPORT_DISABLE */
+ 382:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 383:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   /**
+ 384:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * @brief Error status returned by some functions in the library.
+ 385:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    */
+ 386:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 387:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   typedef enum
+ 388:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   {
+ 389:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****     ARM_MATH_SUCCESS = 0,                /**< No error */
+ 390:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****     ARM_MATH_ARGUMENT_ERROR = -1,        /**< One or more arguments are incorrect */
+ 391:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****     ARM_MATH_LENGTH_ERROR = -2,          /**< Length of data buffer is incorrect */
+ 392:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****     ARM_MATH_SIZE_MISMATCH = -3,         /**< Size of matrices is not compatible with the operation
+ 393:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****     ARM_MATH_NANINF = -4,                /**< Not-a-number (NaN) or infinity is generated */
+ 394:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****     ARM_MATH_SINGULAR = -5,              /**< Generated by matrix inversion if the input matrix is 
+ 395:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****     ARM_MATH_TEST_FAILURE = -6           /**< Test Failed  */
+ 396:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   } arm_status;
+ 397:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 398:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   /**
+ 399:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * @brief 8-bit fractional data type in 1.7 format.
+ 400:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    */
+ 401:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   typedef int8_t q7_t;
+ 402:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 403:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   /**
+ 404:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * @brief 16-bit fractional data type in 1.15 format.
+ 405:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    */
+ 406:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   typedef int16_t q15_t;
+ 407:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 408:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   /**
+ 409:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * @brief 32-bit fractional data type in 1.31 format.
+ 410:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    */
+ 411:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   typedef int32_t q31_t;
+ 412:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 413:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   /**
+ 414:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * @brief 64-bit fractional data type in 1.63 format.
+ 415:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    */
+ 416:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   typedef int64_t q63_t;
+ 417:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 418:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   /**
+ 419:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * @brief 32-bit floating-point type definition.
+ 420:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    */
+ 421:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   typedef float float32_t;
+ 422:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 423:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   /**
+ 424:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * @brief 64-bit floating-point type definition.
+ 425:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    */
+ 426:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   typedef double float64_t;
+ 427:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 428:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   /**
+ 429:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * @brief definition to read/write two 16 bit values.
+ 430:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    */
+ 431:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #if   defined ( __CC_ARM )
+ 432:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #define __SIMD32_TYPE int32_t __packed
+ 433:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #define CMSIS_UNUSED __attribute__((unused))
+ 434:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #define CMSIS_INLINE __attribute__((always_inline))
+ 435:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 436:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #elif defined ( __ARMCC_VERSION ) && ( __ARMCC_VERSION >= 6010050 )
+ 437:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #define __SIMD32_TYPE int32_t
+ 438:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #define CMSIS_UNUSED __attribute__((unused))
+ 439:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #define CMSIS_INLINE __attribute__((always_inline))
+ 440:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 441:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #elif defined ( __GNUC__ )
+ 442:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #define __SIMD32_TYPE int32_t
+ 443:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #define CMSIS_UNUSED __attribute__((unused))
+ 444:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #define CMSIS_INLINE __attribute__((always_inline))
+ 445:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 446:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #elif defined ( __ICCARM__ )
+ 447:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #define __SIMD32_TYPE int32_t __packed
+ 448:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #define CMSIS_UNUSED
+ 449:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #define CMSIS_INLINE
+ 450:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 451:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #elif defined ( __TI_ARM__ )
+ 452:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #define __SIMD32_TYPE int32_t
+ 453:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #define CMSIS_UNUSED __attribute__((unused))
+ 454:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #define CMSIS_INLINE
+ 455:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 456:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #elif defined ( __CSMC__ )
+ 457:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #define __SIMD32_TYPE int32_t
+ 458:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #define CMSIS_UNUSED
+ 459:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #define CMSIS_INLINE
+ 460:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 461:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #elif defined ( __TASKING__ )
+ 462:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #define __SIMD32_TYPE __unaligned int32_t
+ 463:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #define CMSIS_UNUSED
+ 464:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #define CMSIS_INLINE
+ 465:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 466:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #else
+ 467:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   #error Unknown compiler
+ 468:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #endif
+ 469:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 470:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #define __SIMD32(addr)        (*(__SIMD32_TYPE **) & (addr))
+ 471:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #define __SIMD32_CONST(addr)  ((__SIMD32_TYPE *)(addr))
+ 472:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #define _SIMD32_OFFSET(addr)  (*(__SIMD32_TYPE *)  (addr))
+ 473:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #define __SIMD64(addr)        (*(int64_t **) & (addr))
+ 474:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 475:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** /* #if defined (ARM_MATH_CM3) || defined (ARM_MATH_CM0_FAMILY) */
+ 476:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #if !defined (ARM_MATH_DSP)
+ 477:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   /**
+ 478:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * @brief definition to pack two 16 bit values.
+ 479:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    */
+ 480:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #define __PKHBT(ARG1, ARG2, ARG3) ( (((int32_t)(ARG1) <<    0) & (int32_t)0x0000FFFF) | \
+ 481:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****                                     (((int32_t)(ARG2) << ARG3) & (int32_t)0xFFFF0000)  )
+ 482:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #define __PKHTB(ARG1, ARG2, ARG3) ( (((int32_t)(ARG1) <<    0) & (int32_t)0xFFFF0000) | \
+ 483:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****                                     (((int32_t)(ARG2) >> ARG3) & (int32_t)0x0000FFFF)  )
+ 484:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 485:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** /* #endif // defined (ARM_MATH_CM3) || defined (ARM_MATH_CM0_FAMILY) */
+ 486:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #endif /* !defined (ARM_MATH_DSP) */
+ 487:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 488:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    /**
+ 489:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * @brief definition to pack four 8 bit values.
+ 490:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    */
+ 491:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #ifndef ARM_MATH_BIG_ENDIAN
+ 492:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 493:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #define __PACKq7(v0,v1,v2,v3) ( (((int32_t)(v0) <<  0) & (int32_t)0x000000FF) | \
+ 494:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****                                 (((int32_t)(v1) <<  8) & (int32_t)0x0000FF00) | \
+ 495:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****                                 (((int32_t)(v2) << 16) & (int32_t)0x00FF0000) | \
+ 496:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****                                 (((int32_t)(v3) << 24) & (int32_t)0xFF000000)  )
+ 497:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #else
+ 498:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 499:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #define __PACKq7(v0,v1,v2,v3) ( (((int32_t)(v3) <<  0) & (int32_t)0x000000FF) | \
+ 500:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****                                 (((int32_t)(v2) <<  8) & (int32_t)0x0000FF00) | \
+ 501:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****                                 (((int32_t)(v1) << 16) & (int32_t)0x00FF0000) | \
+ 502:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****                                 (((int32_t)(v0) << 24) & (int32_t)0xFF000000)  )
+ 503:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 504:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** #endif
+ 505:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 506:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h **** 
+ 507:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   /**
+ 508:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    * @brief Clips Q63 to Q31 values.
+ 509:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****    */
+ 510:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   CMSIS_INLINE __STATIC_INLINE q31_t clip_q63_to_q31(
+ 511:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   q63_t x)
+ 512:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****   {
+ 513:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****     return ((q31_t) (x >> 32) != ((q31_t) x >> 31)) ?
+ 661              	 .loc 2 513 0
+ 662 0610 D7E90E23 	 ldrd r2,[r7,#56]
+ 663 0614 1800     	 movs r0,r3
+ 664 0616 B861     	 str r0,[r7,#24]
+ 665 0618 DB17     	 asrs r3,r3,#31
+ 666 061a FB61     	 str r3,[r7,#28]
+ 667 061c BA69     	 ldr r2,[r7,#24]
+ 668 061e BB6B     	 ldr r3,[r7,#56]
+ 669 0620 DB17     	 asrs r3,r3,#31
+ 514:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****       ((0x7FFFFFFF ^ ((q31_t) (x >> 63)))) : (q31_t) x;
+ 670              	 .loc 2 514 0
+ 671 0622 9A42     	 cmp r2,r3
+ 672 0624 0AD0     	 beq .L9
+ 673 0626 D7E90E23 	 ldrd r2,[r7,#56]
+ 674 062a D817     	 asrs r0,r3,#31
+ 675 062c 3861     	 str r0,[r7,#16]
+ 676 062e DB17     	 asrs r3,r3,#31
+ 677 0630 7B61     	 str r3,[r7,#20]
+ 678 0632 3B69     	 ldr r3,[r7,#16]
+ 679 0634 83F00043 	 eor r3,r3,#-2147483648
+ 680 0638 DB43     	 mvns r3,r3
+ 681 063a 00E0     	 b .L11
+ 682              	.L9:
+ 683 063c BB6B     	 ldr r3,[r7,#56]
+ 684              	.L11:
+ 685              	.LBE7:
+ 686              	.LBE6:
+ 687              	 .loc 1 251 0
+ 688 063e 0B60     	 str r3,[r1]
+ 252:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****         *px++ = (q31_t) clip_q63_to_q31(sumImag1 >> 31);
+ 689              	 .loc 1 252 0
+ 690 0640 D7F88810 	 ldr r1,[r7,#136]
+ 691 0644 0B1D     	 adds r3,r1,#4
+ 692 0646 C7F88830 	 str r3,[r7,#136]
+ 693 064a D7E91E23 	 ldrd r2,[r7,#120]
+ 694 064e 4FEAD27A 	 lsr r10,r2,#31
+ 695 0652 4AEA430A 	 orr r10,r10,r3,lsl#1
+ 696 0656 4FEAE37B 	 asr fp,r3,#31
+ 697 065a C7E90CAB 	 strd r10,[r7,#48]
+ 698              	.LBB8:
+ 699              	.LBB9:
+ 513:F:/Projects/20190909 - 3phase_inverter/3phase_inverter/4. Software_WS/OL_VSC_vitor/Dave/Generated/CMSIS_DSP\arm_math.h ****       ((0x7FFFFFFF ^ ((q31_t) (x >> 63)))) : (q31_t) x;
+ 700              	 .loc 2 513 0
+ 701 065e D7E90C23 	 ldrd r2,[r7,#48]
+ 702 0662 1800     	 movs r0,r3
+ 703 0664 B860     	 str r0,[r7,#8]
+ 704 0666 DB17     	 asrs r3,r3,#31
+ 705 0668 FB60     	 str r3,[r7,#12]
+ 706 066a BA68     	 ldr r2,[r7,#8]
+ 707 066c 3B6B     	 ldr r3,[r7,#48]
+ 708 066e DB17     	 asrs r3,r3,#31
+ 709              	 .loc 2 514 0
+ 710 0670 9A42     	 cmp r2,r3
+ 711 0672 0AD0     	 beq .L12
+ 712 0674 D7E90C23 	 ldrd r2,[r7,#48]
+ 713 0678 D817     	 asrs r0,r3,#31
+ 714 067a 3860     	 str r0,[r7]
+ 715 067c DB17     	 asrs r3,r3,#31
+ 716 067e 7B60     	 str r3,[r7,#4]
+ 717 0680 3B68     	 ldr r3,[r7]
+ 718 0682 83F00043 	 eor r3,r3,#-2147483648
+ 719 0686 DB43     	 mvns r3,r3
+ 720 0688 00E0     	 b .L17
+ 721              	.L12:
+ 722 068a 3B6B     	 ldr r3,[r7,#48]
+ 723              	.L17:
+ 724              	.LBE9:
+ 725              	.LBE8:
+ 726              	 .loc 1 252 0
+ 727 068c 0B60     	 str r3,[r1]
+ 253:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 254:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****         /* Update the pointer pIn2 to point to the  starting address of the next column */
+ 255:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****         j++;
+ 728              	 .loc 1 255 0
+ 729 068e B7F87230 	 ldrh r3,[r7,#114]
+ 730 0692 0133     	 adds r3,r3,#1
+ 731 0694 A7F87230 	 strh r3,[r7,#114]
+ 256:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****         pIn2 = pSrcB->pData + 2u * j;
+ 732              	 .loc 1 256 0
+ 733 0698 BB6A     	 ldr r3,[r7,#40]
+ 734 069a 5A68     	 ldr r2,[r3,#4]
+ 735 069c B7F87230 	 ldrh r3,[r7,#114]
+ 736 06a0 DB00     	 lsls r3,r3,#3
+ 737 06a2 1344     	 add r3,r3,r2
+ 738 06a4 C7F89030 	 str r3,[r7,#144]
+ 257:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 258:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****         /* Decrement the column loop counter */
+ 259:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****         col--;
+ 739              	 .loc 1 259 0
+ 740 06a8 B7F87630 	 ldrh r3,[r7,#118]
+ 741 06ac 013B     	 subs r3,r3,#1
+ 742 06ae A7F87630 	 strh r3,[r7,#118]
+ 260:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 261:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****       } while (col > 0u);
+ 743              	 .loc 1 261 0
+ 744 06b2 B7F87630 	 ldrh r3,[r7,#118]
+ 745 06b6 002B     	 cmp r3,#0
+ 746 06b8 7FF4F4AC 	 bne .L15
+ 262:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 263:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****       /* Update the pointer pInA to point to the  starting address of the next row */
+ 264:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****       i = i + numColsB;
+ 747              	 .loc 1 264 0
+ 748 06bc B7F87420 	 ldrh r2,[r7,#116]
+ 749 06c0 B7F86430 	 ldrh r3,[r7,#100]
+ 750 06c4 1344     	 add r3,r3,r2
+ 751 06c6 A7F87430 	 strh r3,[r7,#116]
+ 265:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****       pInA = pInA + 2 * numColsA;
+ 752              	 .loc 1 265 0
+ 753 06ca B7F86230 	 ldrh r3,[r7,#98]
+ 754 06ce DB00     	 lsls r3,r3,#3
+ 755 06d0 1A46     	 mov r2,r3
+ 756 06d2 D7F88C30 	 ldr r3,[r7,#140]
+ 757 06d6 1344     	 add r3,r3,r2
+ 758 06d8 C7F88C30 	 str r3,[r7,#140]
+ 266:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 267:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****       /* Decrement the row loop counter */
+ 268:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****       row--;
+ 759              	 .loc 1 268 0
+ 760 06dc B7F87030 	 ldrh r3,[r7,#112]
+ 761 06e0 013B     	 subs r3,r3,#1
+ 762 06e2 A7F87030 	 strh r3,[r7,#112]
+ 269:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 270:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****     } while (row > 0u);
+ 763              	 .loc 1 270 0
+ 764 06e6 B7F87030 	 ldrh r3,[r7,#112]
+ 765 06ea 002B     	 cmp r3,#0
+ 766 06ec 7FF4C7AC 	 bne .L3
+ 271:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 272:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****     /* Set status as ARM_MATH_SUCCESS */
+ 273:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****     status = ARM_MATH_SUCCESS;
+ 767              	 .loc 1 273 0
+ 768 06f0 0023     	 movs r3,#0
+ 769 06f2 87F86D30 	 strb r3,[r7,#109]
+ 770              	.L4:
+ 274:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****   }
+ 275:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** 
+ 276:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****   /* Return to application */
+ 277:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c ****   return (status);
+ 771              	 .loc 1 277 0
+ 772 06f6 97F86D30 	 ldrb r3,[r7,#109]
+ 773 06fa 5BB2     	 sxtb r3,r3
+ 278:../Dave/Generated/CMSIS_DSP/MatrixFunctions/arm_mat_cmplx_mult_q31.c **** }
+ 774              	 .loc 1 278 0
+ 775 06fc 1846     	 mov r0,r3
+ 776 06fe 9C37     	 adds r7,r7,#156
+ 777              	.LCFI3:
+ 778              	 .cfi_def_cfa_offset 28
+ 779 0700 BD46     	 mov sp,r7
+ 780              	.LCFI4:
+ 781              	 .cfi_def_cfa_register 13
+ 782              	 
+ 783 0702 BDE8B00F 	 pop {r4,r5,r7,r8,r9,r10,fp}
+ 784              	.LCFI5:
+ 785              	 .cfi_restore 11
+ 786              	 .cfi_restore 10
+ 787              	 .cfi_restore 9
+ 788              	 .cfi_restore 8
+ 789              	 .cfi_restore 7
+ 790              	 .cfi_restore 5
+ 791              	 .cfi_restore 4
+ 792              	 .cfi_def_cfa_offset 0
+ 793 0706 7047     	 bx lr
+ 794              	 .cfi_endproc
+ 795              	.LFE135:
+ 797              	 .text
+ 798              	.Letext0:
+ 799              	 .file 3 "c:\\program files (x86)\\dave\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 800              	 .file 4 "c:\\program files (x86)\\dave\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 arm_mat_cmplx_mult_q31.c
+    {standard input}:20     .text.arm_mat_cmplx_mult_q31:00000000 $t
+    {standard input}:25     .text.arm_mat_cmplx_mult_q31:00000000 arm_mat_cmplx_mult_q31
+                     .debug_frame:00000010 $d
+
+NO UNDEFINED SYMBOLS

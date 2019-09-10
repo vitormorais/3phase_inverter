@@ -1,0 +1,75 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "arm_negate_q15.c"
+  16              	 .section .text.arm_negate_q15,"ax",%progbits
+  17              	 .align 1
+  18              	 .global arm_negate_q15
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	arm_negate_q15:
+  23              	 
+  24              	 
+  25 0000 9308     	 lsrs r3,r2,#2
+  26 0002 F0B5     	 push {r4,r5,r6,r7,lr}
+  27 0004 00F10804 	 add r4,r0,#8
+  28 0008 01F10805 	 add r5,r1,#8
+  29 000c 9E46     	 mov lr,r3
+  30              	.L2:
+  31 000e BEF1000F 	 cmp lr,#0
+  32 0012 12D0     	 beq .L9
+  33 0014 4FF0000C 	 mov ip,#0
+  34 0018 54F8087C 	 ldr r7,[r4,#-8]
+  35              	
+  36 001c DCFA17F7 	 qsub16 r7,ip,r7
+  37              	
+  38              	 .thumb
+  39 0020 54F8046C 	 ldr r6,[r4,#-4]
+  40              	
+  41 0024 DCFA16F6 	 qsub16 r6,ip,r6
+  42              	
+  43              	 .thumb
+  44 0028 45F8087C 	 str r7,[r5,#-8]
+  45 002c 45F8046C 	 str r6,[r5,#-4]
+  46 0030 0EF1FF3E 	 add lr,lr,#-1
+  47 0034 0834     	 adds r4,r4,#8
+  48 0036 0835     	 adds r5,r5,#8
+  49 0038 E9E7     	 b .L2
+  50              	.L9:
+  51 003a DB00     	 lsls r3,r3,#3
+  52 003c 1844     	 add r0,r0,r3
+  53 003e 02F00302 	 and r2,r2,#3
+  54 0042 023B     	 subs r3,r3,#2
+  55 0044 1944     	 add r1,r1,r3
+  56 0046 00EB4202 	 add r2,r0,r2,lsl#1
+  57              	.L4:
+  58 004a 9042     	 cmp r0,r2
+  59 004c 0BD0     	 beq .L10
+  60 004e 30F8023B 	 ldrh r3,[r0],#2
+  61 0052 B3F5004F 	 cmp r3,#32768
+  62 0056 1ABF     	 itte ne
+  63 0058 5B42     	 rsbne r3,r3,#0
+  64 005a 9BB2     	 uxthne r3,r3
+  65 005c 47F6FF73 	 movweq r3,#32767
+  66 0060 21F8023F 	 strh r3,[r1,#2]!
+  67 0064 F1E7     	 b .L4
+  68              	.L10:
+  69 0066 F0BD     	 pop {r4,r5,r6,r7,pc}
+  71              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 arm_negate_q15.c
+    {standard input}:17     .text.arm_negate_q15:00000000 $t
+    {standard input}:22     .text.arm_negate_q15:00000000 arm_negate_q15
+
+NO UNDEFINED SYMBOLS

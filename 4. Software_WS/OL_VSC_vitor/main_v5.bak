@@ -1,0 +1,162 @@
+/*
+ * main.c
+ *
+ *  Created on: 2017 Oct 24 09:50:12
+ *  Author: JORGE
+ *	Version 3p_THIPWM_v5
+ */
+
+#include <DAVE.h>                 //Declarations from DAVE Code Generation (includes SFR declaration)
+#include <probe_scope.h>
+#include "init.h"
+#include "functions.h"
+
+#define fmax(x,y) (((x)>(y))?(y):(x))
+#define fmin(x,y) (((x)<(y))?(y):(x))
+#define fabs(x) ((x>0.0f)?(x):(-x))
+
+float scope1, scope2, scope3;
+uint32_t scopeu1, scopeu2, scopeu3;
+uint32_t counter=1u;
+uint32_t fault=0u;
+
+void Update_PWM(void){
+
+	DIGITAL_IO_SetOutputHigh(&P_1_0);
+// Acquire quantities
+	V_DC_adc=ADC_MEASUREMENT_ADV_GetResult(&ADC_MEASUREMENT_Vdc);
+	I_abc_adc[0]=ADC_MEASUREMENT_ADV_GetResult(&ADC_MEASUREMENT_Ia);
+	I_abc_adc[1]=ADC_MEASUREMENT_ADV_GetResult(&ADC_MEASUREMENT_Ib);
+	I_abc_adc[2]=ADC_MEASUREMENT_ADV_GetResult(&ADC_MEASUREMENT_Ic);
+	V_abc_adc[0]=ADC_MEASUREMENT_ADV_GetResult(&ADC_MEASUREMENT_Va);
+	V_abc_adc[1]=ADC_MEASUREMENT_ADV_GetResult(&ADC_MEASUREMENT_Vb);
+	V_abc_adc[2]=ADC_MEASUREMENT_ADV_GetResult(&ADC_MEASUREMENT_Vc);
+
+// Convert acquisitions and filter
+	V_DC=V_DC_adc*ADC2Vdc;
+	I_abc[0]=(I_abc_adc[0]*ADCconv-ADCoffset)*ADC2I;
+	I_abc[1]=(I_abc_adc[1]*ADCconv-ADCoffset)*ADC2I;
+	I_abc[2]=(I_abc_adc[2]*ADCconv-ADCoffset)*ADC2I;
+	V_abc[0]=(V_abc_adc[0]*ADCconv-ADCoffset)*ADC2V;
+	V_abc[1]=(V_abc_adc[1]*ADCconv-ADCoffset)*ADC2V;
+	V_abc[2]=(V_abc_adc[2]*ADCconv-ADCoffset)*ADC2V;
+	//scope1=I_abc[0];
+	//scope2=I_abc[1];
+	//scope3=I_abc[2];
+	V_DCf=LPF1(V_DC, LPF_buff_Vdc, LPF_K_15);
+	abc_AB(I_abc, I_AB);
+	abc_AB(V_abc, V_AB);
+	//abc_AB_Dy(V_abc, V_AB);
+	I_ABf[0]=LPF1(I_AB[0], LPF_buff_IA, LPF_K_500);
+	I_ABf[1]=LPF1(I_AB[1], LPF_buff_IB, LPF_K_500);
+	V_ABf[0]=LPF1(V_AB[0], LPF_buff_VA, LPF_K_500);
+	V_ABf[1]=LPF1(V_AB[1], LPF_buff_VB, LPF_K_500);
+	//scope3=I_ABf[1];
+
+// PLL or emulated phase angle
+	AB_dq(V_AB,V_dq,wt);
+	w=PI_TR(V_dq[1], PI_PLL_buff, Ts, PI_K_PLL);
+	// w=100.0f*PI;
+	wt=fw_integ(w, &wt_buff, Ts);
+
+// PLL stability check
+	wf=LPF1(w, LPF_buff_w, LPF_K_100);
+	dw=fabs(deriv(w,&dw_buff,Ts));
+	sync_aux2=LPF1((float)(dw<K_sync[0]), LPF_buff_sync2, LPF_K_50);
+	sync_aux3=((sync_aux2>K_sync[1])||sync_aux3_buff);
+	sync_aux3_buff=sync_aux3;
+	sync=sync_aux3&&(fabs(V_dq[0])>K_sync[2]);
+	scope1=(float)sync;
+
+// Loop during switching
+	if (state==1u){
+		dq_AB(V_dq_ref, Vm_AB, wt);
+		Vm_AB[0]=Vm_AB[0]*2/V_DCf;
+		Vm_AB[1]=Vm_AB[1]*2/V_DCf;
+		fmax(Vm_AB[0],1.15);
+		fmax(Vm_AB[1],1.15);
+		fmin(Vm_AB[0],-1.15);
+		fmin(Vm_AB[1],-1.15);
+		Vm_AB2=(Vm_AB[0]*Vm_AB[0]+Vm_AB[1]*Vm_AB[1]);
+		AB_abc(Vm_AB, Vm_abc);
+		for (int i=0; i<3; i++){
+			// THI, comment line for sinusoidal PWM
+			Vm_abc[i]=1.5f*Vm_abc[i]-K23*Vm_abc[i]*Vm_abc[i]*Vm_abc[i]/Vm_AB2;
+			fmax(Vm_abc[i],ma_max);
+			fmin(Vm_abc[1],-ma_max);
+			// Convert float to uint32 voltage modulator wave
+			m_abc[i]=((int32_t)(9000.0f*Vm_abc[i])>>1)+5000u;
+		}
+		scopeu1=m_abc[0];
+		scopeu2=m_abc[1];
+		scopeu3=m_abc[2];
+		// update PWM duty cycles
+		PWM_SetDutyCycle(&PWM_a,m_abc[0]);
+		PWM_SetDutyCycle(&PWM_b,m_abc[1]);
+		PWM_SetDutyCycle(&PWM_c,m_abc[2]);
+	}
+	// DAC values between -1 and 1
+	DAC_SingleValue_SetValue_s16(&DAC_0,conv2DAC((wt-PI)/PI));
+	//DAC_SingleValue_SetValue_s16(&DAC_0,conv2DAC(sync));
+	if (sync)
+		DIGITAL_IO_SetOutputHigh(&P_0_9);
+	else
+		DIGITAL_IO_SetOutputLow(&P_0_9);
+	DIGITAL_IO_SetOutputLow(&P_1_0);
+}
+
+int main(void)
+{
+  DAVE_STATUS_t status;
+  status = DAVE_Init();           /* Initialization of DAVE APPs  */
+  if(status != DAVE_STATUS_SUCCESS)
+  {
+    /* Placeholder for error handler code. The while loop below can be replaced
+     * with an user error handler. */
+    XMC_DEBUG("DAVE APPs initialisation failed\n");
+    while(1U){}
+  }
+  ProbeScope_Init(SystemCoreClock/TICKS_PER_SECOND);
+  DIGITAL_IO_SetOutputLow(&ENABLE);
+  DIGITAL_IO_SetOutputLow(&FAULT_RST);
+  DIGITAL_IO_SetOutputLow(&RELAY_1);
+  DIGITAL_IO_SetOutputLow(&RELAY_2);
+  DIGITAL_IO_SetOutputLow(&RELAY_3);
+  PWM_Stop(&PWM_a);
+  PWM_Stop(&PWM_b);
+  PWM_Stop(&PWM_c);
+  PWM_Start(&PWM_update);
+
+  /* Placeholder for user application code. The while loop below can be replaced
+   * with user application code. */
+  while(1U)
+  {
+	  if (counter>100000u){
+		  if (state==0u){		// Initialisation state
+			  if (V_DCf>DCV_low && V_DCf<DCV_high && sync){
+				  PWM_Start(&PWM_a);
+				  PWM_Start(&PWM_b);
+				  PWM_Start(&PWM_c);
+				  DIGITAL_IO_SetOutputHigh(&ENABLE);
+				  state=1u;
+			  }
+		  // Add state for PLL synchronisation
+		  }
+		  else if (state==1u){	// Operation state
+			  if (V_DCf<DCV_low || V_DCf>DCV_high || !sync){
+				  PWM_Stop(&PWM_a);
+				  PWM_Stop(&PWM_b);
+				  PWM_Stop(&PWM_c);
+				  DIGITAL_IO_SetOutputLow(&ENABLE);
+				  state=0u;
+			  }
+		  }
+		  fault=DIGITAL_IO_GetInput(&FAULT_IN);
+		  counter=1u;
+	  }
+	  else{
+		  counter++;
+	  }
+	  ProbeScope_Sampling();
+  }
+}

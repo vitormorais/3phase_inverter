@@ -1,0 +1,67 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "arm_power_q7.c"
+  16              	 .section .text.arm_power_q7,"ax",%progbits
+  17              	 .align 1
+  18              	 .global arm_power_q7
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	arm_power_q7:
+  23              	 
+  24              	 
+  25 0000 F0B5     	 push {r4,r5,r6,r7,lr}
+  26 0002 4FEA910E 	 lsr lr,r1,#2
+  27 0006 8446     	 mov ip,r0
+  28 0008 7746     	 mov r7,lr
+  29 000a 0025     	 movs r5,#0
+  30              	.L2:
+  31 000c 6FB1     	 cbz r7,.L7
+  32 000e 5CF8046B 	 ldr r6,[ip],#4
+  33 0012 4FEA3624 	 ror r4,r6,#8
+  34              	
+  35 0016 2FFA84F3 	 sxtb16 r3,r4
+  36              	
+  37              	
+  38 001a 2FFA86F4 	 sxtb16 r4,r6
+  39              	
+  40              	
+  41 001e 23FB0353 	 smlad r3,r3,r3,r5
+  42              	
+  43              	
+  44 0022 24FB0435 	 smlad r5,r4,r4,r3
+  45              	
+  46              	 .thumb
+  47 0026 013F     	 subs r7,r7,#1
+  48 0028 F0E7     	 b .L2
+  49              	.L7:
+  50 002a 00EB8E00 	 add r0,r0,lr,lsl#2
+  51 002e 01F00301 	 and r1,r1,#3
+  52 0032 0144     	 add r1,r1,r0
+  53              	.L4:
+  54 0034 8842     	 cmp r0,r1
+  55 0036 04D0     	 beq .L8
+  56 0038 10F9013B 	 ldrsb r3,[r0],#1
+  57 003c 13FB0355 	 smlabb r5,r3,r3,r5
+  58 0040 F8E7     	 b .L4
+  59              	.L8:
+  60 0042 1560     	 str r5,[r2]
+  61 0044 F0BD     	 pop {r4,r5,r6,r7,pc}
+  63              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 arm_power_q7.c
+    {standard input}:17     .text.arm_power_q7:00000000 $t
+    {standard input}:22     .text.arm_power_q7:00000000 arm_power_q7
+
+NO UNDEFINED SYMBOLS

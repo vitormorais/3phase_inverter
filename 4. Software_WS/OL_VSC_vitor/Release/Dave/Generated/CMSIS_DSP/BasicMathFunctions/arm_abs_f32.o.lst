@@ -1,0 +1,68 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "arm_abs_f32.c"
+  16              	 .section .text.arm_abs_f32,"ax",%progbits
+  17              	 .align 1
+  18              	 .global arm_abs_f32
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	arm_abs_f32:
+  23              	 
+  24              	 
+  25 0000 9308     	 lsrs r3,r2,#2
+  26 0002 70B5     	 push {r4,r5,r6,lr}
+  27 0004 0546     	 mov r5,r0
+  28 0006 0C46     	 mov r4,r1
+  29 0008 1E46     	 mov r6,r3
+  30              	.L2:
+  31 000a 1035     	 adds r5,r5,#16
+  32 000c 1034     	 adds r4,r4,#16
+  33 000e CEB1     	 cbz r6,.L7
+  34 0010 15ED046A 	 flds s12,[r5,#-16]
+  35 0014 55ED036A 	 flds s13,[r5,#-12]
+  36 0018 15ED027A 	 flds s14,[r5,#-8]
+  37 001c 55ED017A 	 flds s15,[r5,#-4]
+  38 0020 B0EEC66A 	 fabss s12,s12
+  39 0024 F0EEE66A 	 fabss s13,s13
+  40 0028 B0EEC77A 	 fabss s14,s14
+  41 002c F0EEE77A 	 fabss s15,s15
+  42 0030 04ED046A 	 fsts s12,[r4,#-16]
+  43 0034 44ED036A 	 fsts s13,[r4,#-12]
+  44 0038 04ED027A 	 fsts s14,[r4,#-8]
+  45 003c 44ED017A 	 fsts s15,[r4,#-4]
+  46 0040 013E     	 subs r6,r6,#1
+  47 0042 E2E7     	 b .L2
+  48              	.L7:
+  49 0044 1B01     	 lsls r3,r3,#4
+  50 0046 1844     	 add r0,r0,r3
+  51 0048 02F00302 	 and r2,r2,#3
+  52 004c 1944     	 add r1,r1,r3
+  53 004e 00EB8202 	 add r2,r0,r2,lsl#2
+  54              	.L4:
+  55 0052 9042     	 cmp r0,r2
+  56 0054 06D0     	 beq .L8
+  57 0056 F0EC017A 	 fldmias r0!,{s15}
+  58 005a F0EEE77A 	 fabss s15,s15
+  59 005e E1EC017A 	 fstmias r1!,{s15}
+  60 0062 F6E7     	 b .L4
+  61              	.L8:
+  62 0064 70BD     	 pop {r4,r5,r6,pc}
+  64              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 arm_abs_f32.c
+    {standard input}:17     .text.arm_abs_f32:00000000 $t
+    {standard input}:22     .text.arm_abs_f32:00000000 arm_abs_f32
+
+NO UNDEFINED SYMBOLS

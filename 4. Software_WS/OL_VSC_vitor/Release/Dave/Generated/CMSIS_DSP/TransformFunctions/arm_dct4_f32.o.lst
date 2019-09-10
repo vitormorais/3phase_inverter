@@ -1,0 +1,170 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "arm_dct4_f32.c"
+  16              	 .section .text.arm_dct4_f32,"ax",%progbits
+  17              	 .align 1
+  18              	 .global arm_dct4_f32
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	arm_dct4_f32:
+  23              	 
+  24              	 
+  25 0000 2DE9F041 	 push {r4,r5,r6,r7,r8,lr}
+  26 0004 0646     	 mov r6,r0
+  27 0006 C768     	 ldr r7,[r0,#12]
+  28 0008 D0F80880 	 ldr r8,[r0,#8]
+  29 000c 3388     	 ldrh r3,[r6]
+  30 000e 1446     	 mov r4,r2
+  31 0010 0D46     	 mov r5,r1
+  32 0012 1046     	 mov r0,r2
+  33 0014 4FF08041 	 mov r1,#1073741824
+  34 0018 FFF7FEFF 	 bl arm_scale_f32
+  35 001c 3946     	 mov r1,r7
+  36 001e 2046     	 mov r0,r4
+  37 0020 2246     	 mov r2,r4
+  38 0022 3388     	 ldrh r3,[r6]
+  39 0024 FFF7FEFF 	 bl arm_mult_f32
+  40 0028 3088     	 ldrh r0,[r6]
+  41 002a B6F802E0 	 ldrh lr,[r6,#2]
+  42 002e 05F11001 	 add r1,r5,#16
+  43 0032 05EB8002 	 add r2,r5,r0,lsl#2
+  44 0036 4FEA9E0E 	 lsr lr,lr,#2
+  45 003a 143A     	 subs r2,r2,#20
+  46 003c 04F12003 	 add r3,r4,#32
+  47 0040 0F46     	 mov r7,r1
+  48              	.L2:
+  49 0042 53F820CC 	 ldr ip,[r3,#-32]
+  50 0046 47F810CC 	 str ip,[r7,#-16]
+  51 004a 53F81CCC 	 ldr ip,[r3,#-28]
+  52 004e C2F810C0 	 str ip,[r2,#16]
+  53 0052 53F818CC 	 ldr ip,[r3,#-24]
+  54 0056 47F80CCC 	 str ip,[r7,#-12]
+  55 005a 53F814CC 	 ldr ip,[r3,#-20]
+  56 005e C2F80CC0 	 str ip,[r2,#12]
+  57 0062 53F810CC 	 ldr ip,[r3,#-16]
+  58 0066 47F808CC 	 str ip,[r7,#-8]
+  59 006a 53F80CCC 	 ldr ip,[r3,#-12]
+  60 006e C2F808C0 	 str ip,[r2,#8]
+  61 0072 53F808CC 	 ldr ip,[r3,#-8]
+  62 0076 47F804CC 	 str ip,[r7,#-4]
+  63 007a 53F804CC 	 ldr ip,[r3,#-4]
+  64 007e C2F804C0 	 str ip,[r2,#4]
+  65 0082 BEF1010E 	 subs lr,lr,#1
+  66 0086 07F11007 	 add r7,r7,#16
+  67 008a A2F11002 	 sub r2,r2,#16
+  68 008e 03F12003 	 add r3,r3,#32
+  69 0092 D6D1     	 bne .L2
+  70 0094 04F11007 	 add r7,r4,#16
+  71 0098 8308     	 lsrs r3,r0,#2
+  72 009a 3A46     	 mov r2,r7
+  73              	.L3:
+  74 009c 51F8100C 	 ldr r0,[r1,#-16]
+  75 00a0 42F8100C 	 str r0,[r2,#-16]
+  76 00a4 51F80C0C 	 ldr r0,[r1,#-12]
+  77 00a8 42F80C0C 	 str r0,[r2,#-12]
+  78 00ac 51F8080C 	 ldr r0,[r1,#-8]
+  79 00b0 42F8080C 	 str r0,[r2,#-8]
+  80 00b4 51F8040C 	 ldr r0,[r1,#-4]
+  81 00b8 42F8040C 	 str r0,[r2,#-4]
+  82 00bc 013B     	 subs r3,r3,#1
+  83 00be 02F11002 	 add r2,r2,#16
+  84 00c2 01F11001 	 add r1,r1,#16
+  85 00c6 E9D1     	 bne .L3
+  86 00c8 2A46     	 mov r2,r5
+  87 00ca 3069     	 ldr r0,[r6,#16]
+  88 00cc 2146     	 mov r1,r4
+  89 00ce FFF7FEFF 	 bl arm_rfft_f32
+  90 00d2 2846     	 mov r0,r5
+  91 00d4 2A46     	 mov r2,r5
+  92 00d6 4146     	 mov r1,r8
+  93 00d8 3388     	 ldrh r3,[r6]
+  94 00da FFF7FEFF 	 bl arm_cmplx_mult_cmplx_f32
+  95 00de D5ED007A 	 flds s15,[r5]
+  96 00e2 3188     	 ldrh r1,[r6]
+  97 00e4 B6EE007A 	 fconsts s14,#96
+  98 00e8 67EE877A 	 fmuls s15,s15,s14
+  99 00ec 481E     	 subs r0,r1,#1
+ 100 00ee 17EE90CA 	 fmrs ip,s15
+ 101 00f2 2346     	 mov r3,r4
+ 102 00f4 2A46     	 mov r2,r5
+ 103 00f6 4FEA900E 	 lsr lr,r0,#2
+ 104 00fa 43F814CB 	 str ip,[r3],#20
+ 105 00fe 0832     	 adds r2,r2,#8
+ 106 0100 2835     	 adds r5,r5,#40
+ 107 0102 F446     	 mov ip,lr
+ 108              	.L4:
+ 109 0104 15ED087A 	 flds s14,[r5,#-32]
+ 110 0108 77EE677A 	 fsubs s15,s14,s15
+ 111 010c BCF1010C 	 subs ip,ip,#1
+ 112 0110 43ED047A 	 fsts s15,[r3,#-16]
+ 113 0114 15ED067A 	 flds s14,[r5,#-24]
+ 114 0118 77EE677A 	 fsubs s15,s14,s15
+ 115 011c 03F11003 	 add r3,r3,#16
+ 116 0120 43ED077A 	 fsts s15,[r3,#-28]
+ 117 0124 15ED047A 	 flds s14,[r5,#-16]
+ 118 0128 77EE677A 	 fsubs s15,s14,s15
+ 119 012c 05F12005 	 add r5,r5,#32
+ 120 0130 43ED067A 	 fsts s15,[r3,#-24]
+ 121 0134 15ED0A7A 	 flds s14,[r5,#-40]
+ 122 0138 77EE677A 	 fsubs s15,s14,s15
+ 123 013c 43ED057A 	 fsts s15,[r3,#-20]
+ 124 0140 E0D1     	 bne .L4
+ 125 0142 04EB0E14 	 add r4,r4,lr,lsl#4
+ 126 0146 0434     	 adds r4,r4,#4
+ 127 0148 00F00300 	 and r0,r0,#3
+ 128 014c 02EB4E13 	 add r3,r2,lr,lsl#5
+ 129 0150 04EB8000 	 add r0,r4,r0,lsl#2
+ 130              	.L5:
+ 131 0154 8442     	 cmp r4,r0
+ 132 0156 03F10803 	 add r3,r3,#8
+ 133 015a 06D0     	 beq .L13
+ 134 015c 13ED027A 	 flds s14,[r3,#-8]
+ 135 0160 77EE677A 	 fsubs s15,s14,s15
+ 136 0164 E4EC017A 	 fstmias r4!,{s15}
+ 137 0168 F4E7     	 b .L5
+ 138              	.L13:
+ 139 016a 8B08     	 lsrs r3,r1,#2
+ 140              	.L7:
+ 141 016c 96ED017A 	 flds s14,[r6,#4]
+ 142 0170 57ED047A 	 flds s15,[r7,#-16]
+ 143 0174 67EE877A 	 fmuls s15,s15,s14
+ 144 0178 013B     	 subs r3,r3,#1
+ 145 017a 47ED047A 	 fsts s15,[r7,#-16]
+ 146 017e 96ED017A 	 flds s14,[r6,#4]
+ 147 0182 57ED037A 	 flds s15,[r7,#-12]
+ 148 0186 67EE877A 	 fmuls s15,s15,s14
+ 149 018a 07F11007 	 add r7,r7,#16
+ 150 018e 47ED077A 	 fsts s15,[r7,#-28]
+ 151 0192 96ED017A 	 flds s14,[r6,#4]
+ 152 0196 57ED067A 	 flds s15,[r7,#-24]
+ 153 019a 67EE877A 	 fmuls s15,s15,s14
+ 154 019e 47ED067A 	 fsts s15,[r7,#-24]
+ 155 01a2 96ED017A 	 flds s14,[r6,#4]
+ 156 01a6 57ED057A 	 flds s15,[r7,#-20]
+ 157 01aa 67EE877A 	 fmuls s15,s15,s14
+ 158 01ae 47ED057A 	 fsts s15,[r7,#-20]
+ 159 01b2 DBD1     	 bne .L7
+ 160 01b4 BDE8F081 	 pop {r4,r5,r6,r7,r8,pc}
+ 162              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 arm_dct4_f32.c
+    {standard input}:17     .text.arm_dct4_f32:00000000 $t
+    {standard input}:22     .text.arm_dct4_f32:00000000 arm_dct4_f32
+
+UNDEFINED SYMBOLS
+arm_scale_f32
+arm_mult_f32
+arm_rfft_f32
+arm_cmplx_mult_cmplx_f32
