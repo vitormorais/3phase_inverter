@@ -1,12 +1,25 @@
-# Power Inverter Development Repository
+# 3-phase Power Inverter Development Repository
 
 ### Features
 
-- The 3-phase 30A@450V power inverter with control board for research purposes;
+- The 3-phase 30A@450V power inverter for academic/research purposes;
 - This inverter has built-in measurements of AC currents, AC voltages and DC bus voltage;
-- The inverter is based on infineon IPM IKCM60F30GA module (a ultra low-cost module, with integrated drivers);
+- The inverter is based on infineon IPM IKCM30F60GA module (a low-cost module, with integrated drivers);
 - The control board is based on XMC4500 Relax (lite) kit, a well known board in UP Laboratory of Power Electronics;
 - Reduced cost of hardware (around 100€);
+
+### Motivation
+
+- Decrease the Hardware design, by using a generic multi-purpose power inverter;
+- Decrease the Testing time and increase the Validation outcomes;
+- Increase in Implementation and Control capabilities, without spending too much time in this step;
+- Increase in new contributions to the Scientific Comunity, with more papers.
+
+
+
+<a href="url"><img src="https://raw.githubusercontent.com/vitormorais/3phase_inverter/master/z_junk/flowchart_procedures.png" width="90%" ></a>
+
+------------
 
 ### How to use
 
@@ -18,6 +31,8 @@
 - Create BOM for 10 boards (expecting 1000€)
 -
 - Create "how to use" manual 
+
+------------
 
 ### DEMO
 
@@ -51,6 +66,7 @@
 
 ```bash
 ├── 1. Functional
+│   └── draft.docx
 ├── 2. Hardware PCB
 │   ├── CAMtastic_controlo_rev21.Cam
 │   ├── CAMtastic_controlo_rev22.Cam
@@ -73,13 +89,18 @@
 │   ├── vmorais_libraries.PcbLib
 │   └── vmorais_libraries.SchLib
 ├── 3. Design
+│   └── BOM.xlsx
 ├── 4. Software_WS
 │   └── OL_VSC_vitor
 ├── 5. Implementation
+│   └── hardware.psimsch
 ├── 6. Testing&Validation
+│   └── testing.docx
 ├── README.md
 ├── folder_structure_binary.txt
 └── z_junk
+    ├── flowchart_procedures.png
+    ├── flowchart_procedures.svg
     ├── img1.png
     ├── img2.jpg
     └── img3.jpg
