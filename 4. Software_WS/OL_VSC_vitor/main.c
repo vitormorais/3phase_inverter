@@ -66,16 +66,24 @@ void Update_PWM(void){
 	I_abc_adc[1]=ADC_MEASUREMENT_ADV_GetResult(&ADC_MEASUREMENT_1_V1_4);
 	I_abc_adc[2]=ADC_MEASUREMENT_ADV_GetResult(&ADC_MEASUREMENT_1_V1_3);
 
+	I_abc[0]=(I_abc_adc[0]-1774.8f) * 0.022222222f;
+	I_abc[1]=(I_abc_adc[1]-1777.0f) * 0.022179506f;
+	I_abc[2]=(I_abc_adc[2]-1770.8f) * 0.021897810f;
+
 	float my_vdc = ADC_MEASUREMENT_ADV_GetResult(&ADC_MEASUREMENT_1_V1_2);
-	scope_adc7 = my_vdc;
+	float V_dcbus = (my_vdc-1809.0f) * -0.58f;
 
-	scope_adc1 = V_abc_adc[0];
-	scope_adc2 = V_abc_adc[1];
-	scope_adc3 = V_abc_adc[2];
+	scope_adc7 = V_dcbus;
 
-	scope_adc4 = V_abc[0];
-	scope_adc5 = V_abc[1];
-	scope_adc6 = V_abc[2];
+	scope_adc1 = I_abc[0];
+	scope_adc2 = I_abc[1];
+	scope_adc3 = I_abc[2];
+
+	scope_adc4 = my_vdc;
+//	scope_adc5 = V_abc[1];
+//	scope_adc6 = V_abc[2];
+
+
 
 	// Ensure variables interval
 	vDQp_ref[0]=fminf(vDQp_ref[0],1.0f);

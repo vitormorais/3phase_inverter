@@ -1,0 +1,26 @@
+// Grid parameters:
+Vg = 120*sqrt(2);
+fg = 50;
+Lg = 0.001;
+Rg = 0.01;
+
+// Inverter Parameters
+L = 5e-3;
+C = 5e-6;
+fsw = 10000;  // switching frequency
+Vdc = 400;
+
+// Inverter PR controller gains
+k = 2;
+Kr = k*2*3.14*fg;
+
+//==== ePLL Design =======
+fo = fg;                              // rated frequency (Hz)
+wo = 2*pi*fo;
+Ao = Vg;                            // rated magnitude of input signal
+zeta1 = 0.5;                       // first damping ratio
+Kp = 2*zeta1*wo;               // P gain
+zeta2 = 1;                          // second damping ratio
+Ki = Kp^2/(8*zeta2^2);       //  I gain
+lambda = 50;
+//========
