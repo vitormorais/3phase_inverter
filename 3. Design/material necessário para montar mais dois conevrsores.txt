@@ -1,0 +1,15 @@
+temos capacidade de montar mais dois conversores:
+---  1 sem medida de tensões AC
+---  1 com medida de tensões AC (igual aos demais)
+
+faltam os seguintes componentes:
+-- crimps (só dá para fazer 1 conversor)
+-- alojamento para crimps (não chega a 1)
+-- header para crimps (dá para 1)
+-- conector pcb parafuso (pode ser utilizado phoenix)
+-- xmc4500 (a pedir na i103)
+-- barra de pinos fêmea pcb (a pedir no RC)
+-- espaçadores de plástico: a pensar numa estrutura em 3D
+
+resumindo, há capacidade de construção de dois conversores, mas são preciso algumas artimanhas
+

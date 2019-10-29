@@ -48,6 +48,7 @@ float wt_jump=0.0f;
 
 ////  vítor
 float scope_adc1, scope_adc2, scope_adc3, scope_adc4, scope_adc5, scope_adc6, scope_adc7;
+float aux_var1, aux_var2, aux_var3, aux_var4, aux_var5, aux_var6, aux_var7;
 
 
 void Update_PWM(void){
@@ -71,7 +72,14 @@ void Update_PWM(void){
 	I_abc[2]=(I_abc_adc[2]-1770.8f) * 0.021897810f;
 
 	float my_vdc = ADC_MEASUREMENT_ADV_GetResult(&ADC_MEASUREMENT_1_V1_2);
-	float V_dcbus = (my_vdc-1809.0f) * -0.58f;
+	float V_dcbus = (my_vdc-1823.0f) * -0.58f;
+
+	float conv_temperature = ADC_MEASUREMENT_ADV_GetResult(&ADC_MEASUREMENT_3_V3_1);
+	float conv_temp_C = //(conv_temperature*conv_temperature*conv_temperature*-0.00016973) +  //x^3
+						(conv_temperature*conv_temperature*-0.00016973) +  //x^2
+						(conv_temperature*0.69969095) +  //x^1
+						-653.10731030;  //x^0 */
+	conv_temp_C += 7.0f;  //compensação para temperatura da junção
 
 	scope_adc7 = V_dcbus;
 
@@ -79,9 +87,12 @@ void Update_PWM(void){
 	scope_adc2 = I_abc[1];
 	scope_adc3 = I_abc[2];
 
-	scope_adc4 = my_vdc;
-//	scope_adc5 = V_abc[1];
-//	scope_adc6 = V_abc[2];
+	scope_adc4 = V_abc[0];
+	scope_adc5 = V_abc[1];
+	scope_adc6 = V_abc[2];
+
+	aux_var1 = conv_temperature;
+	aux_var2 = conv_temp_C;
 
 
 
