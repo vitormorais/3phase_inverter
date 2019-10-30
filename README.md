@@ -1,5 +1,11 @@
 # 3-phase Power Inverter Development Repository
 
+### Important Information for SELE
+
+- The guide to use the setup is presented in [Guide](https://github.com/vitormorais/3phase_inverter/raw/master/1.%20Functional/guide.docx)
+- The repository to import with DAVE is present in [DAVE Project](https://github.com/vitormorais/3phase_inverter/raw/master/4.%20Software_WS/SELE_initialProject.zip)
+
+
 ### Features
 
 - The 3-phase 30A@450V power inverter for academic/research purposes;
