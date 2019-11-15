@@ -11,5 +11,5 @@ faltam os seguintes componentes:
 -- barra de pinos fêmea pcb (a pedir no RC)
 -- espaçadores de plástico: a pensar numa estrutura em 3D
 
-resumindo, há capacidade de construção de dois conversores, mas são preciso algumas artimanhas
+resumindo, há capacidade de construção de dois conversores, mas são preciso alguns truques
 
