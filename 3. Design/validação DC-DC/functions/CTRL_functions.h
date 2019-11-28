@@ -23,6 +23,8 @@ prStruct PR_Test ;
 float I_dq_ref[2]={0.0f, 0.0f};
 float I_AB[2]={0.0f, 0.0f};
 float PR_output = 0.0f;
+float VDC_BUS_REF;
+float vdc_bus_error;
 
 
 ///////////  prototypes
@@ -36,10 +38,7 @@ float Calc_prStruct(prStruct * s, float, float );
 
 void run_DC_ctrl(void) {
 
-    I_dq_ref[0] = in[9];//10; //activa
-    I_dq_ref[1] = 0;  //reactiva
-    dq_AB(I_dq_ref, I_AB, conv.wt);
-
+  
 }
 
 

@@ -11,8 +11,8 @@ int state=init;		// State machine state variable
 int SCADA_enable = 0;			//ON-OFF micrium button
 int SCADA_disable = 0;			//ON-OFF micrium button
 int SCADA_status_button = 0;    //ON-OFF micrium button
-float SCADA_Imax = 15.0f;		//Maximum current
-float SCADA_VDCmax = 400.0f;	//Maximum Voltage DCBUS
+float SCADA_Imax = 25.0f;		//Maximum current
+float SCADA_VDCmax = 420.0f;	//Maximum Voltage DCBUS
 float SCADA_VDCmin = -10.0f;	//Minimum Voltage DCBUS
 float SCADA_Tmax = 60.0f;		//Maximum converter temperature
 
@@ -47,14 +47,14 @@ void ConverterStateMachine(void) {
 	}
 	///  switch case PC1
 	else if ((state == pc1 )  ) {
-	 	if ((timer_sm > (100*_1MS)) && (conv.Vdc > 300.0f)/**/) { 
+	 	if ((timer_sm > (20*_1MS)) && (conv.Vdc > 300.0f)/**/) { 
 	 		state = pc2;
 	 		timer_sm = 0;
 	 	}
 	}
 	///  switch case PC2
 	else if ((state == pc2 )  ) {
-	 	if (timer_sm > (20*_1MS) ){ 
+	 	if (timer_sm > (50*_1MS) ){ 
 	 		state = idle;
 	 		timer_sm = 0;
 	 	}
@@ -110,7 +110,6 @@ void ConverterStateMachine(void) {
 	}
 
 	/////////////////////   STATES UPDATE	/////////////////////
-
 	if (state==init){
 	EN_1 = 0; //  DIGITAL_IO_SetOutputLow(&EN_1);
 	EN_2 = 0; //  DIGITAL_IO_SetOutputLow(&EN_2);
@@ -118,40 +117,39 @@ void ConverterStateMachine(void) {
 	PCR_SW = 0;
 	PCS_SW = 0;
 	//SCADA_status_button = 0;
-}
-else if (state==pc1){
-	EN_1 = 0; //  DIGITAL_IO_SetOutputLow(&EN_1);
-	EN_2 = 0; //  DIGITAL_IO_SetOutputLow(&EN_2);
-	EN_3 = 0; //  DIGITAL_IO_SetOutputLow(&EN_3);
-	PCR_SW = 0;
-	PCS_SW = 1;
-	//SCADA_status_button = 0;
-}
-else if (state==pc2){
-	EN_1 = 0; //  DIGITAL_IO_SetOutputLow(&EN_1);
-	EN_2 = 0; //  DIGITAL_IO_SetOutputLow(&EN_2);
-	EN_3 = 0; //  DIGITAL_IO_SetOutputLow(&EN_3);
-	PCR_SW = 1;
-	PCS_SW = 1;
-	//SCADA_status_button = 0;
-}
-else if (state==idle){
-	EN_1 = 0; //  DIGITAL_IO_SetOutputLow(&EN_1);
-	EN_2 = 0; //  DIGITAL_IO_SetOutputLow(&EN_2);
-	EN_3 = 0; //  DIGITAL_IO_SetOutputLow(&EN_3);
-	PCR_SW = 1;
-	PCS_SW = 1;
-	//SCADA_status_button = 0;
-}
-else if (state==running){
-	EN_1 = 1; //  DIGITAL_IO_SetOutputHigh(&EN_1);
-	EN_2 = 1; //  DIGITAL_IO_SetOutputHigh(&EN_2);
-	EN_3 = 1; //  DIGITAL_IO_SetOutputHigh(&EN_3);
-	PCR_SW = 1;
-	PCS_SW = 1;
-	//SCADA_status_button = 1;
-}
-
+	}
+	else if (state==pc1){
+		EN_1 = 0; //  DIGITAL_IO_SetOutputLow(&EN_1);
+		EN_2 = 0; //  DIGITAL_IO_SetOutputLow(&EN_2);
+		EN_3 = 0; //  DIGITAL_IO_SetOutputLow(&EN_3);
+		PCR_SW = 0;
+		PCS_SW = 1;
+		//SCADA_status_button = 0;
+	}
+	else if (state==pc2){
+		EN_1 = 0; //  DIGITAL_IO_SetOutputLow(&EN_1);
+		EN_2 = 0; //  DIGITAL_IO_SetOutputLow(&EN_2);
+		EN_3 = 0; //  DIGITAL_IO_SetOutputLow(&EN_3);
+		PCR_SW = 1;
+		PCS_SW = 1;
+		//SCADA_status_button = 0;
+	}
+	else if (state==idle){
+		EN_1 = 0; //  DIGITAL_IO_SetOutputLow(&EN_1);
+		EN_2 = 0; //  DIGITAL_IO_SetOutputLow(&EN_2);
+		EN_3 = 0; //  DIGITAL_IO_SetOutputLow(&EN_3);
+		PCR_SW = 1;
+		PCS_SW = 1;
+		//SCADA_status_button = 0;
+	}
+	else if (state==running){
+		EN_1 = 1; //  DIGITAL_IO_SetOutputHigh(&EN_1);
+		EN_2 = 1; //  DIGITAL_IO_SetOutputHigh(&EN_2);
+		EN_3 = 1; //  DIGITAL_IO_SetOutputHigh(&EN_3);
+		PCR_SW = 1;
+		PCS_SW = 1;
+		//SCADA_status_button = 1;
+	}
 }
 
 int no_fault(void)  {
@@ -162,8 +160,8 @@ int no_fault(void)  {
 		(conv.Vdc < SCADA_VDCmin) ||
 		(conv.temp > SCADA_Tmax)) {
 		return 1;
-}
-else {
-	return 0;
-}
+	}
+	else {
+		return 0;
+	}
 }

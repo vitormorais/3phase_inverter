@@ -91,12 +91,25 @@ if(cycle_time >= (float) CTRL_PERIOD) {
 
 	///// begin DC_ctrl
 	//run_DC_ctrl();
-	I_dq_ref[0] = in[9];//10; //activa
-	I_dq_ref[1] = 0;  //reactiva
-	dq_AB(I_dq_ref, I_AB, conv.wt);
+    VDC_BUS_REF = 400.0f;
+    if (state == running) {
+    	vdc_bus_error = ((VDC_BUS_REF)-(conv.Vdc));
+        //vdc_bus_error = ((VDC_BUS_REF*VDC_BUS_REF)-(conv.Vdc*conv.Vdc));
+    }
+    else  {
+        vdc_bus_error = 0;
+    }
+
+    I_dq_ref[0] = -PI_TR_par(vdc_bus_error, Ts, &PI_Vdc);//10; //activa
+    I_dq_ref[1] = 0;  //reactiva
+    dq_AB(I_dq_ref, I_AB, conv.wt);
+
 	///// end DC_ctrl
 
 	///// begin PR_ctrl
+	if (state != running) {
+		set_PR_ref(&PR_Test, 0);
+	}
 	set_PR_ref(&PR_Test, I_AB[0]);
 	Iu_filt = LPF1(I_abc[0], PR_LPFbuff_Iu, LPF_K_500);
 	PR_output = Calc_prStruct(&PR_Test, Iu_filt, 100.0f*PI_const) ;
