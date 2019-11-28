@@ -60,6 +60,7 @@ float conv_temp_C = 0.0f;
 
 //////////  BUFFERS
 float LPFbuff_vdc[2]={0.0f,0.0f};
+float LPFbuff_vu[2]={0.0f,0.0f};
 //float LPFbuff_vdc
 
 

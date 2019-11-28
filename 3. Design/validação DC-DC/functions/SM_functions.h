@@ -12,7 +12,7 @@ int SCADA_enable = 0;			//ON-OFF micrium button
 int SCADA_disable = 0;			//ON-OFF micrium button
 int SCADA_status_button = 0;    //ON-OFF micrium button
 float SCADA_Imax = 25.0f;		//Maximum current
-float SCADA_VDCmax = 420.0f;	//Maximum Voltage DCBUS
+float SCADA_VDCmax = 430.0f;	//Maximum Voltage DCBUS
 float SCADA_VDCmin = -10.0f;	//Minimum Voltage DCBUS
 float SCADA_Tmax = 60.0f;		//Maximum converter temperature
 
@@ -103,7 +103,6 @@ void ConverterStateMachine(void) {
 			state = init;
 			SCADA_error_Tmax = 1;
 		} 
-
 	}
 	else {
 	//du nothing

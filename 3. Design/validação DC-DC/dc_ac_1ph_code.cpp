@@ -116,6 +116,13 @@ if(cycle_time >= (float) CTRL_PERIOD) {
 	if (state != running) {
 		PR_output = 0;
 	}
+
+	PR_output = (PR_output >  20.0f) ?  20.0f : PR_output;
+	PR_output = (PR_output < -20.0f) ? -20.0f : PR_output;
+
+	vdc_division = (conv.Vdc < 1) ? 1 : conv.Vdc;
+	m_u = (PR_output + V_abc[0]) / (vdc_division);
+	m_v = -m_u;
 	///// end PR_ctrl
 
 	/////  state machine
@@ -160,8 +167,8 @@ out[PSIM_OUT_CTRL+2] = I_dq_ref[0];
 out[PSIM_OUT_CTRL+3] = I_dq_ref[1];
 out[PSIM_OUT_CTRL+4] = I_AB[0];
 out[PSIM_OUT_CTRL+5] = PR_output;
-out[PSIM_OUT_CTRL+6] = 0;
-out[PSIM_OUT_CTRL+7] = 0;
+out[PSIM_OUT_CTRL+6] = m_u;
+out[PSIM_OUT_CTRL+7] = m_v;
 }
 
 
