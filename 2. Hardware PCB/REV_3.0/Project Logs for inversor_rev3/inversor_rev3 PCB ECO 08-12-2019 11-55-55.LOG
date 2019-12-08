@@ -1,0 +1,8 @@
+Removed Pin From Net: NetName=5gnd Pin=C1-1
+Removed Pin From Net: NetName=5Vdc Pin=C1-2
+Removed Pin From Net: NetName=5gnd Pin=CC1-5
+Removed Pin From Net: NetName=5Vdc Pin=CC1-8
+Added Pin To Net: NetName=5gnd1 Pin=C1-1
+Added Pin To Net: NetName=5VDC1 Pin=C1-2
+Added Pin To Net: NetName=5gnd1 Pin=CC1-5
+Added Pin To Net: NetName=5VDC1 Pin=CC1-8
