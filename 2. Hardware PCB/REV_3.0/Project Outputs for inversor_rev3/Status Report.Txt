@@ -1,0 +1,12 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [inversor_rev3.PrjPcb]
+   Generated File[inversor_rev3.TXT]
+   Generated File[inversor_rev3.LDP]
+   Generated File[inversor_rev3.DRR]
+
+
+Files Generated   : 3
+Documents Printed : 0
+
+Finished Output Generation At 11:52:20 On 09/12/2019

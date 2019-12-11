@@ -14,7 +14,7 @@
    viewBox="0 0 127.64031 331.60468"
    version="1.1"
    id="svg8"
-   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
    sodipodi:docname="board_layout.svg">
   <defs
      id="defs2">
@@ -317,15 +317,15 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2"
-     inkscape:cx="356.31583"
-     inkscape:cy="191.22294"
+     inkscape:zoom="2.8284271"
+     inkscape:cx="329.02171"
+     inkscape:cy="657.54756"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1920"
      inkscape:window-height="1027"
-     inkscape:window-x="-8"
+     inkscape:window-x="1912"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
      inkscape:snap-page="true"
@@ -735,7 +735,7 @@
     </g>
     <g
        id="g1022-6"
-       transform="matrix(1,0,0,0.98159617,-18.417466,-17.542314)">
+       transform="matrix(1,0,0,0.98159617,59.130787,-62.817772)">
       <rect
          y="203.07292"
          x="100.27708"
@@ -841,7 +841,7 @@
     </g>
     <g
        id="g1553"
-       transform="translate(-39.158333,-2.9104167)">
+       transform="rotate(-90,98.79375,162.11638)">
       <rect
          y="140.81375"
          x="121.44376"
@@ -863,7 +863,7 @@
     </g>
     <g
        id="g1553-4"
-       transform="translate(-39.158333,2.7279185)">
+       transform="rotate(-90,101.08375,159.82638)">
       <rect
          y="140.81375"
          x="121.44376"
@@ -934,18 +934,18 @@
        id="rect1039"
        width="11.72158"
        height="9.0097227"
-       x="158.14818"
-       y="122.00473" />
+       x="74.519547"
+       y="196.55957" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="158.27983"
-       y="127.51519"
+       x="74.651199"
+       y="202.16357"
        id="text1043"><tspan
          sodipodi:role="line"
          id="tspan1041"
-         x="158.27983"
-         y="127.51519"
+         x="74.651199"
+         y="202.16357"
          style="stroke-width:0.26458332">24V in</tspan></text>
     <rect
        style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.26877689;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -1016,8 +1016,8 @@
        id="rect1045-7"
        width="6.6666665"
        height="3.7312231"
-       x="-149.32355"
-       y="106.83573"
+       x="-147.45267"
+       y="101.87788"
        transform="rotate(-90)" />
     <text
        xml:space="preserve"
@@ -1232,18 +1232,18 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="-148.84674"
-       y="109.02723"
+       x="-146.97586"
+       y="104.06938"
        id="text1206-8"
        transform="rotate(-90)"><tspan
          sodipodi:role="line"
          id="tspan1204-3"
-         x="-148.84674"
-         y="109.02723"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:0.88194444px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr;text-anchor:start;stroke-width:0.26458332">MIC4126YME</tspan></text>
+         x="-146.97586"
+         y="104.06938"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:0.88194442px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332">MIC4126YME</tspan></text>
     <g
        id="g7276"
-       transform="translate(0,-0.02338409)">
+       transform="translate(53.910427,-46.469154)">
       <rect
          y="160.16217"
          x="107.43849"
@@ -1266,7 +1266,7 @@
     </g>
     <g
        id="g7271"
-       transform="translate(0,0.02338409)">
+       transform="translate(53.910427,-46.422386)">
       <rect
          y="160.1154"
          x="101.80244"

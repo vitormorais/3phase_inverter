@@ -1,8 +1,0 @@
-Change Component Designator: OldDesignator=+VDC1 NewDesignator=+VDC
-Added Component: Designator=+VDC(connector1x2_parafuso)
-Add component. Clean all parameters for all variants
-Add component (AddParameter): Name = "LCSC"; Value = "C138464"; VariantName = "[No Variations]"
-Add component (AddParameter): Name = "VPN"; Value = "172-2555"; VariantName = "[No Variations]"
-Added Pin To Net: NetName=+VDCBUS Pin=+VDC-1
-Added Pin To Net: NetName=+VDCBUS Pin=+VDC-2
-Added Member To Class: ClassName=inversor_rev3 Member=Component +VDC gen_purpose_conn_1x2
