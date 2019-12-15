@@ -1,0 +1,21 @@
+Added Component: Designator=P?(Header 8x1 8.5mm)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=NetP?_2 Pin=P?-2
+Added Pin To Net: NetName=NetP?_2 Pin=XMC1-33
+Added Net: Name=NetP?_2
+Added Pin To Net: NetName=NetP?_3 Pin=P?-3
+Added Pin To Net: NetName=NetP?_3 Pin=XMC1-32
+Added Net: Name=NetP?_3
+Added Pin To Net: NetName=NetP?_4 Pin=P?-4
+Added Pin To Net: NetName=NetP?_4 Pin=XMC1-31
+Added Net: Name=NetP?_4
+Added Pin To Net: NetName=NetP?_5 Pin=P?-5
+Added Pin To Net: NetName=NetP?_5 Pin=XMC1-30
+Added Net: Name=NetP?_5
+Added Pin To Net: NetName=NetP?_6 Pin=P?-6
+Added Pin To Net: NetName=NetP?_6 Pin=XMC1-29
+Added Net: Name=NetP?_6
+Added Pin To Net: NetName=NetP?_7 Pin=P?-7
+Added Pin To Net: NetName=NetP?_7 Pin=XMC1-28
+Added Net: Name=NetP?_7
+Added Member To Class: ClassName=controlo_rev3 Member=Component P? *

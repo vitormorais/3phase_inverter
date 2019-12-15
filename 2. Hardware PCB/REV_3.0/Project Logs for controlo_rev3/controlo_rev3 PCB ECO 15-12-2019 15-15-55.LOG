@@ -1,0 +1,28 @@
+Removed Pin From Net: NetName=3V3GND Pin=XMC-3
+Removed Pin From Net: NetName=vabc_0 Pin=XMC-8
+Removed Pin From Net: NetName=SSR1 Pin=XMC-43
+Removed Pin From Net: NetName=SSR2 Pin=XMC-44
+Removed Pin From Net: NetName=3V3GND Pin=XMC-58
+Removed Pin From Net: NetName=3V3GND Pin=XMC-63
+Removed Pin From Net: NetName=PWM_W Pin=XMC-64
+Removed Pin From Net: NetName=ENA_W Pin=XMC-65
+Removed Pin From Net: NetName=PWM_V Pin=XMC-66
+Removed Pin From Net: NetName=ENA_V Pin=XMC-67
+Removed Pin From Net: NetName=PWM_U Pin=XMC-68
+Removed Pin From Net: NetName=ENA_U Pin=XMC-69
+Change Component Comment : Designator=P9 Old Comment=jumper_8p New Comment=*
+Change Component Comment : Designator=P10 Old Comment=jumper_8p New Comment=*
+Change Component Comment : Designator=P11 Old Comment=jumper_8p New Comment=*
+Change Component Comment : Designator=P12 Old Comment=jumper_8p New Comment=*
+Added Pin To Net: NetName=ENA_U Pin=XMC-12
+Added Pin To Net: NetName=PWM_U Pin=XMC-13
+Added Pin To Net: NetName=ENA_V Pin=XMC-14
+Added Pin To Net: NetName=PWM_V Pin=XMC-15
+Added Pin To Net: NetName=ENA_W Pin=XMC-16
+Added Pin To Net: NetName=PWM_W Pin=XMC-17
+Added Pin To Net: NetName=3V3GND Pin=XMC-18
+Added Pin To Net: NetName=3V3GND Pin=XMC-23
+Added Pin To Net: NetName=SSR2 Pin=XMC-37
+Added Pin To Net: NetName=SSR1 Pin=XMC-38
+Added Pin To Net: NetName=vabc_0 Pin=XMC-73
+Added Pin To Net: NetName=3V3GND Pin=XMC-78

@@ -1,0 +1,17 @@
+Removed Pin From Net: NetName=iabc_2 Pin=XMC1-29
+Removed Pin From Net: NetName=iabc_1 Pin=XMC1-30
+Removed Pin From Net: NetName=iabc_0 Pin=XMC1-31
+Added Pin To Net: NetName=iabc_2 Pin=XMC1-34
+Added Pin To Net: NetName=iabc_1 Pin=XMC1-35
+Added Pin To Net: NetName=iabc_0 Pin=XMC1-36
+Added Member To Class: ClassName=controlo_rev3 Member=Component R1 Resistor
+Added Member To Class: ClassName=controlo_rev3 Member=Component R4 Resistor
+Added Member To Class: ClassName=controlo_rev3 Member=Component R5 Resistor
+Added Member To Class: ClassName=controlo_rev3 Member=Component R6 Resistor
+Added Member To Class: ClassName=controlo_rev3 Member=Component R8 Resistor
+Added Member To Class: ClassName=controlo_rev3 Member=Component R9 Resistor
+Added Member To Class: ClassName=controlo_rev3 Member=Component R11 Resistor
+Added Member To Class: ClassName=controlo_rev3 Member=Component R13 Resistor
+Added Member To Class: ClassName=controlo_rev3 Member=Component R15 Resistor
+Added Member To Class: ClassName=controlo_rev3 Member=Component R17 Resistor
+Added Member To Class: ClassName=controlo_rev3 Member=Component R21 Resistor

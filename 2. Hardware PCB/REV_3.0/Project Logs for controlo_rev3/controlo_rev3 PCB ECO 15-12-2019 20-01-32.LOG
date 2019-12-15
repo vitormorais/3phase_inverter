@@ -1,0 +1,8 @@
+Added Pin To Net: NetName=iso_PWM_VH Pin=R14-2
+Added Pin To Net: NetName=iso_PWM_VL Pin=R28-2
+Added Pin To Net: NetName=iso_PWM_UH Pin=R36-2
+Added Pin To Net: NetName=iso_PWM_UL Pin=R42-2
+Added Member To Class: ClassName=controlo_rev3 Member=Component R1 Resistor
+Added Member To Class: ClassName=controlo_rev3 Member=Component R8 Resistor
+Added Member To Class: ClassName=controlo_rev3 Member=Component R14 Resistor
+Added Member To Class: ClassName=controlo_rev3 Member=Component R36 Resistor

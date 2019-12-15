@@ -1,0 +1,19 @@
+Change Component Footprint: Designator=*3 Old Footprint=XMC4500 New Footprint=XMC4500 - duplicate
+Added Component: Designator=R10(RESC_0805)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "LCSC"; Value = "C294739"; VariantName = "[No Variations]"
+Added Component: Designator=R11(RESC_0805)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "LCSC"; Value = "C105427"; VariantName = "[No Variations]"
+Added Component: Designator=R12(RESC_0805)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "LCSC"; Value = "C294739"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=5GND_A Pin=R10-1
+Added Pin To Net: NetName=A5 Pin=R10-2
+Added Pin To Net: NetName=A6 Pin=R11-1
+Added Pin To Net: NetName=Vout3 Pin=R11-2
+Added Pin To Net: NetName=5GND_A Pin=R12-1
+Added Pin To Net: NetName=A6 Pin=R12-2
+Added Member To Class: ClassName=controlo_rev3 Member=Component R10 Resistor
+Added Member To Class: ClassName=controlo_rev3 Member=Component R11 Resistor
+Added Member To Class: ClassName=controlo_rev3 Member=Component R12 Resistor
