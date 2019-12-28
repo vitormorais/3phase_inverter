@@ -398,7 +398,7 @@ Configuration3_Item15=CArc=Full|CFill=Full|Comment=Full|Coordinate=Full|CPad=Ful
 [OutputGroup5]
 Name=Fabrication Outputs
 Description=
-TargetPrinter=\\print.fe.up.pt\Geral-C-A4
+TargetPrinter=Foxit Reader PDF Printer (redirected 1)
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 OutputType1=Drill
 OutputName1=Drill Drawing/Guides
@@ -476,7 +476,7 @@ Configuration12_Item1=AddToAllLayerClasses.Set= |AddToAllPlots.Set=SerializeLaye
 [OutputGroup6]
 Name=Report Outputs
 Description=
-TargetPrinter=\\print.fe.up.pt\Geral-P-A4
+TargetPrinter=Foxit Reader PDF Printer (redirected 1)
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 OutputType1=SimpleBOM
 OutputName1=Simple BOM
@@ -508,13 +508,13 @@ Configuration4_Item2=545046300E5446696C74657257726170706572000D46696C7465722E416
 Configuration4_Name3=General
 Configuration4_Item3=OpenExported=False|AddToProject=False|ForceFit=False|NotFitted=False|Database=False|DatabasePriority=False|IncludePCBData=False|IncludeVaultData=False|IncludeAlternatives=False|ShowExportOptions=True|TemplateFilename=|BatchMode=5|FormWidth=950|FormHeight=661|SupplierProdQty=1|SupplierAutoQty=False|SupplierUseCachedPricing=False|SupplierCurrency=<none>
 Configuration4_Name4=GroupOrder
-Configuration4_Item4=Description=True|LCSC=True|Comment=True|Footprint=True
+Configuration4_Item4=Description=True|Comment=True|Footprint=True
 Configuration4_Name5=OutputConfigurationParameter1
 Configuration4_Item5=????????
 Configuration4_Name6=SortOrder
-Configuration4_Item6=Designator=Up|Comment=Up|Footprint=Up
+Configuration4_Item6=Comment=Down
 Configuration4_Name7=VisibleOrder
-Configuration4_Item7=Comment=100|Description=100|Designator=174|Footprint=75|LibRef=75|Quantity=76|LCSC=75
+Configuration4_Item7=Comment=100|Description=100|Designator=174|Footprint=75|LibRef=75|Quantity=76|Mouser VPN=100|RS VPN=100
 OutputType5=ComponentCrossReference
 OutputName5=Component Cross Reference Report
 OutputDocumentPath5=

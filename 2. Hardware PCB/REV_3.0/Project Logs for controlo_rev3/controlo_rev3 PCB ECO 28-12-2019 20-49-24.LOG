@@ -1,0 +1,530 @@
+Change Component Comment : Designator=U1 Old Comment=* New Comment=IC NAND HEF4011
+Change Component Comment : Designator=U2 Old Comment=* New Comment=IC NAND HEF4011
+Change Component Comment : Designator=U4 Old Comment=* New Comment=IC NAND HEF4011
+Change Component Comment : Designator=XMC1 Old Comment=* New Comment=IC XMC4500 Relax LITE
+Change Component Comment : Designator=P1 Old Comment=* New Comment=P 8p 2.54 SR DW 8P
+Change Component Comment : Designator=P2 Old Comment=* New Comment=P 8p 2.54 SR DW 8P
+Change Component Comment : Designator=P3 Old Comment=* New Comment=P 8p 2.54 SR DW 8P
+Change Component Comment : Designator=P4 Old Comment=* New Comment=P 8p 2.54 SR DW 8P
+Change Component Comment : Designator=P5 Old Comment=* New Comment=P 8p 2.54 SR DW 8P
+Change Component Comment : Designator=P6 Old Comment=* New Comment=P 8p 2.54 SR DW 8P
+Change Component Comment : Designator=U5 Old Comment=AMC1200 New Comment=IC AmpIso BIPOL AMC1200
+Change Component Comment : Designator=U8 Old Comment=AMC1200 New Comment=IC AmpIso BIPOL AMC1200
+Change Component Comment : Designator=U9 Old Comment=AMC1200 New Comment=IC AmpIso BIPOL AMC1200
+Change Component Comment : Designator=C3 Old Comment=Capacitor SMD New Comment=C 1uF 0805 MLCC 50V X5R
+Change Component Comment : Designator=C10 Old Comment=Capacitor SMD New Comment=C 1uF 0805 MLCC 50V X5R
+Change Component Comment : Designator=C13 Old Comment=Capacitor SMD New Comment=C 1uF 0805 MLCC 50V X5R
+Change Component Comment : Designator=C4 Old Comment=Capacitor SMD New Comment=C 10nF 0805 MLCC 50V X7R
+Change Component Comment : Designator=C11 Old Comment=Capacitor SMD New Comment=C 10nF 0805 MLCC 50V X7R
+Change Component Comment : Designator=C14 Old Comment=Capacitor SMD New Comment=C 10nF 0805 MLCC 50V X7R
+Change Component Comment : Designator=C1 Old Comment=Capacitor SMD New Comment=C 10uF 0805 MLCC 25V X5R
+Change Component Comment : Designator=C2 Old Comment=Capacitor SMD New Comment=C 10uF 0805 MLCC 25V X5R
+Change Component Comment : Designator=C5 Old Comment=Capacitor SMD New Comment=C 10uF 0805 MLCC 25V X5R
+Change Component Comment : Designator=C6 Old Comment=Capacitor SMD New Comment=C 10uF 0805 MLCC 25V X5R
+Change Component Comment : Designator=C7 Old Comment=Capacitor SMD New Comment=C 10uF 0805 MLCC 25V X5R
+Change Component Comment : Designator=C8 Old Comment=Capacitor SMD New Comment=C 10uF 0805 MLCC 25V X5R
+Change Component Comment : Designator=C9 Old Comment=Capacitor SMD New Comment=C 10uF 0805 MLCC 25V X5R
+Change Component Comment : Designator=C12 Old Comment=Capacitor SMD New Comment=C 10uF 0805 MLCC 25V X5R
+Change Component Comment : Designator=C15 Old Comment=Capacitor SMD New Comment=C 10uF 0805 MLCC 25V X5R
+Change Component Comment : Designator=U3 Old Comment=DC/DC_ISO New Comment=IC CC/CC 1W 5V
+Change Component Comment : Designator=U6 Old Comment=DC/DC_ISO New Comment=IC CC/CC 1W 5V
+Change Component Comment : Designator=U7 Old Comment=DC/DC_ISO New Comment=IC CC/CC 1W 5V
+Change Component Comment : Designator=P7 Old Comment=gen_purpose_conn_1x2 New Comment=P 2p 5mm
+Change Component Comment : Designator=P8 Old Comment=gen_purpose_conn_1x2 New Comment=P 2p 5mm
+Change Component Comment : Designator=P9 Old Comment=gen_purpose_conn_1x2 New Comment=P 2p 5mm
+Change Component Comment : Designator=R33 Old Comment=R_MEAS New Comment=R 3k6 1/8W 0805 .1%
+Change Component Comment : Designator=R48 Old Comment=R_MEAS New Comment=R 3k6 1/8W 0805 .1%
+Change Component Comment : Designator=R49 Old Comment=R_MEAS New Comment=R 3k6 1/8W 0805 .1%
+Change Component Comment : Designator=R1 Old Comment=Resistor New Comment=R 0 1/8W 0805
+Change Component Comment : Designator=R2 Old Comment=Resistor New Comment=R 0 1/8W 0805
+Change Component Comment : Designator=R3 Old Comment=Resistor New Comment=R 0 1/8W 0805
+Change Component Comment : Designator=R4 Old Comment=Resistor New Comment=R 0 1/8W 0805
+Change Component Comment : Designator=R5 Old Comment=Resistor New Comment=R 0 1/8W 0805
+Change Component Comment : Designator=R6 Old Comment=Resistor New Comment=R 0 1/8W 0805
+Change Component Comment : Designator=R7 Old Comment=Resistor New Comment=R 0 1/8W 0805
+Change Component Comment : Designator=R8 Old Comment=Resistor New Comment=R 0 1/8W 0805
+Change Component Comment : Designator=R9 Old Comment=Resistor New Comment=R 0 1/8W 0805
+Change Component Comment : Designator=R10 Old Comment=Resistor New Comment=R 0 1/8W 0805
+Change Component Comment : Designator=R11 Old Comment=Resistor New Comment=R 0 1/8W 0805
+Change Component Comment : Designator=R12 Old Comment=Resistor New Comment=R 0 1/8W 0805
+Change Component Comment : Designator=R13 Old Comment=Resistor New Comment=R 0 1/8W 0805
+Change Component Comment : Designator=R17 Old Comment=Resistor New Comment=R 0 1/8W 0805
+Change Component Comment : Designator=R31 Old Comment=Resistor New Comment=R 0 1/8W 0805
+Change Component Comment : Designator=R39 Old Comment=Resistor New Comment=R 0 1/8W 0805
+Change Component Comment : Designator=R45 Old Comment=Resistor New Comment=R 0 1/8W 0805
+Change Component Comment : Designator=R14 Old Comment=Resistor New Comment=R 5k1 1/8W 0805 .1%
+Change Component Comment : Designator=R15 Old Comment=Resistor New Comment=R 5k1 1/8W 0805 .1%
+Change Component Comment : Designator=R16 Old Comment=Resistor New Comment=R 5k1 1/8W 0805 .1%
+Change Component Comment : Designator=R21 Old Comment=Resistor New Comment=R 5k1 1/8W 0805 .1%
+Change Component Comment : Designator=R22 Old Comment=Resistor New Comment=R 5k1 1/8W 0805 .1%
+Change Component Comment : Designator=R23 Old Comment=Resistor New Comment=R 5k1 1/8W 0805 .1%
+Change Component Comment : Designator=R27 Old Comment=Resistor New Comment=R 5k1 1/8W 0805 .1%
+Change Component Comment : Designator=R28 Old Comment=Resistor New Comment=R 5k1 1/8W 0805 .1%
+Change Component Comment : Designator=R18 Old Comment=Resistor New Comment=R 7k5 1/8W 0805 .1%
+Change Component Comment : Designator=R19 Old Comment=Resistor New Comment=R 7k5 1/8W 0805 .1%
+Change Component Comment : Designator=R20 Old Comment=Resistor New Comment=R 7k5 1/8W 0805 .1%
+Change Component Comment : Designator=R24 Old Comment=Resistor New Comment=R 7k5 1/8W 0805 .1%
+Change Component Comment : Designator=R25 Old Comment=Resistor New Comment=R 7k5 1/8W 0805 .1%
+Change Component Comment : Designator=R26 Old Comment=Resistor New Comment=R 7k5 1/8W 0805 .1%
+Change Component Comment : Designator=R29 Old Comment=Resistor New Comment=R 7k5 1/8W 0805 .1%
+Change Component Comment : Designator=R30 Old Comment=Resistor New Comment=R 7k5 1/8W 0805 .1%
+Change Component Comment : Designator=R34 Old Comment=Resistor New Comment=R 100k 1/8W 0805 .1%
+Change Component Comment : Designator=R35 Old Comment=Resistor New Comment=R 100k 1/8W 0805 .1%
+Change Component Comment : Designator=R36 Old Comment=Resistor New Comment=R 100k 1/8W 0805 .1%
+Change Component Comment : Designator=R37 Old Comment=Resistor New Comment=R 100k 1/8W 0805 .1%
+Change Component Comment : Designator=R38 Old Comment=Resistor New Comment=R 100k 1/8W 0805 .1%
+Change Component Comment : Designator=R40 Old Comment=Resistor New Comment=R 100k 1/8W 0805 .1%
+Change Component Comment : Designator=R41 Old Comment=Resistor New Comment=R 100k 1/8W 0805 .1%
+Change Component Comment : Designator=R42 Old Comment=Resistor New Comment=R 100k 1/8W 0805 .1%
+Change Component Comment : Designator=R43 Old Comment=Resistor New Comment=R 100k 1/8W 0805 .1%
+Change Component Comment : Designator=R44 Old Comment=Resistor New Comment=R 100k 1/8W 0805 .1%
+Change Component Comment : Designator=R50 Old Comment=Resistor New Comment=R 100k 1/8W 0805 .1%
+Change Component Comment : Designator=R51 Old Comment=Resistor New Comment=R 100k 1/8W 0805 .1%
+Change Component Comment : Designator=R52 Old Comment=Resistor New Comment=R 100k 1/8W 0805 .1%
+Change Component Comment : Designator=R53 Old Comment=Resistor New Comment=R 100k 1/8W 0805 .1%
+Change Component Comment : Designator=R54 Old Comment=Resistor New Comment=R 100k 1/8W 0805 .1%
+Change Component Comment : Designator=R55 Old Comment=Resistor New Comment=R 100k 1/8W 0805 .1%
+Change Component Comment : Designator=R56 Old Comment=Resistor New Comment=R 100k 1/8W 0805 .1%
+Change Component Comment : Designator=R57 Old Comment=Resistor New Comment=R 100k 1/8W 0805 .1%
+Change Component Comment : Designator=R58 Old Comment=Resistor New Comment=R 100k 1/8W 0805 .1%
+Change Component Comment : Designator=R59 Old Comment=Resistor New Comment=R 100k 1/8W 0805 .1%
+Change Component Comment : Designator=R60 Old Comment=Resistor New Comment=R 100k 1/8W 0805 .1%
+Change Component Comment : Designator=R61 Old Comment=Resistor New Comment=R 100k 1/8W 0805 .1%
+Change Component Comment : Designator=R62 Old Comment=Resistor New Comment=R 100k 1/8W 0805 .1%
+Change Component Comment : Designator=R63 Old Comment=Resistor New Comment=R 100k 1/8W 0805 .1%
+Change Component Comment : Designator=R64 Old Comment=Resistor New Comment=R 100k 1/8W 0805 .1%
+Change Component Comment : Designator=R65 Old Comment=Resistor New Comment=R 100k 1/8W 0805 .1%
+Change Component Comment : Designator=R66 Old Comment=Resistor New Comment=R 100k 1/8W 0805 .1%
+Change Component Comment : Designator=R67 Old Comment=Resistor New Comment=R 100k 1/8W 0805 .1%
+Change Component Comment : Designator=R68 Old Comment=Resistor New Comment=R 100k 1/8W 0805 .1%
+Change Component Comment : Designator=R69 Old Comment=Resistor New Comment=R 100k 1/8W 0805 .1%
+Change Component Comment : Designator=R32 Old Comment=Resistor New Comment=R 330 1/8 0805 .1%
+Change Component Comment : Designator=R46 Old Comment=Resistor New Comment=R 330 1/8 0805 .1%
+Change Component Comment : Designator=R47 Old Comment=Resistor New Comment=R 330 1/8 0805 .1%
+Change Component Description : Designator=XMC1 Old Description= New Description="  KIT_XMC45_RELAX_LITE_V1 -  Evaluation Board, XMC4500 MCU, Detachable On-Board Debugger, USB Powered "
+Change Component Description : Designator=U5 Old Description= New Description=Amplificadores de isolamento 4kV peak Iso Amp
+Change Component Description : Designator=U8 Old Description= New Description=Amplificadores de isolamento 4kV peak Iso Amp
+Change Component Description : Designator=U9 Old Description= New Description=Amplificadores de isolamento 4kV peak Iso Amp
+Change Component Description : Designator=P7 Old Description= New Description=Bloques de terminales de PCB de perfil estándar RS de 5,0 mm
+Change Component Description : Designator=P8 Old Description= New Description=Bloques de terminales de PCB de perfil estándar RS de 5,0 mm
+Change Component Description : Designator=P9 Old Description= New Description=Bloques de terminales de PCB de perfil estándar RS de 5,0 mm
+Change Component Description : Designator=P1 Old Description= New Description=Distribuidores e Alojamento de Fios CGrid Hrd SRDW THo le 8ckt
+Change Component Description : Designator=P2 Old Description= New Description=Distribuidores e Alojamento de Fios CGrid Hrd SRDW THo le 8ckt
+Change Component Description : Designator=P3 Old Description= New Description=Distribuidores e Alojamento de Fios CGrid Hrd SRDW THo le 8ckt
+Change Component Description : Designator=P4 Old Description= New Description=Distribuidores e Alojamento de Fios CGrid Hrd SRDW THo le 8ckt
+Change Component Description : Designator=P5 Old Description= New Description=Distribuidores e Alojamento de Fios CGrid Hrd SRDW THo le 8ckt
+Change Component Description : Designator=P6 Old Description= New Description=Distribuidores e Alojamento de Fios CGrid Hrd SRDW THo le 8ckt
+Change Component Description : Designator=U1 Old Description= New Description=Portas lógicas QUADRUPLE 2-INPUT NAND GATE
+Change Component Description : Designator=U2 Old Description= New Description=Portas lógicas QUADRUPLE 2-INPUT NAND GATE
+Change Component Description : Designator=U4 Old Description= New Description=Portas lógicas QUADRUPLE 2-INPUT NAND GATE
+Change Component Description : Designator=R1 Old Description=0R New Description=Resistores de Filme Espesso - SMD 1/8Watt 0ohms Commercial Use
+Change Component Description : Designator=R2 Old Description=0R New Description=Resistores de Filme Espesso - SMD 1/8Watt 0ohms Commercial Use
+Change Component Description : Designator=R3 Old Description=0R New Description=Resistores de Filme Espesso - SMD 1/8Watt 0ohms Commercial Use
+Change Component Description : Designator=R4 Old Description=0R New Description=Resistores de Filme Espesso - SMD 1/8Watt 0ohms Commercial Use
+Change Component Description : Designator=R5 Old Description=0R New Description=Resistores de Filme Espesso - SMD 1/8Watt 0ohms Commercial Use
+Change Component Description : Designator=R6 Old Description=0R New Description=Resistores de Filme Espesso - SMD 1/8Watt 0ohms Commercial Use
+Change Component Description : Designator=R7 Old Description=0R New Description=Resistores de Filme Espesso - SMD 1/8Watt 0ohms Commercial Use
+Change Component Description : Designator=R8 Old Description=0R New Description=Resistores de Filme Espesso - SMD 1/8Watt 0ohms Commercial Use
+Change Component Description : Designator=R9 Old Description=0R New Description=Resistores de Filme Espesso - SMD 1/8Watt 0ohms Commercial Use
+Change Component Description : Designator=R10 Old Description=0R New Description=Resistores de Filme Espesso - SMD 1/8Watt 0ohms Commercial Use
+Change Component Description : Designator=R11 Old Description=0R New Description=Resistores de Filme Espesso - SMD 1/8Watt 0ohms Commercial Use
+Change Component Description : Designator=R12 Old Description=0R New Description=Resistores de Filme Espesso - SMD 1/8Watt 0ohms Commercial Use
+Change Component Description : Designator=R13 Old Description=0R New Description=Resistores de Filme Espesso - SMD 1/8Watt 0ohms Commercial Use
+Change Component Description : Designator=R17 Old Description=0R New Description=Resistores de Filme Espesso - SMD 1/8Watt 0ohms Commercial Use
+Change Component Description : Designator=R31 Old Description=0R New Description=Resistores de Filme Espesso - SMD 1/8Watt 0ohms Commercial Use
+Change Component Description : Designator=R39 Old Description=0R New Description=Resistores de Filme Espesso - SMD 1/8Watt 0ohms Commercial Use
+Change Component Description : Designator=R45 Old Description=0R New Description=Resistores de Filme Espesso - SMD 1/8Watt 0ohms Commercial Use
+Change Component Description : Designator=C4 Old Description=1uF New Description=Capacitores de cerâmica multicamada MLCC - SMD/SMT 10nF 50V X7R 10%
+Change Component Description : Designator=C11 Old Description=1uF New Description=Capacitores de cerâmica multicamada MLCC - SMD/SMT 10nF 50V X7R 10%
+Change Component Description : Designator=C14 Old Description=1uF New Description=Capacitores de cerâmica multicamada MLCC - SMD/SMT 10nF 50V X7R 10%
+Change Component Description : Designator=C3 Old Description=1uF New Description=Capacitores de cerâmica multicamada MLCC - SMD/SMT 0805 50V 1uF 20% X5R
+Change Component Description : Designator=C10 Old Description=1uF New Description=Capacitores de cerâmica multicamada MLCC - SMD/SMT 0805 50V 1uF 20% X5R
+Change Component Description : Designator=C13 Old Description=1uF New Description=Capacitores de cerâmica multicamada MLCC - SMD/SMT 0805 50V 1uF 20% X5R
+Change Component Description : Designator=R14 Old Description=5K New Description=Resistores de Filme Fino - SMD 0805 5.1Kohm 1/8W .1% 25ppm
+Change Component Description : Designator=R15 Old Description=5K New Description=Resistores de Filme Fino - SMD 0805 5.1Kohm 1/8W .1% 25ppm
+Change Component Description : Designator=R16 Old Description=5K New Description=Resistores de Filme Fino - SMD 0805 5.1Kohm 1/8W .1% 25ppm
+Change Component Description : Designator=R21 Old Description=5K New Description=Resistores de Filme Fino - SMD 0805 5.1Kohm 1/8W .1% 25ppm
+Change Component Description : Designator=R22 Old Description=5K New Description=Resistores de Filme Fino - SMD 0805 5.1Kohm 1/8W .1% 25ppm
+Change Component Description : Designator=R23 Old Description=5K New Description=Resistores de Filme Fino - SMD 0805 5.1Kohm 1/8W .1% 25ppm
+Change Component Description : Designator=R27 Old Description=5K New Description=Resistores de Filme Fino - SMD 0805 5.1Kohm 1/8W .1% 25ppm
+Change Component Description : Designator=R28 Old Description=5K New Description=Resistores de Filme Fino - SMD 0805 5.1Kohm 1/8W .1% 25ppm
+Change Component Description : Designator=R18 Old Description=7K5 New Description=Resistores de Filme Fino - SMD 7.5K OHM .1% 25ppm
+Change Component Description : Designator=R19 Old Description=7K5 New Description=Resistores de Filme Fino - SMD 7.5K OHM .1% 25ppm
+Change Component Description : Designator=R20 Old Description=7K5 New Description=Resistores de Filme Fino - SMD 7.5K OHM .1% 25ppm
+Change Component Description : Designator=R24 Old Description=7K5 New Description=Resistores de Filme Fino - SMD 7.5K OHM .1% 25ppm
+Change Component Description : Designator=R25 Old Description=7K5 New Description=Resistores de Filme Fino - SMD 7.5K OHM .1% 25ppm
+Change Component Description : Designator=R26 Old Description=7K5 New Description=Resistores de Filme Fino - SMD 7.5K OHM .1% 25ppm
+Change Component Description : Designator=R29 Old Description=7K5 New Description=Resistores de Filme Fino - SMD 7.5K OHM .1% 25ppm
+Change Component Description : Designator=R30 Old Description=7K5 New Description=Resistores de Filme Fino - SMD 7.5K OHM .1% 25ppm
+Change Component Description : Designator=C1 Old Description=10uF New Description=Capacitores de cerâmica multicamada MLCC - SMD/SMT 10uF 25V X5R +/-10% 0805 Gen Purp
+Change Component Description : Designator=C2 Old Description=10uF New Description=Capacitores de cerâmica multicamada MLCC - SMD/SMT 10uF 25V X5R +/-10% 0805 Gen Purp
+Change Component Description : Designator=C5 Old Description=10uF New Description=Capacitores de cerâmica multicamada MLCC - SMD/SMT 10uF 25V X5R +/-10% 0805 Gen Purp
+Change Component Description : Designator=C6 Old Description=10uF New Description=Capacitores de cerâmica multicamada MLCC - SMD/SMT 10uF 25V X5R +/-10% 0805 Gen Purp
+Change Component Description : Designator=C7 Old Description=10uF New Description=Capacitores de cerâmica multicamada MLCC - SMD/SMT 10uF 25V X5R +/-10% 0805 Gen Purp
+Change Component Description : Designator=C8 Old Description=10uF New Description=Capacitores de cerâmica multicamada MLCC - SMD/SMT 10uF 25V X5R +/-10% 0805 Gen Purp
+Change Component Description : Designator=C9 Old Description=10uF New Description=Capacitores de cerâmica multicamada MLCC - SMD/SMT 10uF 25V X5R +/-10% 0805 Gen Purp
+Change Component Description : Designator=C12 Old Description=10uF New Description=Capacitores de cerâmica multicamada MLCC - SMD/SMT 10uF 25V X5R +/-10% 0805 Gen Purp
+Change Component Description : Designator=C15 Old Description=10uF New Description=Capacitores de cerâmica multicamada MLCC - SMD/SMT 10uF 25V X5R +/-10% 0805 Gen Purp
+Change Component Description : Designator=R34 Old Description=30K New Description=Resistores de Filme Fino - SMD 100 Kohm .1% 0805 25PPM
+Change Component Description : Designator=R35 Old Description=30K New Description=Resistores de Filme Fino - SMD 100 Kohm .1% 0805 25PPM
+Change Component Description : Designator=R36 Old Description=30K New Description=Resistores de Filme Fino - SMD 100 Kohm .1% 0805 25PPM
+Change Component Description : Designator=R37 Old Description=30K New Description=Resistores de Filme Fino - SMD 100 Kohm .1% 0805 25PPM
+Change Component Description : Designator=R38 Old Description=30K New Description=Resistores de Filme Fino - SMD 100 Kohm .1% 0805 25PPM
+Change Component Description : Designator=R40 Old Description=30K New Description=Resistores de Filme Fino - SMD 100 Kohm .1% 0805 25PPM
+Change Component Description : Designator=R41 Old Description=30K New Description=Resistores de Filme Fino - SMD 100 Kohm .1% 0805 25PPM
+Change Component Description : Designator=R42 Old Description=30K New Description=Resistores de Filme Fino - SMD 100 Kohm .1% 0805 25PPM
+Change Component Description : Designator=R43 Old Description=30K New Description=Resistores de Filme Fino - SMD 100 Kohm .1% 0805 25PPM
+Change Component Description : Designator=R44 Old Description=30K New Description=Resistores de Filme Fino - SMD 100 Kohm .1% 0805 25PPM
+Change Component Description : Designator=R50 Old Description=30K New Description=Resistores de Filme Fino - SMD 100 Kohm .1% 0805 25PPM
+Change Component Description : Designator=R51 Old Description=30K New Description=Resistores de Filme Fino - SMD 100 Kohm .1% 0805 25PPM
+Change Component Description : Designator=R52 Old Description=30K New Description=Resistores de Filme Fino - SMD 100 Kohm .1% 0805 25PPM
+Change Component Description : Designator=R53 Old Description=30K New Description=Resistores de Filme Fino - SMD 100 Kohm .1% 0805 25PPM
+Change Component Description : Designator=R54 Old Description=30K New Description=Resistores de Filme Fino - SMD 100 Kohm .1% 0805 25PPM
+Change Component Description : Designator=R55 Old Description=30K New Description=Resistores de Filme Fino - SMD 100 Kohm .1% 0805 25PPM
+Change Component Description : Designator=R56 Old Description=30K New Description=Resistores de Filme Fino - SMD 100 Kohm .1% 0805 25PPM
+Change Component Description : Designator=R57 Old Description=30K New Description=Resistores de Filme Fino - SMD 100 Kohm .1% 0805 25PPM
+Change Component Description : Designator=R58 Old Description=30K New Description=Resistores de Filme Fino - SMD 100 Kohm .1% 0805 25PPM
+Change Component Description : Designator=R59 Old Description=30K New Description=Resistores de Filme Fino - SMD 100 Kohm .1% 0805 25PPM
+Change Component Description : Designator=R60 Old Description=30K New Description=Resistores de Filme Fino - SMD 100 Kohm .1% 0805 25PPM
+Change Component Description : Designator=R61 Old Description=30K New Description=Resistores de Filme Fino - SMD 100 Kohm .1% 0805 25PPM
+Change Component Description : Designator=R62 Old Description=30K New Description=Resistores de Filme Fino - SMD 100 Kohm .1% 0805 25PPM
+Change Component Description : Designator=R63 Old Description=30K New Description=Resistores de Filme Fino - SMD 100 Kohm .1% 0805 25PPM
+Change Component Description : Designator=R64 Old Description=30K New Description=Resistores de Filme Fino - SMD 100 Kohm .1% 0805 25PPM
+Change Component Description : Designator=R65 Old Description=30K New Description=Resistores de Filme Fino - SMD 100 Kohm .1% 0805 25PPM
+Change Component Description : Designator=R66 Old Description=30K New Description=Resistores de Filme Fino - SMD 100 Kohm .1% 0805 25PPM
+Change Component Description : Designator=R67 Old Description=30K New Description=Resistores de Filme Fino - SMD 100 Kohm .1% 0805 25PPM
+Change Component Description : Designator=R68 Old Description=30K New Description=Resistores de Filme Fino - SMD 100 Kohm .1% 0805 25PPM
+Change Component Description : Designator=R69 Old Description=30K New Description=Resistores de Filme Fino - SMD 100 Kohm .1% 0805 25PPM
+Change Component Description : Designator=R33 Old Description=150R New Description=Resistores de Filme Fino - SMD 1/8W 3.6K ohm .1% 25ppm
+Change Component Description : Designator=R48 Old Description=150R New Description=Resistores de Filme Fino - SMD 1/8W 3.6K ohm .1% 25ppm
+Change Component Description : Designator=R49 Old Description=150R New Description=Resistores de Filme Fino - SMD 1/8W 3.6K ohm .1% 25ppm
+Change Component Description : Designator=R32 Old Description=330R New Description=Resistores de Filme Fino - SMD CPF 0805 330R 0.1% 25PPM 1K RL
+Change Component Description : Designator=R46 Old Description=330R New Description=Resistores de Filme Fino - SMD CPF 0805 330R 0.1% 25PPM 1K RL
+Change Component Description : Designator=R47 Old Description=330R New Description=Resistores de Filme Fino - SMD CPF 0805 330R 0.1% 25PPM 1K RL
+Change Component Description : Designator=U3 Old Description=DC/DC_ISO New Description=Conversores CC/CC com isolação 1W 5Vin 5Vout 200mA SIP7
+Change Component Description : Designator=U6 Old Description=DC/DC_ISO New Description=Conversores CC/CC com isolação 1W 5Vin 5Vout 200mA SIP7
+Change Component Description : Designator=U7 Old Description=DC/DC_ISO New Description=Conversores CC/CC com isolação 1W 5Vin 5Vout 200mA SIP7
+Change component parameters: Designator = "C3"; Footprint = "CAPC_0805"; UniqueID = "\SQWMJOCJ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC"; Value = "C282734"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "963-UMK212BJ105MG-T"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C4"; Footprint = "CAPC_0805"; UniqueID = "\MPIFDFYV"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC"; Value = "C282734"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "603-CC805KRX7R9BB103"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C10"; Footprint = "CAPC_0805"; UniqueID = "\MAFVIOGI"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC"; Value = "C282734"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "963-UMK212BJ105MG-T"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C11"; Footprint = "CAPC_0805"; UniqueID = "\UMNLPQRU"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC"; Value = "C282734"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "603-CC805KRX7R9BB103"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C13"; Footprint = "CAPC_0805"; UniqueID = "\GPJSUECJ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC"; Value = "C282734"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "963-UMK212BJ105MG-T"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C14"; Footprint = "CAPC_0805"; UniqueID = "\PWEOKXDY"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC"; Value = "C282734"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "603-CC805KRX7R9BB103"; VariantName = "[No Variations]"
+Change component parameters: Designator = "P1"; Footprint = "Header 8x1 8.5mm"; UniqueID = "\KXQIKGOM"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "538-87937-0800"; VariantName = "[No Variations]"
+Change component parameters: Designator = "P2"; Footprint = "Header 8x1 8.5mm"; UniqueID = "\WVQXANMT"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "538-87937-0800"; VariantName = "[No Variations]"
+Change component parameters: Designator = "P3"; Footprint = "Header 8x1 8.5mm"; UniqueID = "\LBOKWQLJ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "538-87937-0800"; VariantName = "[No Variations]"
+Change component parameters: Designator = "P4"; Footprint = "Header 8x1 8.5mm"; UniqueID = "\XDVEHQXI"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "538-87937-0800"; VariantName = "[No Variations]"
+Change component parameters: Designator = "P5"; Footprint = "Header 8x1 8.5mm"; UniqueID = "\DOWSEUOL"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "538-87937-0800"; VariantName = "[No Variations]"
+Change component parameters: Designator = "P6"; Footprint = "Header 8x1 8.5mm"; UniqueID = "\DPMUTQBQ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "538-87937-0800"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R14"; Footprint = "RESC_0805"; UniqueID = "\OFOJOEJJ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC"; Value = "C105427"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "667-ERA-6AEB512V"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R15"; Footprint = "RESC_0805"; UniqueID = "\FKHLLEWB"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC"; Value = "C105427"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "667-ERA-6AEB512V"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R16"; Footprint = "RESC_0805"; UniqueID = "\XRUIIATP"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC"; Value = "C105427"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "667-ERA-6AEB512V"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R21"; Footprint = "RESC_0805"; UniqueID = "\QBKYAGVW"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC"; Value = "C105427"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "667-ERA-6AEB512V"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R22"; Footprint = "RESC_0805"; UniqueID = "\HVXFUBXJ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC"; Value = "C105427"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "667-ERA-6AEB512V"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R23"; Footprint = "RESC_0805"; UniqueID = "\AETNAVWN"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC"; Value = "C105427"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "667-ERA-6AEB512V"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R27"; Footprint = "RESC_0805"; UniqueID = "\YTPUAJOC"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC"; Value = "C105427"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "667-ERA-6AEB512V"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R28"; Footprint = "RESC_0805"; UniqueID = "\VKLVXMMB"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC"; Value = "C105427"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "667-ERA-6AEB512V"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R33"; Footprint = "RESC_0805"; UniqueID = "\CLPMOWAX"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "603-RT0805BRD073K6L"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R34"; Footprint = "RESC_0805"; UniqueID = "\JDILCDKI"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "284-APC0805B100KN"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R35"; Footprint = "RESC_0805"; UniqueID = "\SIUKLAQL"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "284-APC0805B100KN"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R36"; Footprint = "RESC_0805"; UniqueID = "\FJYJREDQ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "284-APC0805B100KN"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R37"; Footprint = "RESC_0805"; UniqueID = "\VWQXBIBV"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "284-APC0805B100KN"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R38"; Footprint = "RESC_0805"; UniqueID = "\LIARSEDD"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "284-APC0805B100KN"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R40"; Footprint = "RESC_0805"; UniqueID = "\RTBRTUQO"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "284-APC0805B100KN"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R41"; Footprint = "RESC_0805"; UniqueID = "\FJEYESST"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "284-APC0805B100KN"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R42"; Footprint = "RESC_0805"; UniqueID = "\FHHOTKBJ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "284-APC0805B100KN"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R43"; Footprint = "RESC_0805"; UniqueID = "\BFDVSVSI"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "284-APC0805B100KN"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R44"; Footprint = "RESC_0805"; UniqueID = "\EBNVCRHS"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "284-APC0805B100KN"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R48"; Footprint = "RESC_0805"; UniqueID = "\NEAXVAFI"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "603-RT0805BRD073K6L"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R49"; Footprint = "RESC_0805"; UniqueID = "\ROKYSBOO"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "603-RT0805BRD073K6L"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R50"; Footprint = "RESC_0805"; UniqueID = "\KIEEBOLV"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "284-APC0805B100KN"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R51"; Footprint = "RESC_0805"; UniqueID = "\QQLLALVO"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "284-APC0805B100KN"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R52"; Footprint = "RESC_0805"; UniqueID = "\IYQPBVET"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "284-APC0805B100KN"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R53"; Footprint = "RESC_0805"; UniqueID = "\JRJMHIXU"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "284-APC0805B100KN"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R54"; Footprint = "RESC_0805"; UniqueID = "\MSWPNDDC"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "284-APC0805B100KN"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R55"; Footprint = "RESC_0805"; UniqueID = "\YSSSNCND"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "284-APC0805B100KN"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R56"; Footprint = "RESC_0805"; UniqueID = "\PAQGBCEQ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "284-APC0805B100KN"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R57"; Footprint = "RESC_0805"; UniqueID = "\SCXSKCHP"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "284-APC0805B100KN"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R58"; Footprint = "RESC_0805"; UniqueID = "\DNWLYVEB"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "284-APC0805B100KN"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R59"; Footprint = "RESC_0805"; UniqueID = "\TIGHODNC"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "284-APC0805B100KN"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R60"; Footprint = "RESC_0805"; UniqueID = "\UNYSLYEN"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "284-APC0805B100KN"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R61"; Footprint = "RESC_0805"; UniqueID = "\QUHOKPOT"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "284-APC0805B100KN"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R62"; Footprint = "RESC_0805"; UniqueID = "\DXGYPUOX"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "284-APC0805B100KN"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R63"; Footprint = "RESC_0805"; UniqueID = "\JLJRBYJY"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "284-APC0805B100KN"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R64"; Footprint = "RESC_0805"; UniqueID = "\MUQHAYUT"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "284-APC0805B100KN"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R65"; Footprint = "RESC_0805"; UniqueID = "\GMBEDEIV"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "284-APC0805B100KN"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R66"; Footprint = "RESC_0805"; UniqueID = "\EWMCDPNY"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "284-APC0805B100KN"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R67"; Footprint = "RESC_0805"; UniqueID = "\JVCSPFPW"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "284-APC0805B100KN"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R68"; Footprint = "RESC_0805"; UniqueID = "\MRKHVIEU"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "284-APC0805B100KN"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R69"; Footprint = "RESC_0805"; UniqueID = "\AVNCNEVX"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "284-APC0805B100KN"; VariantName = "[No Variations]"
+Change component parameters: Designator = "U1"; Footprint = "SOIC-14N"; UniqueID = "\RUVCMQQR"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "771-HEF4011BTD-T"; VariantName = "[No Variations]"
+Change component parameters: Designator = "U2"; Footprint = "SOIC-14N"; UniqueID = "\MBSEYAPR"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "771-HEF4011BTD-T"; VariantName = "[No Variations]"
+Change component parameters: Designator = "U4"; Footprint = "SOIC-14N"; UniqueID = "\BMVXAVXD"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "771-HEF4011BTD-T"; VariantName = "[No Variations]"
+Change component parameters: Designator = "P7"; Footprint = "connector1x2_parafuso"; UniqueID = "\EKMBPLWG"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "RS VPN"; Value = "896-6696"; VariantName = "[No Variations]"
+Change component parameters: Designator = "P8"; Footprint = "connector1x2_parafuso"; UniqueID = "\VTLCOSIM"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "RS VPN"; Value = "896-6696"; VariantName = "[No Variations]"
+Change component parameters: Designator = "P9"; Footprint = "connector1x2_parafuso"; UniqueID = "\SSXIOBKJ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "RS VPN"; Value = "896-6696"; VariantName = "[No Variations]"
+Change component parameters: Designator = "XMC1"; Footprint = "XMC4500"; UniqueID = "\VMIBHVBM"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Farnell VPN"; Value = "2443552"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "RS VPN"; Value = "251-8418"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C1"; Footprint = "CAPC_0805"; UniqueID = "\GEWPJDTR"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "963-TMK212BBJ106KG-T"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C2"; Footprint = "CAPC_0805"; UniqueID = "\JMJQDAFN"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "963-TMK212BBJ106KG-T"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C5"; Footprint = "CAPC_0805"; UniqueID = "\YCEOGSUS"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "963-TMK212BBJ106KG-T"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C6"; Footprint = "CAPC_0805"; UniqueID = "\OALVHQKW"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "963-TMK212BBJ106KG-T"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C7"; Footprint = "CAPC_0805"; UniqueID = "\ALGVGLDW"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "963-TMK212BBJ106KG-T"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C8"; Footprint = "CAPC_0805"; UniqueID = "\ITVSOGRK"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "963-TMK212BBJ106KG-T"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C9"; Footprint = "CAPC_0805"; UniqueID = "\LEAUYKEE"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "963-TMK212BBJ106KG-T"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C12"; Footprint = "CAPC_0805"; UniqueID = "\SKWDABDY"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "963-TMK212BBJ106KG-T"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C15"; Footprint = "CAPC_0805"; UniqueID = "\FJBYSRYG"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "963-TMK212BBJ106KG-T"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R1"; Footprint = "RESC_0805"; UniqueID = "\CODXEXQU"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "71-CRCW08050000Z0EAC"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R2"; Footprint = "RESC_0805"; UniqueID = "\QFLIXCRX"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "71-CRCW08050000Z0EAC"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R3"; Footprint = "RESC_0805"; UniqueID = "\SNHQEKIY"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "71-CRCW08050000Z0EAC"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R4"; Footprint = "RESC_0805"; UniqueID = "\JILCGXFD"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "71-CRCW08050000Z0EAC"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R5"; Footprint = "RESC_0805"; UniqueID = "\RHHIEKXJ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "71-CRCW08050000Z0EAC"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R6"; Footprint = "RESC_0805"; UniqueID = "\RQSCFKQM"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "71-CRCW08050000Z0EAC"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R7"; Footprint = "RESC_0805"; UniqueID = "\IVPJCASO"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "71-CRCW08050000Z0EAC"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R8"; Footprint = "RESC_0805"; UniqueID = "\RRWEVLNQ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "71-CRCW08050000Z0EAC"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R9"; Footprint = "RESC_0805"; UniqueID = "\UCCNXHIV"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "71-CRCW08050000Z0EAC"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R10"; Footprint = "RESC_0805"; UniqueID = "\TGPEUGYS"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "71-CRCW08050000Z0EAC"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R11"; Footprint = "RESC_0805"; UniqueID = "\MIPPENTK"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "71-CRCW08050000Z0EAC"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R12"; Footprint = "RESC_0805"; UniqueID = "\MNQMLNHQ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "71-CRCW08050000Z0EAC"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R13"; Footprint = "RESC_0805"; UniqueID = "\JPMOFKGD"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "71-CRCW08050000Z0EAC"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R17"; Footprint = "RESC_0805"; UniqueID = "\GCYXRLER"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "71-CRCW08050000Z0EAC"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R18"; Footprint = "RESC_0805"; UniqueID = "\CWNXHUQC"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "66-PCF08C7.5KB"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R19"; Footprint = "RESC_0805"; UniqueID = "\AQUJSBCT"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "66-PCF08C7.5KB"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R20"; Footprint = "RESC_0805"; UniqueID = "\HYUWHSUJ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "66-PCF08C7.5KB"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R24"; Footprint = "RESC_0805"; UniqueID = "\OIWJNGAR"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "66-PCF08C7.5KB"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R25"; Footprint = "RESC_0805"; UniqueID = "\SLLRNOEF"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "66-PCF08C7.5KB"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R26"; Footprint = "RESC_0805"; UniqueID = "\AQVYPTEK"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "66-PCF08C7.5KB"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R29"; Footprint = "RESC_0805"; UniqueID = "\MSOQLBBY"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "66-PCF08C7.5KB"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R30"; Footprint = "RESC_0805"; UniqueID = "\AJXBEAOT"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "66-PCF08C7.5KB"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R31"; Footprint = "RESC_0805"; UniqueID = "\HPCSUCLG"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "71-CRCW08050000Z0EAC"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R32"; Footprint = "RESC_0805"; UniqueID = "\ABWAEOTR"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "279-CPF0805B330RE1"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R39"; Footprint = "RESC_0805"; UniqueID = "\MEQRBHXI"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "71-CRCW08050000Z0EAC"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R45"; Footprint = "RESC_0805"; UniqueID = "\JXXQBHTH"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "71-CRCW08050000Z0EAC"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R46"; Footprint = "RESC_0805"; UniqueID = "\RYMTHGSQ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "279-CPF0805B330RE1"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R47"; Footprint = "RESC_0805"; UniqueID = "\DHKFWACI"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "279-CPF0805B330RE1"; VariantName = "[No Variations]"
+Change component parameters: Designator = "U3"; Footprint = "DC/DC_ISO"; UniqueID = "\YXYIRCGU"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "919-RFB-0505S"; VariantName = "[No Variations]"
+Change component parameters: Designator = "U5"; Footprint = "SOIC8"; UniqueID = "\FVCLMTDF"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "595-AMC1200BDWVR"; VariantName = "[No Variations]"
+Change component parameters: Designator = "U6"; Footprint = "DC/DC_ISO"; UniqueID = "\FVOEVAKR"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "919-RFB-0505S"; VariantName = "[No Variations]"
+Change component parameters: Designator = "U7"; Footprint = "DC/DC_ISO"; UniqueID = "\SQSYCOON"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "919-RFB-0505S"; VariantName = "[No Variations]"
+Change component parameters: Designator = "U8"; Footprint = "SOIC8"; UniqueID = "\LCSOCJJI"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "595-AMC1200BDWVR"; VariantName = "[No Variations]"
+Change component parameters: Designator = "U9"; Footprint = "SOIC8"; UniqueID = "\XDOIACSD"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "595-AMC1200BDWVR"; VariantName = "[No Variations]"

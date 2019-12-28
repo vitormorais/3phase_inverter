@@ -6,4 +6,4 @@ From  : Variant [[No Variations]] of Project [inversor_rev3.PrjPcb]
 Files Generated   : 0
 Documents Printed : 0
 
-Finished Output Generation At 11:14:14 On 16/12/2019
+Finished Output Generation At 19:07:59 On 26/12/2019

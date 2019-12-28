@@ -570,7 +570,7 @@ Configuration12_Item1=AddToAllLayerClasses.Set= |AddToAllPlots.Set=SerializeLaye
 [OutputGroup6]
 Name=Report Outputs
 Description=
-TargetPrinter=\\print.fe.up.pt\Geral-P-A4
+TargetPrinter=Foxit Reader PDF Printer (redirected 1)
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 OutputType1=BOM_PartType
 OutputName1=Bill of Materials
@@ -591,7 +591,7 @@ Configuration1_Item5=????????
 Configuration1_Name6=SortOrder
 Configuration1_Item6=Designator=Up|Comment=Up|Footprint=Up
 Configuration1_Name7=VisibleOrder
-Configuration1_Item7=Comment=100|Description=100|Designator=174|Footprint=75|LibRef=75|Quantity=76|LCSC=75
+Configuration1_Item7=Comment=100|Description=100|Designator=174|Footprint=75|LibRef=75|Quantity=76|LCSC=75|Farnell VPN=100|Mouser VPN=100
 OutputType2=ComponentCrossReference
 OutputName2=Component Cross Reference Report
 OutputDocumentPath2=
