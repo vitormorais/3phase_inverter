@@ -438,7 +438,7 @@ PageOptions12=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|Print
 [OutputGroup4]
 Name=Assembly Outputs
 Description=
-TargetPrinter=\\print.fe.up.pt\Geral-P-A4
+TargetPrinter=Foxit Reader PDF Printer (redirected 1)
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 OutputType1=Test Points For Assembly
 OutputName1=Test Point Report
@@ -492,7 +492,7 @@ Configuration3_Item15=CArc=Full|CFill=Full|Comment=Full|Coordinate=Full|CPad=Ful
 [OutputGroup5]
 Name=Fabrication Outputs
 Description=
-TargetPrinter=\\print.fe.up.pt\Geral-P-A4
+TargetPrinter=Foxit Reader PDF Printer (redirected 1)
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 OutputType1=Drill
 OutputName1=Drill Drawing/Guides
@@ -585,13 +585,13 @@ Configuration1_Item2=545046300E5446696C74657257726170706572000D46696C7465722E416
 Configuration1_Name3=General
 Configuration1_Item3=OpenExported=False|AddToProject=False|ForceFit=False|NotFitted=False|Database=False|DatabasePriority=False|IncludePCBData=False|IncludeVaultData=False|IncludeAlternatives=False|ShowExportOptions=True|TemplateFilename=|BatchMode=5|FormWidth=950|FormHeight=661|SupplierProdQty=1|SupplierAutoQty=False|SupplierUseCachedPricing=False|SupplierCurrency=<none>
 Configuration1_Name4=GroupOrder
-Configuration1_Item4=Description=True|LCSC=True|Comment=True|Footprint=True
+Configuration1_Item4=Description=True|Comment=True|Footprint=True
 Configuration1_Name5=OutputConfigurationParameter1
 Configuration1_Item5=????????
 Configuration1_Name6=SortOrder
 Configuration1_Item6=Designator=Up|Comment=Up|Footprint=Up
 Configuration1_Name7=VisibleOrder
-Configuration1_Item7=Comment=100|Description=100|Designator=174|Footprint=75|LibRef=75|Quantity=76|LCSC=75|Farnell VPN=100|Mouser VPN=100
+Configuration1_Item7=Comment=100|Description=100|Designator=174|Footprint=75|LibRef=75|Quantity=76|Farnell VPN=100|Mouser VPN=100|PCDIGA VPN=100|Price=100
 OutputType2=ComponentCrossReference
 OutputName2=Component Cross Reference Report
 OutputDocumentPath2=

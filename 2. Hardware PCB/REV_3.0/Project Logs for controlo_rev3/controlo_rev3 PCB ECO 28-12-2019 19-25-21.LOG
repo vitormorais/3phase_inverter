@@ -1,6 +1,0 @@
-Added Pin To Net: NetName=PWM_FAN Pin=P5-4
-Added Pin To Net: NetName=PWM_FAN Pin=XMC1-17
-Added Net: Name=PWM_FAN
-Added Pin To Net: NetName=TACH_FAN Pin=P5-3
-Added Pin To Net: NetName=TACH_FAN Pin=XMC1-18
-Added Net: Name=TACH_FAN

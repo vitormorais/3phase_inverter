@@ -106,7 +106,129 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=VMYMMXJB
 
+[Document5]
+DocumentPath=CAMtastic_controlo_g.Cam
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=
+
+[Document6]
+DocumentPath=CAMtastic_controlo_d.Cam
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=
+
 [GeneratedDocument1]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.BOM
+DItemRevisionGUID=
+
+[GeneratedDocument2]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.CSV
+DItemRevisionGUID=
+
+[GeneratedDocument3]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.DRR
+DItemRevisionGUID=
+
+[GeneratedDocument4]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.EXTREP
+DItemRevisionGUID=
+
+[GeneratedDocument5]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.GBL
+DItemRevisionGUID=
+
+[GeneratedDocument6]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.GBO
+DItemRevisionGUID=
+
+[GeneratedDocument7]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.GBP
+DItemRevisionGUID=
+
+[GeneratedDocument8]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.GBS
+DItemRevisionGUID=
+
+[GeneratedDocument9]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.GKO
+DItemRevisionGUID=
+
+[GeneratedDocument10]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.GM1
+DItemRevisionGUID=
+
+[GeneratedDocument11]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.GM13
+DItemRevisionGUID=
+
+[GeneratedDocument12]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.GM15
+DItemRevisionGUID=
+
+[GeneratedDocument13]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.GPB
+DItemRevisionGUID=
+
+[GeneratedDocument14]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.GPT
+DItemRevisionGUID=
+
+[GeneratedDocument15]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.GTL
+DItemRevisionGUID=
+
+[GeneratedDocument16]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.GTO
+DItemRevisionGUID=
+
+[GeneratedDocument17]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.GTP
+DItemRevisionGUID=
+
+[GeneratedDocument18]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.GTS
+DItemRevisionGUID=
+
+[GeneratedDocument19]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.LDP
+DItemRevisionGUID=
+
+[GeneratedDocument20]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.REP
+DItemRevisionGUID=
+
+[GeneratedDocument21]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.RUL
+DItemRevisionGUID=
+
+[GeneratedDocument22]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.TXT
+DItemRevisionGUID=
+
+[GeneratedDocument23]
 DocumentPath=Project Outputs for controlo_rev3\Design Rule Check - controlo_rev3.html
 DItemRevisionGUID=
 
@@ -344,7 +466,7 @@ PageOptions12=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|Print
 [OutputGroup4]
 Name=Assembly Outputs
 Description=
-TargetPrinter=\\print.fe.up.pt\Geral-P-A4
+TargetPrinter=Foxit Reader PDF Printer (redirected 1)
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 OutputType1=Test Points For Assembly
 OutputName1=Test Point Report
@@ -478,50 +600,52 @@ Name=Report Outputs
 Description=
 TargetPrinter=Foxit Reader PDF Printer (redirected 1)
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
-OutputType1=BOM_PartType
-OutputName1=Bill of Materials
+OutputType1=SimpleBOM
+OutputName1=Simple BOM
 OutputDocumentPath1=
 OutputVariantName1=[No Variations]
 OutputDefault1=0
-PageOptions1=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4|PaperIndex=9
-Configuration1_Name1=ColumnNameFormat
-Configuration1_Item1=CaptionAsName
-Configuration1_Name2=Filter
-Configuration1_Item2=545046300E5446696C74657257726170706572000D46696C7465722E416374697665090F46696C7465722E43726974657269610A04000000000000000000
-Configuration1_Name3=General
-Configuration1_Item3=OpenExported=False|AddToProject=False|ForceFit=False|NotFitted=False|Database=False|DatabasePriority=False|IncludePCBData=False|IncludeVaultData=False|IncludeAlternatives=False|ShowExportOptions=True|TemplateFilename=|BatchMode=5|FormWidth=950|FormHeight=661|SupplierProdQty=1|SupplierAutoQty=False|SupplierUseCachedPricing=False|SupplierCurrency=<none>
-Configuration1_Name4=GroupOrder
-Configuration1_Item4=Description=True|LCSC=True|Comment=True|Footprint=True
-Configuration1_Name5=OutputConfigurationParameter1
-Configuration1_Item5=????????
-Configuration1_Name6=SortOrder
-Configuration1_Item6=Designator=Up|Comment=Up|Footprint=Up
-Configuration1_Name7=VisibleOrder
-Configuration1_Item7=Comment=100|Description=100|Designator=174|Footprint=75|LibRef=75|Quantity=76|Farnell VPN=100|Mouser VPN=100|RS VPN=100
-OutputType2=ComponentCrossReference
-OutputName2=Component Cross Reference Report
+Configuration1_Name1=OutputConfigurationParameter1
+Configuration1_Item1=Record=SimpleBOMView|SimpleBOMMode=0
+OutputType2=SinglePinNetReporter
+OutputName2=Report Single Pin Nets
 OutputDocumentPath2=
 OutputVariantName2=[No Variations]
 OutputDefault2=0
-OutputType3=ReportHierarchy
-OutputName3=Report Project Hierarchy
+OutputType3=Script
+OutputName3=Script Output
 OutputDocumentPath3=
 OutputVariantName3=[No Variations]
 OutputDefault3=0
-OutputType4=SimpleBOM
-OutputName4=Simple BOM
+OutputType4=BOM_PartType
+OutputName4=Bill of Materials
 OutputDocumentPath4=
 OutputVariantName4=[No Variations]
 OutputDefault4=0
-Configuration4_Name1=OutputConfigurationParameter1
-Configuration4_Item1=Record=SimpleBOMView|SimpleBOMMode=0
-OutputType5=SinglePinNetReporter
-OutputName5=Report Single Pin Nets
+PageOptions4=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4|PaperIndex=9
+Configuration4_Name1=ColumnNameFormat
+Configuration4_Item1=CaptionAsName
+Configuration4_Name2=Filter
+Configuration4_Item2=545046300E5446696C74657257726170706572000D46696C7465722E416374697665090F46696C7465722E43726974657269610A04000000000000000000
+Configuration4_Name3=General
+Configuration4_Item3=OpenExported=False|AddToProject=False|ForceFit=False|NotFitted=False|Database=False|DatabasePriority=False|IncludePCBData=False|IncludeVaultData=False|IncludeAlternatives=False|ShowExportOptions=True|TemplateFilename=|BatchMode=5|FormWidth=950|FormHeight=661|SupplierProdQty=1|SupplierAutoQty=False|SupplierUseCachedPricing=False|SupplierCurrency=<none>
+Configuration4_Name4=GroupOrder
+Configuration4_Item4=Description=True|Comment=True|Footprint=True
+Configuration4_Name5=OutputConfigurationParameter1
+Configuration4_Item5=????????
+Configuration4_Name6=SortOrder
+Configuration4_Item6=Comment=Up
+Configuration4_Name7=VisibleOrder
+Configuration4_Item7=Comment=100|Description=100|Designator=174|Footprint=75|LibRef=75|Quantity=76|Farnell VPN=100|Mouser VPN=100|RS VPN=100|Price=100
+OutputType5=ComponentCrossReference
+OutputName5=Component Cross Reference Report
 OutputDocumentPath5=
 OutputVariantName5=[No Variations]
 OutputDefault5=0
-OutputType6=Script
-OutputName6=Script Output
+Configuration5_Name1=ColumnNameFormat
+Configuration5_Item1=CaptionAsName
+OutputType6=ReportHierarchy
+OutputName6=Report Project Hierarchy
 OutputDocumentPath6=
 OutputVariantName6=[No Variations]
 OutputDefault6=0

@@ -1,9 +1,12 @@
-Output: Bill of Materials
-Type  : BOM
-From  : Variant [[No Variations]] of Project [inversor_rev3.PrjPcb]
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [inversor_rev3.PrjPcb]
+   Generated File[inversor_rev3.TXT]
+   Generated File[inversor_rev3.LDP]
+   Generated File[inversor_rev3.DRR]
 
 
-Files Generated   : 0
+Files Generated   : 3
 Documents Printed : 0
 
-Finished Output Generation At 19:07:59 On 26/12/2019
+Finished Output Generation At 18:06:14 On 30/12/2019

@@ -1,0 +1,61 @@
+Change Physical Footprint: Designator=1 Old Footprint=connector1x2_parafuso New Footprint=connector1x2_parafuso
+Change Physical Footprint: Designator=C1 Old Footprint=CAPC_1206 New Footprint=CAPC_1206
+Change Physical Footprint: Designator=C2 Old Footprint=CAPC_1206 New Footprint=CAPC_1206
+Change Physical Footprint: Designator=C3 Old Footprint=CAPC_1206 New Footprint=CAPC_1206
+Change Physical Footprint: Designator=C4 Old Footprint=CAPC_1206 New Footprint=CAPC_1206
+Change Physical Footprint: Designator=C5 Old Footprint=CAPC_1206 New Footprint=CAPC_1206
+Change Physical Footprint: Designator=C6 Old Footprint=CAPC_1206 New Footprint=CAPC_1206
+Change Physical Footprint: Designator=C7 Old Footprint=CAPC_1206 New Footprint=CAPC_1206
+Change Physical Footprint: Designator=C8 Old Footprint=CAPC_1206 New Footprint=CAPC_1206
+Change Physical Footprint: Designator=C9 Old Footprint=CAPC_1206 New Footprint=CAPC_1206
+Change Physical Footprint: Designator=C10 Old Footprint=CAPC_1206 New Footprint=CAPC_1206
+Change Physical Footprint: Designator=C11 Old Footprint=CAPC_1206 New Footprint=CAPC_1206
+Change Physical Footprint: Designator=C12 Old Footprint=CAPC_1206 New Footprint=CAPC_1206
+Change Physical Footprint: Designator=D1 Old Footprint=DIODE_1206 New Footprint=DIODE_1206
+Change Physical Footprint: Designator=D2 Old Footprint=DIODE_1206 New Footprint=DIODE_1206
+Change Physical Footprint: Designator=D3 Old Footprint=DIODE_1206 New Footprint=DIODE_1206
+Change Physical Footprint: Designator=D4 Old Footprint=DIODE_1206 New Footprint=DIODE_1206
+Change Physical Footprint: Designator=Input L-N1 Old Footprint=connector1x2_parafuso New Footprint=connector1x2_parafuso
+Change Physical Footprint: Designator=K1 Old Footprint=connector1x2_parafuso New Footprint=connector1x2_parafuso
+Change Physical Footprint: Designator=K2 Old Footprint=connector1x2_parafuso New Footprint=connector1x2_parafuso
+Change Physical Footprint: Designator=L1 Old Footprint=Inductor - RLS-126 New Footprint=Inductor - RLS-126
+Change Physical Footprint: Designator=L2 Old Footprint=Inductor - RLS-126 New Footprint=Inductor - RLS-126
+Change Physical Footprint: Designator=L3 Old Footprint=Inductor - RLS-126 New Footprint=Inductor - RLS-126
+Change Physical Footprint: Designator=L4 Old Footprint=Inductor - RLS-126 New Footprint=Inductor - RLS-126
+Change Physical Footprint: Designator=P1 Old Footprint=MOLEX_3p_105431_1103 New Footprint=MOLEX_3p_105431_1103
+Change Physical Footprint: Designator=P2 Old Footprint=MOLEX_3p_105431_1103 New Footprint=MOLEX_3p_105431_1103
+Change Physical Footprint: Designator=P3 Old Footprint=MOLEX_3p_105431_1103 New Footprint=MOLEX_3p_105431_1103
+Change Physical Footprint: Designator=P4 Old Footprint=MOLEX_3p_105431_1103 New Footprint=MOLEX_3p_105431_1103
+Change Physical Footprint: Designator=P5 Old Footprint=MOLEX_3p_105431_1103 New Footprint=MOLEX_3p_105431_1103
+Change Physical Footprint: Designator=P6 Old Footprint=MOLEX_3p_105431_1103 New Footprint=MOLEX_3p_105431_1103
+Change Physical Footprint: Designator=P7 Old Footprint=MOLEX_3p_105431_1103 New Footprint=MOLEX_3p_105431_1103
+Change Physical Footprint: Designator=P8 Old Footprint=MOLEX_3p_105431_1103 New Footprint=MOLEX_3p_105431_1103
+Change Physical Footprint: Designator=P9 Old Footprint=Header 8x1 8.5mm New Footprint=Header 8x1 8.5mm
+Change Physical Footprint: Designator=P10 Old Footprint=Header 8x1 8.5mm New Footprint=Header 8x1 8.5mm
+Change Physical Footprint: Designator=P11 Old Footprint=Header 8x1 8.5mm New Footprint=Header 8x1 8.5mm
+Change Physical Footprint: Designator=P12 Old Footprint=HEADER 4p molex New Footprint=HEADER 4p molex
+Change Physical Footprint: Designator=P13 Old Footprint=Header 8x1 8.5mm New Footprint=Header 8x1 8.5mm
+Change Physical Footprint: Designator=R1 Old Footprint=RESC_0805 New Footprint=RESC_0805
+Change Physical Footprint: Designator=R2 Old Footprint=RESC_0805 New Footprint=RESC_0805
+Change Physical Footprint: Designator=R3 Old Footprint=RESC_0805 New Footprint=RESC_0805
+Change Physical Footprint: Designator=R4 Old Footprint=RESC_0805 New Footprint=RESC_0805
+Change Physical Footprint: Designator=R5 Old Footprint=RESC_0805 New Footprint=RESC_0805
+Change Physical Footprint: Designator=R6 Old Footprint=RESC_0805 New Footprint=RESC_0805
+Change Physical Footprint: Designator=R7 Old Footprint=RESC_0805 New Footprint=RESC_0805
+Change Physical Footprint: Designator=R8 Old Footprint=RESC_0805 New Footprint=RESC_0805
+Change Physical Footprint: Designator=R9 Old Footprint=RESC_0805 New Footprint=RESC_0805
+Change Physical Footprint: Designator=R10 Old Footprint=RESC_0805 New Footprint=RESC_0805
+Change Physical Footprint: Designator=R11 Old Footprint=RESC_0805 New Footprint=RESC_0805
+Change Physical Footprint: Designator=U1 Old Footprint=MeanWell SCWNo6 New Footprint=MeanWell SCWNo6
+Change Physical Footprint: Designator=U2 Old Footprint=DC/DC - R-78E3.3 New Footprint=DC/DC - R-78E3.3
+Change Physical Footprint: Designator=U3 Old Footprint=DC/DC - OKI-78SR-E New Footprint=DC/DC - OKI-78SR-E
+Change Physical Footprint: Designator=U4 Old Footprint=DC/DC - OKI-78SR-E New Footprint=DC/DC - OKI-78SR-E
+Change Physical Footprint: Designator=U5 Old Footprint=SOIC-MIC4126 New Footprint=SOIC-MIC4126
+Change Physical Footprint: Designator=U6 Old Footprint=SOIC127P610X155-16N New Footprint=SOIC127P610X155-16N
+Change Physical Footprint: Designator=U7 Old Footprint=DC/DC - OKI-78SR-E New Footprint=DC/DC - OKI-78SR-E
+Change Physical Footprint: Designator=U8 Old Footprint=SOIC-MIC4126 New Footprint=SOIC-MIC4126
+Change Physical Footprint: Designator=U9 Old Footprint=SOIC127P610X155-16N New Footprint=SOIC127P610X155-16N
+Change Physical Footprint: Designator=U10 Old Footprint=SOIC-MIC4126 New Footprint=SOIC-MIC4126
+Change Physical Footprint: Designator=U11 Old Footprint=Relay - G6DN New Footprint=Relay - G6DN
+Change Physical Footprint: Designator=U12 Old Footprint=SOIC-MIC4126 New Footprint=SOIC-MIC4126
+Change Physical Footprint: Designator=U13 Old Footprint=Relay - G6DN New Footprint=Relay - G6DN
