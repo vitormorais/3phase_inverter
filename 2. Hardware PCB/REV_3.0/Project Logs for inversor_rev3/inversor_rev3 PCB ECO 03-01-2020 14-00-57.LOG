@@ -1,0 +1,6 @@
+Change Component Footprint: Designator=C16 Old Footprint=Capacitor_DCBUS New Footprint=CAPC_1812
+Change Component Footprint: Designator=C17 Old Footprint=Capacitor_DCBUS New Footprint=CAPC_1812
+Change Component Footprint: Designator=C19 Old Footprint=Capacitor_DCBUS New Footprint=CAPC_1812
+Change Component Footprint: Designator=C18 Old Footprint=Capacitor_DCBUS New Footprint=DIODE_1812
+Added Member To Class: ClassName=inversor_rev3 Member=Component C18 C 100nF MLCC 1812 X7R 1kV
+Added Member To Class: ClassName=inversor_rev3 Member=Component C19 C 100nF MLCC 1812 X7R 1kV

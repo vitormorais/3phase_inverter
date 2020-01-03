@@ -1,0 +1,33 @@
+Change Component Designator: OldDesignator=C24 NewDesignator=C26
+Change Component Designator: OldDesignator=C25 NewDesignator=C27
+Change Component Designator: OldDesignator=C26 NewDesignator=C28
+Change Component Designator: OldDesignator=C27 NewDesignator=C29
+Change Component Designator: OldDesignator=C28 NewDesignator=C30
+Change Component Designator: OldDesignator=C29 NewDesignator=C31
+Change Component Designator: OldDesignator=C30 NewDesignator=C32
+Change Component Designator: OldDesignator=C31 NewDesignator=C33
+Change Component Designator: OldDesignator=C32 NewDesignator=C34
+Change Component Designator: OldDesignator=C33 NewDesignator=C35
+Change Component Designator: OldDesignator=C34 NewDesignator=C36
+Change Component Designator: OldDesignator=C35 NewDesignator=C37
+Change Component Designator: OldDesignator=C36 NewDesignator=C38
+Change Component Designator: OldDesignator=C37 NewDesignator=C39
+Added Component: Designator=C24(CAPC_1812)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Mouser VPN"; Value = "80-C1812C104KDRAUTO"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "0,747"; VariantName = "[No Variations]"
+Added Component: Designator=C25(CAPC_1812)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Mouser VPN"; Value = "80-C1812C104KDRAUTO"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "0,747"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=-VDCBUS Pin=C24-1
+Added Pin To Net: NetName=+VDCBUS Pin=C24-2
+Added Pin To Net: NetName=-VDCBUS Pin=C25-1
+Added Pin To Net: NetName=+VDCBUS Pin=C25-2
+Change Net Name : Old Net Name=NetC28_2 New Net Name=NetC30_2
+Change Net Name : Old Net Name=NetC29_2 New Net Name=NetC31_2
+Change Net Name : Old Net Name=NetC30_2 New Net Name=NetC32_2
+Change Net Name : Old Net Name=NetC35_2 New Net Name=NetC37_2
+Added Member To Class: ClassName=inversor_rev3 Member=Component C23 C 100nF MLCC 1812 X7R 1kV
+Added Member To Class: ClassName=inversor_rev3 Member=Component C38 C1uF 0805 MLCC 50V X5R
+Added Member To Class: ClassName=inversor_rev3 Member=Component C39 C 10uF 0805 MLCC 25V X5R

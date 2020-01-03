@@ -1,0 +1,7 @@
+Added Component: Designator=-VDC(connector1x2_parafuso)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Price"; Value = "0,24"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS VPN"; Value = "896-6696"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=-VDCBUS Pin=-VDC-1
+Added Pin To Net: NetName=-VDCBUS Pin=-VDC-2
+Added Member To Class: ClassName=inversor_rev3 Member=Component -VDC P 2p 5mm

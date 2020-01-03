@@ -1,0 +1,33 @@
+Added Component: Designator=C16(CAPC_1812)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Mouser VPN"; Value = "80-C1812C104KDRAUTO"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "0,747"; VariantName = "[No Variations]"
+Added Component: Designator=C17(CAPC_1812)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Mouser VPN"; Value = "80-C1812C104KDRAUTO"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "0,747"; VariantName = "[No Variations]"
+Added Component: Designator=C18(DIODE_1812)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Mouser VPN"; Value = "80-C1812C104KDRAUTO"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "0,747"; VariantName = "[No Variations]"
+Added Component: Designator=C19(CAPC_1812)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Mouser VPN"; Value = "80-C1812C104KDRAUTO"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "0,747"; VariantName = "[No Variations]"
+Added Component: Designator=X1(COOLER)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "PCDIGA VPN"; Value = "Cooler CPU Cooler Master Hyper H412R"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "22,90"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=-VDCBUS Pin=C16-1
+Added Pin To Net: NetName=+VDCBUS Pin=C16-2
+Added Pin To Net: NetName=-VDCBUS Pin=C17-1
+Added Pin To Net: NetName=+VDCBUS Pin=C17-2
+Added Pin To Net: NetName=-VDCBUS Pin=C18-1
+Added Pin To Net: NetName=+VDCBUS Pin=C18-2
+Added Pin To Net: NetName=-VDCBUS Pin=C19-1
+Added Pin To Net: NetName=+VDCBUS Pin=C19-2
+Added Member To Class: ClassName=inversor_rev3 Member=Component C16 C 100nF MLCC 1812 X7R 1kV
+Added Member To Class: ClassName=inversor_rev3 Member=Component C17 C 100nF MLCC 1812 X7R 1kV
+Added Member To Class: ClassName=inversor_rev3 Member=Component C18 C 100nF MLCC 1812 X7R 1kV
+Added Member To Class: ClassName=inversor_rev3 Member=Component C19 C 100nF MLCC 1812 X7R 1kV
+Added Member To Class: ClassName=inversor_rev3 Member=Component X1 X COOLER H412R

@@ -141,66 +141,70 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [GeneratedDocument1]
-DocumentPath=Project Outputs for inversor_rev3\inversor_rev3.DRR
+DocumentPath=Project Outputs for inversor_rev3\Design Rule Check - inversor_rev3.html
 DItemRevisionGUID=
 
 [GeneratedDocument2]
-DocumentPath=Project Outputs for inversor_rev3\inversor_rev3.EXTREP
+DocumentPath=Project Outputs for inversor_rev3\inversor_rev3.DRR
 DItemRevisionGUID=
 
 [GeneratedDocument3]
-DocumentPath=Project Outputs for inversor_rev3\inversor_rev3.GBL
+DocumentPath=Project Outputs for inversor_rev3\inversor_rev3.EXTREP
 DItemRevisionGUID=
 
 [GeneratedDocument4]
-DocumentPath=Project Outputs for inversor_rev3\inversor_rev3.GBO
+DocumentPath=Project Outputs for inversor_rev3\inversor_rev3.GBL
 DItemRevisionGUID=
 
 [GeneratedDocument5]
-DocumentPath=Project Outputs for inversor_rev3\inversor_rev3.GBS
+DocumentPath=Project Outputs for inversor_rev3\inversor_rev3.GBO
 DItemRevisionGUID=
 
 [GeneratedDocument6]
-DocumentPath=Project Outputs for inversor_rev3\inversor_rev3.GKO
+DocumentPath=Project Outputs for inversor_rev3\inversor_rev3.GBS
 DItemRevisionGUID=
 
 [GeneratedDocument7]
-DocumentPath=Project Outputs for inversor_rev3\inversor_rev3.GM1
+DocumentPath=Project Outputs for inversor_rev3\inversor_rev3.GKO
 DItemRevisionGUID=
 
 [GeneratedDocument8]
-DocumentPath=Project Outputs for inversor_rev3\inversor_rev3.GM13
+DocumentPath=Project Outputs for inversor_rev3\inversor_rev3.GM1
 DItemRevisionGUID=
 
 [GeneratedDocument9]
-DocumentPath=Project Outputs for inversor_rev3\inversor_rev3.GM15
+DocumentPath=Project Outputs for inversor_rev3\inversor_rev3.GM13
 DItemRevisionGUID=
 
 [GeneratedDocument10]
-DocumentPath=Project Outputs for inversor_rev3\inversor_rev3.GTL
+DocumentPath=Project Outputs for inversor_rev3\inversor_rev3.GM15
 DItemRevisionGUID=
 
 [GeneratedDocument11]
-DocumentPath=Project Outputs for inversor_rev3\inversor_rev3.GTO
+DocumentPath=Project Outputs for inversor_rev3\inversor_rev3.GTL
 DItemRevisionGUID=
 
 [GeneratedDocument12]
-DocumentPath=Project Outputs for inversor_rev3\inversor_rev3.GTS
+DocumentPath=Project Outputs for inversor_rev3\inversor_rev3.GTO
 DItemRevisionGUID=
 
 [GeneratedDocument13]
-DocumentPath=Project Outputs for inversor_rev3\inversor_rev3.LDP
+DocumentPath=Project Outputs for inversor_rev3\inversor_rev3.GTS
 DItemRevisionGUID=
 
 [GeneratedDocument14]
-DocumentPath=Project Outputs for inversor_rev3\inversor_rev3.REP
+DocumentPath=Project Outputs for inversor_rev3\inversor_rev3.LDP
 DItemRevisionGUID=
 
 [GeneratedDocument15]
-DocumentPath=Project Outputs for inversor_rev3\inversor_rev3.RUL
+DocumentPath=Project Outputs for inversor_rev3\inversor_rev3.REP
 DItemRevisionGUID=
 
 [GeneratedDocument16]
+DocumentPath=Project Outputs for inversor_rev3\inversor_rev3.RUL
+DItemRevisionGUID=
+
+[GeneratedDocument17]
 DocumentPath=Project Outputs for inversor_rev3\inversor_rev3.TXT
 DItemRevisionGUID=
 
@@ -438,7 +442,7 @@ PageOptions12=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|Print
 [OutputGroup4]
 Name=Assembly Outputs
 Description=
-TargetPrinter=Foxit Reader PDF Printer (redirected 1)
+TargetPrinter=Foxit Reader PDF Printer
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 OutputType1=Test Points For Assembly
 OutputName1=Test Point Report
@@ -492,7 +496,7 @@ Configuration3_Item15=CArc=Full|CFill=Full|Comment=Full|Coordinate=Full|CPad=Ful
 [OutputGroup5]
 Name=Fabrication Outputs
 Description=
-TargetPrinter=Foxit Reader PDF Printer (redirected 1)
+TargetPrinter=Foxit Reader PDF Printer
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 OutputType1=Drill
 OutputName1=Drill Drawing/Guides
@@ -570,7 +574,7 @@ Configuration12_Item1=AddToAllLayerClasses.Set= |AddToAllPlots.Set=SerializeLaye
 [OutputGroup6]
 Name=Report Outputs
 Description=
-TargetPrinter=Foxit Reader PDF Printer (redirected 1)
+TargetPrinter=Foxit Reader PDF Printer
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 OutputType1=BOM_PartType
 OutputName1=Bill of Materials
