@@ -91,7 +91,7 @@ if(cycle_time >= (float) CTRL_PERIOD) {
 
 	///// begin DC_ctrl
 	//run_DC_ctrl();
-    VDC_BUS_REF = 390.0f;
+    VDC_BUS_REF = 360.0f;
     if (state == running) {
     	//vdc_bus_error = ((VDC_BUS_REF)-(conv.Vdc));
         vdc_bus_error = ((VDC_BUS_REF*VDC_BUS_REF)-(conv.Vdc*conv.Vdc));
