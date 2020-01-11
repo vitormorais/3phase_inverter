@@ -90,8 +90,14 @@ if(cycle_time >= (float) CTRL_PERIOD) {
 	///// end PLL
 
 	///// begin DC_ctrl
+	i_dqsg.w = dqsg.w;
+	QSG(I_abc[0], i_dqsg.w, &(i_dqsg.QSG_d));
+	SOGI_i_AB[0] =  i_dqsg.QSG_d.v_AB[0];
+	SOGI_i_AB[1] =  i_dqsg.QSG_d.v_AB[1];
+	AB_dq(SOGI_i_AB, CTRL_idq, PLL_wt);
+
 	//run_DC_ctrl();
-    VDC_BUS_REF = 360.0f;
+    VDC_BUS_REF = 375.0f;
     if (state == running) {
     	//vdc_bus_error = ((VDC_BUS_REF)-(conv.Vdc));
         vdc_bus_error = ((VDC_BUS_REF*VDC_BUS_REF)-(conv.Vdc*conv.Vdc));
@@ -101,7 +107,7 @@ if(cycle_time >= (float) CTRL_PERIOD) {
     }
 
     I_dq_ref[0] = -PI_TR_par(vdc_bus_error, Ts, &PI_Vdc);//10; //activa
-    I_dq_ref[1] = 0;  //reactiva
+    I_dq_ref[1] = -PI_TR_par(CTRL_idq[1], Ts, &PI_reactive);;  //reactiva
     dq_AB(I_dq_ref, I_AB, conv.wt);
 
 	///// end DC_ctrl
@@ -161,8 +167,8 @@ out[PSIM_OUT_PLL+3] = PLL_Vdq[1];
 out[PSIM_OUT_PLL+4] = PLL_w;
 out[PSIM_OUT_PLL+5] = PLL_wt;
 
-out[PSIM_OUT_CTRL+0] = in[9];
-out[PSIM_OUT_CTRL+1] = 0;
+out[PSIM_OUT_CTRL+0] = CTRL_idq[0];
+out[PSIM_OUT_CTRL+1] = CTRL_idq[1];
 out[PSIM_OUT_CTRL+2] = I_dq_ref[0];
 out[PSIM_OUT_CTRL+3] = I_dq_ref[1];
 out[PSIM_OUT_CTRL+4] = I_AB[0];
@@ -201,6 +207,13 @@ dqsg.QSG_d.K = 1.4142136f;
 dqsg.QSG_d.Ti = Ts;
 dqsg.QSG_q.K = 1.4142136f;
 dqsg.QSG_q.Ti = Ts;
+//i_dqsg = {100.0f*PI_const, {{0.0f, 0.0f}, 1.4142136f, 0.0f, 0.0f, Ts}, {{0.0f, 0.0f}, 1.4142136f, 0.0f, 0.0f, Ts}};
+i_dqsg.w = 100.0f*PI_const;
+i_dqsg.QSG_d.K = 1.4142136f;
+i_dqsg.QSG_d.Ti = Ts;
+i_dqsg.QSG_q.K = 1.4142136f;
+i_dqsg.QSG_q.Ti = Ts;
+
 //PI_PLL = {{Kp_PLL, Ki_PLL},{942.47780f, -942.47780f},{0.0f, 0.0f},0};
 PI_PLL.K[0] = Kp_PLL;
 PI_PLL.K[1] = Ki_PLL;
@@ -212,6 +225,12 @@ PI_Vdc.K[0] = Kp_V_DC;
 PI_Vdc.K[1] = Ki_V_DC;
 PI_Vdc.sat[0] = 15.0f;
 PI_Vdc.sat[1] = -15.0f;
+
+//PI_reactive = {{Kp_V_DC, Ki_V_DC},{15, -15},{0.0f, 0.0f},0u};
+PI_reactive.K[0] = 0.3f;
+PI_reactive.K[1] = 20.0f;
+PI_reactive.sat[0] = 15.0f;
+PI_reactive.sat[1] = -15.0f;
 
 PLL_LPFbuff_w[0] = PLL_w0;
 PLL_LPFbuff_w[1] = PLL_w0;

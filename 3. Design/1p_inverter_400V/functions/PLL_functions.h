@@ -15,6 +15,7 @@ typedef struct{
 }dsogi;
 
 dsogi dqsg;//={100.0f*PI_const, {{0.0f, 0.0f}, 1.4142136f, 0.0f, 0.0f, Ts}, {{0.0f, 0.0f}, 1.4142136f, 0.0f, 0.0f, Ts}};
+dsogi i_dqsg;
 
 float SOGI_v_AB[2] = {0.0f, 0.0f};
 

@@ -87,6 +87,7 @@ typedef struct{
 
 PI_tr_p PI_PLL;//={{Kp_PLL, Ki_PLL},{942.47780f, -942.47780f},{0.0f, 0.0f},0};
 PI_tr_p PI_Vdc;//={{Kp_V_DC, Ki_V_DC},{15, -15},{0.0f, 0.0f},0u};
+PI_tr_p PI_reactive;//={{Kp_V_DC, Ki_V_DC},{15, -15},{0.0f, 0.0f},0u};
 
 
 float LPF1(float val, float *LPFbuff, const float LPF_K[3]);

@@ -30,6 +30,10 @@ float vdc_division;
 float m_u;
 float m_v;
 
+float SOGI_i_AB[2] = {0.0f, 0.0f};
+float CTRL_idq[2] = {0.0f, 0.0f};
+
+
 
 ///////////  prototypes
 void run_DC_ctrl(void);
