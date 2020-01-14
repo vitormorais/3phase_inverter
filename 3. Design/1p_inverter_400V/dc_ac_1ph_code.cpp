@@ -106,8 +106,12 @@ if(cycle_time >= (float) CTRL_PERIOD) {
         vdc_bus_error = 0;
     }
 
-    I_dq_ref[0] = -PI_TR_par(vdc_bus_error, Ts, &PI_Vdc);//10; //activa
-    I_dq_ref[1] = -PI_TR_par(CTRL_idq[1], Ts, &PI_reactive);;  //reactiva
+    vdc_bus_piout = -PI_TR_par(vdc_bus_error, Ts, &PI_Vdc);//10; //activa
+    
+    //vdc_bus_piout = in[PSIM_IN_REFS+1];
+
+	I_dq_ref[0] = PI_TR_par(vdc_bus_piout-CTRL_idq[0], Ts, &PI_d);
+    I_dq_ref[1] = PI_TR_par(0-CTRL_idq[1], Ts, &PI_q);  //reactiva
     dq_AB(I_dq_ref, I_AB, conv.wt);
 
 	///// end DC_ctrl
@@ -172,7 +176,7 @@ out[PSIM_OUT_CTRL+1] = CTRL_idq[1];
 out[PSIM_OUT_CTRL+2] = I_dq_ref[0];
 out[PSIM_OUT_CTRL+3] = I_dq_ref[1];
 out[PSIM_OUT_CTRL+4] = I_AB[0];
-out[PSIM_OUT_CTRL+5] = PR_output;
+out[PSIM_OUT_CTRL+5] = PR_output; //vdc_bus_error;//
 out[PSIM_OUT_CTRL+6] = m_u;
 out[PSIM_OUT_CTRL+7] = m_v;
 }
@@ -227,10 +231,15 @@ PI_Vdc.sat[0] = 15.0f;
 PI_Vdc.sat[1] = -15.0f;
 
 //PI_reactive = {{Kp_V_DC, Ki_V_DC},{15, -15},{0.0f, 0.0f},0u};
-PI_reactive.K[0] = 0.3f;
-PI_reactive.K[1] = 20.0f;
-PI_reactive.sat[0] = 15.0f;
-PI_reactive.sat[1] = -15.0f;
+PI_q.K[0] = 0.05f;
+PI_q.K[1] = 40.0f;
+PI_q.sat[0] = 15.0f;
+PI_q.sat[1] = -15.0f;
+//PI_active = {{Kp_V_DC, Ki_V_DC},{15, -15},{0.0f, 0.0f},0u};
+PI_d.K[0] = 0.05f;
+PI_d.K[1] = 40.0f;
+PI_d.sat[0] = 15.0f;
+PI_d.sat[1] = -15.0f;
 
 PLL_LPFbuff_w[0] = PLL_w0;
 PLL_LPFbuff_w[1] = PLL_w0;

@@ -26,6 +26,7 @@ float CTRL_Vab[2]={0.0f, 0.0f};
 float PR_output = 0.0f;
 float VDC_BUS_REF;
 float vdc_bus_error;
+float vdc_bus_piout;
 float vdc_division;
 float m_u;
 float m_v;

@@ -20,8 +20,8 @@ float cycle_time = 0;
 #define Ki_I 1225.0000f
 #define kd 0.00100000f
 #define td 0.06600000f
-#define Kp_V_DC 0.0002 //0.311111f
-#define Ki_V_DC 0.004 //20.1707f
+#define Kp_V_DC 0.0003 //0.5*0.311111f //
+#define Ki_V_DC 0.008 //0.2*20.1707f //
 #define TIMER_DELAY_INIT 1*1000000u		//Scaling the required values by 100000.
 #define TIMER_K1 4*1000000u				//Scaling the required values by 100000.
 #define TIMER_K2 10*1000000u			//Scaling the required values by 100000.
@@ -87,7 +87,9 @@ typedef struct{
 
 PI_tr_p PI_PLL;//={{Kp_PLL, Ki_PLL},{942.47780f, -942.47780f},{0.0f, 0.0f},0};
 PI_tr_p PI_Vdc;//={{Kp_V_DC, Ki_V_DC},{15, -15},{0.0f, 0.0f},0u};
-PI_tr_p PI_reactive;//={{Kp_V_DC, Ki_V_DC},{15, -15},{0.0f, 0.0f},0u};
+PI_tr_p PI_d;//={{Kp_V_DC, Ki_V_DC},{15, -15},{0.0f, 0.0f},0u};
+PI_tr_p PI_q;//={{Kp_V_DC, Ki_V_DC},{15, -15},{0.0f, 0.0f},0u};
+
 
 
 float LPF1(float val, float *LPFbuff, const float LPF_K[3]);
