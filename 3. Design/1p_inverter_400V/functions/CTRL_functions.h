@@ -1,7 +1,7 @@
 #define TS_Control 1e-4 // 100us control period
-#define PR_Kp 0.05f
-#define PR_Kr 3.0f
-#define PR_Wi 40.0f*PI_const
+#define PR_Kp 1.5f
+#define PR_Kr 6.0f
+#define PR_Wi 15.0f*PI_const
 #define PR_W0 100.0f*PI_const
 
 typedef struct{
@@ -33,6 +33,7 @@ float m_v;
 
 float SOGI_i_AB[2] = {0.0f, 0.0f};
 float CTRL_idq[2] = {0.0f, 0.0f};
+float CTRL_idq_ref[2] = {0.0f, 0.0f};
 
 
 

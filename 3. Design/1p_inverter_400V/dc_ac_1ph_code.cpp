@@ -31,6 +31,17 @@
 
 float PR_LPFbuff_Iu[2] = {0.0f, 0.0f}; 
 float Iu_filt = 0.0f;
+float PR_LPFbuff_VAC[2] = {0.0f, 0.0f}; 
+
+float ADC_LPFbuff_VA[2] = {0.0f, 0.0f}; 
+float ADC_LPFbuff_VB[2] = {0.0f, 0.0f}; 
+float ADC_LPFbuff_VC[2] = {0.0f, 0.0f}; 
+float ADC_LPFbuff_IA[2] = {0.0f, 0.0f}; 
+float ADC_LPFbuff_IB[2] = {0.0f, 0.0f}; 
+float ADC_LPFbuff_IC[2] = {0.0f, 0.0f}; 
+
+float harmonics_content = 0.0f;
+
 
 
 
@@ -69,6 +80,14 @@ if(cycle_time >= (float) CTRL_PERIOD) {
 	conv.Vdc = LPF1(V_DC, LPFbuff_vdc, LPF_K_500);//V_DC;
 	conv_temp_C = 30.0f;  ///  no input var in PSIM
 	conv.temp = conv_temp_C;
+	V_abc[0] = LPF1(V_abc[0], ADC_LPFbuff_VA, LPF_K_1500);
+	V_abc[1] = LPF1(V_abc[1], ADC_LPFbuff_VB, LPF_K_1500);
+	V_abc[2] = LPF1(V_abc[2], ADC_LPFbuff_VC, LPF_K_1500);
+
+	I_abc[0] = LPF1(I_abc[0], ADC_LPFbuff_IA, LPF_K_1500);
+	I_abc[1] = LPF1(I_abc[1], ADC_LPFbuff_IB, LPF_K_1500);
+	I_abc[2] = LPF1(I_abc[2], ADC_LPFbuff_IC, LPF_K_1500);
+
 	///// end acquisition ADC's
 
 	///// begin PLL
@@ -96,30 +115,43 @@ if(cycle_time >= (float) CTRL_PERIOD) {
 	SOGI_i_AB[1] =  i_dqsg.QSG_d.v_AB[1];
 	AB_dq(SOGI_i_AB, CTRL_idq, PLL_wt);
 
-	//run_DC_ctrl();
-    VDC_BUS_REF = 375.0f;
-    if (state == running) {
-    	//vdc_bus_error = ((VDC_BUS_REF)-(conv.Vdc));
-        vdc_bus_error = ((VDC_BUS_REF*VDC_BUS_REF)-(conv.Vdc*conv.Vdc));
-    }
-    else  {
-        vdc_bus_error = 0;
-    }
+	
 
-    vdc_bus_piout = -PI_TR_par(vdc_bus_error, Ts, &PI_Vdc);//10; //activa
+
     
-    //vdc_bus_piout = in[PSIM_IN_REFS+1];
+    
+    
 
-	I_dq_ref[0] = PI_TR_par(vdc_bus_piout-CTRL_idq[0], Ts, &PI_d);
-    I_dq_ref[1] = PI_TR_par(0-CTRL_idq[1], Ts, &PI_q);  //reactiva
+    /////////////////////   switch MODO controlo barramento
+	//run_DC_ctrl();
+    VDC_BUS_REF = 400.0f; //in[PSIM_IN_REFS+3]; // 
+    //vdc_bus_error = ((VDC_BUS_REF)-(conv.Vdc));
+    vdc_bus_error = ((VDC_BUS_REF*VDC_BUS_REF)-(conv.Vdc*conv.Vdc));
+    vdc_bus_error = (state == running) ? vdc_bus_error : 0;
+    vdc_bus_piout = -PI_TR_par(vdc_bus_error, Ts, &PI_Vdc);//10; //activa
+    I_dq_ref[0] = vdc_bus_piout;
+     CTRL_idq_ref[1] = (state == running) ? in[PSIM_IN_REFS+2] : 0;
+    //CTRL_idq_ref[1] = (state == running) ? 0 : 0;
+    I_dq_ref[1] = PI_TR_par(CTRL_idq_ref[1] - CTRL_idq[1], Ts, &PI_q);  //controlo reactiva
+    /////////////////////   switch MODO controlo PQ
+/*
+    CTRL_idq_ref[0] = (state == running) ? in[PSIM_IN_REFS+1] : 0;
+    //CTRL_idq_ref[0] = (state == running) ? 0 : 0;
+    CTRL_idq_ref[1] = (state == running) ? in[PSIM_IN_REFS+2] : 0;
+    //CTRL_idq_ref[1] = (state == running) ? 0 : 0;
+	I_dq_ref[0] = PI_TR_par(CTRL_idq_ref[0] - CTRL_idq[0], Ts, &PI_d);
+	I_dq_ref[1] = PI_TR_par(CTRL_idq_ref[1] - CTRL_idq[1], Ts, &PI_q);  //reactiva
+*/
+	/////////////////////   END switch
     dq_AB(I_dq_ref, I_AB, conv.wt);
+    I_AB[0] = (state == running) ? I_AB[0] : 0;
 
 	///// end DC_ctrl
 
 	///// begin PR_ctrl
-	if (state != running) {
-		set_PR_ref(&PR_Test, 0);
-	}
+	// if (state != running) {
+	// 	set_PR_ref(&PR_Test, 0);
+	// }
 	set_PR_ref(&PR_Test, I_AB[0]);
 	Iu_filt = LPF1(I_abc[0], PR_LPFbuff_Iu, LPF_K_500);
 	PR_output = Calc_prStruct(&PR_Test, Iu_filt, 100.0f*PI_const) ;
@@ -127,11 +159,20 @@ if(cycle_time >= (float) CTRL_PERIOD) {
 		PR_output = 0;
 	}
 
-	PR_output = (PR_output >  20.0f) ?  20.0f : PR_output;
-	PR_output = (PR_output < -20.0f) ? -20.0f : PR_output;
-
+	//PR_output = (PR_output >  20.0f) ?  20.0f : PR_output;
+	//PR_output = (PR_output < -20.0f) ? -20.0f : PR_output;
+	
 	vdc_division = (conv.Vdc < 100) ? 100 : conv.Vdc;   // permitir divisão por 0
-	m_u = (PR_output + V_abc[0]) / (vdc_division);
+	//V_abc[0] = LPF1(V_abc[0], PR_LPFbuff_VAC, LPF_K_500);
+	//harmonics_content = (SOGI_v_AB[0]-V_abc[0]);
+	//harmonics_content *= 1.0f;
+	//harmonics_content = (harmonics_content>15) ? 15 : harmonics_content;
+	//harmonics_content = (harmonics_content<-15) ? -15 : harmonics_content;
+	//harmonics_content = (in[PSIM_IN_REFS] == 0) ? 0 : harmonics_content;  
+	harmonics_content=0;
+
+	m_u = (PR_output + SOGI_v_AB[0] - harmonics_content) / (vdc_division);
+	//m_u = (PR_output + V_abc[0]) / (vdc_division);
 	m_v = -m_u;
 	///// end PR_ctrl
 
@@ -227,19 +268,19 @@ PI_PLL.sat[1] = -942.47780f;
 //PI_Vdc = {{Kp_V_DC, Ki_V_DC},{15, -15},{0.0f, 0.0f},0u};
 PI_Vdc.K[0] = Kp_V_DC;
 PI_Vdc.K[1] = Ki_V_DC;
-PI_Vdc.sat[0] = 15.0f;
-PI_Vdc.sat[1] = -15.0f;
+PI_Vdc.sat[0] = 35.0f;
+PI_Vdc.sat[1] = -35.0f;
 
 //PI_reactive = {{Kp_V_DC, Ki_V_DC},{15, -15},{0.0f, 0.0f},0u};
 PI_q.K[0] = 0.05f;
 PI_q.K[1] = 40.0f;
-PI_q.sat[0] = 15.0f;
-PI_q.sat[1] = -15.0f;
+PI_q.sat[0] = 35.0f;
+PI_q.sat[1] = -35.0f;
 //PI_active = {{Kp_V_DC, Ki_V_DC},{15, -15},{0.0f, 0.0f},0u};
 PI_d.K[0] = 0.05f;
 PI_d.K[1] = 40.0f;
-PI_d.sat[0] = 15.0f;
-PI_d.sat[1] = -15.0f;
+PI_d.sat[0] = 35.0f;
+PI_d.sat[1] = -35.0f;
 
 PLL_LPFbuff_w[0] = PLL_w0;
 PLL_LPFbuff_w[1] = PLL_w0;

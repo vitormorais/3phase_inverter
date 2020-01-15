@@ -21,7 +21,7 @@ float cycle_time = 0;
 #define kd 0.00100000f
 #define td 0.06600000f
 #define Kp_V_DC 0.0003 //0.5*0.311111f //
-#define Ki_V_DC 0.008 //0.2*20.1707f //
+#define Ki_V_DC 0.006 //0.2*20.1707f //
 #define TIMER_DELAY_INIT 1*1000000u		//Scaling the required values by 100000.
 #define TIMER_K1 4*1000000u				//Scaling the required values by 100000.
 #define TIMER_K2 10*1000000u			//Scaling the required values by 100000.
