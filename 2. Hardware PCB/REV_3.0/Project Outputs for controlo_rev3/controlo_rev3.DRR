@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------------------------------------------------------------------
-NCDrill File Report For: controlo_rev3.PcbDoc   30/12/2019  18:09:06
+NCDrill File Report For: controlo_rev3.PcbDoc   22/01/2020  17:25:43
 ----------------------------------------------------------------------------------------------------------------------------------
 
 Layer Pair : Top Layer to Bottom Layer
@@ -7,14 +7,14 @@ ASCII RoundHoles File : controlo_rev3.TXT
 
 Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
 ----------------------------------------------------------------------------------------------------------------------------------
-T1      16mil (0.4mm)                                             Round             3         PTH        1.00inch (25.42mm)
-T2      20mil (0.508mm)                                           Round             4         PTH        3.90inch (98.96mm)
-T3      28mil (0.711mm)                                           Round             27        PTH        13.51inch (343.19mm)
-T4      30mil (0.762mm)                                           Round             60        PTH        10.28inch (261.04mm)
-T5      35mil (0.9mm)                                             Round             80        PTH        12.69inch (322.40mm)
+T1      16mil (0.4mm)                                             Round             233       PTH        53.63inch (1362.28mm)
+T2      20mil (0.508mm)                                           Round             3         PTH        3.00inch (76.25mm)
+T3      28mil (0.711mm)                                           Round             29        PTH        13.43inch (341.08mm)
+T4      30mil (0.762mm)                                           Round             76        PTH        13.27inch (336.97mm)
+T5      35mil (0.9mm)                                             Round             80        PTH        12.19inch (309.70mm)
 T6      47mil (1.2mm)                                             Round             6         PTH        2.20inch (55.93mm)
 T7      118mil (3mm)                                              Round             4         NPTH       12.90inch (327.76mm)
 ----------------------------------------------------------------------------------------------------------------------------------
-Totals                                                                              184
+Totals                                                                              431
 
 Total Processing Time (hh:mm:ss) : 00:00:00

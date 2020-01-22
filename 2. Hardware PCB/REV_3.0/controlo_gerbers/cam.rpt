@@ -1,0 +1,18 @@
+CAMtasticDXP Drill Report
+Serial Number:0000-00-00000
+Drill File: F:\Projects\20190909 - 3phase_inverter\3phase_inverter\2. Hardware PCB\REV_3.0\controlo_gerbers\cam.drl
+Format: 2.5
+Units: English (Inch)
+Step & Repeat Codes Used: NO
+
+
+TOOL		SIZE		COUNT
+====		======		=====
+
+ 1 		0.0158		233
+ 2 		0.0200		3
+ 3 		0.0280		29
+ 4 		0.0300		76
+ 5 		0.0354		80
+ 6 		0.0472		6
+ 7 		0.1181		4

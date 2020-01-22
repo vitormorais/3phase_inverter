@@ -3,7 +3,7 @@ FileName = controlo_rev3.GBR
 AutoAperture = True
 *************************************************************
 Generating : Top Layer
-      File : controlo_rev3.GTL
+      File : controlo_rev3_Copper_Signal_Top.gbr
 
     Adding Layer      : Top Layer
 
@@ -29,11 +29,12 @@ Used DCodes :
     D25
     D26
     D27
+    D28
 *************************************************************
 
 *************************************************************
 Generating : Bottom Layer
-      File : controlo_rev3.GBL
+      File : controlo_rev3_Copper_Signal_Bot.gbr
 
     Adding Layer      : Bottom Layer
 
@@ -62,11 +63,12 @@ Used DCodes :
     D28
     D29
     D30
+    D31
 *************************************************************
 
 *************************************************************
 Generating : Bottom Pad Master
-      File : controlo_rev3.GPB
+      File : controlo_rev3_Pads_Bot.gbr
 
     Adding Layer      : Bottom Layer
 
@@ -85,14 +87,15 @@ Used DCodes :
     D22
     D23
     D24
-    D28
+    D25
     D29
     D30
+    D31
 *************************************************************
 
 *************************************************************
 Generating : Top Pad Master
-      File : controlo_rev3.GPT
+      File : controlo_rev3_Pads_Top.gbr
 
     Adding Layer      : Top Layer
 
@@ -111,42 +114,28 @@ Used DCodes :
     D22
     D23
     D24
+    D25
 *************************************************************
 
 *************************************************************
-Generating : Top Overlay
-      File : controlo_rev3.GTO
+Generating : Bottom Overlay
+      File : controlo_rev3_Legend_Bot.gbr
 
-    Adding Layer      : Top Overlay
+    Adding Layer      : Bottom Overlay
 
 
 Used DCodes :
-    D31
     D32
     D33
-*************************************************************
-
-*************************************************************
-Generating : Top Paste
-      File : controlo_rev3.GTP
-
-    Adding Layer      : Top Paste
-
-    Adding Layer      : Top Layer
-
-    Adding Layer      : Multi-Layer
-
-
-Used DCodes :
-    D10
-    D11
-    D12
-    D13
+    D34
+    D35
+    D36
+    D37
 *************************************************************
 
 *************************************************************
 Generating : Top Solder
-      File : controlo_rev3.GTS
+      File : controlo_rev3_Soldermask_Top.gbr
 
     Adding Layer      : Top Solder
 
@@ -156,38 +145,6 @@ Generating : Top Solder
 
 
 Used DCodes :
-    D34
-    D35
-    D36
-    D37
-    D38
-    D39
-    D40
-    D41
-    D42
-    D43
-    D44
-    D45
-    D46
-    D47
-*************************************************************
-
-*************************************************************
-Generating : Bottom Solder
-      File : controlo_rev3.GBS
-
-    Adding Layer      : Bottom Solder
-
-    Adding Layer      : Bottom Layer
-
-    Adding Layer      : Multi-Layer
-
-
-Used DCodes :
-    D34
-    D35
-    D36
-    D37
     D38
     D39
     D40
@@ -201,13 +158,29 @@ Used DCodes :
     D48
     D49
     D50
+    D51
+    D52
 *************************************************************
 
 *************************************************************
-Generating : Bottom Paste
-      File : controlo_rev3.GBP
+Generating : Top Overlay
+      File : controlo_rev3_Legend_Top.gbr
 
-    Adding Layer      : Bottom Paste
+    Adding Layer      : Top Overlay
+
+
+Used DCodes :
+    D32
+    D35
+    D36
+    D37
+*************************************************************
+
+*************************************************************
+Generating : Bottom Solder
+      File : controlo_rev3_Soldermask_Bot.gbr
+
+    Adding Layer      : Bottom Solder
 
     Adding Layer      : Bottom Layer
 
@@ -215,46 +188,63 @@ Generating : Bottom Paste
 
 
 Used DCodes :
-    D10
-    D11
-    D12
-    D13
-    D28
-    D29
-    D30
-*************************************************************
-
-*************************************************************
-Generating : Bottom Overlay
-      File : controlo_rev3.GBO
-
-    Adding Layer      : Bottom Overlay
-
-
-Used DCodes :
-    D31
-    D32
-    D33
+    D38
+    D39
+    D40
+    D41
+    D42
+    D43
+    D44
+    D45
+    D46
+    D47
+    D48
+    D49
+    D50
     D51
     D52
     D53
+    D54
+    D55
 *************************************************************
 
 *************************************************************
 Generating : Keep-Out Layer
-      File : controlo_rev3.GKO
+      File : controlo_rev3_Keep-out.gbr
 
     Adding Layer      : Keep-Out Layer
 
 
 Used DCodes :
+*************************************************************
+
+*************************************************************
+Generating : Mechanical 13
+      File : controlo_rev3_Mechanical_13.gbr
+
+    Adding Layer      : Mechanical 13
+
+
+Used DCodes :
     D32
-    D54
+    D56
+*************************************************************
+
+*************************************************************
+Generating : Mechanical 15
+      File : controlo_rev3_Mechanical_15.gbr
+
+    Adding Layer      : Mechanical 15
+
+
+Used DCodes :
+    D56
+    D57
 *************************************************************
 
 *************************************************************
 Generating : Mechanical 1
-      File : controlo_rev3.GM1
+      File : controlo_rev3_Mechanical_1.gbr
 
     Adding Layer      : Mechanical 1
 
@@ -263,26 +253,65 @@ Used DCodes :
 *************************************************************
 
 *************************************************************
-Generating : Mechanical 13
-      File : controlo_rev3.GM13
-
-    Adding Layer      : Mechanical 13
+Generating : Profile
+      File : controlo_rev3_Profile.gbr
 
 
 Used DCodes :
-    D32
-    D55
+    D58
 *************************************************************
 
 *************************************************************
-Generating : Mechanical 15
-      File : controlo_rev3.GM15
-
-    Adding Layer      : Mechanical 15
+Generating : Non-plated through-hole drill file
+      File : controlo_rev3_NPTH_Drill.gbr
 
 
 Used DCodes :
-    D55
-    D56
+    D59
+    D60
+    D61
+    D62
+*************************************************************
+
+*************************************************************
+Generating : Plated through-hole drill file
+      File : controlo_rev3_PTH_Drill.gbr
+
+
+Used DCodes :
+    D63
+    D64
+    D65
+    D66
+    D67
+    D68
+    D69
+*************************************************************
+
+*************************************************************
+Generating : Drill Drawing
+      File : controlo_rev3_Drawing_1.gbr
+
+    Adding Drill Pair : Bottom Layer-Top Layer
+
+    Adding Layer      : Drill Drawing
+
+
+Used DCodes :
+    D35
+    D71
+*************************************************************
+
+*************************************************************
+Generating : Drill Guide
+      File : controlo_rev3_Drillmap_1.gbr
+
+    Adding Drill Pair : Bottom Layer-Top Layer
+
+    Adding Layer      : Drill Guide
+
+
+Used DCodes :
+    D35
 *************************************************************
 

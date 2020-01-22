@@ -141,95 +141,95 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [GeneratedDocument1]
-DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.BOM
-DItemRevisionGUID=
-
-[GeneratedDocument2]
-DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.CSV
-DItemRevisionGUID=
-
-[GeneratedDocument3]
 DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.DRR
 DItemRevisionGUID=
 
-[GeneratedDocument4]
+[GeneratedDocument2]
 DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.EXTREP
 DItemRevisionGUID=
 
-[GeneratedDocument5]
-DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.GBL
-DItemRevisionGUID=
-
-[GeneratedDocument6]
-DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.GBO
-DItemRevisionGUID=
-
-[GeneratedDocument7]
-DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.GBP
-DItemRevisionGUID=
-
-[GeneratedDocument8]
-DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.GBS
-DItemRevisionGUID=
-
-[GeneratedDocument9]
-DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.GKO
-DItemRevisionGUID=
-
-[GeneratedDocument10]
-DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.GM1
-DItemRevisionGUID=
-
-[GeneratedDocument11]
-DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.GM13
-DItemRevisionGUID=
-
-[GeneratedDocument12]
-DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.GM15
-DItemRevisionGUID=
-
-[GeneratedDocument13]
-DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.GPB
-DItemRevisionGUID=
-
-[GeneratedDocument14]
-DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.GPT
-DItemRevisionGUID=
-
-[GeneratedDocument15]
-DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.GTL
-DItemRevisionGUID=
-
-[GeneratedDocument16]
-DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.GTO
-DItemRevisionGUID=
-
-[GeneratedDocument17]
-DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.GTP
-DItemRevisionGUID=
-
-[GeneratedDocument18]
-DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.GTS
-DItemRevisionGUID=
-
-[GeneratedDocument19]
+[GeneratedDocument3]
 DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.LDP
 DItemRevisionGUID=
 
-[GeneratedDocument20]
+[GeneratedDocument4]
 DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.REP
 DItemRevisionGUID=
 
-[GeneratedDocument21]
+[GeneratedDocument5]
 DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.RUL
 DItemRevisionGUID=
 
-[GeneratedDocument22]
+[GeneratedDocument6]
 DocumentPath=Project Outputs for controlo_rev3\controlo_rev3.TXT
 DItemRevisionGUID=
 
+[GeneratedDocument7]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3_Copper_Signal_Bot.gbr
+DItemRevisionGUID=
+
+[GeneratedDocument8]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3_Copper_Signal_Top.gbr
+DItemRevisionGUID=
+
+[GeneratedDocument9]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3_Drawing_1.gbr
+DItemRevisionGUID=
+
+[GeneratedDocument10]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3_Drillmap_1.gbr
+DItemRevisionGUID=
+
+[GeneratedDocument11]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3_Keep-out.gbr
+DItemRevisionGUID=
+
+[GeneratedDocument12]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3_Legend_Bot.gbr
+DItemRevisionGUID=
+
+[GeneratedDocument13]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3_Legend_Top.gbr
+DItemRevisionGUID=
+
+[GeneratedDocument14]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3_Mechanical_1.gbr
+DItemRevisionGUID=
+
+[GeneratedDocument15]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3_Mechanical_13.gbr
+DItemRevisionGUID=
+
+[GeneratedDocument16]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3_Mechanical_15.gbr
+DItemRevisionGUID=
+
+[GeneratedDocument17]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3_NPTH_Drill.gbr
+DItemRevisionGUID=
+
+[GeneratedDocument18]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3_Pads_Bot.gbr
+DItemRevisionGUID=
+
+[GeneratedDocument19]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3_Pads_Top.gbr
+DItemRevisionGUID=
+
+[GeneratedDocument20]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3_Profile.gbr
+DItemRevisionGUID=
+
+[GeneratedDocument21]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3_PTH_Drill.gbr
+DItemRevisionGUID=
+
+[GeneratedDocument22]
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3_Soldermask_Bot.gbr
+DItemRevisionGUID=
+
 [GeneratedDocument23]
-DocumentPath=Project Outputs for controlo_rev3\Design Rule Check - controlo_rev3.html
+DocumentPath=Project Outputs for controlo_rev3\controlo_rev3_Soldermask_Top.gbr
 DItemRevisionGUID=
 
 [Configuration1]
@@ -466,7 +466,7 @@ PageOptions12=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|Print
 [OutputGroup4]
 Name=Assembly Outputs
 Description=
-TargetPrinter=Foxit Reader PDF Printer (redirected 1)
+TargetPrinter=\\print.fe.up.pt\Geral-P-A4
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 OutputType1=Test Points For Assembly
 OutputName1=Test Point Report
@@ -520,7 +520,7 @@ Configuration3_Item15=CArc=Full|CFill=Full|Comment=Full|Coordinate=Full|CPad=Ful
 [OutputGroup5]
 Name=Fabrication Outputs
 Description=
-TargetPrinter=Foxit Reader PDF Printer (redirected 1)
+TargetPrinter=\\print.fe.up.pt\Geral-P-A4
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 OutputType1=Drill
 OutputName1=Drill Drawing/Guides
@@ -581,7 +581,7 @@ OutputDocumentPath10=
 OutputVariantName10=
 OutputDefault10=0
 Configuration10_Name1=OutputConfigurationParameter1
-Configuration10_Item1=FileComment= |FileSubject=Autodetect|GenerateDRCRulesFile=True|GerberUnit=Imperial|MinusApertureTolerance=50|NumberOfDecimals=6|OptimizeChangeLocationCommands=True|PlotBackDrillingPairs=False|PlotBlindViasPairs=False|PlotBoardProfile=False|PlotDrillDrawingPairs=False|PlotDrillGuidePairs=False|PlotNPTHPairs=False|PlotPTHPairs=False|PlotX2.Set=SerializeLayerHash.Version~2,ClassName~TLayerToBoolean|PlusApertureTolerance=50|Record=GerberX2View|Sorted=False
+Configuration10_Item1=FileComment= |FileSubject=Autodetect|GenerateDRCRulesFile=True|GerberUnit=Imperial|MinusApertureTolerance=50|NumberOfDecimals=6|OptimizeChangeLocationCommands=True|PlotBackDrillingPairs=False|PlotBlindViasPairs=False|PlotBoardProfile=True|PlotDrillDrawingPair0_Backdrill=False|PlotDrillDrawingPair0_HighLayer=Top Layer|PlotDrillDrawingPair0_LowLayer=Bottom Layer|PlotDrillDrawingPairs=False|PlotDrillGuidePair0_Backdrill=False|PlotDrillGuidePair0_HighLayer=Top Layer|PlotDrillGuidePair0_LowLayer=Bottom Layer|PlotDrillGuidePairs=False|PlotNPTHPair0_Backdrill=False|PlotNPTHPair0_HighLayer=Top Layer|PlotNPTHPair0_LowLayer=Bottom Layer|PlotNPTHPairs=False|PlotPTHPair0_Backdrill=False|PlotPTHPair0_HighLayer=Top Layer|PlotPTHPair0_LowLayer=Bottom Layer|PlotPTHPairs=False|PlotX2.Set=SerializeLayerHash.Version~2,ClassName~TLayerToBoolean,16973849~1,16908301~1,16777217~1,16908303~1,16973831~1,16973837~1,16973834~1,16908289~1,16973848~1,16973830~1,16842751~1,16973835~1|PlusApertureTolerance=50|Record=GerberX2View|Sorted=False
 OutputType11=IPC2581
 OutputName11=IPC-2581 Files
 OutputDocumentPath11=
@@ -598,7 +598,7 @@ Configuration12_Item1=AddToAllLayerClasses.Set= |AddToAllPlots.Set=SerializeLaye
 [OutputGroup6]
 Name=Report Outputs
 Description=
-TargetPrinter=Foxit Reader PDF Printer (redirected 1)
+TargetPrinter=\\print.fe.up.pt\Geral-P-A4
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 OutputType1=SimpleBOM
 OutputName1=Simple BOM

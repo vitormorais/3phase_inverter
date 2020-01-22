@@ -3,7 +3,7 @@ FileName = middlePCB_rev3.GBR
 AutoAperture = True
 *************************************************************
 Generating : Top Layer
-      File : middlePCB_rev3.GTL
+      File : middlePCB_rev3_Copper_Signal_Top.gbr
 
     Adding Layer      : Top Layer
 
@@ -40,11 +40,14 @@ Used DCodes :
     D36
     D37
     D38
+    D39
+    D40
+    D41
 *************************************************************
 
 *************************************************************
 Generating : Bottom Layer
-      File : middlePCB_rev3.GBL
+      File : middlePCB_rev3_Copper_Signal_Bot.gbr
 
     Adding Layer      : Bottom Layer
 
@@ -52,15 +55,13 @@ Generating : Bottom Layer
 
 
 Used DCodes :
-    D11
-    D17
-    D19
-    D20
+    D10
+    D18
     D21
     D22
     D23
-    D27
-    D28
+    D24
+    D25
     D29
     D30
     D31
@@ -74,11 +75,14 @@ Used DCodes :
     D39
     D40
     D41
+    D42
+    D43
+    D44
 *************************************************************
 
 *************************************************************
 Generating : Bottom Pad Master
-      File : middlePCB_rev3.GPB
+      File : middlePCB_rev3_Pads_Bot.gbr
 
     Adding Layer      : Bottom Layer
 
@@ -86,10 +90,8 @@ Generating : Bottom Pad Master
 
 
 Used DCodes :
-    D11
-    D17
-    D27
-    D28
+    D10
+    D18
     D29
     D30
     D31
@@ -97,14 +99,17 @@ Used DCodes :
     D33
     D34
     D35
-    D39
-    D40
-    D41
+    D36
+    D37
+    D38
+    D42
+    D43
+    D44
 *************************************************************
 
 *************************************************************
 Generating : Top Pad Master
-      File : middlePCB_rev3.GPT
+      File : middlePCB_rev3_Pads_Top.gbr
 
     Adding Layer      : Top Layer
 
@@ -121,8 +126,8 @@ Used DCodes :
     D16
     D17
     D18
-    D27
-    D28
+    D19
+    D20
     D29
     D30
     D31
@@ -130,50 +135,30 @@ Used DCodes :
     D33
     D34
     D35
+    D36
+    D37
+    D38
 *************************************************************
 
 *************************************************************
-Generating : Top Overlay
-      File : middlePCB_rev3.GTO
+Generating : Bottom Overlay
+      File : middlePCB_rev3_Legend_Bot.gbr
 
-    Adding Layer      : Top Overlay
+    Adding Layer      : Bottom Overlay
 
 
 Used DCodes :
-    D42
-    D43
-    D44
     D45
     D46
     D47
-*************************************************************
-
-*************************************************************
-Generating : Top Paste
-      File : middlePCB_rev3.GTP
-
-    Adding Layer      : Top Paste
-
-    Adding Layer      : Top Layer
-
-    Adding Layer      : Multi-Layer
-
-
-Used DCodes :
-    D10
-    D11
-    D12
-    D13
-    D14
-    D15
-    D16
-    D17
-    D18
+    D48
+    D49
+    D50
 *************************************************************
 
 *************************************************************
 Generating : Top Solder
-      File : middlePCB_rev3.GTS
+      File : middlePCB_rev3_Soldermask_Top.gbr
 
     Adding Layer      : Top Solder
 
@@ -183,9 +168,6 @@ Generating : Top Solder
 
 
 Used DCodes :
-    D48
-    D49
-    D50
     D51
     D52
     D53
@@ -204,11 +186,33 @@ Used DCodes :
     D66
     D67
     D68
+    D69
+    D70
+    D71
+    D72
+    D73
+    D74
+*************************************************************
+
+*************************************************************
+Generating : Top Overlay
+      File : middlePCB_rev3_Legend_Top.gbr
+
+    Adding Layer      : Top Overlay
+
+
+Used DCodes :
+    D45
+    D46
+    D47
+    D48
+    D49
+    D50
 *************************************************************
 
 *************************************************************
 Generating : Bottom Solder
-      File : middlePCB_rev3.GBS
+      File : middlePCB_rev3_Soldermask_Bot.gbr
 
     Adding Layer      : Bottom Solder
 
@@ -218,13 +222,8 @@ Generating : Bottom Solder
 
 
 Used DCodes :
-    D49
-    D55
-    D57
-    D58
+    D51
     D59
-    D60
-    D61
     D62
     D63
     D64
@@ -235,58 +234,50 @@ Used DCodes :
     D69
     D70
     D71
-*************************************************************
-
-*************************************************************
-Generating : Bottom Paste
-      File : middlePCB_rev3.GBP
-
-    Adding Layer      : Bottom Paste
-
-    Adding Layer      : Bottom Layer
-
-    Adding Layer      : Multi-Layer
-
-
-Used DCodes :
-    D11
-    D17
-    D39
-    D40
-    D41
-*************************************************************
-
-*************************************************************
-Generating : Bottom Overlay
-      File : middlePCB_rev3.GBO
-
-    Adding Layer      : Bottom Overlay
-
-
-Used DCodes :
-    D42
-    D43
-    D44
-    D45
-    D46
-    D47
+    D72
+    D73
+    D74
+    D75
+    D76
+    D77
 *************************************************************
 
 *************************************************************
 Generating : Keep-Out Layer
-      File : middlePCB_rev3.GKO
+      File : middlePCB_rev3_Keep-out.gbr
 
     Adding Layer      : Keep-Out Layer
 
 
 Used DCodes :
-    D44
-    D72
+*************************************************************
+
+*************************************************************
+Generating : Mechanical 13
+      File : middlePCB_rev3_Mechanical_13.gbr
+
+    Adding Layer      : Mechanical 13
+
+
+Used DCodes :
+    D78
+*************************************************************
+
+*************************************************************
+Generating : Mechanical 15
+      File : middlePCB_rev3_Mechanical_15.gbr
+
+    Adding Layer      : Mechanical 15
+
+
+Used DCodes :
+    D78
+    D79
 *************************************************************
 
 *************************************************************
 Generating : Mechanical 1
-      File : middlePCB_rev3.GM1
+      File : middlePCB_rev3_Mechanical_1.gbr
 
     Adding Layer      : Mechanical 1
 
@@ -295,26 +286,70 @@ Used DCodes :
 *************************************************************
 
 *************************************************************
-Generating : Mechanical 13
-      File : middlePCB_rev3.GM13
-
-    Adding Layer      : Mechanical 13
+Generating : Profile
+      File : middlePCB_rev3_Profile.gbr
 
 
 Used DCodes :
-    D44
-    D73
+    D80
 *************************************************************
 
 *************************************************************
-Generating : Mechanical 15
-      File : middlePCB_rev3.GM15
-
-    Adding Layer      : Mechanical 15
+Generating : Non-plated through-hole drill file
+      File : middlePCB_rev3_NPTH_Drill.gbr
 
 
 Used DCodes :
-    D73
-    D74
+    D81
+    D82
+    D83
+    D84
+*************************************************************
+
+*************************************************************
+Generating : Plated through-hole drill file
+      File : middlePCB_rev3_PTH_Drill.gbr
+
+
+Used DCodes :
+    D85
+    D86
+    D87
+    D88
+    D89
+    D90
+    D91
+    D92
+    D93
+    D94
+    D95
+*************************************************************
+
+*************************************************************
+Generating : Drill Drawing
+      File : middlePCB_rev3_Drawing_1.gbr
+
+    Adding Drill Pair : Bottom Layer-Top Layer
+
+    Adding Layer      : Drill Drawing
+
+
+Used DCodes :
+    D48
+    D97
+    D98
+*************************************************************
+
+*************************************************************
+Generating : Drill Guide
+      File : middlePCB_rev3_Drillmap_1.gbr
+
+    Adding Drill Pair : Bottom Layer-Top Layer
+
+    Adding Layer      : Drill Guide
+
+
+Used DCodes :
+    D48
 *************************************************************
 

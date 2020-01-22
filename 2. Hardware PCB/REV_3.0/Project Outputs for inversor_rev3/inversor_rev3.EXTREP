@@ -1,19 +1,26 @@
 ------------------------------------------------------------------------------------------
-Gerber File Extension Report For: inversor_rev3.GBR   03/01/2020  14:21:51
+Gerber File Extension Report For: inversor_rev3.GBR   22/01/2020  17:16:32
 ------------------------------------------------------------------------------------------
 
 
 ------------------------------------------------------------------------------------------
 Layer Extension     Layer Description                      
 ------------------------------------------------------------------------------------------
-.GTL                Top Layer                               
-.GBL                Bottom Layer                            
-.GTO                Top Overlay                             
-.GTS                Top Solder                              
-.GBS                Bottom Solder                           
-.GBO                Bottom Overlay                          
-.GKO                Keep-Out Layer                          
-.GM1                Mechanical 1                            
-.GM13               Mechanical 13                           
-.GM15               Mechanical 15                           
+.gbr                Top Layer                               
+.gbr                Bottom Layer                            
+.gbr                Bottom Pad Master                       
+.gbr                Top Pad Master                          
+.gbr                Bottom Overlay                          
+.gbr                Top Solder                              
+.gbr                Top Overlay                             
+.gbr                Bottom Solder                           
+.gbr                Keep-Out Layer                          
+.gbr                Mechanical 13                           
+.gbr                Mechanical 15                           
+.gbr                Mechanical 1                            
+.gbr                Profile                                 
+.gbr                Non-plated through-hole drill file      
+.gbr                Plated through-hole drill file          
+.gbr                Drill Drawing                           
+.gbr                Drill Guide                             
 ------------------------------------------------------------------------------------------

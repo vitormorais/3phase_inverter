@@ -1,7 +1,0 @@
-Added Component: Designator=C18(CAPC_1812)
-Add component. Clean all parameters for all variants
-Add component (AddParameter): Name = "Mouser VPN"; Value = "80-C1812C104KDRAUTO"; VariantName = "[No Variations]"
-Add component (AddParameter): Name = "Price"; Value = "0,747"; VariantName = "[No Variations]"
-Added Pin To Net: NetName=-VDCBUS Pin=C18-1
-Added Pin To Net: NetName=+VDCBUS Pin=C18-2
-Added Member To Class: ClassName=inversor_rev3 Member=Component C18 C 100nF MLCC 1812 X7R 1kV
