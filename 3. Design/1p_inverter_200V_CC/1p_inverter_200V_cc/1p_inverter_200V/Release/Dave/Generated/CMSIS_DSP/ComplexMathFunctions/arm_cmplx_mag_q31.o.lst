@@ -1,0 +1,114 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "arm_cmplx_mag_q31.c"
+  16              	 .section .text.arm_cmplx_mag_q31,"ax",%progbits
+  17              	 .align 1
+  18              	 .global arm_cmplx_mag_q31
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	arm_cmplx_mag_q31:
+  23              	 
+  24              	 
+  25 0000 2DE9F04F 	 push {r4,r5,r6,r7,r8,r9,r10,fp,lr}
+  26 0004 9608     	 lsrs r6,r2,#2
+  27 0006 87B0     	 sub sp,sp,#28
+  28 0008 8346     	 mov fp,r0
+  29 000a 0D46     	 mov r5,r1
+  30 000c 9446     	 mov ip,r2
+  31 000e 0446     	 mov r4,r0
+  32 0010 B246     	 mov r10,r6
+  33 0012 0F46     	 mov r7,r1
+  34              	.L2:
+  35 0014 2034     	 adds r4,r4,#32
+  36 0016 BAF1000F 	 cmp r10,#0
+  37 001a 4CD0     	 beq .L7
+  38 001c 54F8140C 	 ldr r0,[r4,#-20]
+  39 0020 54F8203C 	 ldr r3,[r4,#-32]
+  40 0024 54F8182C 	 ldr r2,[r4,#-24]
+  41 0028 54F81CEC 	 ldr lr,[r4,#-28]
+  42 002c CDF814C0 	 str ip,[sp,#20]
+  43 0030 80FB0001 	 smull r0,r1,r0,r0
+  44 0034 83FB0389 	 smull r8,r9,r3,r3
+  45 0038 82FB0223 	 smull r2,r3,r2,r2
+  46 003c 4A10     	 asrs r2,r1,#1
+  47 003e 02EB6303 	 add r3,r2,r3,asr#1
+  48 0042 8EFB0E01 	 smull r0,r1,lr,lr
+  49 0046 0493     	 str r3,[sp,#16]
+  50 0048 4810     	 asrs r0,r1,#1
+  51 004a 54F80C3C 	 ldr r3,[r4,#-12]
+  52 004e 54F8082C 	 ldr r2,[r4,#-8]
+  53 0052 0193     	 str r3,[sp,#4]
+  54 0054 3946     	 mov r1,r7
+  55 0056 54F8043C 	 ldr r3,[r4,#-4]
+  56 005a 0392     	 str r2,[sp,#12]
+  57 005c 00EB6900 	 add r0,r0,r9,asr#1
+  58 0060 54F8108C 	 ldr r8,[r4,#-16]
+  59 0064 0293     	 str r3,[sp,#8]
+  60 0066 FFF7FEFF 	 bl arm_sqrt_q31
+  61 006a 049B     	 ldr r3,[sp,#16]
+  62 006c 391D     	 adds r1,r7,#4
+  63 006e 1846     	 mov r0,r3
+  64 0070 FFF7FEFF 	 bl arm_sqrt_q31
+  65 0074 0299     	 ldr r1,[sp,#8]
+  66 0076 039A     	 ldr r2,[sp,#12]
+  67 0078 81FB0101 	 smull r0,r1,r1,r1
+  68 007c 82FB0223 	 smull r2,r3,r2,r2
+  69 0080 88FB0889 	 smull r8,r9,r8,r8
+  70 0084 4FEA6108 	 asr r8,r1,#1
+  71 0088 08EB6308 	 add r8,r8,r3,asr#1
+  72 008c 019B     	 ldr r3,[sp,#4]
+  73 008e 83FB0323 	 smull r2,r3,r3,r3
+  74 0092 5810     	 asrs r0,r3,#1
+  75 0094 07F10801 	 add r1,r7,#8
+  76 0098 00EB6900 	 add r0,r0,r9,asr#1
+  77 009c FFF7FEFF 	 bl arm_sqrt_q31
+  78 00a0 07F10C01 	 add r1,r7,#12
+  79 00a4 4046     	 mov r0,r8
+  80 00a6 FFF7FEFF 	 bl arm_sqrt_q31
+  81 00aa 1037     	 adds r7,r7,#16
+  82 00ac 0AF1FF3A 	 add r10,r10,#-1
+  83 00b0 DDF814C0 	 ldr ip,[sp,#20]
+  84 00b4 AEE7     	 b .L2
+  85              	.L7:
+  86 00b6 05EB0611 	 add r1,r5,r6,lsl#4
+  87 00ba 0CF00304 	 and r4,ip,#3
+  88 00be 0BEB4616 	 add r6,fp,r6,lsl#5
+  89 00c2 01EB8404 	 add r4,r1,r4,lsl#2
+  90              	.L4:
+  91 00c6 A142     	 cmp r1,r4
+  92 00c8 06F10806 	 add r6,r6,#8
+  93 00cc 10D0     	 beq .L8
+  94 00ce 56F8040C 	 ldr r0,[r6,#-4]
+  95 00d2 56F8082C 	 ldr r2,[r6,#-8]
+  96 00d6 80FB0089 	 smull r8,r9,r0,r0
+  97 00da 82FB0223 	 smull r2,r3,r2,r2
+  98 00de 4FEA6900 	 asr r0,r9,#1
+  99 00e2 0D1D     	 adds r5,r1,#4
+ 100 00e4 00EB6300 	 add r0,r0,r3,asr#1
+ 101 00e8 FFF7FEFF 	 bl arm_sqrt_q31
+ 102 00ec 2946     	 mov r1,r5
+ 103 00ee EAE7     	 b .L4
+ 104              	.L8:
+ 105 00f0 07B0     	 add sp,sp,#28
+ 106              	 
+ 107 00f2 BDE8F08F 	 pop {r4,r5,r6,r7,r8,r9,r10,fp,pc}
+ 109              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 arm_cmplx_mag_q31.c
+    {standard input}:17     .text.arm_cmplx_mag_q31:00000000 $t
+    {standard input}:22     .text.arm_cmplx_mag_q31:00000000 arm_cmplx_mag_q31
+
+UNDEFINED SYMBOLS
+arm_sqrt_q31

@@ -1,0 +1,84 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "arm_mat_scale_f32.c"
+  16              	 .section .text.arm_mat_scale_f32,"ax",%progbits
+  17              	 .align 1
+  18              	 .global arm_mat_scale_f32
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	arm_mat_scale_f32:
+  23              	 
+  24              	 
+  25 0000 70B5     	 push {r4,r5,r6,lr}
+  26 0002 1368     	 ldr r3,[r2]
+  27 0004 0468     	 ldr r4,[r0]
+  28 0006 5668     	 ldr r6,[r2,#4]
+  29 0008 9C42     	 cmp r4,r3
+  30 000a 07EE901A 	 fmsr s15,r1
+  31 000e 4168     	 ldr r1,[r0,#4]
+  32 0010 35D1     	 bne .L7
+  33 0012 4288     	 ldrh r2,[r0,#2]
+  34 0014 0388     	 ldrh r3,[r0]
+  35 0016 5343     	 muls r3,r2,r3
+  36 0018 9A08     	 lsrs r2,r3,#2
+  37 001a 0C46     	 mov r4,r1
+  38 001c 3046     	 mov r0,r6
+  39 001e 1546     	 mov r5,r2
+  40              	.L3:
+  41 0020 1034     	 adds r4,r4,#16
+  42 0022 1030     	 adds r0,r0,#16
+  43 0024 CDB1     	 cbz r5,.L9
+  44 0026 14ED036A 	 flds s12,[r4,#-12]
+  45 002a 54ED026A 	 flds s13,[r4,#-8]
+  46 002e 14ED017A 	 flds s14,[r4,#-4]
+  47 0032 54ED045A 	 flds s11,[r4,#-16]
+  48 0036 27EE866A 	 fmuls s12,s15,s12
+  49 003a 67EEA66A 	 fmuls s13,s15,s13
+  50 003e 27EE877A 	 fmuls s14,s15,s14
+  51 0042 65EEA75A 	 fmuls s11,s11,s15
+  52 0046 00ED036A 	 fsts s12,[r0,#-12]
+  53 004a 40ED045A 	 fsts s11,[r0,#-16]
+  54 004e 40ED026A 	 fsts s13,[r0,#-8]
+  55 0052 00ED017A 	 fsts s14,[r0,#-4]
+  56 0056 013D     	 subs r5,r5,#1
+  57 0058 E2E7     	 b .L3
+  58              	.L9:
+  59 005a 1201     	 lsls r2,r2,#4
+  60 005c 1144     	 add r1,r1,r2
+  61 005e 03F00303 	 and r3,r3,#3
+  62 0062 3244     	 add r2,r2,r6
+  63 0064 01EB8303 	 add r3,r1,r3,lsl#2
+  64              	.L5:
+  65 0068 9942     	 cmp r1,r3
+  66 006a 06D0     	 beq .L10
+  67 006c B1EC017A 	 fldmias r1!,{s14}
+  68 0070 27EE277A 	 fmuls s14,s14,s15
+  69 0074 A2EC017A 	 fstmias r2!,{s14}
+  70 0078 F6E7     	 b .L5
+  71              	.L10:
+  72 007a 0020     	 movs r0,#0
+  73 007c 00E0     	 b .L2
+  74              	.L7:
+  75 007e FD20     	 movs r0,#253
+  76              	.L2:
+  77 0080 40B2     	 sxtb r0,r0
+  78 0082 70BD     	 pop {r4,r5,r6,pc}
+  80              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 arm_mat_scale_f32.c
+    {standard input}:17     .text.arm_mat_scale_f32:00000000 $t
+    {standard input}:22     .text.arm_mat_scale_f32:00000000 arm_mat_scale_f32
+
+NO UNDEFINED SYMBOLS

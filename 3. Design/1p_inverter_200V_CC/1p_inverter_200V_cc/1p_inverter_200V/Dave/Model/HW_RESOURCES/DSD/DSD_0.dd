@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ResourceModel:Peripheral xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ResourceModel="http://www.infineon.com/Davex/Resource.ecore" URI="http://resources/0.1.29/peripheral/dsd/0" description="Delta-Sigma Demodulator (DSD)" baseAddress="0x40008000">
+  <provided xsi:type="ResourceModel:ResourceGroup" name="channel1" URI="http://resources/0.1.29/peripheral/dsd/0/channel/1">
+    <resourcesList name="modcfg" requiredResourceUri="http://resources/0.1.29/peripheral/dsd/0/modcfg1"/>
+    <resourcesList name="dicfg" requiredResourceUri="http://resources/0.1.29/peripheral/dsd/0/dicfg1"/>
+    <resourcesList name="fcfgc" requiredResourceUri="http://resources/0.1.29/peripheral/dsd/0/fcfgc1"/>
+    <resourcesList name="fcfga" requiredResourceUri="http://resources/0.1.29/peripheral/dsd/0/fcfga1"/>
+    <resourcesList name="iwctr" requiredResourceUri="http://resources/0.1.29/peripheral/dsd/0/iwctr1"/>
+    <resourcesList name="resm" requiredResourceUri="http://resources/0.1.29/peripheral/dsd/0/resm1"/>
+    <resourcesList name="offm" requiredResourceUri="http://resources/0.1.29/peripheral/dsd/0/offm1"/>
+    <resourcesList name="resa" requiredResourceUri="http://resources/0.1.29/peripheral/dsd/0/resa1"/>
+    <resourcesList name="rectcfg" requiredResourceUri="http://resources/0.1.29/peripheral/dsd/0/rectcfg1"/>
+    <resourcesList name="cgsync" requiredResourceUri="http://resources/0.1.29/peripheral/dsd/0/cgsync1"/>
+    <resourcesList name="tstmp" requiredResourceUri="http://resources/0.1.29/peripheral/dsd/0/tstmp1"/>
+    <resourcesList name="chrun" requiredResourceUri="http://resources/0.1.29/peripheral/dsd/0/globrc/chrun1"/>
+    <resourcesList name="alev" requiredResourceUri="http://resources/0.1.29/peripheral/dsd/0/evflag/alev1"/>
+    <resourcesList name="resev" requiredResourceUri="http://resources/0.1.29/peripheral/dsd/0/evflag/resev1"/>
+    <resourcesList name="resec" requiredResourceUri="http://resources/0.1.29/peripheral/dsd/0/evflagclr/resec1"/>
+    <resourcesList name="alec" requiredResourceUri="http://resources/0.1.29/peripheral/dsd/0/evflagclr/alec1"/>
+    <resourcesList name="dicfg_dsrcsel" requiredResourceUri="http://resources/0.1.29/peripheral/dsd/0/dicfg1/dsrcsel"/>
+    <resourcesList name="dicfg_csrc" requiredResourceUri="http://resources/0.1.29/peripheral/dsd/0/dicfg1/csrc"/>
+    <resourcesList name="dicfg_trsel" requiredResourceUri="http://resources/0.1.29/peripheral/dsd/0/dicfg1/trsel"/>
+    <resourcesList name="rectcfg_ssrc" requiredResourceUri="http://resources/0.1.29/peripheral/dsd/0/rectcfg1/ssrc"/>
+    <resourcesList name="global_signal" requiredResourceUri="http://resources/0.1.29/peripheral/dsd/0/global_signal_in1"/>
+    <resourcesList name="din" requiredResourceUri="http://resources/0.1.29/peripheral/dsd/0/din1"/>
+    <resourcesList name="mclockin" requiredResourceUri="http://resources/0.1.29/peripheral/dsd/0/mclockin1"/>
+    <resourcesList name="itr" requiredResourceUri="http://resources/0.1.29/peripheral/dsd/0/itr1"/>
+    <resourcesList name="sgn_in" requiredResourceUri="http://resources/0.1.29/peripheral/dsd/0/sgn_in1"/>
+    <resourcesList name="mclkout" requiredResourceUri="http://resources/0.1.29/peripheral/dsd/0/mclkout1"/>
+    <resourcesList name="srm" requiredResourceUri="http://resources/0.1.29/peripheral/dsd/0/srm1"/>
+    <resourcesList name="sra" requiredResourceUri="http://resources/0.1.29/peripheral/dsd/0/sra1"/>
+    <resourcesList name="sgn_out" requiredResourceUri="http://resources/0.1.29/peripheral/dsd/0/sgn_out1"/>
+  </provided>
+  <provided xsi:type="ResourceModel:RegisterParameter" name="RECTCFG1" URI="http://resources/0.1.29/peripheral/dsd/0/rectcfg1" value="80000000" toolTipHelpDescription="Rectification Configuration Register 1" defaultValue="80000000" addressOffset="0x02A8" resetValue="80000000" resetMask="0xFFFFFFFF">
+    <bitFields name="RFEN" URI="http://resources/0.1.29/peripheral/dsd/0/rectcfg1/rfen" value="0" toolTipHelpDescription="Rectification Enable" defaultValue="0" startPos="0" stopPos="0" accessPermission="rw" maxValue="1" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b0" description="No rectification, data not altered"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b1" description="Data are rectified according to SGND"/>
+    </bitFields>
+    <bitFields name="SSRC" URI="http://resources/0.1.29/peripheral/dsd/0/rectcfg1/ssrc" value="0" toolTipHelpDescription="Sign Source" defaultValue="0" startPos="4" stopPos="5" accessPermission="rw" maxValue="3" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b00" description="On-chip carrier generator"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b01" description="Sign of result of next channel"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b10" description="External sign signal A"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b11" description="External sign signal B"/>
+    </bitFields>
+    <bitFields name="SDVAL" URI="http://resources/0.1.29/peripheral/dsd/0/rectcfg1/sdval" value="0" toolTipHelpDescription="Valid Flag" defaultValue="0" startPos="15" stopPos="15" maxValue="1" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b0" description="No new result available"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b1" description="Bitfield SDCAP has been updated with a new captured value and has not yet been read"/>
+    </bitFields>
+    <bitFields name="SGNCS" URI="http://resources/0.1.29/peripheral/dsd/0/rectcfg1/sgncs" value="0" toolTipHelpDescription="Selected Carrier Sign Signal" defaultValue="0" startPos="30" stopPos="30" maxValue="1" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b0" description="Positive values"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b1" description="Negative values"/>
+    </bitFields>
+    <bitFields name="SGND" URI="http://resources/0.1.29/peripheral/dsd/0/rectcfg1/sgnd" value="1" toolTipHelpDescription="Sign Signal Delayed" defaultValue="1" startPos="31" stopPos="31" maxValue="1" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b0" description="Positive values"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b1" description="Negative values"/>
+    </bitFields>
+  </provided>
+  <provided xsi:type="ResourceModel:BitField" name="SSRC" URI="http://resources/0.1.29/peripheral/dsd/0/rectcfg1/ssrc" value="0" toolTipHelpDescription="Sign Source" defaultValue="0" startPos="4" stopPos="5" accessPermission="rw" maxValue="3" minValue="0">
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b00" description="On-chip carrier generator"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b01" description="Sign of result of next channel"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b10" description="External sign signal A"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b11" description="External sign signal B"/>
+  </provided>
+  <provided xsi:type="ResourceModel:RegisterParameter" name="DICFG1" URI="http://resources/0.1.29/peripheral/dsd/0/dicfg1" value="00000000" toolTipHelpDescription="Demodulator Input Configuration Register 1" defaultValue="00000000" accessPermission="w" addressOffset="0x0208" resetValue="00000000" resetMask="0xFFFFFFFF">
+    <bitFields name="DSRCINV" URI="http://resources/0.1.29/peripheral/dsd/0/dicfg1/dsrcinv" value="0" toolTipHelpDescription="Input Data Inversion Select" defaultValue="0" startPos="0" stopPos="0" accessPermission="rw" maxValue="1" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b0" description="Input Data - direct"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b1" description="Input Data - inverted"/>
+    </bitFields>
+    <bitFields name="DSRCSEL" URI="http://resources/0.1.29/peripheral/dsd/0/dicfg1/dsrcsel" value="0" toolTipHelpDescription="Input Data Source Select" defaultValue="0" startPos="1" stopPos="3" accessPermission="rw" maxValue="7" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b000" description="Reserved"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b001" description="External, from input A"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b010" description="External, from input B"/>
+    </bitFields>
+    <bitFields name="DSWC" URI="http://resources/0.1.29/peripheral/dsd/0/dicfg1/dswc" value="0" toolTipHelpDescription="Write Control for Data Selection" defaultValue="0" startPos="7" stopPos="7" accessPermission="w" maxValue="1" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b0" description="No write access to data parameters"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b1" description="Bitfield DSRC can be written"/>
+    </bitFields>
+    <bitFields name="ITRMODE" URI="http://resources/0.1.29/peripheral/dsd/0/dicfg1/itrmode" value="0" toolTipHelpDescription="Integrator Trigger Mode" defaultValue="0" startPos="8" stopPos="9" accessPermission="rw" maxValue="3" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b00" description="No integration trigger, integrator bypassed"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b01" description="Trigger event upon a falling edge"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b10" description="Trigger event upon a rising edge"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b11" description="No trigger, integrator active all the time"/>
+    </bitFields>
+    <bitFields name="TSTRMODE" URI="http://resources/0.1.29/peripheral/dsd/0/dicfg1/tstrmode" value="0" toolTipHelpDescription="Timestamp Trigger Mode" defaultValue="0" startPos="10" stopPos="11" accessPermission="rw" maxValue="3" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b00" description="No timestamp trigger"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b01" description="Trigger event upon a falling edge"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b10" description="Trigger event upon a rising edge"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b11" description="Trigger event upon each edge"/>
+    </bitFields>
+    <bitFields name="TRSEL" URI="http://resources/0.1.29/peripheral/dsd/0/dicfg1/trsel" value="0" toolTipHelpDescription="Trigger Select" defaultValue="0" startPos="12" stopPos="14" accessPermission="rw" maxValue="7" minValue="0"/>
+    <bitFields name="TRWC" URI="http://resources/0.1.29/peripheral/dsd/0/dicfg1/trwc" value="0" toolTipHelpDescription="Write Control for Trigger Parameters" defaultValue="0" startPos="15" stopPos="15" accessPermission="w" maxValue="1" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b0" description="No write access to trigger parameters"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b1" description="Bitfields TRSEL, TSTRMODE, ITRMODE can be written"/>
+    </bitFields>
+    <bitFields name="CSRC" URI="http://resources/0.1.29/peripheral/dsd/0/dicfg1/csrc" value="0" toolTipHelpDescription="Sample Clock Source Select" defaultValue="0" startPos="16" stopPos="19" accessPermission="rw" maxValue="15" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b0000" description="Reserved"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b0001" description="External, from input A"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b0010" description="External, from input B"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b1111" description="Internal clock"/>
+    </bitFields>
+    <bitFields name="STROBE" URI="http://resources/0.1.29/peripheral/dsd/0/dicfg1/strobe" value="0" toolTipHelpDescription="Data Strobe Generation Mode" defaultValue="0" startPos="20" stopPos="23" accessPermission="rw" maxValue="15" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b0000" description="No data strobe"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b0001" description="Direct clock, a sample trigger is generated at each rising clock edge"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b0010" description="Direct clock, a sample trigger is generated at each falling clock edge"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b0011" description="Double data, a sample trigger is generated at each rising and falling clock edge"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b0100" description="Reserved"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b0101" description="Double clock, a sample trigger is generated at every 2nd rising clock edge"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b0110" description="Double clock, a sample trigger is generated at every 2nd falling clock edge"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b0111" description="Reserved"/>
+    </bitFields>
+    <bitFields name="SCWC" URI="http://resources/0.1.29/peripheral/dsd/0/dicfg1/scwc" value="0" toolTipHelpDescription="Write Control for Strobe/Clock Selection" defaultValue="0" startPos="31" stopPos="31" accessPermission="w" maxValue="1" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b0" description="No write access to strobe/clock parameters"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b1" description="Bitfields STROBE, CSRC can be written"/>
+    </bitFields>
+  </provided>
+  <provided xsi:type="ResourceModel:BitField" name="CSRC" URI="http://resources/0.1.29/peripheral/dsd/0/dicfg1/csrc" value="0" toolTipHelpDescription="Sample Clock Source Select" defaultValue="0" startPos="16" stopPos="19" accessPermission="rw" maxValue="15" minValue="0">
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b0000" description="Reserved"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b0001" description="External, from input A"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b0010" description="External, from input B"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b1111" description="Internal clock"/>
+  </provided>
+  <provided xsi:type="ResourceModel:BitField" name="TRSEL" URI="http://resources/0.1.29/peripheral/dsd/0/dicfg1/trsel" value="0" toolTipHelpDescription="Trigger Select" defaultValue="0" startPos="12" stopPos="14" accessPermission="rw" maxValue="7" minValue="0"/>
+  <provided xsi:type="ResourceModel:BitField" name="DSRCSEL" URI="http://resources/0.1.29/peripheral/dsd/0/dicfg1/dsrcsel" value="0" toolTipHelpDescription="Input Data Source Select" defaultValue="0" startPos="1" stopPos="3" accessPermission="rw" maxValue="7" minValue="0">
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b000" description="Reserved"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b001" description="External, from input A"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b010" description="External, from input B"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="global" URI="http://resources/0.1.29/peripheral/dsd/0/global">
+    <resourcesList name="clc" requiredResourceUri="http://resources/0.1.29/peripheral/dsd/0/clc"/>
+    <resourcesList name="ocs" requiredResourceUri="http://resources/0.1.29/peripheral/dsd/0/ocs"/>
+    <resourcesList name="globcfg" requiredResourceUri="http://resources/0.1.29/peripheral/dsd/0/globcfg"/>
+    <resourcesList name="global_signal" requiredResourceUri="http://resources/0.1.29/peripheral/dsd/0/global_signal_out"/>
+  </provided>
+  <addressBlock offset="0x0" size="0x4000" usage="registers"/>
+</ResourceModel:Peripheral>

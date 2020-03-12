@@ -1,0 +1,183 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "arm_rfft_fast_init_f32.c"
+  16              	 .section .text.arm_rfft_fast_init_f32,"ax",%progbits
+  17              	 .align 1
+  18              	 .global arm_rfft_fast_init_f32
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	arm_rfft_fast_init_f32:
+  23              	 
+  24              	 
+  25              	 
+  26 0000 4B08     	 lsrs r3,r1,#1
+  27 0002 802B     	 cmp r3,#128
+  28 0004 0380     	 strh r3,[r0]
+  29 0006 0182     	 strh r1,[r0,#16]
+  30 0008 3FD0     	 beq .L3
+  31 000a 0DD8     	 bhi .L4
+  32 000c 202B     	 cmp r3,#32
+  33 000e 4CD0     	 beq .L5
+  34 0010 402B     	 cmp r3,#64
+  35 0012 42D0     	 beq .L6
+  36 0014 102B     	 cmp r3,#16
+  37 0016 52D1     	 bne .L13
+  38 0018 1423     	 movs r3,#20
+  39 001a 8381     	 strh r3,[r0,#12]
+  40 001c 294B     	 ldr r3,.L16
+  41 001e 8360     	 str r3,[r0,#8]
+  42 0020 294B     	 ldr r3,.L16+4
+  43 0022 4360     	 str r3,[r0,#4]
+  44 0024 294B     	 ldr r3,.L16+8
+  45 0026 47E0     	 b .L14
+  46              	.L4:
+  47 0028 B3F5007F 	 cmp r3,#512
+  48 002c 24D0     	 beq .L8
+  49 002e 0BD8     	 bhi .L9
+  50 0030 B3F5807F 	 cmp r3,#256
+  51 0034 43D1     	 bne .L13
+  52 0036 4FF4DC73 	 mov r3,#440
+  53 003a 8381     	 strh r3,[r0,#12]
+  54 003c 244B     	 ldr r3,.L16+12
+  55 003e 8360     	 str r3,[r0,#8]
+  56 0040 244B     	 ldr r3,.L16+16
+  57 0042 4360     	 str r3,[r0,#4]
+  58 0044 244B     	 ldr r3,.L16+20
+  59 0046 37E0     	 b .L14
+  60              	.L9:
+  61 0048 B3F5806F 	 cmp r3,#1024
+  62 004c 0BD0     	 beq .L11
+  63 004e B3F5006F 	 cmp r3,#2048
+  64 0052 34D1     	 bne .L13
+  65 0054 4FF46E63 	 mov r3,#3808
+  66 0058 8381     	 strh r3,[r0,#12]
+  67 005a 204B     	 ldr r3,.L16+24
+  68 005c 8360     	 str r3,[r0,#8]
+  69 005e 204B     	 ldr r3,.L16+28
+  70 0060 4360     	 str r3,[r0,#4]
+  71 0062 204B     	 ldr r3,.L16+32
+  72 0064 28E0     	 b .L14
+  73              	.L11:
+  74 0066 4FF4E163 	 mov r3,#1800
+  75 006a 8381     	 strh r3,[r0,#12]
+  76 006c 1E4B     	 ldr r3,.L16+36
+  77 006e 8360     	 str r3,[r0,#8]
+  78 0070 1E4B     	 ldr r3,.L16+40
+  79 0072 4360     	 str r3,[r0,#4]
+  80 0074 1E4B     	 ldr r3,.L16+44
+  81 0076 1FE0     	 b .L14
+  82              	.L8:
+  83 0078 4FF4E073 	 mov r3,#448
+  84 007c 8381     	 strh r3,[r0,#12]
+  85 007e 1D4B     	 ldr r3,.L16+48
+  86 0080 8360     	 str r3,[r0,#8]
+  87 0082 1D4B     	 ldr r3,.L16+52
+  88 0084 4360     	 str r3,[r0,#4]
+  89 0086 1D4B     	 ldr r3,.L16+56
+  90 0088 16E0     	 b .L14
+  91              	.L3:
+  92 008a D023     	 movs r3,#208
+  93 008c 8381     	 strh r3,[r0,#12]
+  94 008e 1C4B     	 ldr r3,.L16+60
+  95 0090 8360     	 str r3,[r0,#8]
+  96 0092 1C4B     	 ldr r3,.L16+64
+  97 0094 4360     	 str r3,[r0,#4]
+  98 0096 1C4B     	 ldr r3,.L16+68
+  99 0098 0EE0     	 b .L14
+ 100              	.L6:
+ 101 009a 3823     	 movs r3,#56
+ 102 009c 8381     	 strh r3,[r0,#12]
+ 103 009e 1B4B     	 ldr r3,.L16+72
+ 104 00a0 8360     	 str r3,[r0,#8]
+ 105 00a2 1B4B     	 ldr r3,.L16+76
+ 106 00a4 4360     	 str r3,[r0,#4]
+ 107 00a6 1B4B     	 ldr r3,.L16+80
+ 108 00a8 06E0     	 b .L14
+ 109              	.L5:
+ 110 00aa 3023     	 movs r3,#48
+ 111 00ac 8381     	 strh r3,[r0,#12]
+ 112 00ae 1A4B     	 ldr r3,.L16+84
+ 113 00b0 8360     	 str r3,[r0,#8]
+ 114 00b2 1A4B     	 ldr r3,.L16+88
+ 115 00b4 4360     	 str r3,[r0,#4]
+ 116 00b6 1A4B     	 ldr r3,.L16+92
+ 117              	.L14:
+ 118 00b8 4361     	 str r3,[r0,#20]
+ 119 00ba 0020     	 movs r0,#0
+ 120 00bc 00E0     	 b .L2
+ 121              	.L13:
+ 122 00be FF20     	 movs r0,#255
+ 123              	.L2:
+ 124 00c0 40B2     	 sxtb r0,r0
+ 125 00c2 7047     	 bx lr
+ 126              	.L17:
+ 127              	 .align 2
+ 128              	.L16:
+ 129 00c4 00000000 	 .word armBitRevIndexTable16
+ 130 00c8 00000000 	 .word twiddleCoef_16
+ 131 00cc 00000000 	 .word twiddleCoef_rfft_32
+ 132 00d0 00000000 	 .word armBitRevIndexTable256
+ 133 00d4 00000000 	 .word twiddleCoef_256
+ 134 00d8 00000000 	 .word twiddleCoef_rfft_512
+ 135 00dc 00000000 	 .word armBitRevIndexTable2048
+ 136 00e0 00000000 	 .word twiddleCoef_2048
+ 137 00e4 00000000 	 .word twiddleCoef_rfft_4096
+ 138 00e8 00000000 	 .word armBitRevIndexTable1024
+ 139 00ec 00000000 	 .word twiddleCoef_1024
+ 140 00f0 00000000 	 .word twiddleCoef_rfft_2048
+ 141 00f4 00000000 	 .word armBitRevIndexTable512
+ 142 00f8 00000000 	 .word twiddleCoef_512
+ 143 00fc 00000000 	 .word twiddleCoef_rfft_1024
+ 144 0100 00000000 	 .word armBitRevIndexTable128
+ 145 0104 00000000 	 .word twiddleCoef_128
+ 146 0108 00000000 	 .word twiddleCoef_rfft_256
+ 147 010c 00000000 	 .word armBitRevIndexTable64
+ 148 0110 00000000 	 .word twiddleCoef_64
+ 149 0114 00000000 	 .word twiddleCoef_rfft_128
+ 150 0118 00000000 	 .word armBitRevIndexTable32
+ 151 011c 00000000 	 .word twiddleCoef_32
+ 152 0120 00000000 	 .word twiddleCoef_rfft_64
+ 154              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 arm_rfft_fast_init_f32.c
+    {standard input}:17     .text.arm_rfft_fast_init_f32:00000000 $t
+    {standard input}:22     .text.arm_rfft_fast_init_f32:00000000 arm_rfft_fast_init_f32
+    {standard input}:129    .text.arm_rfft_fast_init_f32:000000c4 $d
+
+UNDEFINED SYMBOLS
+armBitRevIndexTable16
+twiddleCoef_16
+twiddleCoef_rfft_32
+armBitRevIndexTable256
+twiddleCoef_256
+twiddleCoef_rfft_512
+armBitRevIndexTable2048
+twiddleCoef_2048
+twiddleCoef_rfft_4096
+armBitRevIndexTable1024
+twiddleCoef_1024
+twiddleCoef_rfft_2048
+armBitRevIndexTable512
+twiddleCoef_512
+twiddleCoef_rfft_1024
+armBitRevIndexTable128
+twiddleCoef_128
+twiddleCoef_rfft_256
+armBitRevIndexTable64
+twiddleCoef_64
+twiddleCoef_rfft_128
+armBitRevIndexTable32
+twiddleCoef_32
+twiddleCoef_rfft_64

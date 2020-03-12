@@ -1,0 +1,162 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "DAVE.c"
+  16              	 .section .text.DAVE_Init,"ax",%progbits
+  17              	 .align 1
+  18              	 .global DAVE_Init
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	DAVE_Init:
+  23              	 
+  24              	 
+  25 0000 08B5     	 push {r3,lr}
+  26 0002 3148     	 ldr r0,.L23
+  27 0004 FFF7FEFF 	 bl CLOCK_XMC4_Init
+  28 0008 0028     	 cmp r0,#0
+  29 000a 5CD1     	 bne .L21
+  30 000c 2F48     	 ldr r0,.L23+4
+  31 000e FFF7FEFF 	 bl PWM_Init
+  32 0012 0028     	 cmp r0,#0
+  33 0014 57D1     	 bne .L21
+  34 0016 2E48     	 ldr r0,.L23+8
+  35 0018 FFF7FEFF 	 bl PWM_Init
+  36 001c 0028     	 cmp r0,#0
+  37 001e 52D1     	 bne .L21
+  38 0020 2C48     	 ldr r0,.L23+12
+  39 0022 FFF7FEFF 	 bl PWM_Init
+  40 0026 0028     	 cmp r0,#0
+  41 0028 4DD1     	 bne .L21
+  42 002a 2B48     	 ldr r0,.L23+16
+  43 002c FFF7FEFF 	 bl INTERRUPT_Init
+  44 0030 0028     	 cmp r0,#0
+  45 0032 48D1     	 bne .L21
+  46 0034 2948     	 ldr r0,.L23+20
+  47 0036 FFF7FEFF 	 bl PWM_Init
+  48 003a 0028     	 cmp r0,#0
+  49 003c 43D1     	 bne .L21
+  50 003e 2848     	 ldr r0,.L23+24
+  51 0040 FFF7FEFF 	 bl DIGITAL_IO_Init
+  52 0044 0028     	 cmp r0,#0
+  53 0046 3ED1     	 bne .L21
+  54 0048 2648     	 ldr r0,.L23+28
+  55 004a FFF7FEFF 	 bl ADC_MEASUREMENT_ADV_Init
+  56 004e 0028     	 cmp r0,#0
+  57 0050 39D1     	 bne .L21
+  58 0052 2548     	 ldr r0,.L23+32
+  59 0054 FFF7FEFF 	 bl DIGITAL_IO_Init
+  60 0058 0028     	 cmp r0,#0
+  61 005a 34D1     	 bne .L21
+  62 005c 2348     	 ldr r0,.L23+36
+  63 005e FFF7FEFF 	 bl DAC_Init
+  64 0062 80BB     	 cbnz r0,.L21
+  65 0064 2248     	 ldr r0,.L23+40
+  66 0066 FFF7FEFF 	 bl DIGITAL_IO_Init
+  67 006a 60BB     	 cbnz r0,.L21
+  68 006c 2148     	 ldr r0,.L23+44
+  69 006e FFF7FEFF 	 bl DIGITAL_IO_Init
+  70 0072 40BB     	 cbnz r0,.L21
+  71 0074 2048     	 ldr r0,.L23+48
+  72 0076 FFF7FEFF 	 bl DIGITAL_IO_Init
+  73 007a 20BB     	 cbnz r0,.L21
+  74 007c 1F48     	 ldr r0,.L23+52
+  75 007e FFF7FEFF 	 bl DIGITAL_IO_Init
+  76 0082 00BB     	 cbnz r0,.L21
+  77 0084 1E48     	 ldr r0,.L23+56
+  78 0086 FFF7FEFF 	 bl DIGITAL_IO_Init
+  79 008a E0B9     	 cbnz r0,.L21
+  80 008c 1D48     	 ldr r0,.L23+60
+  81 008e FFF7FEFF 	 bl DIGITAL_IO_Init
+  82 0092 C0B9     	 cbnz r0,.L21
+  83 0094 1C48     	 ldr r0,.L23+64
+  84 0096 FFF7FEFF 	 bl DIGITAL_IO_Init
+  85 009a A0B9     	 cbnz r0,.L21
+  86 009c 1B48     	 ldr r0,.L23+68
+  87 009e FFF7FEFF 	 bl DIGITAL_IO_Init
+  88 00a2 80B9     	 cbnz r0,.L21
+  89 00a4 1A48     	 ldr r0,.L23+72
+  90 00a6 FFF7FEFF 	 bl ADC_MEASUREMENT_ADV_Init
+  91 00aa 60B9     	 cbnz r0,.L21
+  92 00ac 1948     	 ldr r0,.L23+76
+  93 00ae FFF7FEFF 	 bl ADC_MEASUREMENT_ADV_Init
+  94 00b2 40B9     	 cbnz r0,.L21
+  95 00b4 1848     	 ldr r0,.L23+80
+  96 00b6 FFF7FEFF 	 bl DIGITAL_IO_Init
+  97 00ba 20B9     	 cbnz r0,.L21
+  98 00bc 1748     	 ldr r0,.L23+84
+  99 00be BDE80840 	 pop {r3,lr}
+ 100 00c2 FFF7FEBF 	 b DIGITAL_IO_Init
+ 101              	.L21:
+ 102 00c6 08BD     	 pop {r3,pc}
+ 103              	.L24:
+ 104              	 .align 2
+ 105              	.L23:
+ 106 00c8 00000000 	 .word CLOCK_XMC4_0
+ 107 00cc 00000000 	 .word PWM_a
+ 108 00d0 00000000 	 .word PWM_c
+ 109 00d4 00000000 	 .word PWM_b
+ 110 00d8 00000000 	 .word LOOP_CYCLE
+ 111 00dc 00000000 	 .word PWM_update
+ 112 00e0 00000000 	 .word P_1_0
+ 113 00e4 00000000 	 .word ADC_MEASUREMENT_1
+ 114 00e8 00000000 	 .word P_1_1
+ 115 00ec 00000000 	 .word DAC_0
+ 116 00f0 00000000 	 .word ENABLE
+ 117 00f4 00000000 	 .word Button_1
+ 118 00f8 00000000 	 .word P_0_9
+ 119 00fc 00000000 	 .word EN_1
+ 120 0100 00000000 	 .word EN_2
+ 121 0104 00000000 	 .word EN_3
+ 122 0108 00000000 	 .word FAULT_IN
+ 123 010c 00000000 	 .word FAULT_RST
+ 124 0110 00000000 	 .word ADC_MEASUREMENT_2
+ 125 0114 00000000 	 .word ADC_MEASUREMENT_3
+ 126 0118 00000000 	 .word SSR1
+ 127 011c 00000000 	 .word SSR2
+ 129              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 DAVE.c
+    {standard input}:17     .text.DAVE_Init:00000000 $t
+    {standard input}:22     .text.DAVE_Init:00000000 DAVE_Init
+    {standard input}:106    .text.DAVE_Init:000000c8 $d
+
+UNDEFINED SYMBOLS
+CLOCK_XMC4_Init
+PWM_Init
+INTERRUPT_Init
+DIGITAL_IO_Init
+ADC_MEASUREMENT_ADV_Init
+DAC_Init
+CLOCK_XMC4_0
+PWM_a
+PWM_c
+PWM_b
+LOOP_CYCLE
+PWM_update
+P_1_0
+ADC_MEASUREMENT_1
+P_1_1
+DAC_0
+ENABLE
+Button_1
+P_0_9
+EN_1
+EN_2
+EN_3
+FAULT_IN
+FAULT_RST
+ADC_MEASUREMENT_2
+ADC_MEASUREMENT_3
+SSR1
+SSR2

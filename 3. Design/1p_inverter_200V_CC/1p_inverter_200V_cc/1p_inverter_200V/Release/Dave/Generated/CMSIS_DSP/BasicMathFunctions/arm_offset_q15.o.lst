@@ -1,0 +1,75 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "arm_offset_q15.c"
+  16              	 .section .text.arm_offset_q15,"ax",%progbits
+  17              	 .align 1
+  18              	 .global arm_offset_q15
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	arm_offset_q15:
+  23              	 
+  24              	 
+  25 0000 F0B5     	 push {r4,r5,r6,r7,lr}
+  26 0002 9C08     	 lsrs r4,r3,#2
+  27 0004 8DB2     	 uxth r5,r1
+  28 0006 45EA0145 	 orr r5,r5,r1,lsl#16
+  29 000a 02F10806 	 add r6,r2,#8
+  30 000e 00F1080E 	 add lr,r0,#8
+  31 0012 A446     	 mov ip,r4
+  32              	.L2:
+  33 0014 BCF1000F 	 cmp ip,#0
+  34 0018 11D0     	 beq .L7
+  35 001a 5EF8087C 	 ldr r7,[lr,#-8]
+  36              	
+  37 001e 97FA15F7 	 qadd16 r7,r7,r5
+  38              	
+  39              	 .thumb
+  40 0022 46F8087C 	 str r7,[r6,#-8]
+  41 0026 5EF8047C 	 ldr r7,[lr,#-4]
+  42              	
+  43 002a 97FA15F7 	 qadd16 r7,r7,r5
+  44              	
+  45              	 .thumb
+  46 002e 46F8047C 	 str r7,[r6,#-4]
+  47 0032 0CF1FF3C 	 add ip,ip,#-1
+  48 0036 0836     	 adds r6,r6,#8
+  49 0038 0EF1080E 	 add lr,lr,#8
+  50 003c EAE7     	 b .L2
+  51              	.L7:
+  52 003e E400     	 lsls r4,r4,#3
+  53 0040 2044     	 add r0,r0,r4
+  54 0042 03F00303 	 and r3,r3,#3
+  55 0046 023C     	 subs r4,r4,#2
+  56 0048 2244     	 add r2,r2,r4
+  57 004a 00EB4303 	 add r3,r0,r3,lsl#1
+  58              	.L4:
+  59 004e 9842     	 cmp r0,r3
+  60 0050 06D0     	 beq .L8
+  61 0052 30F9024B 	 ldrsh r4,[r0],#2
+  62              	
+  63 0056 94FA11F4 	 qadd16 r4,r4,r1
+  64              	
+  65              	 .thumb
+  66 005a 22F8024F 	 strh r4,[r2,#2]!
+  67 005e F6E7     	 b .L4
+  68              	.L8:
+  69 0060 F0BD     	 pop {r4,r5,r6,r7,pc}
+  71              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 arm_offset_q15.c
+    {standard input}:17     .text.arm_offset_q15:00000000 $t
+    {standard input}:22     .text.arm_offset_q15:00000000 arm_offset_q15
+
+NO UNDEFINED SYMBOLS

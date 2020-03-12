@@ -1,0 +1,56 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "arm_fir_interpolate_init_q15.c"
+  16              	 .section .text.arm_fir_interpolate_init_q15,"ax",%progbits
+  17              	 .align 1
+  18              	 .global arm_fir_interpolate_init_q15
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	arm_fir_interpolate_init_q15:
+  23              	 
+  24              	 
+  25 0000 70B5     	 push {r4,r5,r6,lr}
+  26 0002 0546     	 mov r5,r0
+  27 0004 92FBF1F0 	 sdiv r0,r2,r1
+  28 0008 01FB1024 	 mls r4,r1,r0,r2
+  29 000c 049E     	 ldr r6,[sp,#16]
+  30 000e 7CB9     	 cbnz r4,.L3
+  31 0010 059A     	 ldr r2,[sp,#20]
+  32 0012 2970     	 strb r1,[r5]
+  33 0014 02F10042 	 add r2,r2,#-2147483648
+  34 0018 013A     	 subs r2,r2,#1
+  35 001a 0244     	 add r2,r2,r0
+  36 001c 6880     	 strh r0,[r5,#2]
+  37 001e 6B60     	 str r3,[r5,#4]
+  38 0020 3046     	 mov r0,r6
+  39 0022 2146     	 mov r1,r4
+  40 0024 5200     	 lsls r2,r2,#1
+  41 0026 FFF7FEFF 	 bl memset
+  42 002a AE60     	 str r6,[r5,#8]
+  43 002c 2046     	 mov r0,r4
+  44 002e 00E0     	 b .L2
+  45              	.L3:
+  46 0030 FE20     	 movs r0,#254
+  47              	.L2:
+  48 0032 40B2     	 sxtb r0,r0
+  49 0034 70BD     	 pop {r4,r5,r6,pc}
+  51              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 arm_fir_interpolate_init_q15.c
+    {standard input}:17     .text.arm_fir_interpolate_init_q15:00000000 $t
+    {standard input}:22     .text.arm_fir_interpolate_init_q15:00000000 arm_fir_interpolate_init_q15
+
+UNDEFINED SYMBOLS
+memset

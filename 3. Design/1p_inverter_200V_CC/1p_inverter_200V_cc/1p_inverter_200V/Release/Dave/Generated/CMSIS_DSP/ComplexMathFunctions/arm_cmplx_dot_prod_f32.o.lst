@@ -1,0 +1,107 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "arm_cmplx_dot_prod_f32.c"
+  16              	 .section .text.arm_cmplx_dot_prod_f32,"ax",%progbits
+  17              	 .align 1
+  18              	 .global arm_cmplx_dot_prod_f32
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	arm_cmplx_dot_prod_f32:
+  23              	 
+  24              	 
+  25 0000 DFED397A 	 flds s15,.L9
+  26 0004 F0B5     	 push {r4,r5,r6,r7,lr}
+  27 0006 9408     	 lsrs r4,r2,#2
+  28 0008 0646     	 mov r6,r0
+  29 000a 0D46     	 mov r5,r1
+  30 000c 2746     	 mov r7,r4
+  31 000e B0EE677A 	 fcpys s14,s15
+  32              	.L2:
+  33 0012 2036     	 adds r6,r6,#32
+  34 0014 2035     	 adds r5,r5,#32
+  35 0016 002F     	 cmp r7,#0
+  36 0018 41D0     	 beq .L7
+  37 001a 16ED085A 	 flds s10,[r6,#-32]
+  38 001e 55ED086A 	 flds s13,[r5,#-32]
+  39 0022 55ED075A 	 flds s11,[r5,#-28]
+  40 0026 16ED076A 	 flds s12,[r6,#-28]
+  41 002a A5EE267A 	 vfma.f32 s14,s10,s13
+  42 002e 013F     	 subs r7,r7,#1
+  43 0030 E5EE257A 	 vfma.f32 s15,s10,s11
+  44 0034 A6EE657A 	 vfms.f32 s14,s12,s11
+  45 0038 E6EE267A 	 vfma.f32 s15,s12,s13
+  46 003c 16ED065A 	 flds s10,[r6,#-24]
+  47 0040 55ED066A 	 flds s13,[r5,#-24]
+  48 0044 55ED055A 	 flds s11,[r5,#-20]
+  49 0048 16ED056A 	 flds s12,[r6,#-20]
+  50 004c A5EE267A 	 vfma.f32 s14,s10,s13
+  51 0050 E5EE257A 	 vfma.f32 s15,s10,s11
+  52 0054 A6EE657A 	 vfms.f32 s14,s12,s11
+  53 0058 E6EE267A 	 vfma.f32 s15,s12,s13
+  54 005c 16ED045A 	 flds s10,[r6,#-16]
+  55 0060 55ED046A 	 flds s13,[r5,#-16]
+  56 0064 55ED035A 	 flds s11,[r5,#-12]
+  57 0068 16ED036A 	 flds s12,[r6,#-12]
+  58 006c A5EE267A 	 vfma.f32 s14,s10,s13
+  59 0070 E5EE257A 	 vfma.f32 s15,s10,s11
+  60 0074 A6EE657A 	 vfms.f32 s14,s12,s11
+  61 0078 E6EE267A 	 vfma.f32 s15,s12,s13
+  62 007c 16ED025A 	 flds s10,[r6,#-8]
+  63 0080 55ED026A 	 flds s13,[r5,#-8]
+  64 0084 55ED015A 	 flds s11,[r5,#-4]
+  65 0088 16ED016A 	 flds s12,[r6,#-4]
+  66 008c A5EE267A 	 vfma.f32 s14,s10,s13
+  67 0090 E5EE257A 	 vfma.f32 s15,s10,s11
+  68 0094 A6EE657A 	 vfms.f32 s14,s12,s11
+  69 0098 E6EE267A 	 vfma.f32 s15,s12,s13
+  70 009c B9E7     	 b .L2
+  71              	.L7:
+  72 009e 6401     	 lsls r4,r4,#5
+  73 00a0 2044     	 add r0,r0,r4
+  74 00a2 02F00302 	 and r2,r2,#3
+  75 00a6 2144     	 add r1,r1,r4
+  76 00a8 00EBC202 	 add r2,r0,r2,lsl#3
+  77              	.L4:
+  78 00ac 9042     	 cmp r0,r2
+  79 00ae 01F10801 	 add r1,r1,#8
+  80 00b2 12D0     	 beq .L8
+  81 00b4 0446     	 mov r4,r0
+  82 00b6 94ED005A 	 flds s10,[r4]
+  83 00ba 51ED026A 	 flds s13,[r1,#-8]
+  84 00be 51ED015A 	 flds s11,[r1,#-4]
+  85 00c2 90ED016A 	 flds s12,[r0,#4]
+  86 00c6 A5EE267A 	 vfma.f32 s14,s10,s13
+  87 00ca 0830     	 adds r0,r0,#8
+  88 00cc E5EE257A 	 vfma.f32 s15,s10,s11
+  89 00d0 A6EE657A 	 vfms.f32 s14,s12,s11
+  90 00d4 E6EE267A 	 vfma.f32 s15,s12,s13
+  91 00d8 E8E7     	 b .L4
+  92              	.L8:
+  93 00da 83ED007A 	 fsts s14,[r3]
+  94 00de 059B     	 ldr r3,[sp,#20]
+  95 00e0 C3ED007A 	 fsts s15,[r3]
+  96 00e4 F0BD     	 pop {r4,r5,r6,r7,pc}
+  97              	.L10:
+  98 00e6 00BF     	 .align 2
+  99              	.L9:
+ 100 00e8 00000000 	 .word 0
+ 102              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 arm_cmplx_dot_prod_f32.c
+    {standard input}:17     .text.arm_cmplx_dot_prod_f32:00000000 $t
+    {standard input}:22     .text.arm_cmplx_dot_prod_f32:00000000 arm_cmplx_dot_prod_f32
+    {standard input}:100    .text.arm_cmplx_dot_prod_f32:000000e8 $d
+
+NO UNDEFINED SYMBOLS

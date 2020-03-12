@@ -1,0 +1,66 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "arm_power_f32.c"
+  16              	 .section .text.arm_power_f32,"ax",%progbits
+  17              	 .align 1
+  18              	 .global arm_power_f32
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	arm_power_f32:
+  23              	 
+  24              	 
+  25 0000 30B5     	 push {r4,r5,lr}
+  26 0002 DFED147A 	 flds s15,.L9
+  27 0006 8D08     	 lsrs r5,r1,#2
+  28 0008 0346     	 mov r3,r0
+  29 000a 2C46     	 mov r4,r5
+  30              	.L2:
+  31 000c 1033     	 adds r3,r3,#16
+  32 000e 8CB1     	 cbz r4,.L7
+  33 0010 13ED047A 	 flds s14,[r3,#-16]
+  34 0014 E7EE077A 	 vfma.f32 s15,s14,s14
+  35 0018 013C     	 subs r4,r4,#1
+  36 001a 13ED037A 	 flds s14,[r3,#-12]
+  37 001e E7EE077A 	 vfma.f32 s15,s14,s14
+  38 0022 13ED027A 	 flds s14,[r3,#-8]
+  39 0026 E7EE077A 	 vfma.f32 s15,s14,s14
+  40 002a 13ED017A 	 flds s14,[r3,#-4]
+  41 002e E7EE077A 	 vfma.f32 s15,s14,s14
+  42 0032 EBE7     	 b .L2
+  43              	.L7:
+  44 0034 00EB0510 	 add r0,r0,r5,lsl#4
+  45 0038 01F00301 	 and r1,r1,#3
+  46 003c 00EB8101 	 add r1,r0,r1,lsl#2
+  47              	.L4:
+  48 0040 8842     	 cmp r0,r1
+  49 0042 04D0     	 beq .L8
+  50 0044 B0EC017A 	 fldmias r0!,{s14}
+  51 0048 E7EE077A 	 vfma.f32 s15,s14,s14
+  52 004c F8E7     	 b .L4
+  53              	.L8:
+  54 004e C2ED007A 	 fsts s15,[r2]
+  55 0052 30BD     	 pop {r4,r5,pc}
+  56              	.L10:
+  57              	 .align 2
+  58              	.L9:
+  59 0054 00000000 	 .word 0
+  61              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 arm_power_f32.c
+    {standard input}:17     .text.arm_power_f32:00000000 $t
+    {standard input}:22     .text.arm_power_f32:00000000 arm_power_f32
+    {standard input}:59     .text.arm_power_f32:00000054 $d
+
+NO UNDEFINED SYMBOLS

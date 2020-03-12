@@ -1,0 +1,151 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "arm_cfft_radix2_init_f32.c"
+  16              	 .section .text.arm_cfft_radix2_init_f32,"ax",%progbits
+  17              	 .align 1
+  18              	 .global arm_cfft_radix2_init_f32
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	arm_cfft_radix2_init_f32:
+  23              	 
+  24              	 
+  25 0000 10B5     	 push {r4,lr}
+  26 0002 B1F5807F 	 cmp r1,#256
+  27 0006 354C     	 ldr r4,.L18
+  28 0008 0180     	 strh r1,[r0]
+  29 000a 4460     	 str r4,[r0,#4]
+  30 000c 8270     	 strb r2,[r0,#2]
+  31 000e C370     	 strb r3,[r0,#3]
+  32 0010 47D0     	 beq .L3
+  33 0012 19D8     	 bhi .L4
+  34 0014 2029     	 cmp r1,#32
+  35 0016 53D0     	 beq .L5
+  36 0018 0AD8     	 bhi .L6
+  37 001a 1029     	 cmp r1,#16
+  38 001c 5AD1     	 bne .L15
+  39 001e 4FF48073 	 mov r3,#256
+  40 0022 8381     	 strh r3,[r0,#12]
+  41 0024 C381     	 strh r3,[r0,#14]
+  42 0026 2E4B     	 ldr r3,.L18+4
+  43 0028 8360     	 str r3,[r0,#8]
+  44 002a 4FF07653 	 mov r3,#1031798784
+  45 002e 4EE0     	 b .L16
+  46              	.L6:
+  47 0030 4029     	 cmp r1,#64
+  48 0032 3ED0     	 beq .L8
+  49 0034 8029     	 cmp r1,#128
+  50 0036 4DD1     	 bne .L15
+  51 0038 2023     	 movs r3,#32
+  52 003a 8381     	 strh r3,[r0,#12]
+  53 003c C381     	 strh r3,[r0,#14]
+  54 003e 294B     	 ldr r3,.L18+8
+  55 0040 8360     	 str r3,[r0,#8]
+  56 0042 4FF07053 	 mov r3,#1006632960
+  57 0046 42E0     	 b .L16
+  58              	.L4:
+  59 0048 B1F5806F 	 cmp r1,#1024
+  60 004c 21D0     	 beq .L10
+  61 004e 0AD8     	 bhi .L11
+  62 0050 B1F5007F 	 cmp r1,#512
+  63 0054 3ED1     	 bne .L15
+  64 0056 0823     	 movs r3,#8
+  65 0058 8381     	 strh r3,[r0,#12]
+  66 005a C381     	 strh r3,[r0,#14]
+  67 005c 224B     	 ldr r3,.L18+12
+  68 005e 8360     	 str r3,[r0,#8]
+  69 0060 4FF06C53 	 mov r3,#989855744
+  70 0064 33E0     	 b .L16
+  71              	.L11:
+  72 0066 B1F5006F 	 cmp r1,#2048
+  73 006a 0AD0     	 beq .L13
+  74 006c B1F5805F 	 cmp r1,#4096
+  75 0070 30D1     	 bne .L15
+  76 0072 0123     	 movs r3,#1
+  77 0074 8381     	 strh r3,[r0,#12]
+  78 0076 C381     	 strh r3,[r0,#14]
+  79 0078 1C4B     	 ldr r3,.L18+16
+  80 007a 8360     	 str r3,[r0,#8]
+  81 007c 4FF06653 	 mov r3,#964689920
+  82 0080 25E0     	 b .L16
+  83              	.L13:
+  84 0082 0223     	 movs r3,#2
+  85 0084 8381     	 strh r3,[r0,#12]
+  86 0086 C381     	 strh r3,[r0,#14]
+  87 0088 194B     	 ldr r3,.L18+20
+  88 008a 8360     	 str r3,[r0,#8]
+  89 008c 4FF06853 	 mov r3,#973078528
+  90 0090 1DE0     	 b .L16
+  91              	.L10:
+  92 0092 0423     	 movs r3,#4
+  93 0094 8381     	 strh r3,[r0,#12]
+  94 0096 C381     	 strh r3,[r0,#14]
+  95 0098 164B     	 ldr r3,.L18+24
+  96 009a 8360     	 str r3,[r0,#8]
+  97 009c 4FF06A53 	 mov r3,#981467136
+  98 00a0 15E0     	 b .L16
+  99              	.L3:
+ 100 00a2 1023     	 movs r3,#16
+ 101 00a4 8381     	 strh r3,[r0,#12]
+ 102 00a6 C381     	 strh r3,[r0,#14]
+ 103 00a8 134B     	 ldr r3,.L18+28
+ 104 00aa 8360     	 str r3,[r0,#8]
+ 105 00ac 4FF06E53 	 mov r3,#998244352
+ 106 00b0 0DE0     	 b .L16
+ 107              	.L8:
+ 108 00b2 124B     	 ldr r3,.L18+32
+ 109 00b4 8360     	 str r3,[r0,#8]
+ 110 00b6 8181     	 strh r1,[r0,#12]
+ 111 00b8 C181     	 strh r1,[r0,#14]
+ 112 00ba 4FF07253 	 mov r3,#1015021568
+ 113 00be 06E0     	 b .L16
+ 114              	.L5:
+ 115 00c0 8023     	 movs r3,#128
+ 116 00c2 8381     	 strh r3,[r0,#12]
+ 117 00c4 C381     	 strh r3,[r0,#14]
+ 118 00c6 0E4B     	 ldr r3,.L18+36
+ 119 00c8 8360     	 str r3,[r0,#8]
+ 120 00ca 4FF07453 	 mov r3,#1023410176
+ 121              	.L16:
+ 122 00ce 0361     	 str r3,[r0,#16]
+ 123 00d0 0020     	 movs r0,#0
+ 124 00d2 00E0     	 b .L2
+ 125              	.L15:
+ 126 00d4 FF20     	 movs r0,#255
+ 127              	.L2:
+ 128 00d6 40B2     	 sxtb r0,r0
+ 129 00d8 10BD     	 pop {r4,pc}
+ 130              	.L19:
+ 131 00da 00BF     	 .align 2
+ 132              	.L18:
+ 133 00dc 00000000 	 .word twiddleCoef_4096
+ 134 00e0 FE010000 	 .word armBitRevTable+510
+ 135 00e4 3E000000 	 .word armBitRevTable+62
+ 136 00e8 0E000000 	 .word armBitRevTable+14
+ 137 00ec 00000000 	 .word armBitRevTable
+ 138 00f0 02000000 	 .word armBitRevTable+2
+ 139 00f4 06000000 	 .word armBitRevTable+6
+ 140 00f8 1E000000 	 .word armBitRevTable+30
+ 141 00fc 7E000000 	 .word armBitRevTable+126
+ 142 0100 FE000000 	 .word armBitRevTable+254
+ 144              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 arm_cfft_radix2_init_f32.c
+    {standard input}:17     .text.arm_cfft_radix2_init_f32:00000000 $t
+    {standard input}:22     .text.arm_cfft_radix2_init_f32:00000000 arm_cfft_radix2_init_f32
+    {standard input}:133    .text.arm_cfft_radix2_init_f32:000000dc $d
+
+UNDEFINED SYMBOLS
+twiddleCoef_4096
+armBitRevTable

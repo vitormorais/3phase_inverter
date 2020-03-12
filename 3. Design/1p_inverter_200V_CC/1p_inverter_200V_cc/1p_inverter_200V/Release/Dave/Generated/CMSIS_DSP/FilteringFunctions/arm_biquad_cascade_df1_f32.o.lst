@@ -1,0 +1,119 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "arm_biquad_cascade_df1_f32.c"
+  16              	 .section .text.arm_biquad_cascade_df1_f32,"ax",%progbits
+  17              	 .align 1
+  18              	 .global arm_biquad_cascade_df1_f32
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	arm_biquad_cascade_df1_f32:
+  23              	 
+  24              	 
+  25 0000 2DE9F043 	 push {r4,r5,r6,r7,r8,r9,lr}
+  26 0004 4FEA930E 	 lsr lr,r3,#2
+  27 0008 8468     	 ldr r4,[r0,#8]
+  28 000a 0768     	 ldr r7,[r0]
+  29 000c 4068     	 ldr r0,[r0,#4]
+  30 000e 4FEA0E1C 	 lsl ip,lr,#4
+  31 0012 03F00303 	 and r3,r3,#3
+  32 0016 1434     	 adds r4,r4,#20
+  33 0018 1030     	 adds r0,r0,#16
+  34 001a 02EB0C08 	 add r8,r2,ip
+  35 001e 9B00     	 lsls r3,r3,#2
+  36              	.L6:
+  37 0020 54ED054A 	 flds s9,[r4,#-20]
+  38 0024 14ED044A 	 flds s8,[r4,#-16]
+  39 0028 54ED033A 	 flds s7,[r4,#-12]
+  40 002c 14ED023A 	 flds s6,[r4,#-8]
+  41 0030 54ED012A 	 flds s5,[r4,#-4]
+  42 0034 50ED045A 	 flds s11,[r0,#-16]
+  43 0038 10ED035A 	 flds s10,[r0,#-12]
+  44 003c 50ED027A 	 flds s15,[r0,#-8]
+  45 0040 10ED017A 	 flds s14,[r0,#-4]
+  46 0044 0E46     	 mov r6,r1
+  47 0046 1546     	 mov r5,r2
+  48 0048 F146     	 mov r9,lr
+  49              	.L2:
+  50 004a 1036     	 adds r6,r6,#16
+  51 004c 1035     	 adds r5,r5,#16
+  52 004e B9F1000F 	 cmp r9,#0
+  53 0052 3AD0     	 beq .L9
+  54 0054 56ED041A 	 flds s3,[r6,#-16]
+  55 0058 24EE256A 	 fmuls s12,s8,s11
+  56 005c 64EE216A 	 fmuls s13,s8,s3
+  57 0060 A4EEA16A 	 vfma.f32 s12,s9,s3
+  58 0064 09F1FF39 	 add r9,r9,#-1
+  59 0068 A3EE856A 	 vfma.f32 s12,s7,s10
+  60 006c A3EE276A 	 vfma.f32 s12,s6,s15
+  61 0070 A2EE876A 	 vfma.f32 s12,s5,s14
+  62 0074 05ED046A 	 fsts s12,[r5,#-16]
+  63 0078 16ED032A 	 flds s4,[r6,#-12]
+  64 007c E4EE826A 	 vfma.f32 s13,s9,s4
+  65 0080 24EE027A 	 fmuls s14,s8,s4
+  66 0084 E3EEA56A 	 vfma.f32 s13,s7,s11
+  67 0088 E3EE066A 	 vfma.f32 s13,s6,s12
+  68 008c E2EEA76A 	 vfma.f32 s13,s5,s15
+  69 0090 45ED036A 	 fsts s13,[r5,#-12]
+  70 0094 16ED025A 	 flds s10,[r6,#-8]
+  71 0098 A4EE857A 	 vfma.f32 s14,s9,s10
+  72 009c 64EE057A 	 fmuls s15,s8,s10
+  73 00a0 A3EEA17A 	 vfma.f32 s14,s7,s3
+  74 00a4 A3EE267A 	 vfma.f32 s14,s6,s13
+  75 00a8 A2EE867A 	 vfma.f32 s14,s5,s12
+  76 00ac 05ED027A 	 fsts s14,[r5,#-8]
+  77 00b0 56ED015A 	 flds s11,[r6,#-4]
+  78 00b4 E4EEA57A 	 vfma.f32 s15,s9,s11
+  79 00b8 E3EE827A 	 vfma.f32 s15,s7,s4
+  80 00bc E3EE077A 	 vfma.f32 s15,s6,s14
+  81 00c0 E2EEA67A 	 vfma.f32 s15,s5,s13
+  82 00c4 45ED017A 	 fsts s15,[r5,#-4]
+  83 00c8 BFE7     	 b .L2
+  84              	.L9:
+  85 00ca 6144     	 add r1,r1,ip
+  86 00cc CE18     	 adds r6,r1,r3
+  87 00ce 4546     	 mov r5,r8
+  88              	.L4:
+  89 00d0 B142     	 cmp r1,r6
+  90 00d2 16D0     	 beq .L10
+  91 00d4 B1EC016A 	 fldmias r1!,{s12}
+  92 00d8 64EE256A 	 fmuls s13,s8,s11
+  93 00dc E4EE866A 	 vfma.f32 s13,s9,s12
+  94 00e0 E3EE856A 	 vfma.f32 s13,s7,s10
+  95 00e4 B0EE655A 	 fcpys s10,s11
+  96 00e8 E3EE276A 	 vfma.f32 s13,s6,s15
+  97 00ec F0EE465A 	 fcpys s11,s12
+  98 00f0 E2EE876A 	 vfma.f32 s13,s5,s14
+  99 00f4 B0EE677A 	 fcpys s14,s15
+ 100 00f8 E5EC016A 	 fstmias r5!,{s13}
+ 101 00fc F0EE667A 	 fcpys s15,s13
+ 102 0100 E6E7     	 b .L4
+ 103              	.L10:
+ 104 0102 013F     	 subs r7,r7,#1
+ 105 0104 40ED045A 	 fsts s11,[r0,#-16]
+ 106 0108 00ED035A 	 fsts s10,[r0,#-12]
+ 107 010c 40ED027A 	 fsts s15,[r0,#-8]
+ 108 0110 00ED017A 	 fsts s14,[r0,#-4]
+ 109 0114 04F11404 	 add r4,r4,#20
+ 110 0118 00F11000 	 add r0,r0,#16
+ 111 011c 1146     	 mov r1,r2
+ 112 011e 7FF47FAF 	 bne .L6
+ 113 0122 BDE8F083 	 pop {r4,r5,r6,r7,r8,r9,pc}
+ 115              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 arm_biquad_cascade_df1_f32.c
+    {standard input}:17     .text.arm_biquad_cascade_df1_f32:00000000 $t
+    {standard input}:22     .text.arm_biquad_cascade_df1_f32:00000000 arm_biquad_cascade_df1_f32
+
+NO UNDEFINED SYMBOLS

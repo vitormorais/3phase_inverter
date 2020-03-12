@@ -1,0 +1,144 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "arm_float_to_q7.c"
+  16              	 .section .text.arm_float_to_q7,"ax",%progbits
+  17              	 .align 1
+  18              	 .global arm_float_to_q7
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	arm_float_to_q7:
+  23              	 
+  24              	 
+  25 0000 F7B5     	 push {r0,r1,r2,r4,r5,r6,r7,lr}
+  26 0002 9608     	 lsrs r6,r2,#2
+  27 0004 00F11004 	 add r4,r0,#16
+  28 0008 0D1D     	 adds r5,r1,#4
+  29 000a 3746     	 mov r7,r6
+  30              	.L2:
+  31 000c 002F     	 cmp r7,#0
+  32 000e 6BD0     	 beq .L17
+  33 0010 14ED047A 	 flds s14,[r4,#-16]
+  34 0014 DFED497A 	 flds s15,.L19
+  35 0018 27EE277A 	 fmuls s14,s14,s15
+  36 001c F6EE006A 	 fconsts s13,#96
+  37 0020 B5EEC07A 	 fcmpezs s14
+  38 0024 BEEE006A 	 fconsts s12,#224
+  39 0028 F1EE10FA 	 fmstat
+  40 002c D4BF     	 ite le
+  41 002e F0EE465A 	 fcpysle s11,s12
+  42 0032 F0EE665A 	 fcpysgt s11,s13
+  43 0036 37EE257A 	 fadds s14,s14,s11
+  44 003a 013F     	 subs r7,r7,#1
+  45 003c BDEEC77A 	 ftosizs s14,s14
+  46 0040 1034     	 adds r4,r4,#16
+  47 0042 8DED017A 	 fsts s14,[sp,#4]
+  48 0046 BDF90430 	 ldrsh r3,[sp,#4]
+  49              	
+  50 004a 03F30703 	 ssat r3,#8,r3
+  51              	
+  52              	 .thumb
+  53 004e 05F8043C 	 strb r3,[r5,#-4]
+  54 0052 14ED077A 	 flds s14,[r4,#-28]
+  55 0056 27EE277A 	 fmuls s14,s14,s15
+  56 005a 0435     	 adds r5,r5,#4
+  57 005c B5EEC07A 	 fcmpezs s14
+  58 0060 F1EE10FA 	 fmstat
+  59 0064 D4BF     	 ite le
+  60 0066 F0EE465A 	 fcpysle s11,s12
+  61 006a F0EE665A 	 fcpysgt s11,s13
+  62 006e 37EE257A 	 fadds s14,s14,s11
+  63 0072 BDEEC77A 	 ftosizs s14,s14
+  64 0076 8DED017A 	 fsts s14,[sp,#4]
+  65 007a BDF90430 	 ldrsh r3,[sp,#4]
+  66              	
+  67 007e 03F30703 	 ssat r3,#8,r3
+  68              	
+  69              	 .thumb
+  70 0082 05F8073C 	 strb r3,[r5,#-7]
+  71 0086 14ED067A 	 flds s14,[r4,#-24]
+  72 008a 27EE277A 	 fmuls s14,s14,s15
+  73 008e B5EEC07A 	 fcmpezs s14
+  74 0092 F1EE10FA 	 fmstat
+  75 0096 D4BF     	 ite le
+  76 0098 F0EE465A 	 fcpysle s11,s12
+  77 009c F0EE665A 	 fcpysgt s11,s13
+  78 00a0 37EE257A 	 fadds s14,s14,s11
+  79 00a4 BDEEC77A 	 ftosizs s14,s14
+  80 00a8 8DED017A 	 fsts s14,[sp,#4]
+  81 00ac BDF90430 	 ldrsh r3,[sp,#4]
+  82              	
+  83 00b0 03F30703 	 ssat r3,#8,r3
+  84              	
+  85              	 .thumb
+  86 00b4 05F8063C 	 strb r3,[r5,#-6]
+  87 00b8 14ED057A 	 flds s14,[r4,#-20]
+  88 00bc 67EE277A 	 fmuls s15,s14,s15
+  89 00c0 F5EEC07A 	 fcmpezs s15
+  90 00c4 F1EE10FA 	 fmstat
+  91 00c8 D8BF     	 it le
+  92 00ca F0EE466A 	 fcpysle s13,s12
+  93 00ce 77EEA67A 	 fadds s15,s15,s13
+  94 00d2 FDEEE77A 	 ftosizs s15,s15
+  95 00d6 CDED017A 	 fsts s15,[sp,#4]
+  96 00da BDF90430 	 ldrsh r3,[sp,#4]
+  97              	
+  98 00de 03F30703 	 ssat r3,#8,r3
+  99              	
+ 100              	 .thumb
+ 101 00e2 05F8053C 	 strb r3,[r5,#-5]
+ 102 00e6 91E7     	 b .L2
+ 103              	.L17:
+ 104 00e8 01EB8601 	 add r1,r1,r6,lsl#2
+ 105 00ec 02F00302 	 and r2,r2,#3
+ 106 00f0 00EB0610 	 add r0,r0,r6,lsl#4
+ 107 00f4 0A44     	 add r2,r2,r1
+ 108              	.L8:
+ 109 00f6 9142     	 cmp r1,r2
+ 110 00f8 1DD0     	 beq .L18
+ 111 00fa F0EC017A 	 fldmias r0!,{s15}
+ 112 00fe 9FED0F7A 	 flds s14,.L19
+ 113 0102 67EE877A 	 fmuls s15,s15,s14
+ 114 0106 FEEE006A 	 fconsts s13,#224
+ 115 010a F5EEC07A 	 fcmpezs s15
+ 116 010e F1EE10FA 	 fmstat
+ 117 0112 B6EE007A 	 fconsts s14,#96
+ 118 0116 D8BF     	 it le
+ 119 0118 B0EE667A 	 fcpysle s14,s13
+ 120 011c 77EE877A 	 fadds s15,s15,s14
+ 121 0120 FDEEE77A 	 ftosizs s15,s15
+ 122 0124 CDED017A 	 fsts s15,[sp,#4]
+ 123 0128 BDF90430 	 ldrsh r3,[sp,#4]
+ 124              	
+ 125 012c 03F30703 	 ssat r3,#8,r3
+ 126              	
+ 127              	 .thumb
+ 128 0130 01F8013B 	 strb r3,[r1],#1
+ 129 0134 DFE7     	 b .L8
+ 130              	.L18:
+ 131 0136 03B0     	 add sp,sp,#12
+ 132              	 
+ 133 0138 F0BD     	 pop {r4,r5,r6,r7,pc}
+ 134              	.L20:
+ 135 013a 00BF     	 .align 2
+ 136              	.L19:
+ 137 013c 00000043 	 .word 1124073472
+ 139              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 arm_float_to_q7.c
+    {standard input}:17     .text.arm_float_to_q7:00000000 $t
+    {standard input}:22     .text.arm_float_to_q7:00000000 arm_float_to_q7
+    {standard input}:137    .text.arm_float_to_q7:0000013c $d
+
+NO UNDEFINED SYMBOLS

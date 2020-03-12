@@ -1,0 +1,259 @@
+Change component parameters: Designator = "C1"; Footprint = "CAPC_0805"; UniqueID = "\WUOHRCOO"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C15850"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "963-TMK212BBJ106KG-T"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,162"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C2"; Footprint = "CAPC_0805"; UniqueID = "\MAIVKOXR"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C15850"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "963-TMK212BBJ106KG-T"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,162"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C3"; Footprint = "CAPC_0805"; UniqueID = "\BLNIANSR"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C15850"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "963-TMK212BBJ106KG-T"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,162"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C10"; Footprint = "CAPC_0805"; UniqueID = "\TRIVLNYS"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C46653"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "710-885012207086"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,08"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C11"; Footprint = "CAPC_0805"; UniqueID = "\ASLHKQKD"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C46653"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "710-885012207086"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,08"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C12"; Footprint = "CAPC_0805"; UniqueID = "\DMGLWFVD"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C46653"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "710-885012207086"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,08"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C13"; Footprint = "CAPC_0805"; UniqueID = "\NPALXPHC"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C46653"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "710-885012207086"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,08"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C14"; Footprint = "CAPC_0805"; UniqueID = "\PPLQXXAV"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C46653"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "710-885012207086"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,08"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C15"; Footprint = "CAPC_0805"; UniqueID = "\QVOFRVEF"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C46653"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "710-885012207086"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,08"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C28"; Footprint = "CAPC_0805"; UniqueID = "\CPVDIUHX"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C15850"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "963-TMK212BBJ106KG-T"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,162"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C29"; Footprint = "CAPC_0805"; UniqueID = "\AWRTTLNP"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C1710"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "603-CC805KRX7R9BB103"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,099"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C30"; Footprint = "CAPC_0805"; UniqueID = "\JNFAHNFU"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C1710"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "603-CC805KRX7R9BB103"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,099"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C31"; Footprint = "CAPC_0805"; UniqueID = "\BUXYYPRI"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C1710"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "603-CC805KRX7R9BB103"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,099"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C32"; Footprint = "CAPC_0805"; UniqueID = "\JCMWCIVG"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C1710"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "603-CC805KRX7R9BB103"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,099"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C33"; Footprint = "CAPC_0805"; UniqueID = "\ILEXCKWR"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C15850"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "963-TMK212BBJ106KG-T"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,162"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C35"; Footprint = "CAPC_0805"; UniqueID = "\EGINWIEE"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C28323"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "963-UMK212BJ105MG-T"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,153"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C36"; Footprint = "CAPC_0805"; UniqueID = "\TUADNVBG"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C15850"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "963-TMK212BBJ106KG-T"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,162"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C37"; Footprint = "CAPC_0805"; UniqueID = "\YRSBUDDV"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C28323"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "963-UMK212BJ105MG-T"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,153"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C38"; Footprint = "CAPC_0805"; UniqueID = "\PEXIWBXP"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C28323"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "963-UMK212BJ105MG-T"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,153"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C39"; Footprint = "CAPC_0805"; UniqueID = "\QFBKWBWL"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C15850"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "963-TMK212BBJ106KG-T"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,162"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R1"; Footprint = "RESC_0805"; UniqueID = "\KXCCFPCQ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C17408"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "71-CRCW0805100RFKEAC"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,09"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R2"; Footprint = "RESC_0805"; UniqueID = "\EAKBVRQS"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C17408"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "71-CRCW0805100RFKEAC"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,09"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R3"; Footprint = "RESC_0805"; UniqueID = "\SHNURGFA"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C17408"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "71-CRCW0805100RFKEAC"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,09"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R4"; Footprint = "RESC_0805"; UniqueID = "\IXCJODAT"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C17408"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "71-CRCW0805100RFKEAC"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,09"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R5"; Footprint = "RESC_0805"; UniqueID = "\MHXWKKOP"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C17408"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "71-CRCW0805100RFKEAC"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,09"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R6"; Footprint = "RESC_0805"; UniqueID = "\VYDWOMPI"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C17408"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "71-CRCW0805100RFKEAC"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,09"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R10"; Footprint = "RESC_0805"; UniqueID = "\IEIVEPFW"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C17408"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "71-CRCW0805100RFKEAC"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,09"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R11"; Footprint = "RESC_0805"; UniqueID = "\MWXTSVHE"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C17398"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "652-CR0805AFX1801EAS"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,09"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R12"; Footprint = "RESC_0805"; UniqueID = "\KVTLMWWX"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C17408"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "71-CRCW0805100RFKEAC"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,09"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R13"; Footprint = "RESC_0805"; UniqueID = "\SGIISPCP"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C17408"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "71-CRCW0805100RFKEAC"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,09"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R14"; Footprint = "RESC_0805"; UniqueID = "\WNEYRPGR"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C17661"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "71-CRCW0805-3K-E3"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,09"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R15"; Footprint = "RESC_0805"; UniqueID = "\WKWYMPHQ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C17477"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "71-CRCW08050000Z0EAC"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,09"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R16"; Footprint = "RESC_0805"; UniqueID = "\MSDYSGVB"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C18359"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "71-CRCW08053K60FKEA"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,09"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R17"; Footprint = "RESC_0805"; UniqueID = "\JOJBFDKN"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C17719"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "71-CRCW080549K9FKEAC"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,09"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R18"; Footprint = "RESC_0805"; UniqueID = "\MLQYJUCF"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C17719"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "71-CRCW080549K9FKEAC"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,09"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R19"; Footprint = "RESC_0805"; UniqueID = "\RWUDFCAK"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C17630"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "71-CRCW0805330RFKEAC"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,09"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R20"; Footprint = "RESC_0805"; UniqueID = "\ELCWREDX"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C17621"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "667-ERJ-6ENF3002V"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,09"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R21"; Footprint = "RESC_0805"; UniqueID = "\HBWOURAV"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C17621"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "667-ERJ-6ENF3002V"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,09"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R22"; Footprint = "RESC_0805"; UniqueID = "\XEFVUNVS"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C17621"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "667-ERJ-6ENF3002V"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,09"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R23"; Footprint = "RESC_0805"; UniqueID = "\WYWLXUNG"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C17621"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "667-ERJ-6ENF3002V"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,09"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R24"; Footprint = "RESC_0805"; UniqueID = "\NXXABQSN"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C17630"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "71-CRCW0805330RFKEAC"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,09"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R25"; Footprint = "RESC_0805"; UniqueID = "\KLCGYUKH"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C17471"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "71-CRCW0805-150-E3"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,09"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R26"; Footprint = "RESC_0805"; UniqueID = "\BUORQVUY"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C17621"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "667-ERJ-6ENF3002V"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,09"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R27"; Footprint = "RESC_0805"; UniqueID = "\LBLWNXRM"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C17621"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "667-ERJ-6ENF3002V"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,09"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R28"; Footprint = "RESC_0805"; UniqueID = "\KLLLGLQX"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C17621"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "667-ERJ-6ENF3002V"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,09"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R29"; Footprint = "RESC_0805"; UniqueID = "\VYSFBLYX"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C17621"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "667-ERJ-6ENF3002V"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,09"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R30"; Footprint = "RESC_0805"; UniqueID = "\YAVFMULW"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C17621"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "667-ERJ-6ENF3002V"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,09"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R31"; Footprint = "RESC_0805"; UniqueID = "\JPUHRAEQ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C17621"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "667-ERJ-6ENF3002V"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,09"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R32"; Footprint = "RESC_0805"; UniqueID = "\QAIEOXMN"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C17621"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "667-ERJ-6ENF3002V"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,09"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R33"; Footprint = "RESC_0805"; UniqueID = "\UPXBEVHL"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C17621"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "667-ERJ-6ENF3002V"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,09"; VariantName = "[No Variations]"
+Added Component: Designator=X1(COOLER)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "PCDIGA VPN"; Value = "Cooler CPU Cooler Master Hyper H412R"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "22,90"; VariantName = "[No Variations]"
+Change Class Name : Old Net Name=inversor_rev3 New Net Name=inversor_rev4
+Added Member To Class: ClassName=inversor_rev4 Member=Component C24 C 100nF MLCC 1812 X7R 1kV
+Added Member To Class: ClassName=inversor_rev4 Member=Component C25 C 100nF MLCC 1812 X7R 1kV
+Added Member To Class: ClassName=inversor_rev4 Member=Component X1 X COOLER H412R
+Added Room: Name=inversor_rev4

@@ -1,0 +1,1193 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "xmc_sdmmc.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .section .text.XMC_SDMMC_GetPowerStatus,"ax",%progbits
+  20              	 .align 2
+  21              	 .global XMC_SDMMC_GetPowerStatus
+  22              	 .thumb
+  23              	 .thumb_func
+  25              	XMC_SDMMC_GetPowerStatus:
+  26              	.LFB204:
+  27              	 .file 1 "../Libraries/XMCLib/src/xmc_sdmmc.c"
+   1:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+   2:../Libraries/XMCLib/src/xmc_sdmmc.c **** /**
+   3:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * @file xmc_sdmmc.c
+   4:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * @date 2016-07-11
+   5:../Libraries/XMCLib/src/xmc_sdmmc.c ****  *
+   6:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * @cond
+   7:../Libraries/XMCLib/src/xmc_sdmmc.c ****  **************************************************************************************************
+   8:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * XMClib v2.1.12 - XMC Peripheral Driver Library 
+   9:../Libraries/XMCLib/src/xmc_sdmmc.c ****  *
+  10:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * Copyright (c) 2015-2017, Infineon Technologies AG
+  11:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * All rights reserved.                        
+  12:../Libraries/XMCLib/src/xmc_sdmmc.c ****  *                                             
+  13:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * Redistribution and use in source and binary forms, with or without modification,are permitted pr
+  14:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * following conditions are met:   
+  15:../Libraries/XMCLib/src/xmc_sdmmc.c ****  *                                                                              
+  16:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * Redistributions of source code must retain the above copyright notice, this list of conditions a
+  17:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * disclaimer.                        
+  18:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * 
+  19:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * Redistributions in binary form must reproduce the above copyright notice, this list of condition
+  20:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * disclaimer in the documentation and/or other materials provided with the distribution.          
+  21:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * 
+  22:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * Neither the name of the copyright holders nor the names of its contributors may be used to endor
+  23:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * products derived from this software without specific prior written permission.                  
+  24:../Libraries/XMCLib/src/xmc_sdmmc.c ****  *                                                                              
+  25:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR I
+  26:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTI
+  27:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, IN
+  28:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBS
+  29:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THE
+  30:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+  31:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                            
+  32:../Libraries/XMCLib/src/xmc_sdmmc.c ****  *                                                                              
+  33:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * To improve the quality of the software, users are encouraged to share modifications, enhancement
+  34:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * Infineon Technologies AG dave@infineon.com).                                                    
+  35:../Libraries/XMCLib/src/xmc_sdmmc.c ****  **************************************************************************************************
+  36:../Libraries/XMCLib/src/xmc_sdmmc.c ****  *
+  37:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * Change History
+  38:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * --------------
+  39:../Libraries/XMCLib/src/xmc_sdmmc.c ****  *
+  40:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * 2015-02-20:
+  41:../Libraries/XMCLib/src/xmc_sdmmc.c ****  *     - Initial <br>
+  42:../Libraries/XMCLib/src/xmc_sdmmc.c ****  *     - Removed GetDriverVersion API <br>
+  43:../Libraries/XMCLib/src/xmc_sdmmc.c ****  *
+  44:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * 2015-06-20:
+  45:../Libraries/XMCLib/src/xmc_sdmmc.c ****  *     - Removed definition of GetDriverVersion API <br>
+  46:../Libraries/XMCLib/src/xmc_sdmmc.c ****  *
+  47:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * 2016-03-14:
+  48:../Libraries/XMCLib/src/xmc_sdmmc.c ****  *     - Values are directly assigned to the int status registers <br>
+  49:../Libraries/XMCLib/src/xmc_sdmmc.c ****  *
+  50:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * 2016-07-11:
+  51:../Libraries/XMCLib/src/xmc_sdmmc.c ****  *     - XMC_SDMMC_SetDataTransferMode() shall not invoke SetDateLineTimeout() <br>
+  52:../Libraries/XMCLib/src/xmc_sdmmc.c ****  *
+  53:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * @endcond
+  54:../Libraries/XMCLib/src/xmc_sdmmc.c ****  */
+  55:../Libraries/XMCLib/src/xmc_sdmmc.c ****  
+  56:../Libraries/XMCLib/src/xmc_sdmmc.c **** /**
+  57:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * @addtogroup XMClib
+  58:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * @{
+  59:../Libraries/XMCLib/src/xmc_sdmmc.c ****  */
+  60:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+  61:../Libraries/XMCLib/src/xmc_sdmmc.c **** /**
+  62:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * @addtogroup SDMMC
+  63:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * @brief SDMMC driver
+  64:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * @{
+  65:../Libraries/XMCLib/src/xmc_sdmmc.c ****  */
+  66:../Libraries/XMCLib/src/xmc_sdmmc.c ****  
+  67:../Libraries/XMCLib/src/xmc_sdmmc.c **** /*******************************************************************************
+  68:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * HEADER FILES
+  69:../Libraries/XMCLib/src/xmc_sdmmc.c ****  *******************************************************************************/
+  70:../Libraries/XMCLib/src/xmc_sdmmc.c ****  
+  71:../Libraries/XMCLib/src/xmc_sdmmc.c **** #include "xmc_sdmmc.h"
+  72:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+  73:../Libraries/XMCLib/src/xmc_sdmmc.c **** /*
+  74:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * The SDMMC peripheral is only available on the
+  75:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * XMC4500. The SDMMC definition can be found in
+  76:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * the XMC4500.h (device header file).
+  77:../Libraries/XMCLib/src/xmc_sdmmc.c ****  */
+  78:../Libraries/XMCLib/src/xmc_sdmmc.c **** #if defined (SDMMC)
+  79:../Libraries/XMCLib/src/xmc_sdmmc.c **** #include "xmc_scu.h"
+  80:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+  81:../Libraries/XMCLib/src/xmc_sdmmc.c **** /*******************************************************************************
+  82:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * MACROS
+  83:../Libraries/XMCLib/src/xmc_sdmmc.c ****  *******************************************************************************/
+  84:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+  85:../Libraries/XMCLib/src/xmc_sdmmc.c **** /*
+  86:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * Check for valid SDMMC error events <br>
+  87:../Libraries/XMCLib/src/xmc_sdmmc.c ****  *
+  88:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * This macro is used in the LLD for assertion checks (XMC_ASSERT).
+  89:../Libraries/XMCLib/src/xmc_sdmmc.c ****  */
+  90:../Libraries/XMCLib/src/xmc_sdmmc.c **** #define XMC_SDMMC_CHECK_ERROR_EVENT(e)\
+  91:../Libraries/XMCLib/src/xmc_sdmmc.c ****   ((e == XMC_SDMMC_CMD_TIMEOUT_ERR)     ||\
+  92:../Libraries/XMCLib/src/xmc_sdmmc.c ****    (e == XMC_SDMMC_CMD_CRC_ERR)         ||\
+  93:../Libraries/XMCLib/src/xmc_sdmmc.c ****    (e == XMC_SDMMC_CMD_END_BIT_ERR)     ||\
+  94:../Libraries/XMCLib/src/xmc_sdmmc.c ****    (e == XMC_SDMMC_CMD_IND_ERR)         ||\
+  95:../Libraries/XMCLib/src/xmc_sdmmc.c ****    (e == XMC_SDMMC_DATA_TIMEOUT_ERR)    ||\
+  96:../Libraries/XMCLib/src/xmc_sdmmc.c ****    (e == XMC_SDMMC_DATA_CRC_ERR)        ||\
+  97:../Libraries/XMCLib/src/xmc_sdmmc.c ****    (e == XMC_SDMMC_DATA_END_BIT_ERR)    ||\
+  98:../Libraries/XMCLib/src/xmc_sdmmc.c ****    (e == XMC_SDMMC_CURRENT_LIMIT_ERR)   ||\
+  99:../Libraries/XMCLib/src/xmc_sdmmc.c ****    (e == XMC_SDMMC_ACMD_ERR)            ||\
+ 100:../Libraries/XMCLib/src/xmc_sdmmc.c ****    (e == XMC_SDMMC_TARGET_RESP_ERR))
+ 101:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+ 102:../Libraries/XMCLib/src/xmc_sdmmc.c **** /*
+ 103:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * Check for valid SDMMC normal events <br>
+ 104:../Libraries/XMCLib/src/xmc_sdmmc.c ****  *
+ 105:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * This macro is used in the LLD for assertion checks (XMC_ASSERT).
+ 106:../Libraries/XMCLib/src/xmc_sdmmc.c ****  */
+ 107:../Libraries/XMCLib/src/xmc_sdmmc.c **** #define XMC_SDMMC_CHECK_NORMAL_EVENT(e)\
+ 108:../Libraries/XMCLib/src/xmc_sdmmc.c ****   ((e == XMC_SDMMC_CMD_COMPLETE)        ||\
+ 109:../Libraries/XMCLib/src/xmc_sdmmc.c ****    (e == XMC_SDMMC_TX_COMPLETE)         ||\
+ 110:../Libraries/XMCLib/src/xmc_sdmmc.c ****    (e == XMC_SDMMC_BLOCK_GAP_EVENT)     ||\
+ 111:../Libraries/XMCLib/src/xmc_sdmmc.c ****    (e == XMC_SDMMC_BUFFER_WRITE_READY)  ||\
+ 112:../Libraries/XMCLib/src/xmc_sdmmc.c ****    (e == XMC_SDMMC_BUFFER_READ_READY)   ||\
+ 113:../Libraries/XMCLib/src/xmc_sdmmc.c ****    (e == XMC_SDMMC_CARD_INS)            ||\
+ 114:../Libraries/XMCLib/src/xmc_sdmmc.c ****    (e == XMC_SDMMC_CARD_REMOVAL)        ||\
+ 115:../Libraries/XMCLib/src/xmc_sdmmc.c ****    (e == XMC_SDMMC_CARD_INT))
+ 116:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+ 117:../Libraries/XMCLib/src/xmc_sdmmc.c **** /*
+ 118:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * Check for both normal and error events <br>
+ 119:../Libraries/XMCLib/src/xmc_sdmmc.c ****  *
+ 120:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * This macro is used in the LLD for assertion checks (XMC_ASSERT).
+ 121:../Libraries/XMCLib/src/xmc_sdmmc.c ****  */
+ 122:../Libraries/XMCLib/src/xmc_sdmmc.c **** #define XMC_SDMMC_CHECK_EVENT(e)\
+ 123:../Libraries/XMCLib/src/xmc_sdmmc.c ****   ((XMC_SDMMC_CHECK_NORMAL_EVENT(e))    ||\
+ 124:../Libraries/XMCLib/src/xmc_sdmmc.c ****    (XMC_SDMMC_CHECK_ERROR_EVENT(e)))
+ 125:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+ 126:../Libraries/XMCLib/src/xmc_sdmmc.c **** /*
+ 127:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * Check for valid SDMMC wakeup events <br>
+ 128:../Libraries/XMCLib/src/xmc_sdmmc.c ****  *
+ 129:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * This macro is used in the LLD for assertion checks (XMC_ASSERT).
+ 130:../Libraries/XMCLib/src/xmc_sdmmc.c ****  */
+ 131:../Libraries/XMCLib/src/xmc_sdmmc.c **** #define XMC_SDMMC_CHECK_WAKEUP_EVENT(w)\
+ 132:../Libraries/XMCLib/src/xmc_sdmmc.c ****   ((w == XMC_SDMMC_WAKEUP_EN_CARD_INT)  ||\
+ 133:../Libraries/XMCLib/src/xmc_sdmmc.c ****    (w == XMC_SDMMC_WAKEUP_EN_CARD_INS)  ||\
+ 134:../Libraries/XMCLib/src/xmc_sdmmc.c ****    (w == XMC_SDMMC_WAKEUP_EN_CARD_REM))
+ 135:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+ 136:../Libraries/XMCLib/src/xmc_sdmmc.c **** /*
+ 137:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * Check for valid SDMMC software reset modes <br>
+ 138:../Libraries/XMCLib/src/xmc_sdmmc.c ****  *
+ 139:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * This macro is used in the LLD for assertion checks (XMC_ASSERT).
+ 140:../Libraries/XMCLib/src/xmc_sdmmc.c ****  */
+ 141:../Libraries/XMCLib/src/xmc_sdmmc.c **** #define XMC_SDMMC_CHECK_SW_RESET_MODE(m)\
+ 142:../Libraries/XMCLib/src/xmc_sdmmc.c ****   ((m == XMC_SDMMC_SW_RESET_ALL)        ||\
+ 143:../Libraries/XMCLib/src/xmc_sdmmc.c ****    (m == XMC_SDMMC_SW_RST_CMD_LINE)     ||\
+ 144:../Libraries/XMCLib/src/xmc_sdmmc.c ****    (m == XMC_SDMMC_SW_RST_DAT_LINE))
+ 145:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+ 146:../Libraries/XMCLib/src/xmc_sdmmc.c **** /*
+ 147:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * Check for valid SDMMC transfer modes <br>
+ 148:../Libraries/XMCLib/src/xmc_sdmmc.c ****  *
+ 149:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * This macro is used in the LLD for assertion checks (XMC_ASSERT).
+ 150:../Libraries/XMCLib/src/xmc_sdmmc.c ****  */
+ 151:../Libraries/XMCLib/src/xmc_sdmmc.c **** #define XMC_SDMMC_CHECK_TRANSFER_MODE(m)\
+ 152:../Libraries/XMCLib/src/xmc_sdmmc.c ****   ((m == XMC_SDMMC_TRANSFER_MODE_TYPE_SINGLE)    ||\
+ 153:../Libraries/XMCLib/src/xmc_sdmmc.c ****    (m == XMC_SDMMC_TRANSFER_MODE_TYPE_INFINITE)  ||\
+ 154:../Libraries/XMCLib/src/xmc_sdmmc.c ****    (m == XMC_SDMMC_TRANSFER_MODE_TYPE_MULTIPLE)  ||\
+ 155:../Libraries/XMCLib/src/xmc_sdmmc.c ****    (m == XMC_SDMMC_TRANSFER_MODE_TYPE_STOP_MULTIPLE))
+ 156:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+ 157:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+ 158:../Libraries/XMCLib/src/xmc_sdmmc.c **** /*******************************************************************************
+ 159:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * API IMPLEMENTATION
+ 160:../Libraries/XMCLib/src/xmc_sdmmc.c ****  *******************************************************************************/
+ 161:../Libraries/XMCLib/src/xmc_sdmmc.c ****  
+ 162:../Libraries/XMCLib/src/xmc_sdmmc.c **** /* Get power status of the SDMMC peripheral */
+ 163:../Libraries/XMCLib/src/xmc_sdmmc.c **** bool XMC_SDMMC_GetPowerStatus(XMC_SDMMC_t *const sdmmc)
+ 164:../Libraries/XMCLib/src/xmc_sdmmc.c **** {
+  28              	 .loc 1 164 0
+  29              	 .cfi_startproc
+  30              	 
+  31              	 
+  32              	 
+  33 0000 80B4     	 push {r7}
+  34              	.LCFI0:
+  35              	 .cfi_def_cfa_offset 4
+  36              	 .cfi_offset 7,-4
+  37 0002 83B0     	 sub sp,sp,#12
+  38              	.LCFI1:
+  39              	 .cfi_def_cfa_offset 16
+  40 0004 00AF     	 add r7,sp,#0
+  41              	.LCFI2:
+  42              	 .cfi_def_cfa_register 7
+  43 0006 7860     	 str r0,[r7,#4]
+ 165:../Libraries/XMCLib/src/xmc_sdmmc.c ****   XMC_ASSERT("XMC_SDMMC_GetPowerStatus: Invalid module pointer", XMC_SDMMC_CHECK_MODULE_PTR(sdmmc))
+ 166:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+ 167:../Libraries/XMCLib/src/xmc_sdmmc.c ****   return (bool)(sdmmc->POWER_CTRL & SDMMC_POWER_CTRL_SD_BUS_POWER_Msk);
+  44              	 .loc 1 167 0
+  45 0008 7B68     	 ldr r3,[r7,#4]
+  46 000a 93F82930 	 ldrb r3,[r3,#41]
+  47 000e DBB2     	 uxtb r3,r3
+  48 0010 03F00103 	 and r3,r3,#1
+  49 0014 002B     	 cmp r3,#0
+  50 0016 14BF     	 ite ne
+  51 0018 0123     	 movne r3,#1
+  52 001a 0023     	 moveq r3,#0
+  53 001c DBB2     	 uxtb r3,r3
+ 168:../Libraries/XMCLib/src/xmc_sdmmc.c **** }
+  54              	 .loc 1 168 0
+  55 001e 1846     	 mov r0,r3
+  56 0020 0C37     	 adds r7,r7,#12
+  57              	.LCFI3:
+  58              	 .cfi_def_cfa_offset 4
+  59 0022 BD46     	 mov sp,r7
+  60              	.LCFI4:
+  61              	 .cfi_def_cfa_register 13
+  62              	 
+  63 0024 5DF8047B 	 ldr r7,[sp],#4
+  64              	.LCFI5:
+  65              	 .cfi_restore 7
+  66              	 .cfi_def_cfa_offset 0
+  67 0028 7047     	 bx lr
+  68              	 .cfi_endproc
+  69              	.LFE204:
+  71 002a 00BF     	 .section .text.XMC_SDMMC_Enable,"ax",%progbits
+  72              	 .align 2
+  73              	 .global XMC_SDMMC_Enable
+  74              	 .thumb
+  75              	 .thumb_func
+  77              	XMC_SDMMC_Enable:
+  78              	.LFB205:
+ 169:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+ 170:../Libraries/XMCLib/src/xmc_sdmmc.c **** /*
+ 171:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * De-assert the peripheral reset. The SDMMC peripheral
+ 172:../Libraries/XMCLib/src/xmc_sdmmc.c ****  * needs to be initialized
+ 173:../Libraries/XMCLib/src/xmc_sdmmc.c ****  */
+ 174:../Libraries/XMCLib/src/xmc_sdmmc.c **** void XMC_SDMMC_Enable(XMC_SDMMC_t *const sdmmc)
+ 175:../Libraries/XMCLib/src/xmc_sdmmc.c **** {
+  79              	 .loc 1 175 0
+  80              	 .cfi_startproc
+  81              	 
+  82              	 
+  83 0000 80B5     	 push {r7,lr}
+  84              	.LCFI6:
+  85              	 .cfi_def_cfa_offset 8
+  86              	 .cfi_offset 7,-8
+  87              	 .cfi_offset 14,-4
+  88 0002 82B0     	 sub sp,sp,#8
+  89              	.LCFI7:
+  90              	 .cfi_def_cfa_offset 16
+  91 0004 00AF     	 add r7,sp,#0
+  92              	.LCFI8:
+  93              	 .cfi_def_cfa_register 7
+  94 0006 7860     	 str r0,[r7,#4]
+ 176:../Libraries/XMCLib/src/xmc_sdmmc.c ****   XMC_ASSERT("XMC_SDMMC_Enable: Invalid module pointer", XMC_SDMMC_CHECK_MODULE_PTR(sdmmc));
+ 177:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+ 178:../Libraries/XMCLib/src/xmc_sdmmc.c **** #if defined(CLOCK_GATING_SUPPORTED)
+ 179:../Libraries/XMCLib/src/xmc_sdmmc.c ****   XMC_SCU_CLOCK_UngatePeripheralClock(XMC_SCU_PERIPHERAL_CLOCK_SDMMC);
+ 180:../Libraries/XMCLib/src/xmc_sdmmc.c **** #endif
+ 181:../Libraries/XMCLib/src/xmc_sdmmc.c **** #if defined(PERIPHERAL_RESET_SUPPORTED)
+ 182:../Libraries/XMCLib/src/xmc_sdmmc.c ****   XMC_SCU_RESET_DeassertPeripheralReset(XMC_SCU_PERIPHERAL_RESET_SDMMC);
+  95              	 .loc 1 182 0
+  96 0008 0248     	 ldr r0,.L4
+  97 000a FFF7FEFF 	 bl XMC_SCU_RESET_DeassertPeripheralReset
+ 183:../Libraries/XMCLib/src/xmc_sdmmc.c **** #endif  
+ 184:../Libraries/XMCLib/src/xmc_sdmmc.c **** }
+  98              	 .loc 1 184 0
+  99 000e 0837     	 adds r7,r7,#8
+ 100              	.LCFI9:
+ 101              	 .cfi_def_cfa_offset 8
+ 102 0010 BD46     	 mov sp,r7
+ 103              	.LCFI10:
+ 104              	 .cfi_def_cfa_register 13
+ 105              	 
+ 106 0012 80BD     	 pop {r7,pc}
+ 107              	.L5:
+ 108              	 .align 2
+ 109              	.L4:
+ 110 0014 40000010 	 .word 268435520
+ 111              	 .cfi_endproc
+ 112              	.LFE205:
+ 114              	 .section .text.XMC_SDMMC_Disable,"ax",%progbits
+ 115              	 .align 2
+ 116              	 .global XMC_SDMMC_Disable
+ 117              	 .thumb
+ 118              	 .thumb_func
+ 120              	XMC_SDMMC_Disable:
+ 121              	.LFB206:
+ 185:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+ 186:../Libraries/XMCLib/src/xmc_sdmmc.c **** /* Assert the peripheral reset */
+ 187:../Libraries/XMCLib/src/xmc_sdmmc.c **** void XMC_SDMMC_Disable(XMC_SDMMC_t *const sdmmc)
+ 188:../Libraries/XMCLib/src/xmc_sdmmc.c **** {
+ 122              	 .loc 1 188 0
+ 123              	 .cfi_startproc
+ 124              	 
+ 125              	 
+ 126 0000 80B5     	 push {r7,lr}
+ 127              	.LCFI11:
+ 128              	 .cfi_def_cfa_offset 8
+ 129              	 .cfi_offset 7,-8
+ 130              	 .cfi_offset 14,-4
+ 131 0002 82B0     	 sub sp,sp,#8
+ 132              	.LCFI12:
+ 133              	 .cfi_def_cfa_offset 16
+ 134 0004 00AF     	 add r7,sp,#0
+ 135              	.LCFI13:
+ 136              	 .cfi_def_cfa_register 7
+ 137 0006 7860     	 str r0,[r7,#4]
+ 189:../Libraries/XMCLib/src/xmc_sdmmc.c ****   XMC_ASSERT("XMC_SDMMC_Disable: Invalid module pointer", XMC_SDMMC_CHECK_MODULE_PTR(sdmmc));
+ 190:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+ 191:../Libraries/XMCLib/src/xmc_sdmmc.c **** #if defined(PERIPHERAL_RESET_SUPPORTED)
+ 192:../Libraries/XMCLib/src/xmc_sdmmc.c ****   XMC_SCU_RESET_AssertPeripheralReset(XMC_SCU_PERIPHERAL_RESET_SDMMC);
+ 138              	 .loc 1 192 0
+ 139 0008 0248     	 ldr r0,.L7
+ 140 000a FFF7FEFF 	 bl XMC_SCU_RESET_AssertPeripheralReset
+ 193:../Libraries/XMCLib/src/xmc_sdmmc.c **** #endif  
+ 194:../Libraries/XMCLib/src/xmc_sdmmc.c **** #if defined(CLOCK_GATING_SUPPORTED)
+ 195:../Libraries/XMCLib/src/xmc_sdmmc.c ****   XMC_SCU_CLOCK_GatePeripheralClock(XMC_SCU_PERIPHERAL_CLOCK_SDMMC);
+ 196:../Libraries/XMCLib/src/xmc_sdmmc.c **** #endif
+ 197:../Libraries/XMCLib/src/xmc_sdmmc.c **** }
+ 141              	 .loc 1 197 0
+ 142 000e 0837     	 adds r7,r7,#8
+ 143              	.LCFI14:
+ 144              	 .cfi_def_cfa_offset 8
+ 145 0010 BD46     	 mov sp,r7
+ 146              	.LCFI15:
+ 147              	 .cfi_def_cfa_register 13
+ 148              	 
+ 149 0012 80BD     	 pop {r7,pc}
+ 150              	.L8:
+ 151              	 .align 2
+ 152              	.L7:
+ 153 0014 40000010 	 .word 268435520
+ 154              	 .cfi_endproc
+ 155              	.LFE206:
+ 157              	 .section .text.XMC_SDMMC_Init,"ax",%progbits
+ 158              	 .align 2
+ 159              	 .global XMC_SDMMC_Init
+ 160              	 .thumb
+ 161              	 .thumb_func
+ 163              	XMC_SDMMC_Init:
+ 164              	.LFB207:
+ 198:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+ 199:../Libraries/XMCLib/src/xmc_sdmmc.c **** /* Initialize SDMMC peripheral */
+ 200:../Libraries/XMCLib/src/xmc_sdmmc.c **** XMC_SDMMC_STATUS_t XMC_SDMMC_Init(XMC_SDMMC_t *const sdmmc, const XMC_SDMMC_CONFIG_t *config)
+ 201:../Libraries/XMCLib/src/xmc_sdmmc.c **** {
+ 165              	 .loc 1 201 0
+ 166              	 .cfi_startproc
+ 167              	 
+ 168              	 
+ 169 0000 80B5     	 push {r7,lr}
+ 170              	.LCFI16:
+ 171              	 .cfi_def_cfa_offset 8
+ 172              	 .cfi_offset 7,-8
+ 173              	 .cfi_offset 14,-4
+ 174 0002 82B0     	 sub sp,sp,#8
+ 175              	.LCFI17:
+ 176              	 .cfi_def_cfa_offset 16
+ 177 0004 00AF     	 add r7,sp,#0
+ 178              	.LCFI18:
+ 179              	 .cfi_def_cfa_register 7
+ 180 0006 7860     	 str r0,[r7,#4]
+ 181 0008 3960     	 str r1,[r7]
+ 202:../Libraries/XMCLib/src/xmc_sdmmc.c ****   XMC_ASSERT("XMC_SDMMC_Init: Invalid module pointer", XMC_SDMMC_CHECK_MODULE_PTR(sdmmc));
+ 203:../Libraries/XMCLib/src/xmc_sdmmc.c ****   XMC_ASSERT("XMC_SDMMC_Init: Invalid clock divider value", XMC_SDMMC_CHECK_SDCLK_FREQ(config->cloc
+ 204:../Libraries/XMCLib/src/xmc_sdmmc.c ****   XMC_ASSERT("XMC_SDMMC_Init: Invalid bus width", XMC_SDMMC_CHECK_DATA_LINES(config->bus_width));
+ 205:../Libraries/XMCLib/src/xmc_sdmmc.c ****   
+ 206:../Libraries/XMCLib/src/xmc_sdmmc.c ****   /* Enable SDMMC peripheral */
+ 207:../Libraries/XMCLib/src/xmc_sdmmc.c ****   XMC_SDMMC_Enable(sdmmc);
+ 182              	 .loc 1 207 0
+ 183 000a 7868     	 ldr r0,[r7,#4]
+ 184 000c FFF7FEFF 	 bl XMC_SDMMC_Enable
+ 208:../Libraries/XMCLib/src/xmc_sdmmc.c ****   
+ 209:../Libraries/XMCLib/src/xmc_sdmmc.c ****   /* Write internal clock divider register */
+ 210:../Libraries/XMCLib/src/xmc_sdmmc.c ****   sdmmc->CLOCK_CTRL |= (uint16_t)((uint32_t)config->clock_divider << SDMMC_CLOCK_CTRL_SDCLK_FREQ_SE
+ 185              	 .loc 1 210 0
+ 186 0010 7B68     	 ldr r3,[r7,#4]
+ 187 0012 9B8D     	 ldrh r3,[r3,#44]
+ 188 0014 9AB2     	 uxth r2,r3
+ 189 0016 3B68     	 ldr r3,[r7]
+ 190 0018 5B78     	 ldrb r3,[r3,#1]
+ 191 001a 9BB2     	 uxth r3,r3
+ 192 001c 1B02     	 lsls r3,r3,#8
+ 193 001e 9BB2     	 uxth r3,r3
+ 194 0020 1343     	 orrs r3,r3,r2
+ 195 0022 9AB2     	 uxth r2,r3
+ 196 0024 7B68     	 ldr r3,[r7,#4]
+ 197 0026 9A85     	 strh r2,[r3,#44]
+ 211:../Libraries/XMCLib/src/xmc_sdmmc.c ****   
+ 212:../Libraries/XMCLib/src/xmc_sdmmc.c ****   /* Set bus width */
+ 213:../Libraries/XMCLib/src/xmc_sdmmc.c ****   sdmmc->HOST_CTRL = (uint8_t)((sdmmc->HOST_CTRL & (uint8_t)~SDMMC_HOST_CTRL_DATA_TX_WIDTH_Msk) |
+ 198              	 .loc 1 213 0
+ 199 0028 7B68     	 ldr r3,[r7,#4]
+ 200 002a 93F82830 	 ldrb r3,[r3,#40]
+ 201 002e DBB2     	 uxtb r3,r3
+ 202 0030 DBB2     	 uxtb r3,r3
+ 203 0032 23F00203 	 bic r3,r3,#2
+ 204 0036 DAB2     	 uxtb r2,r3
+ 214:../Libraries/XMCLib/src/xmc_sdmmc.c ****                                ((uint8_t)config->bus_width << SDMMC_HOST_CTRL_DATA_TX_WIDTH_Pos));
+ 205              	 .loc 1 214 0
+ 206 0038 3B68     	 ldr r3,[r7]
+ 207 003a 1B78     	 ldrb r3,[r3]
+ 208 003c 5B00     	 lsls r3,r3,#1
+ 213:../Libraries/XMCLib/src/xmc_sdmmc.c ****                                ((uint8_t)config->bus_width << SDMMC_HOST_CTRL_DATA_TX_WIDTH_Pos));
+ 209              	 .loc 1 213 0
+ 210 003e DBB2     	 uxtb r3,r3
+ 211 0040 1343     	 orrs r3,r3,r2
+ 212 0042 DBB2     	 uxtb r3,r3
+ 213 0044 DAB2     	 uxtb r2,r3
+ 214 0046 7B68     	 ldr r3,[r7,#4]
+ 215 0048 83F82820 	 strb r2,[r3,#40]
+ 215:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+ 216:../Libraries/XMCLib/src/xmc_sdmmc.c ****   return XMC_SDMMC_STATUS_SUCCESS;
+ 216              	 .loc 1 216 0
+ 217 004c 0023     	 movs r3,#0
+ 217:../Libraries/XMCLib/src/xmc_sdmmc.c **** }
+ 218              	 .loc 1 217 0
+ 219 004e 1846     	 mov r0,r3
+ 220 0050 0837     	 adds r7,r7,#8
+ 221              	.LCFI19:
+ 222              	 .cfi_def_cfa_offset 8
+ 223 0052 BD46     	 mov sp,r7
+ 224              	.LCFI20:
+ 225              	 .cfi_def_cfa_register 13
+ 226              	 
+ 227 0054 80BD     	 pop {r7,pc}
+ 228              	 .cfi_endproc
+ 229              	.LFE207:
+ 231 0056 00BF     	 .section .text.XMC_SDMMC_EnableEventStatus,"ax",%progbits
+ 232              	 .align 2
+ 233              	 .global XMC_SDMMC_EnableEventStatus
+ 234              	 .thumb
+ 235              	 .thumb_func
+ 237              	XMC_SDMMC_EnableEventStatus:
+ 238              	.LFB208:
+ 218:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+ 219:../Libraries/XMCLib/src/xmc_sdmmc.c **** /* Enable event status */
+ 220:../Libraries/XMCLib/src/xmc_sdmmc.c **** void XMC_SDMMC_EnableEventStatus(XMC_SDMMC_t *const sdmmc, uint32_t event)
+ 221:../Libraries/XMCLib/src/xmc_sdmmc.c **** {
+ 239              	 .loc 1 221 0
+ 240              	 .cfi_startproc
+ 241              	 
+ 242              	 
+ 243              	 
+ 244 0000 80B4     	 push {r7}
+ 245              	.LCFI21:
+ 246              	 .cfi_def_cfa_offset 4
+ 247              	 .cfi_offset 7,-4
+ 248 0002 83B0     	 sub sp,sp,#12
+ 249              	.LCFI22:
+ 250              	 .cfi_def_cfa_offset 16
+ 251 0004 00AF     	 add r7,sp,#0
+ 252              	.LCFI23:
+ 253              	 .cfi_def_cfa_register 7
+ 254 0006 7860     	 str r0,[r7,#4]
+ 255 0008 3960     	 str r1,[r7]
+ 222:../Libraries/XMCLib/src/xmc_sdmmc.c ****   XMC_ASSERT("XMC_SDMMC_EnableEventStatus: Invalid module pointer", XMC_SDMMC_CHECK_MODULE_PTR(sdmm
+ 223:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+ 224:../Libraries/XMCLib/src/xmc_sdmmc.c ****   /* Set INT status enable register */
+ 225:../Libraries/XMCLib/src/xmc_sdmmc.c ****   sdmmc->EN_INT_STATUS_NORM |= (uint16_t)event;
+ 256              	 .loc 1 225 0
+ 257 000a 7B68     	 ldr r3,[r7,#4]
+ 258 000c 9B8E     	 ldrh r3,[r3,#52]
+ 259 000e 9AB2     	 uxth r2,r3
+ 260 0010 3B68     	 ldr r3,[r7]
+ 261 0012 9BB2     	 uxth r3,r3
+ 262 0014 1343     	 orrs r3,r3,r2
+ 263 0016 9AB2     	 uxth r2,r3
+ 264 0018 7B68     	 ldr r3,[r7,#4]
+ 265 001a 9A86     	 strh r2,[r3,#52]
+ 226:../Libraries/XMCLib/src/xmc_sdmmc.c ****   sdmmc->EN_INT_STATUS_ERR |= (uint16_t)(event >> 16U);
+ 266              	 .loc 1 226 0
+ 267 001c 7B68     	 ldr r3,[r7,#4]
+ 268 001e DB8E     	 ldrh r3,[r3,#54]
+ 269 0020 9AB2     	 uxth r2,r3
+ 270 0022 3B68     	 ldr r3,[r7]
+ 271 0024 1B0C     	 lsrs r3,r3,#16
+ 272 0026 9BB2     	 uxth r3,r3
+ 273 0028 1343     	 orrs r3,r3,r2
+ 274 002a 9AB2     	 uxth r2,r3
+ 275 002c 7B68     	 ldr r3,[r7,#4]
+ 276 002e DA86     	 strh r2,[r3,#54]
+ 227:../Libraries/XMCLib/src/xmc_sdmmc.c **** }
+ 277              	 .loc 1 227 0
+ 278 0030 0C37     	 adds r7,r7,#12
+ 279              	.LCFI24:
+ 280              	 .cfi_def_cfa_offset 4
+ 281 0032 BD46     	 mov sp,r7
+ 282              	.LCFI25:
+ 283              	 .cfi_def_cfa_register 13
+ 284              	 
+ 285 0034 5DF8047B 	 ldr r7,[sp],#4
+ 286              	.LCFI26:
+ 287              	 .cfi_restore 7
+ 288              	 .cfi_def_cfa_offset 0
+ 289 0038 7047     	 bx lr
+ 290              	 .cfi_endproc
+ 291              	.LFE208:
+ 293 003a 00BF     	 .section .text.XMC_SDMMC_DisableEventStatus,"ax",%progbits
+ 294              	 .align 2
+ 295              	 .global XMC_SDMMC_DisableEventStatus
+ 296              	 .thumb
+ 297              	 .thumb_func
+ 299              	XMC_SDMMC_DisableEventStatus:
+ 300              	.LFB209:
+ 228:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+ 229:../Libraries/XMCLib/src/xmc_sdmmc.c **** /* Disable event status */
+ 230:../Libraries/XMCLib/src/xmc_sdmmc.c **** void XMC_SDMMC_DisableEventStatus(XMC_SDMMC_t *const sdmmc, uint32_t event)
+ 231:../Libraries/XMCLib/src/xmc_sdmmc.c **** {
+ 301              	 .loc 1 231 0
+ 302              	 .cfi_startproc
+ 303              	 
+ 304              	 
+ 305              	 
+ 306 0000 80B4     	 push {r7}
+ 307              	.LCFI27:
+ 308              	 .cfi_def_cfa_offset 4
+ 309              	 .cfi_offset 7,-4
+ 310 0002 83B0     	 sub sp,sp,#12
+ 311              	.LCFI28:
+ 312              	 .cfi_def_cfa_offset 16
+ 313 0004 00AF     	 add r7,sp,#0
+ 314              	.LCFI29:
+ 315              	 .cfi_def_cfa_register 7
+ 316 0006 7860     	 str r0,[r7,#4]
+ 317 0008 3960     	 str r1,[r7]
+ 232:../Libraries/XMCLib/src/xmc_sdmmc.c ****   XMC_ASSERT("XMC_SDMMC_DisableEventStatus: Invalid module pointer", XMC_SDMMC_CHECK_MODULE_PTR(sdm
+ 233:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+ 234:../Libraries/XMCLib/src/xmc_sdmmc.c ****   /* Clear INT status enable register */
+ 235:../Libraries/XMCLib/src/xmc_sdmmc.c ****   sdmmc->EN_INT_STATUS_NORM &= (uint16_t)~event;
+ 318              	 .loc 1 235 0
+ 319 000a 7B68     	 ldr r3,[r7,#4]
+ 320 000c 9B8E     	 ldrh r3,[r3,#52]
+ 321 000e 9AB2     	 uxth r2,r3
+ 322 0010 3B68     	 ldr r3,[r7]
+ 323 0012 9BB2     	 uxth r3,r3
+ 324 0014 DB43     	 mvns r3,r3
+ 325 0016 9BB2     	 uxth r3,r3
+ 326 0018 1340     	 ands r3,r3,r2
+ 327 001a 9AB2     	 uxth r2,r3
+ 328 001c 7B68     	 ldr r3,[r7,#4]
+ 329 001e 9A86     	 strh r2,[r3,#52]
+ 236:../Libraries/XMCLib/src/xmc_sdmmc.c ****   sdmmc->EN_INT_STATUS_ERR &= (uint16_t)~(event >> 16U);
+ 330              	 .loc 1 236 0
+ 331 0020 7B68     	 ldr r3,[r7,#4]
+ 332 0022 DB8E     	 ldrh r3,[r3,#54]
+ 333 0024 9AB2     	 uxth r2,r3
+ 334 0026 3B68     	 ldr r3,[r7]
+ 335 0028 1B0C     	 lsrs r3,r3,#16
+ 336 002a 9BB2     	 uxth r3,r3
+ 337 002c DB43     	 mvns r3,r3
+ 338 002e 9BB2     	 uxth r3,r3
+ 339 0030 1340     	 ands r3,r3,r2
+ 340 0032 9AB2     	 uxth r2,r3
+ 341 0034 7B68     	 ldr r3,[r7,#4]
+ 342 0036 DA86     	 strh r2,[r3,#54]
+ 237:../Libraries/XMCLib/src/xmc_sdmmc.c **** }
+ 343              	 .loc 1 237 0
+ 344 0038 0C37     	 adds r7,r7,#12
+ 345              	.LCFI30:
+ 346              	 .cfi_def_cfa_offset 4
+ 347 003a BD46     	 mov sp,r7
+ 348              	.LCFI31:
+ 349              	 .cfi_def_cfa_register 13
+ 350              	 
+ 351 003c 5DF8047B 	 ldr r7,[sp],#4
+ 352              	.LCFI32:
+ 353              	 .cfi_restore 7
+ 354              	 .cfi_def_cfa_offset 0
+ 355 0040 7047     	 bx lr
+ 356              	 .cfi_endproc
+ 357              	.LFE209:
+ 359 0042 00BF     	 .section .text.XMC_SDMMC_EnableEvent,"ax",%progbits
+ 360              	 .align 2
+ 361              	 .global XMC_SDMMC_EnableEvent
+ 362              	 .thumb
+ 363              	 .thumb_func
+ 365              	XMC_SDMMC_EnableEvent:
+ 366              	.LFB210:
+ 238:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+ 239:../Libraries/XMCLib/src/xmc_sdmmc.c **** /* Enable SDMMC event */
+ 240:../Libraries/XMCLib/src/xmc_sdmmc.c **** void XMC_SDMMC_EnableEvent(XMC_SDMMC_t *const sdmmc, uint32_t event)
+ 241:../Libraries/XMCLib/src/xmc_sdmmc.c **** {
+ 367              	 .loc 1 241 0
+ 368              	 .cfi_startproc
+ 369              	 
+ 370              	 
+ 371 0000 80B5     	 push {r7,lr}
+ 372              	.LCFI33:
+ 373              	 .cfi_def_cfa_offset 8
+ 374              	 .cfi_offset 7,-8
+ 375              	 .cfi_offset 14,-4
+ 376 0002 82B0     	 sub sp,sp,#8
+ 377              	.LCFI34:
+ 378              	 .cfi_def_cfa_offset 16
+ 379 0004 00AF     	 add r7,sp,#0
+ 380              	.LCFI35:
+ 381              	 .cfi_def_cfa_register 7
+ 382 0006 7860     	 str r0,[r7,#4]
+ 383 0008 3960     	 str r1,[r7]
+ 242:../Libraries/XMCLib/src/xmc_sdmmc.c ****   XMC_ASSERT("XMC_SDMMC_EnableEvent: Invalid module pointer", XMC_SDMMC_CHECK_MODULE_PTR(sdmmc));
+ 243:../Libraries/XMCLib/src/xmc_sdmmc.c ****   
+ 244:../Libraries/XMCLib/src/xmc_sdmmc.c ****   XMC_SDMMC_EnableEventStatus(sdmmc, event);
+ 384              	 .loc 1 244 0
+ 385 000a 7868     	 ldr r0,[r7,#4]
+ 386 000c 3968     	 ldr r1,[r7]
+ 387 000e FFF7FEFF 	 bl XMC_SDMMC_EnableEventStatus
+ 245:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+ 246:../Libraries/XMCLib/src/xmc_sdmmc.c ****   sdmmc->EN_INT_SIGNAL_NORM |= (uint16_t)event;
+ 388              	 .loc 1 246 0
+ 389 0012 7B68     	 ldr r3,[r7,#4]
+ 390 0014 1B8F     	 ldrh r3,[r3,#56]
+ 391 0016 9AB2     	 uxth r2,r3
+ 392 0018 3B68     	 ldr r3,[r7]
+ 393 001a 9BB2     	 uxth r3,r3
+ 394 001c 1343     	 orrs r3,r3,r2
+ 395 001e 9AB2     	 uxth r2,r3
+ 396 0020 7B68     	 ldr r3,[r7,#4]
+ 397 0022 1A87     	 strh r2,[r3,#56]
+ 247:../Libraries/XMCLib/src/xmc_sdmmc.c ****   sdmmc->EN_INT_SIGNAL_ERR |= (uint16_t)(event >> 16U);
+ 398              	 .loc 1 247 0
+ 399 0024 7B68     	 ldr r3,[r7,#4]
+ 400 0026 5B8F     	 ldrh r3,[r3,#58]
+ 401 0028 9AB2     	 uxth r2,r3
+ 402 002a 3B68     	 ldr r3,[r7]
+ 403 002c 1B0C     	 lsrs r3,r3,#16
+ 404 002e 9BB2     	 uxth r3,r3
+ 405 0030 1343     	 orrs r3,r3,r2
+ 406 0032 9AB2     	 uxth r2,r3
+ 407 0034 7B68     	 ldr r3,[r7,#4]
+ 408 0036 5A87     	 strh r2,[r3,#58]
+ 248:../Libraries/XMCLib/src/xmc_sdmmc.c **** }
+ 409              	 .loc 1 248 0
+ 410 0038 0837     	 adds r7,r7,#8
+ 411              	.LCFI36:
+ 412              	 .cfi_def_cfa_offset 8
+ 413 003a BD46     	 mov sp,r7
+ 414              	.LCFI37:
+ 415              	 .cfi_def_cfa_register 13
+ 416              	 
+ 417 003c 80BD     	 pop {r7,pc}
+ 418              	 .cfi_endproc
+ 419              	.LFE210:
+ 421 003e 00BF     	 .section .text.XMC_SDMMC_DisableEvent,"ax",%progbits
+ 422              	 .align 2
+ 423              	 .global XMC_SDMMC_DisableEvent
+ 424              	 .thumb
+ 425              	 .thumb_func
+ 427              	XMC_SDMMC_DisableEvent:
+ 428              	.LFB211:
+ 249:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+ 250:../Libraries/XMCLib/src/xmc_sdmmc.c **** /* Disable SDMMC event without disabling event status */
+ 251:../Libraries/XMCLib/src/xmc_sdmmc.c **** void XMC_SDMMC_DisableEvent(XMC_SDMMC_t *const sdmmc, uint32_t event)
+ 252:../Libraries/XMCLib/src/xmc_sdmmc.c **** {
+ 429              	 .loc 1 252 0
+ 430              	 .cfi_startproc
+ 431              	 
+ 432              	 
+ 433              	 
+ 434 0000 80B4     	 push {r7}
+ 435              	.LCFI38:
+ 436              	 .cfi_def_cfa_offset 4
+ 437              	 .cfi_offset 7,-4
+ 438 0002 83B0     	 sub sp,sp,#12
+ 439              	.LCFI39:
+ 440              	 .cfi_def_cfa_offset 16
+ 441 0004 00AF     	 add r7,sp,#0
+ 442              	.LCFI40:
+ 443              	 .cfi_def_cfa_register 7
+ 444 0006 7860     	 str r0,[r7,#4]
+ 445 0008 3960     	 str r1,[r7]
+ 253:../Libraries/XMCLib/src/xmc_sdmmc.c ****   XMC_ASSERT("XMC_SDMMC_DisableEvent: Invalid module pointer", XMC_SDMMC_CHECK_MODULE_PTR(sdmmc));
+ 254:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+ 255:../Libraries/XMCLib/src/xmc_sdmmc.c ****   /* Clear INT signal enable register */
+ 256:../Libraries/XMCLib/src/xmc_sdmmc.c ****   sdmmc->EN_INT_SIGNAL_NORM &= (uint16_t)~event;
+ 446              	 .loc 1 256 0
+ 447 000a 7B68     	 ldr r3,[r7,#4]
+ 448 000c 1B8F     	 ldrh r3,[r3,#56]
+ 449 000e 9AB2     	 uxth r2,r3
+ 450 0010 3B68     	 ldr r3,[r7]
+ 451 0012 9BB2     	 uxth r3,r3
+ 452 0014 DB43     	 mvns r3,r3
+ 453 0016 9BB2     	 uxth r3,r3
+ 454 0018 1340     	 ands r3,r3,r2
+ 455 001a 9AB2     	 uxth r2,r3
+ 456 001c 7B68     	 ldr r3,[r7,#4]
+ 457 001e 1A87     	 strh r2,[r3,#56]
+ 257:../Libraries/XMCLib/src/xmc_sdmmc.c ****   sdmmc->EN_INT_SIGNAL_ERR &= (uint16_t)~(event >> 16U);
+ 458              	 .loc 1 257 0
+ 459 0020 7B68     	 ldr r3,[r7,#4]
+ 460 0022 5B8F     	 ldrh r3,[r3,#58]
+ 461 0024 9AB2     	 uxth r2,r3
+ 462 0026 3B68     	 ldr r3,[r7]
+ 463 0028 1B0C     	 lsrs r3,r3,#16
+ 464 002a 9BB2     	 uxth r3,r3
+ 465 002c DB43     	 mvns r3,r3
+ 466 002e 9BB2     	 uxth r3,r3
+ 467 0030 1340     	 ands r3,r3,r2
+ 468 0032 9AB2     	 uxth r2,r3
+ 469 0034 7B68     	 ldr r3,[r7,#4]
+ 470 0036 5A87     	 strh r2,[r3,#58]
+ 258:../Libraries/XMCLib/src/xmc_sdmmc.c **** }
+ 471              	 .loc 1 258 0
+ 472 0038 0C37     	 adds r7,r7,#12
+ 473              	.LCFI41:
+ 474              	 .cfi_def_cfa_offset 4
+ 475 003a BD46     	 mov sp,r7
+ 476              	.LCFI42:
+ 477              	 .cfi_def_cfa_register 13
+ 478              	 
+ 479 003c 5DF8047B 	 ldr r7,[sp],#4
+ 480              	.LCFI43:
+ 481              	 .cfi_restore 7
+ 482              	 .cfi_def_cfa_offset 0
+ 483 0040 7047     	 bx lr
+ 484              	 .cfi_endproc
+ 485              	.LFE211:
+ 487 0042 00BF     	 .section .text.XMC_SDMMC_ClearEvent,"ax",%progbits
+ 488              	 .align 2
+ 489              	 .global XMC_SDMMC_ClearEvent
+ 490              	 .thumb
+ 491              	 .thumb_func
+ 493              	XMC_SDMMC_ClearEvent:
+ 494              	.LFB212:
+ 259:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+ 260:../Libraries/XMCLib/src/xmc_sdmmc.c **** /* Clear SDMMC event(s) */
+ 261:../Libraries/XMCLib/src/xmc_sdmmc.c **** void XMC_SDMMC_ClearEvent(XMC_SDMMC_t *const sdmmc, uint32_t event)
+ 262:../Libraries/XMCLib/src/xmc_sdmmc.c **** {
+ 495              	 .loc 1 262 0
+ 496              	 .cfi_startproc
+ 497              	 
+ 498              	 
+ 499              	 
+ 500 0000 80B4     	 push {r7}
+ 501              	.LCFI44:
+ 502              	 .cfi_def_cfa_offset 4
+ 503              	 .cfi_offset 7,-4
+ 504 0002 83B0     	 sub sp,sp,#12
+ 505              	.LCFI45:
+ 506              	 .cfi_def_cfa_offset 16
+ 507 0004 00AF     	 add r7,sp,#0
+ 508              	.LCFI46:
+ 509              	 .cfi_def_cfa_register 7
+ 510 0006 7860     	 str r0,[r7,#4]
+ 511 0008 3960     	 str r1,[r7]
+ 263:../Libraries/XMCLib/src/xmc_sdmmc.c ****   XMC_ASSERT("XMC_SDMMC_ClearEvent: Invalid module pointer", XMC_SDMMC_CHECK_MODULE_PTR(sdmmc));
+ 264:../Libraries/XMCLib/src/xmc_sdmmc.c ****   XMC_ASSERT("XMC_SDMMC_ClearEvent: Invalid bit-field", !(event & XMC_SDMMC_TARGET_RESP_ERR));
+ 265:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+ 266:../Libraries/XMCLib/src/xmc_sdmmc.c ****   sdmmc->INT_STATUS_NORM = (uint16_t)event;
+ 512              	 .loc 1 266 0
+ 513 000a 3B68     	 ldr r3,[r7]
+ 514 000c 9AB2     	 uxth r2,r3
+ 515 000e 7B68     	 ldr r3,[r7,#4]
+ 516 0010 1A86     	 strh r2,[r3,#48]
+ 267:../Libraries/XMCLib/src/xmc_sdmmc.c ****   sdmmc->INT_STATUS_ERR = (uint16_t)(event >> 16U);
+ 517              	 .loc 1 267 0
+ 518 0012 3B68     	 ldr r3,[r7]
+ 519 0014 1B0C     	 lsrs r3,r3,#16
+ 520 0016 9AB2     	 uxth r2,r3
+ 521 0018 7B68     	 ldr r3,[r7,#4]
+ 522 001a 5A86     	 strh r2,[r3,#50]
+ 268:../Libraries/XMCLib/src/xmc_sdmmc.c **** }
+ 523              	 .loc 1 268 0
+ 524 001c 0C37     	 adds r7,r7,#12
+ 525              	.LCFI47:
+ 526              	 .cfi_def_cfa_offset 4
+ 527 001e BD46     	 mov sp,r7
+ 528              	.LCFI48:
+ 529              	 .cfi_def_cfa_register 13
+ 530              	 
+ 531 0020 5DF8047B 	 ldr r7,[sp],#4
+ 532              	.LCFI49:
+ 533              	 .cfi_restore 7
+ 534              	 .cfi_def_cfa_offset 0
+ 535 0024 7047     	 bx lr
+ 536              	 .cfi_endproc
+ 537              	.LFE212:
+ 539 0026 00BF     	 .section .text.XMC_SDMMC_GetEvent,"ax",%progbits
+ 540              	 .align 2
+ 541              	 .global XMC_SDMMC_GetEvent
+ 542              	 .thumb
+ 543              	 .thumb_func
+ 545              	XMC_SDMMC_GetEvent:
+ 546              	.LFB213:
+ 269:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+ 270:../Libraries/XMCLib/src/xmc_sdmmc.c **** /* Get the status of an SDMMC event */
+ 271:../Libraries/XMCLib/src/xmc_sdmmc.c **** bool XMC_SDMMC_GetEvent(XMC_SDMMC_t *const sdmmc, XMC_SDMMC_EVENT_t event)
+ 272:../Libraries/XMCLib/src/xmc_sdmmc.c **** {  
+ 547              	 .loc 1 272 0
+ 548              	 .cfi_startproc
+ 549              	 
+ 550              	 
+ 551              	 
+ 552 0000 80B4     	 push {r7}
+ 553              	.LCFI50:
+ 554              	 .cfi_def_cfa_offset 4
+ 555              	 .cfi_offset 7,-4
+ 556 0002 85B0     	 sub sp,sp,#20
+ 557              	.LCFI51:
+ 558              	 .cfi_def_cfa_offset 24
+ 559 0004 00AF     	 add r7,sp,#0
+ 560              	.LCFI52:
+ 561              	 .cfi_def_cfa_register 7
+ 562 0006 7860     	 str r0,[r7,#4]
+ 563 0008 3960     	 str r1,[r7]
+ 273:../Libraries/XMCLib/src/xmc_sdmmc.c ****   bool status;
+ 274:../Libraries/XMCLib/src/xmc_sdmmc.c ****   
+ 275:../Libraries/XMCLib/src/xmc_sdmmc.c ****   XMC_ASSERT("XMC_SDMMC_GetEvent: Invalid module pointer", XMC_SDMMC_CHECK_MODULE_PTR(sdmmc));
+ 276:../Libraries/XMCLib/src/xmc_sdmmc.c ****   XMC_ASSERT("XMC_SDMMC_GetEvent: Invalid SDMMC event", XMC_SDMMC_CHECK_EVENT(event));
+ 277:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+ 278:../Libraries/XMCLib/src/xmc_sdmmc.c ****   if (event < XMC_SDMMC_CMD_TIMEOUT_ERR)
+ 564              	 .loc 1 278 0
+ 565 000a 3B68     	 ldr r3,[r7]
+ 566 000c B3F5803F 	 cmp r3,#65536
+ 567 0010 0CD2     	 bcs .L17
+ 279:../Libraries/XMCLib/src/xmc_sdmmc.c ****   {
+ 280:../Libraries/XMCLib/src/xmc_sdmmc.c ****     status = (bool)(sdmmc->INT_STATUS_NORM & (uint16_t)event);
+ 568              	 .loc 1 280 0
+ 569 0012 7B68     	 ldr r3,[r7,#4]
+ 570 0014 1B8E     	 ldrh r3,[r3,#48]
+ 571 0016 9AB2     	 uxth r2,r3
+ 572 0018 3B68     	 ldr r3,[r7]
+ 573 001a 9BB2     	 uxth r3,r3
+ 574 001c 1340     	 ands r3,r3,r2
+ 575 001e 9BB2     	 uxth r3,r3
+ 576 0020 002B     	 cmp r3,#0
+ 577 0022 14BF     	 ite ne
+ 578 0024 0123     	 movne r3,#1
+ 579 0026 0023     	 moveq r3,#0
+ 580 0028 FB73     	 strb r3,[r7,#15]
+ 581 002a 0CE0     	 b .L18
+ 582              	.L17:
+ 281:../Libraries/XMCLib/src/xmc_sdmmc.c ****   }
+ 282:../Libraries/XMCLib/src/xmc_sdmmc.c ****   else
+ 283:../Libraries/XMCLib/src/xmc_sdmmc.c ****   {
+ 284:../Libraries/XMCLib/src/xmc_sdmmc.c ****     status = (bool)(sdmmc->INT_STATUS_ERR & (uint16_t)((uint32_t)event >> 16U));
+ 583              	 .loc 1 284 0
+ 584 002c 7B68     	 ldr r3,[r7,#4]
+ 585 002e 5B8E     	 ldrh r3,[r3,#50]
+ 586 0030 9AB2     	 uxth r2,r3
+ 587 0032 3B68     	 ldr r3,[r7]
+ 588 0034 1B0C     	 lsrs r3,r3,#16
+ 589 0036 9BB2     	 uxth r3,r3
+ 590 0038 1340     	 ands r3,r3,r2
+ 591 003a 9BB2     	 uxth r3,r3
+ 592 003c 002B     	 cmp r3,#0
+ 593 003e 14BF     	 ite ne
+ 594 0040 0123     	 movne r3,#1
+ 595 0042 0023     	 moveq r3,#0
+ 596 0044 FB73     	 strb r3,[r7,#15]
+ 597              	.L18:
+ 285:../Libraries/XMCLib/src/xmc_sdmmc.c ****   }
+ 286:../Libraries/XMCLib/src/xmc_sdmmc.c ****   
+ 287:../Libraries/XMCLib/src/xmc_sdmmc.c ****   return status;
+ 598              	 .loc 1 287 0
+ 599 0046 FB7B     	 ldrb r3,[r7,#15]
+ 288:../Libraries/XMCLib/src/xmc_sdmmc.c **** }
+ 600              	 .loc 1 288 0
+ 601 0048 1846     	 mov r0,r3
+ 602 004a 1437     	 adds r7,r7,#20
+ 603              	.LCFI53:
+ 604              	 .cfi_def_cfa_offset 4
+ 605 004c BD46     	 mov sp,r7
+ 606              	.LCFI54:
+ 607              	 .cfi_def_cfa_register 13
+ 608              	 
+ 609 004e 5DF8047B 	 ldr r7,[sp],#4
+ 610              	.LCFI55:
+ 611              	 .cfi_restore 7
+ 612              	 .cfi_def_cfa_offset 0
+ 613 0052 7047     	 bx lr
+ 614              	 .cfi_endproc
+ 615              	.LFE213:
+ 617              	 .section .text.XMC_SDMMC_GetR2Response,"ax",%progbits
+ 618              	 .align 2
+ 619              	 .global XMC_SDMMC_GetR2Response
+ 620              	 .thumb
+ 621              	 .thumb_func
+ 623              	XMC_SDMMC_GetR2Response:
+ 624              	.LFB214:
+ 289:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+ 290:../Libraries/XMCLib/src/xmc_sdmmc.c **** /* Read R2 response (CID, CSD register) */
+ 291:../Libraries/XMCLib/src/xmc_sdmmc.c **** void XMC_SDMMC_GetR2Response(XMC_SDMMC_t *const sdmmc, XMC_SDMMC_RESPONSE_t *const response)
+ 292:../Libraries/XMCLib/src/xmc_sdmmc.c **** {
+ 625              	 .loc 1 292 0
+ 626              	 .cfi_startproc
+ 627              	 
+ 628              	 
+ 629              	 
+ 630 0000 80B4     	 push {r7}
+ 631              	.LCFI56:
+ 632              	 .cfi_def_cfa_offset 4
+ 633              	 .cfi_offset 7,-4
+ 634 0002 83B0     	 sub sp,sp,#12
+ 635              	.LCFI57:
+ 636              	 .cfi_def_cfa_offset 16
+ 637 0004 00AF     	 add r7,sp,#0
+ 638              	.LCFI58:
+ 639              	 .cfi_def_cfa_register 7
+ 640 0006 7860     	 str r0,[r7,#4]
+ 641 0008 3960     	 str r1,[r7]
+ 293:../Libraries/XMCLib/src/xmc_sdmmc.c ****   XMC_ASSERT("XMC_SDMMC_GetR2Response: Invalid module pointer", XMC_SDMMC_CHECK_MODULE_PTR(sdmmc));
+ 294:../Libraries/XMCLib/src/xmc_sdmmc.c ****   
+ 295:../Libraries/XMCLib/src/xmc_sdmmc.c ****   response->response_0 = sdmmc->RESPONSE[0];
+ 642              	 .loc 1 295 0
+ 643 000a 7B68     	 ldr r3,[r7,#4]
+ 644 000c 1A69     	 ldr r2,[r3,#16]
+ 645 000e 3B68     	 ldr r3,[r7]
+ 646 0010 1A60     	 str r2,[r3]
+ 296:../Libraries/XMCLib/src/xmc_sdmmc.c ****   response->response_2 = sdmmc->RESPONSE[1];
+ 647              	 .loc 1 296 0
+ 648 0012 7B68     	 ldr r3,[r7,#4]
+ 649 0014 5A69     	 ldr r2,[r3,#20]
+ 650 0016 3B68     	 ldr r3,[r7]
+ 651 0018 5A60     	 str r2,[r3,#4]
+ 297:../Libraries/XMCLib/src/xmc_sdmmc.c ****   response->response_4 = sdmmc->RESPONSE[2];
+ 652              	 .loc 1 297 0
+ 653 001a 7B68     	 ldr r3,[r7,#4]
+ 654 001c 9A69     	 ldr r2,[r3,#24]
+ 655 001e 3B68     	 ldr r3,[r7]
+ 656 0020 9A60     	 str r2,[r3,#8]
+ 298:../Libraries/XMCLib/src/xmc_sdmmc.c ****   response->response_6 = sdmmc->RESPONSE[3];
+ 657              	 .loc 1 298 0
+ 658 0022 7B68     	 ldr r3,[r7,#4]
+ 659 0024 DA69     	 ldr r2,[r3,#28]
+ 660 0026 3B68     	 ldr r3,[r7]
+ 661 0028 DA60     	 str r2,[r3,#12]
+ 299:../Libraries/XMCLib/src/xmc_sdmmc.c **** }
+ 662              	 .loc 1 299 0
+ 663 002a 0C37     	 adds r7,r7,#12
+ 664              	.LCFI59:
+ 665              	 .cfi_def_cfa_offset 4
+ 666 002c BD46     	 mov sp,r7
+ 667              	.LCFI60:
+ 668              	 .cfi_def_cfa_register 13
+ 669              	 
+ 670 002e 5DF8047B 	 ldr r7,[sp],#4
+ 671              	.LCFI61:
+ 672              	 .cfi_restore 7
+ 673              	 .cfi_def_cfa_offset 0
+ 674 0032 7047     	 bx lr
+ 675              	 .cfi_endproc
+ 676              	.LFE214:
+ 678              	 .section .text.XMC_SDMMC_SendCommand,"ax",%progbits
+ 679              	 .align 2
+ 680              	 .global XMC_SDMMC_SendCommand
+ 681              	 .thumb
+ 682              	 .thumb_func
+ 684              	XMC_SDMMC_SendCommand:
+ 685              	.LFB215:
+ 300:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+ 301:../Libraries/XMCLib/src/xmc_sdmmc.c **** /* Send SDMMC command */
+ 302:../Libraries/XMCLib/src/xmc_sdmmc.c **** XMC_SDMMC_STATUS_t XMC_SDMMC_SendCommand(XMC_SDMMC_t *const sdmmc, const XMC_SDMMC_COMMAND_t *cmd, 
+ 303:../Libraries/XMCLib/src/xmc_sdmmc.c **** {
+ 686              	 .loc 1 303 0
+ 687              	 .cfi_startproc
+ 688              	 
+ 689              	 
+ 690              	 
+ 691 0000 80B4     	 push {r7}
+ 692              	.LCFI62:
+ 693              	 .cfi_def_cfa_offset 4
+ 694              	 .cfi_offset 7,-4
+ 695 0002 85B0     	 sub sp,sp,#20
+ 696              	.LCFI63:
+ 697              	 .cfi_def_cfa_offset 24
+ 698 0004 00AF     	 add r7,sp,#0
+ 699              	.LCFI64:
+ 700              	 .cfi_def_cfa_register 7
+ 701 0006 F860     	 str r0,[r7,#12]
+ 702 0008 B960     	 str r1,[r7,#8]
+ 703 000a 7A60     	 str r2,[r7,#4]
+ 304:../Libraries/XMCLib/src/xmc_sdmmc.c ****   XMC_ASSERT("XMC_SDMMC_SendCommand: Invalid module pointer", XMC_SDMMC_CHECK_MODULE_PTR(sdmmc));
+ 305:../Libraries/XMCLib/src/xmc_sdmmc.c ****   
+ 306:../Libraries/XMCLib/src/xmc_sdmmc.c ****   sdmmc->ARGUMENT1 = arg;
+ 704              	 .loc 1 306 0
+ 705 000c FB68     	 ldr r3,[r7,#12]
+ 706 000e 7A68     	 ldr r2,[r7,#4]
+ 707 0010 9A60     	 str r2,[r3,#8]
+ 307:../Libraries/XMCLib/src/xmc_sdmmc.c ****   sdmmc->COMMAND = (uint16_t)(*(uint16_t *)cmd);
+ 708              	 .loc 1 307 0
+ 709 0012 BB68     	 ldr r3,[r7,#8]
+ 710 0014 1A88     	 ldrh r2,[r3]
+ 711 0016 FB68     	 ldr r3,[r7,#12]
+ 712 0018 DA81     	 strh r2,[r3,#14]
+ 308:../Libraries/XMCLib/src/xmc_sdmmc.c ****   
+ 309:../Libraries/XMCLib/src/xmc_sdmmc.c ****   return XMC_SDMMC_STATUS_SUCCESS;
+ 713              	 .loc 1 309 0
+ 714 001a 0023     	 movs r3,#0
+ 310:../Libraries/XMCLib/src/xmc_sdmmc.c **** }
+ 715              	 .loc 1 310 0
+ 716 001c 1846     	 mov r0,r3
+ 717 001e 1437     	 adds r7,r7,#20
+ 718              	.LCFI65:
+ 719              	 .cfi_def_cfa_offset 4
+ 720 0020 BD46     	 mov sp,r7
+ 721              	.LCFI66:
+ 722              	 .cfi_def_cfa_register 13
+ 723              	 
+ 724 0022 5DF8047B 	 ldr r7,[sp],#4
+ 725              	.LCFI67:
+ 726              	 .cfi_restore 7
+ 727              	 .cfi_def_cfa_offset 0
+ 728 0026 7047     	 bx lr
+ 729              	 .cfi_endproc
+ 730              	.LFE215:
+ 732              	 .section .text.XMC_SDMMC_SetDataTransferMode,"ax",%progbits
+ 733              	 .align 2
+ 734              	 .global XMC_SDMMC_SetDataTransferMode
+ 735              	 .thumb
+ 736              	 .thumb_func
+ 738              	XMC_SDMMC_SetDataTransferMode:
+ 739              	.LFB216:
+ 311:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+ 312:../Libraries/XMCLib/src/xmc_sdmmc.c **** /* Set data transfer mode */
+ 313:../Libraries/XMCLib/src/xmc_sdmmc.c **** void XMC_SDMMC_SetDataTransferMode(XMC_SDMMC_t *const sdmmc, XMC_SDMMC_TRANSFER_MODE_t *const respo
+ 314:../Libraries/XMCLib/src/xmc_sdmmc.c **** {
+ 740              	 .loc 1 314 0
+ 741              	 .cfi_startproc
+ 742              	 
+ 743              	 
+ 744              	 
+ 745 0000 80B4     	 push {r7}
+ 746              	.LCFI68:
+ 747              	 .cfi_def_cfa_offset 4
+ 748              	 .cfi_offset 7,-4
+ 749 0002 83B0     	 sub sp,sp,#12
+ 750              	.LCFI69:
+ 751              	 .cfi_def_cfa_offset 16
+ 752 0004 00AF     	 add r7,sp,#0
+ 753              	.LCFI70:
+ 754              	 .cfi_def_cfa_register 7
+ 755 0006 7860     	 str r0,[r7,#4]
+ 756 0008 3960     	 str r1,[r7]
+ 315:../Libraries/XMCLib/src/xmc_sdmmc.c ****   XMC_ASSERT("XMC_SDMMC_SetDataTransferMode: Invalid module pointer", XMC_SDMMC_CHECK_MODULE_PTR(sd
+ 316:../Libraries/XMCLib/src/xmc_sdmmc.c ****   XMC_ASSERT("XMC_SDMMC_SetDataTransferMode: Invalid transfer type", XMC_SDMMC_CHECK_TRANSFER_MODE(
+ 317:../Libraries/XMCLib/src/xmc_sdmmc.c ****   
+ 318:../Libraries/XMCLib/src/xmc_sdmmc.c ****   /* Block size */
+ 319:../Libraries/XMCLib/src/xmc_sdmmc.c ****   sdmmc->BLOCK_SIZE = (uint16_t)(response->block_size);
+ 757              	 .loc 1 319 0
+ 758 000a 3B68     	 ldr r3,[r7]
+ 759 000c 1B68     	 ldr r3,[r3]
+ 760 000e 9AB2     	 uxth r2,r3
+ 761 0010 7B68     	 ldr r3,[r7,#4]
+ 762 0012 9A80     	 strh r2,[r3,#4]
+ 320:../Libraries/XMCLib/src/xmc_sdmmc.c ****   
+ 321:../Libraries/XMCLib/src/xmc_sdmmc.c ****   /* Number of blocks */
+ 322:../Libraries/XMCLib/src/xmc_sdmmc.c ****   sdmmc->BLOCK_COUNT = (uint16_t)(response->num_blocks);
+ 763              	 .loc 1 322 0
+ 764 0014 3B68     	 ldr r3,[r7]
+ 765 0016 5B68     	 ldr r3,[r3,#4]
+ 766 0018 9AB2     	 uxth r2,r3
+ 767 001a 7B68     	 ldr r3,[r7,#4]
+ 768 001c DA80     	 strh r2,[r3,#6]
+ 323:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+ 324:../Libraries/XMCLib/src/xmc_sdmmc.c ****   /* Type of data transfer: single, infinite, multiple or stop multiple */
+ 325:../Libraries/XMCLib/src/xmc_sdmmc.c ****   sdmmc->TRANSFER_MODE = (uint16_t)((sdmmc->TRANSFER_MODE & (uint16_t)~SDMMC_TRANSFER_MODE_MULTI_BL
+ 769              	 .loc 1 325 0
+ 770 001e 7B68     	 ldr r3,[r7,#4]
+ 771 0020 9B89     	 ldrh r3,[r3,#12]
+ 772 0022 9BB2     	 uxth r3,r3
+ 773 0024 9BB2     	 uxth r3,r3
+ 774 0026 23F02003 	 bic r3,r3,#32
+ 775 002a 9AB2     	 uxth r2,r3
+ 326:../Libraries/XMCLib/src/xmc_sdmmc.c ****                                     ((uint16_t)response->type));
+ 776              	 .loc 1 326 0
+ 777 002c 3B68     	 ldr r3,[r7]
+ 778 002e 1B7A     	 ldrb r3,[r3,#8]
+ 325:../Libraries/XMCLib/src/xmc_sdmmc.c ****                                     ((uint16_t)response->type));
+ 779              	 .loc 1 325 0
+ 780 0030 9BB2     	 uxth r3,r3
+ 781 0032 1343     	 orrs r3,r3,r2
+ 782 0034 9BB2     	 uxth r3,r3
+ 783 0036 9AB2     	 uxth r2,r3
+ 784 0038 7B68     	 ldr r3,[r7,#4]
+ 785 003a 9A81     	 strh r2,[r3,#12]
+ 327:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+ 328:../Libraries/XMCLib/src/xmc_sdmmc.c ****   /*
+ 329:../Libraries/XMCLib/src/xmc_sdmmc.c ****    * Clear block count enable bit; that's only valid for
+ 330:../Libraries/XMCLib/src/xmc_sdmmc.c ****    * a multi-block transfer
+ 331:../Libraries/XMCLib/src/xmc_sdmmc.c ****    */
+ 332:../Libraries/XMCLib/src/xmc_sdmmc.c ****   if (response->type == XMC_SDMMC_TRANSFER_MODE_TYPE_SINGLE)
+ 786              	 .loc 1 332 0
+ 787 003c 3B68     	 ldr r3,[r7]
+ 788 003e 1B7A     	 ldrb r3,[r3,#8]
+ 789 0040 002B     	 cmp r3,#0
+ 790 0042 07D1     	 bne .L24
+ 333:../Libraries/XMCLib/src/xmc_sdmmc.c ****   {
+ 334:../Libraries/XMCLib/src/xmc_sdmmc.c ****     sdmmc->TRANSFER_MODE &= (uint16_t)~SDMMC_TRANSFER_MODE_BLOCK_COUNT_EN_Msk;
+ 791              	 .loc 1 334 0
+ 792 0044 7B68     	 ldr r3,[r7,#4]
+ 793 0046 9B89     	 ldrh r3,[r3,#12]
+ 794 0048 9BB2     	 uxth r3,r3
+ 795 004a 23F00203 	 bic r3,r3,#2
+ 796 004e 9AB2     	 uxth r2,r3
+ 797 0050 7B68     	 ldr r3,[r7,#4]
+ 798 0052 9A81     	 strh r2,[r3,#12]
+ 799              	.L24:
+ 335:../Libraries/XMCLib/src/xmc_sdmmc.c ****   }
+ 336:../Libraries/XMCLib/src/xmc_sdmmc.c **** 
+ 337:../Libraries/XMCLib/src/xmc_sdmmc.c ****   /* Auto CMD configuration */
+ 338:../Libraries/XMCLib/src/xmc_sdmmc.c ****   sdmmc->TRANSFER_MODE = (uint16_t)((sdmmc->TRANSFER_MODE & (uint16_t)~SDMMC_TRANSFER_MODE_ACMD_EN_
+ 800              	 .loc 1 338 0
+ 801 0054 7B68     	 ldr r3,[r7,#4]
+ 802 0056 9B89     	 ldrh r3,[r3,#12]
+ 803 0058 9BB2     	 uxth r3,r3
+ 804 005a 9BB2     	 uxth r3,r3
+ 805 005c 23F00C03 	 bic r3,r3,#12
+ 806 0060 9AB2     	 uxth r2,r3
+ 339:../Libraries/XMCLib/src/xmc_sdmmc.c ****                                     ((uint16_t)response->auto_cmd << SDMMC_TRANSFER_MODE_ACMD_EN_Po
+ 807              	 .loc 1 339 0
+ 808 0062 3B68     	 ldr r3,[r7]
+ 809 0064 5B7A     	 ldrb r3,[r3,#9]
+ 810 0066 9B00     	 lsls r3,r3,#2
+ 338:../Libraries/XMCLib/src/xmc_sdmmc.c ****                                     ((uint16_t)response->auto_cmd << SDMMC_TRANSFER_MODE_ACMD_EN_Po
+ 811              	 .loc 1 338 0
+ 812 0068 9BB2     	 uxth r3,r3
+ 813 006a 1343     	 orrs r3,r3,r2
+ 814 006c 9BB2     	 uxth r3,r3
+ 815 006e 9AB2     	 uxth r2,r3
+ 816 0070 7B68     	 ldr r3,[r7,#4]
+ 817 0072 9A81     	 strh r2,[r3,#12]
+ 340:../Libraries/XMCLib/src/xmc_sdmmc.c **** }
+ 818              	 .loc 1 340 0
+ 819 0074 0C37     	 adds r7,r7,#12
+ 820              	.LCFI71:
+ 821              	 .cfi_def_cfa_offset 4
+ 822 0076 BD46     	 mov sp,r7
+ 823              	.LCFI72:
+ 824              	 .cfi_def_cfa_register 13
+ 825              	 
+ 826 0078 5DF8047B 	 ldr r7,[sp],#4
+ 827              	.LCFI73:
+ 828              	 .cfi_restore 7
+ 829              	 .cfi_def_cfa_offset 0
+ 830 007c 7047     	 bx lr
+ 831              	 .cfi_endproc
+ 832              	.LFE216:
+ 834 007e 00BF     	 .text
+ 835              	.Letext0:
+ 836              	 .file 2 "c:\\program files (x86)\\dave\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 837              	 .file 3 "c:\\program files (x86)\\dave\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 838              	 .file 4 "C:/Users/VMORAIS/Documents/DAVE_WS/1p_inverter_200V/Libraries/XMCLib/inc/xmc_sdmmc.h"
+ 839              	 .file 5 "C:/Users/VMORAIS/Documents/DAVE_WS/1p_inverter_200V/Libraries/CMSIS/Include/core_cm4.h"
+ 840              	 .file 6 "C:/Users/VMORAIS/Documents/DAVE_WS/1p_inverter_200V/Libraries/CMSIS/Infineon/XMC4500_series/Include/system_XMC4500.h"
+ 841              	 .file 7 "C:/Users/VMORAIS/Documents/DAVE_WS/1p_inverter_200V/Libraries/XMCLib/inc/xmc4_scu.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 xmc_sdmmc.c
+    {standard input}:20     .text.XMC_SDMMC_GetPowerStatus:00000000 $t
+    {standard input}:25     .text.XMC_SDMMC_GetPowerStatus:00000000 XMC_SDMMC_GetPowerStatus
+    {standard input}:72     .text.XMC_SDMMC_Enable:00000000 $t
+    {standard input}:77     .text.XMC_SDMMC_Enable:00000000 XMC_SDMMC_Enable
+    {standard input}:110    .text.XMC_SDMMC_Enable:00000014 $d
+    {standard input}:115    .text.XMC_SDMMC_Disable:00000000 $t
+    {standard input}:120    .text.XMC_SDMMC_Disable:00000000 XMC_SDMMC_Disable
+    {standard input}:153    .text.XMC_SDMMC_Disable:00000014 $d
+    {standard input}:158    .text.XMC_SDMMC_Init:00000000 $t
+    {standard input}:163    .text.XMC_SDMMC_Init:00000000 XMC_SDMMC_Init
+    {standard input}:232    .text.XMC_SDMMC_EnableEventStatus:00000000 $t
+    {standard input}:237    .text.XMC_SDMMC_EnableEventStatus:00000000 XMC_SDMMC_EnableEventStatus
+    {standard input}:294    .text.XMC_SDMMC_DisableEventStatus:00000000 $t
+    {standard input}:299    .text.XMC_SDMMC_DisableEventStatus:00000000 XMC_SDMMC_DisableEventStatus
+    {standard input}:360    .text.XMC_SDMMC_EnableEvent:00000000 $t
+    {standard input}:365    .text.XMC_SDMMC_EnableEvent:00000000 XMC_SDMMC_EnableEvent
+    {standard input}:422    .text.XMC_SDMMC_DisableEvent:00000000 $t
+    {standard input}:427    .text.XMC_SDMMC_DisableEvent:00000000 XMC_SDMMC_DisableEvent
+    {standard input}:488    .text.XMC_SDMMC_ClearEvent:00000000 $t
+    {standard input}:493    .text.XMC_SDMMC_ClearEvent:00000000 XMC_SDMMC_ClearEvent
+    {standard input}:540    .text.XMC_SDMMC_GetEvent:00000000 $t
+    {standard input}:545    .text.XMC_SDMMC_GetEvent:00000000 XMC_SDMMC_GetEvent
+    {standard input}:618    .text.XMC_SDMMC_GetR2Response:00000000 $t
+    {standard input}:623    .text.XMC_SDMMC_GetR2Response:00000000 XMC_SDMMC_GetR2Response
+    {standard input}:679    .text.XMC_SDMMC_SendCommand:00000000 $t
+    {standard input}:684    .text.XMC_SDMMC_SendCommand:00000000 XMC_SDMMC_SendCommand
+    {standard input}:733    .text.XMC_SDMMC_SetDataTransferMode:00000000 $t
+    {standard input}:738    .text.XMC_SDMMC_SetDataTransferMode:00000000 XMC_SDMMC_SetDataTransferMode
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+XMC_SCU_RESET_DeassertPeripheralReset
+XMC_SCU_RESET_AssertPeripheralReset

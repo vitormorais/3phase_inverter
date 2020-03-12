@@ -1,0 +1,45 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "arm_biquad_cascade_df1_32x64_init_q31.c"
+  16              	 .section .text.arm_biquad_cas_df1_32x64_init_q31,"ax",%progbits
+  17              	 .align 1
+  18              	 .global arm_biquad_cas_df1_32x64_init_q31
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	arm_biquad_cas_df1_32x64_init_q31:
+  23              	 
+  24              	 
+  25 0000 70B5     	 push {r4,r5,r6,lr}
+  26 0002 0446     	 mov r4,r0
+  27 0004 1D46     	 mov r5,r3
+  28 0006 0E46     	 mov r6,r1
+  29 0008 9DF81030 	 ldrb r3,[sp,#16]
+  30 000c 2170     	 strb r1,[r4]
+  31 000e 8260     	 str r2,[r0,#8]
+  32 0010 0373     	 strb r3,[r0,#12]
+  33 0012 0021     	 movs r1,#0
+  34 0014 2846     	 mov r0,r5
+  35 0016 7201     	 lsls r2,r6,#5
+  36 0018 FFF7FEFF 	 bl memset
+  37 001c 6560     	 str r5,[r4,#4]
+  38 001e 70BD     	 pop {r4,r5,r6,pc}
+  40              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 arm_biquad_cascade_df1_32x64_init_q31.c
+    {standard input}:17     .text.arm_biquad_cas_df1_32x64_init_q31:00000000 $t
+    {standard input}:22     .text.arm_biquad_cas_df1_32x64_init_q31:00000000 arm_biquad_cas_df1_32x64_init_q31
+
+UNDEFINED SYMBOLS
+memset

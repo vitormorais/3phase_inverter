@@ -1,0 +1,40 @@
+Altium Designer Pick and Place Locations
+F:\Projects\20190909 - 3phase_inverter\3phase_inverter\2. Hardware PCB\REV_4.0\filtro\Project Outputs for filtro_rev4\Pick Place for filtro_rev4.txt
+
+========================================================================================================================
+File Design Information:
+
+Date:       11/03/20
+Time:       11:55
+Revision:   Not in VersionControl
+Variant:    No variations
+Units used: mil
+
+Designator Comment                  Layer       Footprint             Center-X(mil) Center-Y(mil) Rotation Description                                                                          LCSC PART # 
+U6         P 2p 5mm                 TopLayer    connector1x2_parafuso 3645.000      -3255.000     270      Bloques de terminales de PCB de perfil estándar RS de 5,0 mm                                     
+U4         P 2p 5mm                 TopLayer    connector1x2_parafuso 3645.000      -2453.603     270      Bloques de terminales de PCB de perfil estándar RS de 5,0 mm                                     
+U2         P 2p 5mm                 TopLayer    connector1x2_parafuso 3625.000      -1676.103     270      Bloques de terminales de PCB de perfil estándar RS de 5,0 mm                                     
+R9         R 10 5W TH 5%            TopLayer    PWR_RESC_5W           2720.000      -2635.000     270      Resistores de Fio Enrolado - Orifício de Passagem 5W 10 Ohms 5%                                  
+R8         R 10 5W TH 5%            TopLayer    PWR_RESC_5W           3010.000      -2635.000     270      Resistores de Fio Enrolado - Orifício de Passagem 5W 10 Ohms 5%                                  
+R7         R 10 5W TH 5%            TopLayer    PWR_RESC_5W           3300.000      -2635.000     270      Resistores de Fio Enrolado - Orifício de Passagem 5W 10 Ohms 5%                                  
+R6         R 10 5W TH 5%            TopLayer    PWR_RESC_5W           1855.000      -2635.000     270      Resistores de Fio Enrolado - Orifício de Passagem 5W 10 Ohms 5%                                  
+R5         R 10 5W TH 5%            TopLayer    PWR_RESC_5W           2142.599      -2635.000     270      Resistores de Fio Enrolado - Orifício de Passagem 5W 10 Ohms 5%                                  
+R4         R 10 5W TH 5%            TopLayer    PWR_RESC_5W           2430.000      -2635.000     270      Resistores de Fio Enrolado - Orifício de Passagem 5W 10 Ohms 5%                                  
+R3         R 10 5W TH 5%            TopLayer    PWR_RESC_5W           982.598       -2635.000     270      Resistores de Fio Enrolado - Orifício de Passagem 5W 10 Ohms 5%                                  
+R2         R 10 5W TH 5%            TopLayer    PWR_RESC_5W           1275.000      -2635.000     270      Resistores de Fio Enrolado - Orifício de Passagem 5W 10 Ohms 5%                                  
+R1         R 10 5W TH 5%            TopLayer    PWR_RESC_5W           1565.000      -2635.000     270      Resistores de Fio Enrolado - Orifício de Passagem 5W 10 Ohms 5%                                  
+C6         C 2uF PPCap TH 630V      TopLayer    PWR_CAP_PP_2u         2795.000      -1040.000     270      Capacitores de película 2.0uF 630volts 10% 37.5mmL/S 1.0mmL/D                                    
+C4         C 2uF PPCap TH 630V      TopLayer    PWR_CAP_PP_2u         2205.000      -1045.000     270      Capacitores de película 2.0uF 630volts 10% 37.5mmL/S 1.0mmL/D                                    
+C2         C 2uF PPCap TH 630V      TopLayer    PWR_CAP_PP_2u         1610.000      -1050.000     270      Capacitores de película 2.0uF 630volts 10% 37.5mmL/S 1.0mmL/D                                    
+C1         C 10uF 0805 MLCC 25V X5R TopLayer    CAPC_0805             580.000       -1435.000     180      Capacitores de cerâmica multicamada MLCC - SMD/SMT 10uF 25V X5R +/-10% 0805 Gen Purp C15850      
+C3         C 10uF 0805 MLCC 25V X5R TopLayer    CAPC_0805             600.000       -2200.000     180      Capacitores de cerâmica multicamada MLCC - SMD/SMT 10uF 25V X5R +/-10% 0805 Gen Purp C15850      
+C5         C 10uF 0805 MLCC 25V X5R TopLayer    CAPC_0805             590.000       -2990.000     180      Capacitores de cerâmica multicamada MLCC - SMD/SMT 10uF 25V X5R +/-10% 0805 Gen Purp C15850      
+CC1        IC CC 30A SO-8           TopLayer    CC6303_SOP8           585.000       -1690.000     90       Sensores de Corrente de Montagem de Painel Hall Effect IC LF 30A 66 mV/A             C10681      
+CC2        IC CC 30A SO-8           TopLayer    CC6303_SOP8           590.000       -2465.000     90       Sensores de Corrente de Montagem de Painel Hall Effect IC LF 30A 66 mV/A             C10681      
+CC3        IC CC 30A SO-8           TopLayer    CC6303_SOP8           590.000       -3225.236     90       Sensores de Corrente de Montagem de Painel Hall Effect IC LF 30A 66 mV/A             C10681      
+P1         P 8p 2.54 SR DW 3P       BottomLayer MOLEX_3p_105431_1103  580.000       -1300.000     360      Distribuidores e Alojamento de Fios CGrid Hrd SRDW THo le 8ckt                                   
+P2         P 8p 2.54 SR DW 3P       BottomLayer MOLEX_3p_105431_1103  591.575       -2080.000     360      Distribuidores e Alojamento de Fios CGrid Hrd SRDW THo le 8ckt                                   
+P3         P 8p 2.54 SR DW 3P       BottomLayer MOLEX_3p_105431_1103  585.000       -2875.000     360      Distribuidores e Alojamento de Fios CGrid Hrd SRDW THo le 8ckt                                   
+U1         P 2p 5mm                 TopLayer    connector1x2_parafuso 149.449       -1698.976     90       Bloques de terminales de PCB de perfil estándar RS de 5,0 mm                                     
+U3         P 2p 5mm                 TopLayer    connector1x2_parafuso 149.449       -2476.476     90       Bloques de terminales de PCB de perfil estándar RS de 5,0 mm                                     
+U5         P 2p 5mm                 TopLayer    connector1x2_parafuso 149.449       -3253.976     90       Bloques de terminales de PCB de perfil estándar RS de 5,0 mm                                     

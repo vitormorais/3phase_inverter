@@ -1,0 +1,386 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "arm_max_q31.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .section .text.arm_max_q31,"ax",%progbits
+  20              	 .align 2
+  21              	 .global arm_max_q31
+  22              	 .thumb
+  23              	 .thumb_func
+  25              	arm_max_q31:
+  26              	.LFB135:
+  27              	 .file 1 "../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c"
+   1:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** /* ----------------------------------------------------------------------
+   2:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  * Project:      CMSIS DSP Library
+   3:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  * Title:        arm_max_q31.c
+   4:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  * Description:  Maximum value of a Q31 vector
+   5:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  *
+   6:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  * $Date:        27. January 2017
+   7:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  * $Revision:    V.1.5.1
+   8:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  *
+   9:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  * Target Processor: Cortex-M cores
+  10:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  * -------------------------------------------------------------------- */
+  11:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** /*
+  12:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  * Copyright (C) 2010-2017 ARM Limited or its affiliates. All rights reserved.
+  13:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  *
+  14:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  * SPDX-License-Identifier: Apache-2.0
+  15:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  *
+  16:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  * Licensed under the Apache License, Version 2.0 (the License); you may
+  17:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  * not use this file except in compliance with the License.
+  18:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  * You may obtain a copy of the License at
+  19:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  *
+  20:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  * www.apache.org/licenses/LICENSE-2.0
+  21:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  *
+  22:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  * Unless required by applicable law or agreed to in writing, software
+  23:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  * distributed under the License is distributed on an AS IS BASIS, WITHOUT
+  24:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  25:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  * See the License for the specific language governing permissions and
+  26:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  * limitations under the License.
+  27:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  */
+  28:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** 
+  29:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** #include "CMSIS_DSP/cmsis_dsp.h"
+  30:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** 
+  31:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** /**
+  32:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  * @ingroup groupStats
+  33:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  */
+  34:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** 
+  35:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** /**
+  36:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  * @addtogroup Max
+  37:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  * @{
+  38:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  */
+  39:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** 
+  40:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** 
+  41:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** /**
+  42:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  * @brief Maximum value of a Q31 vector.
+  43:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  * @param[in]       *pSrc points to the input vector
+  44:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  * @param[in]       blockSize length of the input vector
+  45:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  * @param[out]      *pResult maximum value returned here
+  46:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  * @param[out]      *pIndex index of maximum value returned here
+  47:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  * @return none.
+  48:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****  */
+  49:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** 
+  50:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** void arm_max_q31(
+  51:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   q31_t * pSrc,
+  52:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   uint32_t blockSize,
+  53:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   q31_t * pResult,
+  54:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   uint32_t * pIndex)
+  55:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** {
+  28              	 .loc 1 55 0
+  29              	 .cfi_startproc
+  30              	 
+  31              	 
+  32              	 
+  33 0000 80B4     	 push {r7}
+  34              	.LCFI0:
+  35              	 .cfi_def_cfa_offset 4
+  36              	 .cfi_offset 7,-4
+  37 0002 8BB0     	 sub sp,sp,#44
+  38              	.LCFI1:
+  39              	 .cfi_def_cfa_offset 48
+  40 0004 00AF     	 add r7,sp,#0
+  41              	.LCFI2:
+  42              	 .cfi_def_cfa_register 7
+  43 0006 F860     	 str r0,[r7,#12]
+  44 0008 B960     	 str r1,[r7,#8]
+  45 000a 7A60     	 str r2,[r7,#4]
+  46 000c 3B60     	 str r3,[r7]
+  56:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** #if defined (ARM_MATH_DSP)
+  57:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   /* Run the below code for Cortex-M4 and Cortex-M3 */
+  58:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** 
+  59:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   q31_t maxVal1, maxVal2, out;                   /* Temporary variables to store the output value. 
+  60:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   uint32_t blkCnt, outIndex, count;              /* loop counter */
+  61:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** 
+  62:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   /* Initialise the count value. */
+  63:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   count = 0u;
+  47              	 .loc 1 63 0
+  48 000e 0023     	 movs r3,#0
+  49 0010 BB61     	 str r3,[r7,#24]
+  64:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   /* Initialise the index value to zero. */
+  65:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   outIndex = 0u;
+  50              	 .loc 1 65 0
+  51 0012 0023     	 movs r3,#0
+  52 0014 FB61     	 str r3,[r7,#28]
+  66:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   /* Load first input value that act as reference value for comparision */
+  67:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   out = *pSrc++;
+  53              	 .loc 1 67 0
+  54 0016 FB68     	 ldr r3,[r7,#12]
+  55 0018 1A1D     	 adds r2,r3,#4
+  56 001a FA60     	 str r2,[r7,#12]
+  57 001c 1B68     	 ldr r3,[r3]
+  58 001e 7B62     	 str r3,[r7,#36]
+  68:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** 
+  69:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   /* Loop unrolling */
+  70:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   blkCnt = (blockSize - 1u) >> 2u;
+  59              	 .loc 1 70 0
+  60 0020 BB68     	 ldr r3,[r7,#8]
+  61 0022 013B     	 subs r3,r3,#1
+  62 0024 9B08     	 lsrs r3,r3,#2
+  63 0026 3B62     	 str r3,[r7,#32]
+  71:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** 
+  72:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   while (blkCnt > 0u)
+  64              	 .loc 1 72 0
+  65 0028 3DE0     	 b .L2
+  66              	.L7:
+  73:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   {
+  74:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****     /* Initialize maxVal to the next consecutive values one by one */
+  75:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****     maxVal1 = *pSrc++;
+  67              	 .loc 1 75 0
+  68 002a FB68     	 ldr r3,[r7,#12]
+  69 002c 1A1D     	 adds r2,r3,#4
+  70 002e FA60     	 str r2,[r7,#12]
+  71 0030 1B68     	 ldr r3,[r3]
+  72 0032 7B61     	 str r3,[r7,#20]
+  76:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****     maxVal2 = *pSrc++;
+  73              	 .loc 1 76 0
+  74 0034 FB68     	 ldr r3,[r7,#12]
+  75 0036 1A1D     	 adds r2,r3,#4
+  76 0038 FA60     	 str r2,[r7,#12]
+  77 003a 1B68     	 ldr r3,[r3]
+  78 003c 3B61     	 str r3,[r7,#16]
+  77:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** 
+  78:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****     /* compare for the maximum value */
+  79:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****     if (out < maxVal1)
+  79              	 .loc 1 79 0
+  80 003e 7A6A     	 ldr r2,[r7,#36]
+  81 0040 7B69     	 ldr r3,[r7,#20]
+  82 0042 9A42     	 cmp r2,r3
+  83 0044 04DA     	 bge .L3
+  80:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****     {
+  81:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****       /* Update the maximum value and its index */
+  82:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****       out = maxVal1;
+  84              	 .loc 1 82 0
+  85 0046 7B69     	 ldr r3,[r7,#20]
+  86 0048 7B62     	 str r3,[r7,#36]
+  83:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****       outIndex = count + 1u;
+  87              	 .loc 1 83 0
+  88 004a BB69     	 ldr r3,[r7,#24]
+  89 004c 0133     	 adds r3,r3,#1
+  90 004e FB61     	 str r3,[r7,#28]
+  91              	.L3:
+  84:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****     }
+  85:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** 
+  86:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****     /* compare for the maximum value */
+  87:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****     if (out < maxVal2)
+  92              	 .loc 1 87 0
+  93 0050 7A6A     	 ldr r2,[r7,#36]
+  94 0052 3B69     	 ldr r3,[r7,#16]
+  95 0054 9A42     	 cmp r2,r3
+  96 0056 04DA     	 bge .L4
+  88:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****     {
+  89:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****       /* Update the maximum value and its index */
+  90:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****       out = maxVal2;
+  97              	 .loc 1 90 0
+  98 0058 3B69     	 ldr r3,[r7,#16]
+  99 005a 7B62     	 str r3,[r7,#36]
+  91:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****       outIndex = count + 2u;
+ 100              	 .loc 1 91 0
+ 101 005c BB69     	 ldr r3,[r7,#24]
+ 102 005e 0233     	 adds r3,r3,#2
+ 103 0060 FB61     	 str r3,[r7,#28]
+ 104              	.L4:
+  92:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****     }
+  93:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** 
+  94:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****     /* Initialize maxVal to the next consecutive values one by one */
+  95:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****     maxVal1 = *pSrc++;
+ 105              	 .loc 1 95 0
+ 106 0062 FB68     	 ldr r3,[r7,#12]
+ 107 0064 1A1D     	 adds r2,r3,#4
+ 108 0066 FA60     	 str r2,[r7,#12]
+ 109 0068 1B68     	 ldr r3,[r3]
+ 110 006a 7B61     	 str r3,[r7,#20]
+  96:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****     maxVal2 = *pSrc++;
+ 111              	 .loc 1 96 0
+ 112 006c FB68     	 ldr r3,[r7,#12]
+ 113 006e 1A1D     	 adds r2,r3,#4
+ 114 0070 FA60     	 str r2,[r7,#12]
+ 115 0072 1B68     	 ldr r3,[r3]
+ 116 0074 3B61     	 str r3,[r7,#16]
+  97:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** 
+  98:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****     /* compare for the maximum value */
+  99:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****     if (out < maxVal1)
+ 117              	 .loc 1 99 0
+ 118 0076 7A6A     	 ldr r2,[r7,#36]
+ 119 0078 7B69     	 ldr r3,[r7,#20]
+ 120 007a 9A42     	 cmp r2,r3
+ 121 007c 04DA     	 bge .L5
+ 100:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****     {
+ 101:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****       /* Update the maximum value and its index */
+ 102:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****       out = maxVal1;
+ 122              	 .loc 1 102 0
+ 123 007e 7B69     	 ldr r3,[r7,#20]
+ 124 0080 7B62     	 str r3,[r7,#36]
+ 103:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****       outIndex = count + 3u;
+ 125              	 .loc 1 103 0
+ 126 0082 BB69     	 ldr r3,[r7,#24]
+ 127 0084 0333     	 adds r3,r3,#3
+ 128 0086 FB61     	 str r3,[r7,#28]
+ 129              	.L5:
+ 104:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****     }
+ 105:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** 
+ 106:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****     /* compare for the maximum value */
+ 107:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****     if (out < maxVal2)
+ 130              	 .loc 1 107 0
+ 131 0088 7A6A     	 ldr r2,[r7,#36]
+ 132 008a 3B69     	 ldr r3,[r7,#16]
+ 133 008c 9A42     	 cmp r2,r3
+ 134 008e 04DA     	 bge .L6
+ 108:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****     {
+ 109:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****       /* Update the maximum value and its index */
+ 110:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****       out = maxVal2;
+ 135              	 .loc 1 110 0
+ 136 0090 3B69     	 ldr r3,[r7,#16]
+ 137 0092 7B62     	 str r3,[r7,#36]
+ 111:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****       outIndex = count + 4u;
+ 138              	 .loc 1 111 0
+ 139 0094 BB69     	 ldr r3,[r7,#24]
+ 140 0096 0433     	 adds r3,r3,#4
+ 141 0098 FB61     	 str r3,[r7,#28]
+ 142              	.L6:
+ 112:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****     }
+ 113:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** 
+ 114:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****     count += 4u;
+ 143              	 .loc 1 114 0
+ 144 009a BB69     	 ldr r3,[r7,#24]
+ 145 009c 0433     	 adds r3,r3,#4
+ 146 009e BB61     	 str r3,[r7,#24]
+ 115:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** 
+ 116:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****     /* Decrement the loop counter */
+ 117:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****     blkCnt--;
+ 147              	 .loc 1 117 0
+ 148 00a0 3B6A     	 ldr r3,[r7,#32]
+ 149 00a2 013B     	 subs r3,r3,#1
+ 150 00a4 3B62     	 str r3,[r7,#32]
+ 151              	.L2:
+  72:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   {
+ 152              	 .loc 1 72 0
+ 153 00a6 3B6A     	 ldr r3,[r7,#32]
+ 154 00a8 002B     	 cmp r3,#0
+ 155 00aa BED1     	 bne .L7
+ 118:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   }
+ 119:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** 
+ 120:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   /* if (blockSize - 1u) is not multiple of 4 */
+ 121:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   blkCnt = (blockSize - 1u) % 4u;
+ 156              	 .loc 1 121 0
+ 157 00ac BB68     	 ldr r3,[r7,#8]
+ 158 00ae 013B     	 subs r3,r3,#1
+ 159 00b0 03F00303 	 and r3,r3,#3
+ 160 00b4 3B62     	 str r3,[r7,#32]
+ 122:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** 
+ 123:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** #else
+ 124:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   /* Run the below code for Cortex-M0 */
+ 125:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** 
+ 126:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   q31_t maxVal1, out;                            /* Temporary variables to store the output value. 
+ 127:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   uint32_t blkCnt, outIndex;                     /* loop counter */
+ 128:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** 
+ 129:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   /* Initialise the index value to zero. */
+ 130:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   outIndex = 0u;
+ 131:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   /* Load first input value that act as reference value for comparision */
+ 132:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   out = *pSrc++;
+ 133:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** 
+ 134:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   blkCnt = (blockSize - 1u);
+ 135:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** 
+ 136:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** #endif /* #if defined (ARM_MATH_DSP) */
+ 137:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** 
+ 138:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   while (blkCnt > 0u)
+ 161              	 .loc 1 138 0
+ 162 00b6 11E0     	 b .L8
+ 163              	.L10:
+ 139:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   {
+ 140:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****     /* Initialize maxVal to the next consecutive values one by one */
+ 141:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****     maxVal1 = *pSrc++;
+ 164              	 .loc 1 141 0
+ 165 00b8 FB68     	 ldr r3,[r7,#12]
+ 166 00ba 1A1D     	 adds r2,r3,#4
+ 167 00bc FA60     	 str r2,[r7,#12]
+ 168 00be 1B68     	 ldr r3,[r3]
+ 169 00c0 7B61     	 str r3,[r7,#20]
+ 142:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** 
+ 143:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****     /* compare for the maximum value */
+ 144:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****     if (out < maxVal1)
+ 170              	 .loc 1 144 0
+ 171 00c2 7A6A     	 ldr r2,[r7,#36]
+ 172 00c4 7B69     	 ldr r3,[r7,#20]
+ 173 00c6 9A42     	 cmp r2,r3
+ 174 00c8 05DA     	 bge .L9
+ 145:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****     {
+ 146:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****       /* Update the maximum value and it's index */
+ 147:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****       out = maxVal1;
+ 175              	 .loc 1 147 0
+ 176 00ca 7B69     	 ldr r3,[r7,#20]
+ 177 00cc 7B62     	 str r3,[r7,#36]
+ 148:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****       outIndex = blockSize - blkCnt;
+ 178              	 .loc 1 148 0
+ 179 00ce BA68     	 ldr r2,[r7,#8]
+ 180 00d0 3B6A     	 ldr r3,[r7,#32]
+ 181 00d2 D31A     	 subs r3,r2,r3
+ 182 00d4 FB61     	 str r3,[r7,#28]
+ 183              	.L9:
+ 149:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****     }
+ 150:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** 
+ 151:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****     /* Decrement the loop counter */
+ 152:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****     blkCnt--;
+ 184              	 .loc 1 152 0
+ 185 00d6 3B6A     	 ldr r3,[r7,#32]
+ 186 00d8 013B     	 subs r3,r3,#1
+ 187 00da 3B62     	 str r3,[r7,#32]
+ 188              	.L8:
+ 138:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   {
+ 189              	 .loc 1 138 0
+ 190 00dc 3B6A     	 ldr r3,[r7,#32]
+ 191 00de 002B     	 cmp r3,#0
+ 192 00e0 EAD1     	 bne .L10
+ 153:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   }
+ 154:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** 
+ 155:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   /* Store the maximum value and it's index into destination pointers */
+ 156:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   *pResult = out;
+ 193              	 .loc 1 156 0
+ 194 00e2 7B68     	 ldr r3,[r7,#4]
+ 195 00e4 7A6A     	 ldr r2,[r7,#36]
+ 196 00e6 1A60     	 str r2,[r3]
+ 157:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c ****   *pIndex = outIndex;
+ 197              	 .loc 1 157 0
+ 198 00e8 3B68     	 ldr r3,[r7]
+ 199 00ea FA69     	 ldr r2,[r7,#28]
+ 200 00ec 1A60     	 str r2,[r3]
+ 158:../Dave/Generated/CMSIS_DSP/StatisticsFunctions/arm_max_q31.c **** }
+ 201              	 .loc 1 158 0
+ 202 00ee 2C37     	 adds r7,r7,#44
+ 203              	.LCFI3:
+ 204              	 .cfi_def_cfa_offset 4
+ 205 00f0 BD46     	 mov sp,r7
+ 206              	.LCFI4:
+ 207              	 .cfi_def_cfa_register 13
+ 208              	 
+ 209 00f2 5DF8047B 	 ldr r7,[sp],#4
+ 210              	.LCFI5:
+ 211              	 .cfi_restore 7
+ 212              	 .cfi_def_cfa_offset 0
+ 213 00f6 7047     	 bx lr
+ 214              	 .cfi_endproc
+ 215              	.LFE135:
+ 217              	 .text
+ 218              	.Letext0:
+ 219              	 .file 2 "c:\\program files (x86)\\dave\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 220              	 .file 3 "c:\\program files (x86)\\dave\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 221              	 .file 4 "C:/Users/VMORAIS/Documents/DAVE_WS/1p_inverter_200V/Dave/Generated/CMSIS_DSP/arm_math.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 arm_max_q31.c
+    {standard input}:20     .text.arm_max_q31:00000000 $t
+    {standard input}:25     .text.arm_max_q31:00000000 arm_max_q31
+                     .debug_frame:00000010 $d
+
+NO UNDEFINED SYMBOLS

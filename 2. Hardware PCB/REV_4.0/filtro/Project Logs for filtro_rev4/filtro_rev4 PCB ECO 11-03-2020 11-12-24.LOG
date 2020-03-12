@@ -1,0 +1,12 @@
+Change Physical Footprint: Designator=C1 Old Footprint=CAPC_0805 New Footprint=CAPC_0805
+Change Physical Footprint: Designator=C3 Old Footprint=CAPC_0805 New Footprint=CAPC_0805
+Change Physical Footprint: Designator=C5 Old Footprint=CAPC_0805 New Footprint=CAPC_0805
+Change Physical Footprint: Designator=CC1 Old Footprint=CC6303_SOP8 New Footprint=CC6303_SOP8
+Change Physical Footprint: Designator=CC2 Old Footprint=CC6303_SOP8 New Footprint=CC6303_SOP8
+Change Physical Footprint: Designator=CC3 Old Footprint=CC6303_SOP8 New Footprint=CC6303_SOP8
+Change Physical Footprint: Designator=P1 Old Footprint=MOLEX_3p_105431_1103 New Footprint=MOLEX_3p_105431_1103
+Change Physical Footprint: Designator=P2 Old Footprint=MOLEX_3p_105431_1103 New Footprint=MOLEX_3p_105431_1103
+Change Physical Footprint: Designator=P3 Old Footprint=MOLEX_3p_105431_1103 New Footprint=MOLEX_3p_105431_1103
+Change Physical Footprint: Designator=U1 Old Footprint=connector1x2_parafuso New Footprint=connector1x2_parafuso
+Change Physical Footprint: Designator=U2 Old Footprint=connector1x2_parafuso New Footprint=connector1x2_parafuso
+Change Physical Footprint: Designator=U3 Old Footprint=connector1x2_parafuso New Footprint=connector1x2_parafuso

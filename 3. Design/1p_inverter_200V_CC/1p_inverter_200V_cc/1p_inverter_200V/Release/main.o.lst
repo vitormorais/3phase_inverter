@@ -1,0 +1,3777 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "main.c"
+  16              	 .section .text.DIGITAL_IO_SetOutputHigh,"ax",%progbits
+  17              	 .align 1
+  18              	 .thumb
+  19              	 .thumb_func
+  21              	DIGITAL_IO_SetOutputHigh:
+  22              	 
+  23              	 
+  24              	 
+  25 0000 017C     	 ldrb r1,[r0,#16]
+  26 0002 0268     	 ldr r2,[r0]
+  27 0004 0123     	 movs r3,#1
+  28 0006 8B40     	 lsls r3,r3,r1
+  29 0008 5360     	 str r3,[r2,#4]
+  30 000a 7047     	 bx lr
+  32              	 .section .text.DIGITAL_IO_SetOutputLow,"ax",%progbits
+  33              	 .align 1
+  34              	 .thumb
+  35              	 .thumb_func
+  37              	DIGITAL_IO_SetOutputLow:
+  38              	 
+  39              	 
+  40              	 
+  41 0000 017C     	 ldrb r1,[r0,#16]
+  42 0002 0268     	 ldr r2,[r0]
+  43 0004 4FF48033 	 mov r3,#65536
+  44 0008 8B40     	 lsls r3,r3,r1
+  45 000a 5360     	 str r3,[r2,#4]
+  46 000c 7047     	 bx lr
+  48              	 .section .text.HPF1,"ax",%progbits
+  49              	 .align 1
+  50              	 .global HPF1
+  51              	 .thumb
+  52              	 .thumb_func
+  54              	HPF1:
+  55              	 
+  56              	 
+  57              	 
+  58 0000 D2ED006A 	 flds s13,[r2]
+  59 0004 D2ED035A 	 flds s11,[r2,#12]
+  60 0008 91ED006A 	 flds s12,[r1]
+  61 000c 07EE100A 	 fmsr s14,r0
+  62 0010 66EE877A 	 fmuls s15,s13,s14
+  63 0014 E5EE867A 	 vfma.f32 s15,s11,s12
+  64 0018 D2ED015A 	 flds s11,[r2,#4]
+  65 001c 91ED016A 	 flds s12,[r1,#4]
+  66 0020 4860     	 str r0,[r1,#4]
+  67 0022 E5EE867A 	 vfma.f32 s15,s11,s12
+  68 0026 C7EEA67A 	 fdivs s15,s15,s13
+  69 002a C1ED007A 	 fsts s15,[r1]
+  70 002e 17EE900A 	 fmrs r0,s15
+  71 0032 7047     	 bx lr
+  73              	 .section .text.fw_integ,"ax",%progbits
+  74              	 .align 1
+  75              	 .global fw_integ
+  76              	 .thumb
+  77              	 .thumb_func
+  79              	fw_integ:
+  80              	 
+  81              	 
+  82              	 
+  83 0000 07EE103A 	 fmsr s14,r3
+  84 0004 06EE902A 	 fmsr s13,r2
+  85 0008 D1ED007A 	 flds s15,[r1]
+  86 000c 06EE100A 	 fmsr s12,r0
+  87 0010 B5EE407A 	 fcmpzs s14
+  88 0014 F1EE10FA 	 fmstat
+  89 0018 E6EE267A 	 vfma.f32 s15,s12,s13
+  90 001c 14D0     	 beq .L5
+  91 001e F4EEC77A 	 fcmpes s15,s14
+  92 0022 F1EE10FA 	 fmstat
+  93 0026 04DD     	 ble .L11
+  94 0028 37EEC77A 	 fsubs s14,s15,s14
+  95 002c A7EEA67A 	 vfma.f32 s14,s15,s13
+  96 0030 08E0     	 b .L12
+  97              	.L11:
+  98 0032 F5EEC07A 	 fcmpezs s15
+  99 0036 F1EE10FA 	 fmstat
+ 100 003a 05D5     	 bpl .L5
+ 101 003c 37EE877A 	 fadds s14,s15,s14
+ 102 0040 A7EEE67A 	 vfms.f32 s14,s15,s13
+ 103              	.L12:
+ 104 0044 F0EE477A 	 fcpys s15,s14
+ 105              	.L5:
+ 106 0048 C1ED007A 	 fsts s15,[r1]
+ 107 004c 17EE900A 	 fmrs r0,s15
+ 108 0050 7047     	 bx lr
+ 110              	 .section .text.tr_integ,"ax",%progbits
+ 111              	 .align 1
+ 112              	 .global tr_integ
+ 113              	 .thumb
+ 114              	 .thumb_func
+ 116              	tr_integ:
+ 117              	 
+ 118              	 
+ 119              	 
+ 120 0000 91ED007A 	 flds s14,[r1]
+ 121 0004 0860     	 str r0,[r1]
+ 122 0006 06EE900A 	 fmsr s13,r0
+ 123 000a 76EE877A 	 fadds s15,s13,s14
+ 124 000e B6EE007A 	 fconsts s14,#96
+ 125 0012 27EE877A 	 fmuls s14,s15,s14
+ 126 0016 06EE102A 	 fmsr s12,r2
+ 127 001a D1ED017A 	 flds s15,[r1,#4]
+ 128 001e E7EE067A 	 vfma.f32 s15,s14,s12
+ 129 0022 9FED0B7A 	 flds s14,.L22
+ 130 0026 F4EEC77A 	 fcmpes s15,s14
+ 131 002a F1EE10FA 	 fmstat
+ 132 002e 02DD     	 ble .L21
+ 133 0030 77EEC77A 	 fsubs s15,s15,s14
+ 134 0034 06E0     	 b .L17
+ 135              	.L21:
+ 136 0036 F5EEC07A 	 fcmpezs s15
+ 137 003a F1EE10FA 	 fmstat
+ 138 003e 48BF     	 it mi
+ 139 0040 77EE877A 	 faddsmi s15,s15,s14
+ 140              	.L17:
+ 141 0044 C1ED017A 	 fsts s15,[r1,#4]
+ 142 0048 17EE900A 	 fmrs r0,s15
+ 143 004c 7047     	 bx lr
+ 144              	.L23:
+ 145 004e 00BF     	 .align 2
+ 146              	.L22:
+ 147 0050 DB0FC940 	 .word 1086918619
+ 149              	 .section .text.deriv,"ax",%progbits
+ 150              	 .align 1
+ 151              	 .global deriv
+ 152              	 .thumb
+ 153              	 .thumb_func
+ 155              	deriv:
+ 156              	 
+ 157              	 
+ 158              	 
+ 159 0000 07EE100A 	 fmsr s14,r0
+ 160 0004 D1ED007A 	 flds s15,[r1]
+ 161 0008 0860     	 str r0,[r1]
+ 162 000a 77EE677A 	 fsubs s15,s14,s15
+ 163 000e 07EE102A 	 fmsr s14,r2
+ 164 0012 C7EE877A 	 fdivs s15,s15,s14
+ 165 0016 17EE900A 	 fmrs r0,s15
+ 166 001a 7047     	 bx lr
+ 168              	 .section .text.abc_AB,"ax",%progbits
+ 169              	 .align 1
+ 170              	 .global abc_AB
+ 171              	 .thumb
+ 172              	 .thumb_func
+ 174              	abc_AB:
+ 175              	 
+ 176              	 
+ 177              	 
+ 178 0000 90ED016A 	 flds s12,[r0,#4]
+ 179 0004 90ED007A 	 flds s14,[r0]
+ 180 0008 D0ED026A 	 flds s13,[r0,#8]
+ 181 000c F6EE007A 	 fconsts s15,#96
+ 182 0010 A6EE677A 	 vfms.f32 s14,s12,s15
+ 183 0014 A6EEE77A 	 vfms.f32 s14,s13,s15
+ 184 0018 DFED0A6A 	 flds s13,.L26
+ 185 001c 27EE267A 	 fmuls s14,s14,s13
+ 186 0020 81ED007A 	 fsts s14,[r1]
+ 187 0024 D0ED027A 	 flds s15,[r0,#8]
+ 188 0028 9FED077A 	 flds s14,.L26+4
+ 189 002c 90ED016A 	 flds s12,[r0,#4]
+ 190 0030 67EE677A 	 fnmuls s15,s14,s15
+ 191 0034 E6EE077A 	 vfma.f32 s15,s12,s14
+ 192 0038 67EEA67A 	 fmuls s15,s15,s13
+ 193 003c C1ED017A 	 fsts s15,[r1,#4]
+ 194 0040 7047     	 bx lr
+ 195              	.L27:
+ 196 0042 00BF     	 .align 2
+ 197              	.L26:
+ 198 0044 ABAA2A3F 	 .word 1059760811
+ 199 0048 D7B35D3F 	 .word 1063105495
+ 201              	 .section .text.abc_AB_Dy,"ax",%progbits
+ 202              	 .align 1
+ 203              	 .global abc_AB_Dy
+ 204              	 .thumb
+ 205              	 .thumb_func
+ 207              	abc_AB_Dy:
+ 208              	 
+ 209              	 
+ 210              	 
+ 211 0000 90ED027A 	 flds s14,[r0,#8]
+ 212 0004 DFED107A 	 flds s15,.L29
+ 213 0008 D0ED006A 	 flds s13,[r0]
+ 214 000c 27EEC77A 	 fnmuls s14,s15,s14
+ 215 0010 A6EEA77A 	 vfma.f32 s14,s13,s15
+ 216 0014 DFED0D6A 	 flds s13,.L29+4
+ 217 0018 27EE267A 	 fmuls s14,s14,s13
+ 218 001c 81ED007A 	 fsts s14,[r1]
+ 219 0020 D0ED005A 	 flds s11,[r0]
+ 220 0024 D0ED017A 	 flds s15,[r0,#4]
+ 221 0028 90ED026A 	 flds s12,[r0,#8]
+ 222 002c BEEE007A 	 fconsts s14,#224
+ 223 0030 E5EE877A 	 vfma.f32 s15,s11,s14
+ 224 0034 B6EE007A 	 fconsts s14,#96
+ 225 0038 E6EE477A 	 vfms.f32 s15,s12,s14
+ 226 003c 67EEA67A 	 fmuls s15,s15,s13
+ 227 0040 C1ED017A 	 fsts s15,[r1,#4]
+ 228 0044 7047     	 bx lr
+ 229              	.L30:
+ 230 0046 00BF     	 .align 2
+ 231              	.L29:
+ 232 0048 D7B35D3F 	 .word 1063105495
+ 233 004c A311C53E 	 .word 1053102499
+ 235              	 .section .text.AB_dq,"ax",%progbits
+ 236              	 .align 1
+ 237              	 .global AB_dq
+ 238              	 .thumb
+ 239              	 .thumb_func
+ 241              	AB_dq:
+ 242              	 
+ 243              	 
+ 244 0000 70B5     	 push {r4,r5,r6,lr}
+ 245 0002 0546     	 mov r5,r0
+ 246 0004 2DED048B 	 fstmfdd sp!,{d8,d9}
+ 247 0008 90ED009A 	 flds s18,[r0]
+ 248 000c 1046     	 mov r0,r2
+ 249 000e 1446     	 mov r4,r2
+ 250 0010 0E46     	 mov r6,r1
+ 251 0012 FFF7FEFF 	 bl arm_cos_f32
+ 252 0016 08EE900A 	 fmsr s17,r0
+ 253 001a 2046     	 mov r0,r4
+ 254 001c 95ED018A 	 flds s16,[r5,#4]
+ 255 0020 FFF7FEFF 	 bl arm_sin_f32
+ 256 0024 07EE900A 	 fmsr s15,r0
+ 257 0028 28EE278A 	 fmuls s16,s16,s15
+ 258 002c 2046     	 mov r0,r4
+ 259 002e A9EE288A 	 vfma.f32 s16,s18,s17
+ 260 0032 86ED008A 	 fsts s16,[r6]
+ 261 0036 D5ED008A 	 flds s17,[r5]
+ 262 003a FFF7FEFF 	 bl arm_sin_f32
+ 263 003e 09EE100A 	 fmsr s18,r0
+ 264 0042 2046     	 mov r0,r4
+ 265 0044 95ED018A 	 flds s16,[r5,#4]
+ 266 0048 FFF7FEFF 	 bl arm_cos_f32
+ 267 004c 07EE900A 	 fmsr s15,r0
+ 268 0050 28EE278A 	 fmuls s16,s16,s15
+ 269 0054 F1EE688A 	 fnegs s17,s17
+ 270 0058 A8EE898A 	 vfma.f32 s16,s17,s18
+ 271 005c 86ED018A 	 fsts s16,[r6,#4]
+ 272 0060 BDEC048B 	 fldmfdd sp!,{d8-d9}
+ 273 0064 70BD     	 pop {r4,r5,r6,pc}
+ 275              	 .section .text.dq_AB,"ax",%progbits
+ 276              	 .align 1
+ 277              	 .global dq_AB
+ 278              	 .thumb
+ 279              	 .thumb_func
+ 281              	dq_AB:
+ 282              	 
+ 283              	 
+ 284 0000 70B5     	 push {r4,r5,r6,lr}
+ 285 0002 0446     	 mov r4,r0
+ 286 0004 2DED028B 	 fstmfdd sp!,{d8}
+ 287 0008 1046     	 mov r0,r2
+ 288 000a 0D46     	 mov r5,r1
+ 289 000c 1646     	 mov r6,r2
+ 290 000e FFF7FEFF 	 bl arm_cos_f32
+ 291 0012 08EE100A 	 fmsr s16,r0
+ 292 0016 3046     	 mov r0,r6
+ 293 0018 FFF7FEFF 	 bl arm_sin_f32
+ 294 001c D4ED017A 	 flds s15,[r4,#4]
+ 295 0020 D4ED006A 	 flds s13,[r4]
+ 296 0024 07EE100A 	 fmsr s14,r0
+ 297 0028 67EEC77A 	 fnmuls s15,s15,s14
+ 298 002c E8EE267A 	 vfma.f32 s15,s16,s13
+ 299 0030 C5ED007A 	 fsts s15,[r5]
+ 300 0034 D4ED017A 	 flds s15,[r4,#4]
+ 301 0038 28EE278A 	 fmuls s16,s16,s15
+ 302 003c D4ED007A 	 flds s15,[r4]
+ 303 0040 A7EE278A 	 vfma.f32 s16,s14,s15
+ 304 0044 85ED018A 	 fsts s16,[r5,#4]
+ 305 0048 BDEC028B 	 fldmfdd sp!,{d8}
+ 306 004c 70BD     	 pop {r4,r5,r6,pc}
+ 308              	 .section .text.AB_abc,"ax",%progbits
+ 309              	 .align 1
+ 310              	 .global AB_abc
+ 311              	 .thumb
+ 312              	 .thumb_func
+ 314              	AB_abc:
+ 315              	 
+ 316              	 
+ 317              	 
+ 318 0000 0368     	 ldr r3,[r0]
+ 319 0002 0B60     	 str r3,[r1]
+ 320 0004 90ED017A 	 flds s14,[r0,#4]
+ 321 0008 DFED0B7A 	 flds s15,.L34
+ 322 000c 90ED006A 	 flds s12,[r0]
+ 323 0010 27EE277A 	 fmuls s14,s14,s15
+ 324 0014 FEEE006A 	 fconsts s13,#224
+ 325 0018 A6EE267A 	 vfma.f32 s14,s12,s13
+ 326 001c 81ED017A 	 fsts s14,[r1,#4]
+ 327 0020 90ED017A 	 flds s14,[r0,#4]
+ 328 0024 67EEC77A 	 fnmuls s15,s15,s14
+ 329 0028 90ED007A 	 flds s14,[r0]
+ 330 002c E7EE267A 	 vfma.f32 s15,s14,s13
+ 331 0030 C1ED027A 	 fsts s15,[r1,#8]
+ 332 0034 7047     	 bx lr
+ 333              	.L35:
+ 334 0036 00BF     	 .align 2
+ 335              	.L34:
+ 336 0038 D7B35D3F 	 .word 1063105495
+ 338              	 .section .text.LPF1,"ax",%progbits
+ 339              	 .align 1
+ 340              	 .global LPF1
+ 341              	 .thumb
+ 342              	 .thumb_func
+ 344              	LPF1:
+ 345              	 
+ 346              	 
+ 347              	 
+ 348 0000 D2ED007A 	 flds s15,[r2]
+ 349 0004 92ED017A 	 flds s14,[r2,#4]
+ 350 0008 92ED026A 	 flds s12,[r2,#8]
+ 351 000c 06EE900A 	 fmsr s13,r0
+ 352 0010 27EE877A 	 fmuls s14,s15,s14
+ 353 0014 D1ED007A 	 flds s15,[r1]
+ 354 0018 0860     	 str r0,[r1]
+ 355 001a 76EEA77A 	 fadds s15,s13,s15
+ 356 001e 67EE277A 	 fmuls s15,s14,s15
+ 357 0022 91ED017A 	 flds s14,[r1,#4]
+ 358 0026 E6EE077A 	 vfma.f32 s15,s12,s14
+ 359 002a C1ED017A 	 fsts s15,[r1,#4]
+ 360 002e 17EE900A 	 fmrs r0,s15
+ 361 0032 7047     	 bx lr
+ 363              	 .section .text.LPF2,"ax",%progbits
+ 364              	 .align 1
+ 365              	 .global LPF2
+ 366              	 .thumb
+ 367              	 .thumb_func
+ 369              	LPF2:
+ 370              	 
+ 371              	 
+ 372              	 
+ 373 0000 D1ED065A 	 flds s11,[r1,#24]
+ 374 0004 D1ED017A 	 flds s15,[r1,#4]
+ 375 0008 91ED027A 	 flds s14,[r1,#8]
+ 376 000c 91ED075A 	 flds s10,[r1,#28]
+ 377 0010 D1ED086A 	 flds s13,[r1,#32]
+ 378 0014 8861     	 str r0,[r1,#24]
+ 379 0016 06EE100A 	 fmsr s12,r0
+ 380 001a 65EEA77A 	 fmuls s15,s11,s15
+ 381 001e C1ED075A 	 fsts s11,[r1,#28]
+ 382 0022 E6EE077A 	 vfma.f32 s15,s12,s14
+ 383 0026 91ED007A 	 flds s14,[r1]
+ 384 002a E5EE077A 	 vfma.f32 s15,s10,s14
+ 385 002e 91ED035A 	 flds s10,[r1,#12]
+ 386 0032 B0EE677A 	 fcpys s14,s15
+ 387 0036 D1ED097A 	 flds s15,[r1,#36]
+ 388 003a C1ED096A 	 fsts s13,[r1,#36]
+ 389 003e 67EE857A 	 fmuls s15,s15,s10
+ 390 0042 91ED045A 	 flds s10,[r1,#16]
+ 391 0046 E6EE857A 	 vfma.f32 s15,s13,s10
+ 392 004a 77EE677A 	 fsubs s15,s14,s15
+ 393 004e 91ED057A 	 flds s14,[r1,#20]
+ 394 0052 67EE877A 	 fmuls s15,s15,s14
+ 395 0056 C1ED087A 	 fsts s15,[r1,#32]
+ 396 005a 17EE900A 	 fmrs r0,s15
+ 397 005e 7047     	 bx lr
+ 399              	 .section .text.LPF1_dq,"ax",%progbits
+ 400              	 .align 1
+ 401              	 .global LPF1_dq
+ 402              	 .thumb
+ 403              	 .thumb_func
+ 405              	LPF1_dq:
+ 406              	 
+ 407              	 
+ 408              	 
+ 409 0000 D1ED007A 	 flds s15,[r1]
+ 410 0004 91ED017A 	 flds s14,[r1,#4]
+ 411 0008 D1ED036A 	 flds s13,[r1,#12]
+ 412 000c 27EE877A 	 fmuls s14,s15,s14
+ 413 0010 D0ED007A 	 flds s15,[r0]
+ 414 0014 77EEA67A 	 fadds s15,s15,s13
+ 415 0018 D1ED026A 	 flds s13,[r1,#8]
+ 416 001c 67EE277A 	 fmuls s15,s14,s15
+ 417 0020 91ED047A 	 flds s14,[r1,#16]
+ 418 0024 E6EE877A 	 vfma.f32 s15,s13,s14
+ 419 0028 C2ED007A 	 fsts s15,[r2]
+ 420 002c 0368     	 ldr r3,[r0]
+ 421 002e CB60     	 str r3,[r1,#12]
+ 422 0030 1368     	 ldr r3,[r2]
+ 423 0032 D1ED007A 	 flds s15,[r1]
+ 424 0036 91ED017A 	 flds s14,[r1,#4]
+ 425 003a 0B61     	 str r3,[r1,#16]
+ 426 003c D1ED056A 	 flds s13,[r1,#20]
+ 427 0040 27EE877A 	 fmuls s14,s15,s14
+ 428 0044 D0ED017A 	 flds s15,[r0,#4]
+ 429 0048 77EEA67A 	 fadds s15,s15,s13
+ 430 004c D1ED026A 	 flds s13,[r1,#8]
+ 431 0050 67EE277A 	 fmuls s15,s14,s15
+ 432 0054 91ED067A 	 flds s14,[r1,#24]
+ 433 0058 E6EE877A 	 vfma.f32 s15,s13,s14
+ 434 005c C2ED017A 	 fsts s15,[r2,#4]
+ 435 0060 4368     	 ldr r3,[r0,#4]
+ 436 0062 4B61     	 str r3,[r1,#20]
+ 437 0064 5368     	 ldr r3,[r2,#4]
+ 438 0066 8B61     	 str r3,[r1,#24]
+ 439 0068 7047     	 bx lr
+ 441              	 .section .text.conv2DAC,"ax",%progbits
+ 442              	 .align 1
+ 443              	 .global conv2DAC
+ 444              	 .thumb
+ 445              	 .thumb_func
+ 447              	conv2DAC:
+ 448              	 
+ 449              	 
+ 450              	 
+ 451 0000 07EE900A 	 fmsr s15,r0
+ 452 0004 B7EE007A 	 fconsts s14,#112
+ 453 0008 F4EEC77A 	 fcmpes s15,s14
+ 454 000c F1EE10FA 	 fmstat
+ 455 0010 82B0     	 sub sp,sp,#8
+ 456 0012 09DC     	 bgt .L41
+ 457 0014 BFEE007A 	 fconsts s14,#240
+ 458 0018 F4EE477A 	 fcmps s15,s14
+ 459 001c F1EE10FA 	 fmstat
+ 460 0020 48BF     	 it mi
+ 461 0022 F0EE477A 	 fcpysmi s15,s14
+ 462 0026 01E0     	 b .L40
+ 463              	.L41:
+ 464 0028 F0EE477A 	 fcpys s15,s14
+ 465              	.L40:
+ 466 002c 9FED057A 	 flds s14,.L43
+ 467 0030 67EE877A 	 fmuls s15,s15,s14
+ 468 0034 FDEEE77A 	 ftosizs s15,s15
+ 469 0038 CDED017A 	 fsts s15,[sp,#4]
+ 470 003c BDF90400 	 ldrsh r0,[sp,#4]
+ 471 0040 02B0     	 add sp,sp,#8
+ 472              	 
+ 473 0042 7047     	 bx lr
+ 474              	.L44:
+ 475              	 .align 2
+ 476              	.L43:
+ 477 0044 00E0FF44 	 .word 1157619712
+ 479              	 .section .text.PI_FW,"ax",%progbits
+ 480              	 .align 1
+ 481              	 .global PI_FW
+ 482              	 .thumb
+ 483              	 .thumb_func
+ 485              	PI_FW:
+ 486              	 
+ 487              	 
+ 488              	 
+ 489 0000 D2ED006A 	 flds s13,[r2]
+ 490 0004 D1ED007A 	 flds s15,[r1]
+ 491 0008 91ED016A 	 flds s12,[r1,#4]
+ 492 000c 4860     	 str r0,[r1,#4]
+ 493 000e 07EE100A 	 fmsr s14,r0
+ 494 0012 E6EE877A 	 vfma.f32 s15,s13,s14
+ 495 0016 E6EE867A 	 vfma.f32 s15,s13,s12
+ 496 001a C1ED007A 	 fsts s15,[r1]
+ 497 001e 17EE900A 	 fmrs r0,s15
+ 498 0022 7047     	 bx lr
+ 500              	 .section .text.PI_TR,"ax",%progbits
+ 501              	 .align 1
+ 502              	 .global PI_TR
+ 503              	 .thumb
+ 504              	 .thumb_func
+ 506              	PI_TR:
+ 507              	 
+ 508              	 
+ 509 0000 70B5     	 push {r4,r5,r6,lr}
+ 510 0002 91ED017A 	 flds s14,[r1,#4]
+ 511 0006 2DED028B 	 fstmfdd sp!,{d8}
+ 512 000a 08EE100A 	 fmsr s16,r0
+ 513 000e 78EE077A 	 fadds s15,s16,s14
+ 514 0012 B6EE007A 	 fconsts s14,#96
+ 515 0016 27EE877A 	 fmuls s14,s15,s14
+ 516 001a 06EE902A 	 fmsr s13,r2
+ 517 001e D1ED007A 	 flds s15,[r1]
+ 518 0022 079D     	 ldr r5,[sp,#28]
+ 519 0024 E7EE267A 	 vfma.f32 s15,s14,s13
+ 520 0028 1E46     	 mov r6,r3
+ 521 002a 0C46     	 mov r4,r1
+ 522 002c 069B     	 ldr r3,[sp,#24]
+ 523 002e F5EEC07A 	 fcmpezs s15
+ 524 0032 F1EE10FA 	 fmstat
+ 525 0036 0FDD     	 ble .L57
+ 526 0038 D3ED008A 	 flds s17,[r3]
+ 527 003c 17EE900A 	 fmrs r0,s15
+ 528 0040 18EE901A 	 fmrs r1,s17
+ 529 0044 FFF7FEFF 	 bl fminf
+ 530 0048 07EE900A 	 fmsr s15,r0
+ 531 004c F4EEE87A 	 fcmpes s15,s17
+ 532 0050 F1EE10FA 	 fmstat
+ 533 0054 11D5     	 bpl .L59
+ 534 0056 0EE0     	 b .L61
+ 535              	.L57:
+ 536 0058 D3ED018A 	 flds s17,[r3,#4]
+ 537 005c 17EE900A 	 fmrs r0,s15
+ 538 0060 18EE901A 	 fmrs r1,s17
+ 539 0064 FFF7FEFF 	 bl fmaxf
+ 540 0068 07EE900A 	 fmsr s15,r0
+ 541 006c F4EEE87A 	 fcmpes s15,s17
+ 542 0070 F1EE10FA 	 fmstat
+ 543 0074 01DD     	 ble .L59
+ 544              	.L61:
+ 545 0076 0023     	 movs r3,#0
+ 546 0078 00E0     	 b .L60
+ 547              	.L59:
+ 548 007a 0123     	 movs r3,#1
+ 549              	.L60:
+ 550 007c 2B80     	 strh r3,[r5]
+ 551 007e 84ED018A 	 fsts s16,[r4,#4]
+ 552 0082 C4ED007A 	 fsts s15,[r4]
+ 553 0086 96ED017A 	 flds s14,[r6,#4]
+ 554 008a A7EE278A 	 vfma.f32 s16,s14,s15
+ 555 008e D6ED007A 	 flds s15,[r6]
+ 556 0092 68EE277A 	 fmuls s15,s16,s15
+ 557 0096 BDEC028B 	 fldmfdd sp!,{d8}
+ 558 009a 17EE900A 	 fmrs r0,s15
+ 559 009e 70BD     	 pop {r4,r5,r6,pc}
+ 561              	 .section .text.PI_TR_p,"ax",%progbits
+ 562              	 .align 1
+ 563              	 .global PI_TR_p
+ 564              	 .thumb
+ 565              	 .thumb_func
+ 567              	PI_TR_p:
+ 568              	 
+ 569              	 
+ 570              	 
+ 571 0000 137E     	 ldrb r3,[r2,#24]
+ 572 0002 07EE100A 	 fmsr s14,r0
+ 573 0006 06EE101A 	 fmsr s12,r1
+ 574 000a 6BB9     	 cbnz r3,.L63
+ 575 000c D2ED047A 	 flds s15,[r2,#16]
+ 576 0010 77EE277A 	 fadds s15,s14,s15
+ 577 0014 F6EE006A 	 fconsts s13,#96
+ 578 0018 67EEA67A 	 fmuls s15,s15,s13
+ 579 001c D2ED056A 	 flds s13,[r2,#20]
+ 580 0020 E7EE866A 	 vfma.f32 s13,s15,s12
+ 581 0024 C2ED056A 	 fsts s13,[r2,#20]
+ 582              	.L63:
+ 583 0028 D2ED056A 	 flds s13,[r2,#20]
+ 584 002c D2ED017A 	 flds s15,[r2,#4]
+ 585 0030 67EEA67A 	 fmuls s15,s15,s13
+ 586 0034 D2ED006A 	 flds s13,[r2]
+ 587 0038 E6EE877A 	 vfma.f32 s15,s13,s14
+ 588 003c D2ED026A 	 flds s13,[r2,#8]
+ 589 0040 F4EEE67A 	 fcmpes s15,s13
+ 590 0044 F1EE10FA 	 fmstat
+ 591 0048 06DC     	 bgt .L73
+ 592 004a D2ED036A 	 flds s13,[r2,#12]
+ 593 004e F4EEE67A 	 fcmpes s15,s13
+ 594 0052 F1EE10FA 	 fmstat
+ 595 0056 05D5     	 bpl .L72
+ 596              	.L73:
+ 597 0058 43F00103 	 orr r3,r3,#1
+ 598 005c 1376     	 strb r3,[r2,#24]
+ 599 005e F0EE667A 	 fcpys s15,s13
+ 600 0062 02E0     	 b .L66
+ 601              	.L72:
+ 602 0064 03F07E03 	 and r3,r3,#126
+ 603 0068 1376     	 strb r3,[r2,#24]
+ 604              	.L66:
+ 605 006a 82ED047A 	 fsts s14,[r2,#16]
+ 606 006e 17EE900A 	 fmrs r0,s15
+ 607 0072 7047     	 bx lr
+ 609              	 .section .text.PI_TR_dq,"ax",%progbits
+ 610              	 .align 1
+ 611              	 .global PI_TR_dq
+ 612              	 .thumb
+ 613              	 .thumb_func
+ 615              	PI_TR_dq:
+ 616              	 
+ 617              	 
+ 618              	 
+ 619 0000 06EE101A 	 fmsr s12,r1
+ 620 0004 92F82010 	 ldrb r1,[r2,#32]
+ 621 0008 E9B9     	 cbnz r1,.L75
+ 622 000a D0ED007A 	 flds s15,[r0]
+ 623 000e 92ED047A 	 flds s14,[r2,#16]
+ 624 0012 D2ED056A 	 flds s13,[r2,#20]
+ 625 0016 37EE877A 	 fadds s14,s15,s14
+ 626 001a F6EE005A 	 fconsts s11,#96
+ 627 001e 27EE257A 	 fmuls s14,s14,s11
+ 628 0022 D2ED067A 	 flds s15,[r2,#24]
+ 629 0026 E7EE066A 	 vfma.f32 s13,s14,s12
+ 630 002a C2ED056A 	 fsts s13,[r2,#20]
+ 631 002e 90ED017A 	 flds s14,[r0,#4]
+ 632 0032 77EE277A 	 fadds s15,s14,s15
+ 633 0036 92ED077A 	 flds s14,[r2,#28]
+ 634 003a 67EEA57A 	 fmuls s15,s15,s11
+ 635 003e A7EE867A 	 vfma.f32 s14,s15,s12
+ 636 0042 82ED077A 	 fsts s14,[r2,#28]
+ 637              	.L75:
+ 638 0046 92ED057A 	 flds s14,[r2,#20]
+ 639 004a D2ED017A 	 flds s15,[r2,#4]
+ 640 004e D2ED006A 	 flds s13,[r2]
+ 641 0052 67EE877A 	 fmuls s15,s15,s14
+ 642 0056 90ED007A 	 flds s14,[r0]
+ 643 005a E6EE877A 	 vfma.f32 s15,s13,s14
+ 644 005e C3ED007A 	 fsts s15,[r3]
+ 645 0062 D2ED076A 	 flds s13,[r2,#28]
+ 646 0066 92ED017A 	 flds s14,[r2,#4]
+ 647 006a 92ED006A 	 flds s12,[r2]
+ 648 006e 27EE267A 	 fmuls s14,s14,s13
+ 649 0072 D0ED016A 	 flds s13,[r0,#4]
+ 650 0076 A6EE267A 	 vfma.f32 s14,s12,s13
+ 651 007a 83ED017A 	 fsts s14,[r3,#4]
+ 652 007e 92ED027A 	 flds s14,[r2,#8]
+ 653 0082 F4EEC77A 	 fcmpes s15,s14
+ 654 0086 F1EE10FA 	 fmstat
+ 655 008a 04DD     	 ble .L90
+ 656 008c 83ED007A 	 fsts s14,[r3]
+ 657 0090 92F82010 	 ldrb r1,[r2,#32]
+ 658 0094 08E0     	 b .L96
+ 659              	.L90:
+ 660 0096 92ED037A 	 flds s14,[r2,#12]
+ 661 009a 92F82010 	 ldrb r1,[r2,#32]
+ 662 009e F4EEC77A 	 fcmpes s15,s14
+ 663 00a2 F1EE10FA 	 fmstat
+ 664 00a6 02D5     	 bpl .L91
+ 665              	.L96:
+ 666 00a8 41F00201 	 orr r1,r1,#2
+ 667 00ac 01E0     	 b .L94
+ 668              	.L91:
+ 669 00ae 01F07D01 	 and r1,r1,#125
+ 670              	.L94:
+ 671 00b2 82F82010 	 strb r1,[r2,#32]
+ 672 00b6 93ED017A 	 flds s14,[r3,#4]
+ 673 00ba D2ED027A 	 flds s15,[r2,#8]
+ 674 00be B4EEE77A 	 fcmpes s14,s15
+ 675 00c2 F1EE10FA 	 fmstat
+ 676 00c6 06DC     	 bgt .L97
+ 677 00c8 D2ED037A 	 flds s15,[r2,#12]
+ 678 00cc B4EEE77A 	 fcmpes s14,s15
+ 679 00d0 F1EE10FA 	 fmstat
+ 680 00d4 06D5     	 bpl .L93
+ 681              	.L97:
+ 682 00d6 C3ED017A 	 fsts s15,[r3,#4]
+ 683 00da 92F82030 	 ldrb r3,[r2,#32]
+ 684 00de 43F00103 	 orr r3,r3,#1
+ 685 00e2 03E0     	 b .L95
+ 686              	.L93:
+ 687 00e4 92F82030 	 ldrb r3,[r2,#32]
+ 688 00e8 03F07E03 	 and r3,r3,#126
+ 689              	.L95:
+ 690 00ec 82F82030 	 strb r3,[r2,#32]
+ 691 00f0 0368     	 ldr r3,[r0]
+ 692 00f2 1361     	 str r3,[r2,#16]
+ 693 00f4 4368     	 ldr r3,[r0,#4]
+ 694 00f6 9361     	 str r3,[r2,#24]
+ 695 00f8 7047     	 bx lr
+ 697              	 .section .text.abs_sat,"ax",%progbits
+ 698              	 .align 1
+ 699              	 .global abs_sat
+ 700              	 .thumb
+ 701              	 .thumb_func
+ 703              	abs_sat:
+ 704              	 
+ 705              	 
+ 706 0000 10B5     	 push {r4,lr}
+ 707 0002 D0ED017A 	 flds s15,[r0,#4]
+ 708 0006 90ED007A 	 flds s14,[r0]
+ 709 000a 67EEA77A 	 fmuls s15,s15,s15
+ 710 000e 2DED028B 	 fstmfdd sp!,{d8}
+ 711 0012 E7EE077A 	 vfma.f32 s15,s14,s14
+ 712 0016 0446     	 mov r4,r0
+ 713 0018 08EE101A 	 fmsr s16,r1
+ 714 001c 28EE087A 	 fmuls s14,s16,s16
+ 715 0020 F4EEC77A 	 fcmpes s15,s14
+ 716 0024 F1EE10FA 	 fmstat
+ 717 0028 17DD     	 ble .L103
+ 718 002a 17EE900A 	 fmrs r0,s15
+ 719 002e FFF7FEFF 	 bl sqrtf
+ 720 0032 D4ED007A 	 flds s15,[r4]
+ 721 0036 07EE100A 	 fmsr s14,r0
+ 722 003a 68EE277A 	 fmuls s15,s16,s15
+ 723 003e 0120     	 movs r0,#1
+ 724 0040 C7EE877A 	 fdivs s15,s15,s14
+ 725 0044 C4ED007A 	 fsts s15,[r4]
+ 726 0048 D4ED017A 	 flds s15,[r4,#4]
+ 727 004c 28EE278A 	 fmuls s16,s16,s15
+ 728 0050 88EE078A 	 fdivs s16,s16,s14
+ 729 0054 84ED018A 	 fsts s16,[r4,#4]
+ 730 0058 00E0     	 b .L99
+ 731              	.L103:
+ 732 005a 0020     	 movs r0,#0
+ 733              	.L99:
+ 734 005c BDEC028B 	 fldmfdd sp!,{d8}
+ 735 0060 10BD     	 pop {r4,pc}
+ 737              	 .section .text.sat2D,"ax",%progbits
+ 738              	 .align 1
+ 739              	 .global sat2D
+ 740              	 .thumb
+ 741              	 .thumb_func
+ 743              	sat2D:
+ 744              	 
+ 745              	 
+ 746 0000 10B5     	 push {r4,lr}
+ 747 0002 D0ED007A 	 flds s15,[r0]
+ 748 0006 90ED017A 	 flds s14,[r0,#4]
+ 749 000a 67EEA77A 	 fmuls s15,s15,s15
+ 750 000e 27EE077A 	 fmuls s14,s14,s14
+ 751 0012 06EE101A 	 fmsr s12,r1
+ 752 0016 2DED048B 	 fstmfdd sp!,{d8,d9}
+ 753 001a 77EE876A 	 fadds s13,s15,s14
+ 754 001e 26EE069A 	 fmuls s18,s12,s12
+ 755 0022 0446     	 mov r4,r0
+ 756 0024 F4EEC96A 	 fcmpes s13,s18
+ 757 0028 F1EE10FA 	 fmstat
+ 758 002c 39DD     	 ble .L117
+ 759 002e C7EEA67A 	 fdivs s15,s15,s13
+ 760 0032 87EE268A 	 fdivs s16,s14,s13
+ 761 0036 69EE277A 	 fmuls s15,s18,s15
+ 762 003a F5EEC07A 	 fcmpezs s15
+ 763 003e F1EE10FA 	 fmstat
+ 764 0042 06DB     	 blt .L118
+ 765 0044 17EE900A 	 fmrs r0,s15
+ 766 0048 FFF7FEFF 	 bl sqrtf
+ 767 004c 08EE900A 	 fmsr s17,r0
+ 768 0050 01E0     	 b .L107
+ 769              	.L118:
+ 770 0052 DFED168A 	 flds s17,.L120
+ 771              	.L107:
+ 772 0056 29EE087A 	 fmuls s14,s18,s16
+ 773 005a B5EEC07A 	 fcmpezs s14
+ 774 005e F1EE10FA 	 fmstat
+ 775 0062 06DB     	 blt .L119
+ 776 0064 17EE100A 	 fmrs r0,s14
+ 777 0068 FFF7FEFF 	 bl sqrtf
+ 778 006c 07EE900A 	 fmsr s15,r0
+ 779 0070 01E0     	 b .L109
+ 780              	.L119:
+ 781 0072 DFED0E7A 	 flds s15,.L120
+ 782              	.L109:
+ 783 0076 94ED007A 	 flds s14,[r4]
+ 784 007a 68EE878A 	 fmuls s17,s17,s14
+ 785 007e B0EEC77A 	 fabss s14,s14
+ 786 0082 C8EE878A 	 fdivs s17,s17,s14
+ 787 0086 0120     	 movs r0,#1
+ 788 0088 94ED017A 	 flds s14,[r4,#4]
+ 789 008c C4ED008A 	 fsts s17,[r4]
+ 790 0090 67EE877A 	 fmuls s15,s15,s14
+ 791 0094 B0EEC77A 	 fabss s14,s14
+ 792 0098 C7EE877A 	 fdivs s15,s15,s14
+ 793 009c C4ED017A 	 fsts s15,[r4,#4]
+ 794 00a0 00E0     	 b .L105
+ 795              	.L117:
+ 796 00a2 0020     	 movs r0,#0
+ 797              	.L105:
+ 798 00a4 BDEC048B 	 fldmfdd sp!,{d8-d9}
+ 799 00a8 10BD     	 pop {r4,pc}
+ 800              	.L121:
+ 801 00aa 00BF     	 .align 2
+ 802              	.L120:
+ 803 00ac 00000000 	 .word 0
+ 805              	 .section .text.QSG,"ax",%progbits
+ 806              	 .align 1
+ 807              	 .global QSG
+ 808              	 .thumb
+ 809              	 .thumb_func
+ 811              	QSG:
+ 812              	 
+ 813              	 
+ 814              	 
+ 815 0000 D2ED007A 	 flds s15,[r2]
+ 816 0004 D2ED025A 	 flds s11,[r2,#8]
+ 817 0008 92ED056A 	 flds s12,[r2,#20]
+ 818 000c 07EE100A 	 fmsr s14,r0
+ 819 0010 77EE677A 	 fsubs s15,s14,s15
+ 820 0014 92ED017A 	 flds s14,[r2,#4]
+ 821 0018 97EEA57A 	 vfnms.f32 s14,s15,s11
+ 822 001c 06EE901A 	 fmsr s13,r1
+ 823 0020 D2ED037A 	 flds s15,[r2,#12]
+ 824 0024 27EE267A 	 fmuls s14,s14,s13
+ 825 0028 E7EE067A 	 vfma.f32 s15,s14,s12
+ 826 002c 92ED047A 	 flds s14,[r2,#16]
+ 827 0030 C2ED037A 	 fsts s15,[r2,#12]
+ 828 0034 A7EE867A 	 vfma.f32 s14,s15,s12
+ 829 0038 C2ED007A 	 fsts s15,[r2]
+ 830 003c 66EE876A 	 fmuls s13,s13,s14
+ 831 0040 82ED047A 	 fsts s14,[r2,#16]
+ 832 0044 C2ED016A 	 fsts s13,[r2,#4]
+ 833 0048 7047     	 bx lr
+ 835              	 .section .text.DSOGI_filter,"ax",%progbits
+ 836              	 .align 1
+ 837              	 .global DSOGI_filter
+ 838              	 .thumb
+ 839              	 .thumb_func
+ 841              	DSOGI_filter:
+ 842              	 
+ 843              	 
+ 844 0000 F8B5     	 push {r3,r4,r5,r6,r7,lr}
+ 845 0002 0D46     	 mov r5,r1
+ 846 0004 0C46     	 mov r4,r1
+ 847 0006 0746     	 mov r7,r0
+ 848 0008 55F81C1B 	 ldr r1,[r5],#28
+ 849 000c 0068     	 ldr r0,[r0]
+ 850 000e 1646     	 mov r6,r2
+ 851 0010 221D     	 adds r2,r4,#4
+ 852 0012 FFF7FEFF 	 bl QSG
+ 853 0016 7868     	 ldr r0,[r7,#4]
+ 854 0018 2168     	 ldr r1,[r4]
+ 855 001a 2A46     	 mov r2,r5
+ 856 001c FFF7FEFF 	 bl QSG
+ 857 0020 D4ED017A 	 flds s15,[r4,#4]
+ 858 0024 94ED087A 	 flds s14,[r4,#32]
+ 859 0028 37EEC77A 	 fsubs s14,s15,s14
+ 860 002c F6EE006A 	 fconsts s13,#96
+ 861 0030 27EE267A 	 fmuls s14,s14,s13
+ 862 0034 86ED007A 	 fsts s14,[r6]
+ 863 0038 94ED027A 	 flds s14,[r4,#8]
+ 864 003c D4ED077A 	 flds s15,[r4,#28]
+ 865 0040 77EE277A 	 fadds s15,s14,s15
+ 866 0044 67EEA67A 	 fmuls s15,s15,s13
+ 867 0048 C6ED017A 	 fsts s15,[r6,#4]
+ 868 004c F8BD     	 pop {r3,r4,r5,r6,r7,pc}
+ 870              	 .section .text.FFDSOGI_filter,"ax",%progbits
+ 871              	 .align 1
+ 872              	 .global FFDSOGI_filter
+ 873              	 .thumb
+ 874              	 .thumb_func
+ 876              	FFDSOGI_filter:
+ 877              	 
+ 878              	 
+ 879 0000 F8B5     	 push {r3,r4,r5,r6,r7,lr}
+ 880 0002 0D46     	 mov r5,r1
+ 881 0004 0C46     	 mov r4,r1
+ 882 0006 0746     	 mov r7,r0
+ 883 0008 55F81C1B 	 ldr r1,[r5],#28
+ 884 000c 0068     	 ldr r0,[r0]
+ 885 000e 2DED028B 	 fstmfdd sp!,{d8}
+ 886 0012 08EE102A 	 fmsr s16,r2
+ 887 0016 221D     	 adds r2,r4,#4
+ 888 0018 1E46     	 mov r6,r3
+ 889 001a FFF7FEFF 	 bl QSG
+ 890 001e 7868     	 ldr r0,[r7,#4]
+ 891 0020 2168     	 ldr r1,[r4]
+ 892 0022 2A46     	 mov r2,r5
+ 893 0024 FFF7FEFF 	 bl QSG
+ 894 0028 D4ED007A 	 flds s15,[r4]
+ 895 002c D4ED086A 	 flds s13,[r4,#32]
+ 896 0030 94ED017A 	 flds s14,[r4,#4]
+ 897 0034 C8EE277A 	 fdivs s15,s16,s15
+ 898 0038 A6EEE77A 	 vfms.f32 s14,s13,s15
+ 899 003c F6EE006A 	 fconsts s13,#96
+ 900 0040 27EE267A 	 fmuls s14,s14,s13
+ 901 0044 86ED007A 	 fsts s14,[r6]
+ 902 0048 D4ED007A 	 flds s15,[r4]
+ 903 004c 94ED027A 	 flds s14,[r4,#8]
+ 904 0050 88EE278A 	 fdivs s16,s16,s15
+ 905 0054 D4ED077A 	 flds s15,[r4,#28]
+ 906 0058 E7EE087A 	 vfma.f32 s15,s14,s16
+ 907 005c BDEC028B 	 fldmfdd sp!,{d8}
+ 908 0060 67EEA67A 	 fmuls s15,s15,s13
+ 909 0064 C6ED017A 	 fsts s15,[r6,#4]
+ 910 0068 F8BD     	 pop {r3,r4,r5,r6,r7,pc}
+ 912              	 .section .text.update_config,"ax",%progbits
+ 913              	 .align 1
+ 914              	 .global update_config
+ 915              	 .thumb
+ 916              	 .thumb_func
+ 918              	update_config:
+ 919              	 
+ 920              	 
+ 921              	 
+ 922 0000 034A     	 ldr r2,.L126
+ 923 0002 044B     	 ldr r3,.L126+4
+ 924 0004 9169     	 ldr r1,[r2,#24]
+ 925 0006 D269     	 ldr r2,[r2,#28]
+ 926 0008 9960     	 str r1,[r3,#8]
+ 927 000a DA60     	 str r2,[r3,#12]
+ 928 000c 7047     	 bx lr
+ 929              	.L127:
+ 930 000e 00BF     	 .align 2
+ 931              	.L126:
+ 932 0010 00000000 	 .word .LANCHOR1
+ 933 0014 00000000 	 .word .LANCHOR0
+ 935              	 .section .text.run_DC_ctrl,"ax",%progbits
+ 936              	 .align 1
+ 937              	 .global run_DC_ctrl
+ 938              	 .thumb
+ 939              	 .thumb_func
+ 941              	run_DC_ctrl:
+ 942              	 
+ 943              	 
+ 944              	 
+ 945 0000 7047     	 bx lr
+ 947              	 .section .text.Init_prStruct,"ax",%progbits
+ 948              	 .align 1
+ 949              	 .global Init_prStruct
+ 950              	 .thumb
+ 951              	 .thumb_func
+ 953              	Init_prStruct:
+ 954              	 
+ 955              	 
+ 956              	 
+ 957 0000 8360     	 str r3,[r0,#8]
+ 958 0002 0023     	 movs r3,#0
+ 959 0004 0160     	 str r1,[r0]
+ 960 0006 4260     	 str r2,[r0,#4]
+ 961 0008 4361     	 str r3,[r0,#20]
+ 962 000a 0361     	 str r3,[r0,#16]
+ 963 000c 8361     	 str r3,[r0,#24]
+ 964 000e C360     	 str r3,[r0,#12]
+ 965 0010 7047     	 bx lr
+ 967              	 .section .text.set_PR_ref,"ax",%progbits
+ 968              	 .align 1
+ 969              	 .global set_PR_ref
+ 970              	 .thumb
+ 971              	 .thumb_func
+ 973              	set_PR_ref:
+ 974              	 
+ 975              	 
+ 976              	 
+ 977 0000 C160     	 str r1,[r0,#12]
+ 978 0002 7047     	 bx lr
+ 980              	 .global __aeabi_f2d
+ 981              	 .global __aeabi_dmul
+ 982              	 .global __aeabi_dadd
+ 983              	 .global __aeabi_d2f
+ 984              	 .section .text.Calc_prStruct,"ax",%progbits
+ 985              	 .align 1
+ 986              	 .global Calc_prStruct
+ 987              	 .thumb
+ 988              	 .thumb_func
+ 990              	Calc_prStruct:
+ 991              	 
+ 992              	 
+ 993 0000 2DE9F843 	 push {r3,r4,r5,r6,r7,r8,r9,lr}
+ 994 0004 07EE901A 	 fmsr s15,r1
+ 995 0008 2DED048B 	 fstmfdd sp!,{d8,d9}
+ 996 000c 90ED039A 	 flds s18,[r0,#12]
+ 997 0010 90ED028A 	 flds s16,[r0,#8]
+ 998 0014 0446     	 mov r4,r0
+ 999 0016 8069     	 ldr r0,[r0,#24]
+ 1000 0018 39EE679A 	 fsubs s18,s18,s15
+ 1001 001c 1546     	 mov r5,r2
+ 1002 001e 38EE088A 	 fadds s16,s16,s16
+ 1003 0022 FFF7FEFF 	 bl __aeabi_f2d
+ 1004 0026 D4ED017A 	 flds s15,[r4,#4]
+ 1005 002a 94ED057A 	 flds s14,[r4,#20]
+ 1006 002e 68EE277A 	 fmuls s15,s16,s15
+ 1007 0032 0646     	 mov r6,r0
+ 1008 0034 97EE897A 	 vfnms.f32 s14,s15,s18
+ 1009 0038 0F46     	 mov r7,r1
+ 1010 003a 17EE100A 	 fmrs r0,s14
+ 1011 003e FFF7FEFF 	 bl __aeabi_f2d
+ 1012 0042 23A3     	 adr r3,.L132
+ 1013 0044 D3E90023 	 ldrd r2,[r3]
+ 1014 0048 FFF7FEFF 	 bl __aeabi_dmul
+ 1015 004c 0246     	 mov r2,r0
+ 1016 004e 0B46     	 mov r3,r1
+ 1017 0050 3046     	 mov r0,r6
+ 1018 0052 3946     	 mov r1,r7
+ 1019 0054 FFF7FEFF 	 bl __aeabi_dadd
+ 1020 0058 FFF7FEFF 	 bl __aeabi_d2f
+ 1021 005c 08EE900A 	 fmsr s17,r0
+ 1022 0060 A061     	 str r0,[r4,#24]
+ 1023 0062 2846     	 mov r0,r5
+ 1024 0064 FFF7FEFF 	 bl __aeabi_f2d
+ 1025 0068 0646     	 mov r6,r0
+ 1026 006a 2069     	 ldr r0,[r4,#16]
+ 1027 006c 0F46     	 mov r7,r1
+ 1028 006e FFF7FEFF 	 bl __aeabi_f2d
+ 1029 0072 8046     	 mov r8,r0
+ 1030 0074 18EE900A 	 fmrs r0,s17
+ 1031 0078 8946     	 mov r9,r1
+ 1032 007a FFF7FEFF 	 bl __aeabi_f2d
+ 1033 007e 14A3     	 adr r3,.L132
+ 1034 0080 D3E90023 	 ldrd r2,[r3]
+ 1035 0084 FFF7FEFF 	 bl __aeabi_dmul
+ 1036 0088 3246     	 mov r2,r6
+ 1037 008a 3B46     	 mov r3,r7
+ 1038 008c FFF7FEFF 	 bl __aeabi_dmul
+ 1039 0090 3246     	 mov r2,r6
+ 1040 0092 3B46     	 mov r3,r7
+ 1041 0094 FFF7FEFF 	 bl __aeabi_dmul
+ 1042 0098 0246     	 mov r2,r0
+ 1043 009a 0B46     	 mov r3,r1
+ 1044 009c 4046     	 mov r0,r8
+ 1045 009e 4946     	 mov r1,r9
+ 1046 00a0 FFF7FEFF 	 bl __aeabi_dadd
+ 1047 00a4 FFF7FEFF 	 bl __aeabi_d2f
+ 1048 00a8 07EE900A 	 fmsr s15,r0
+ 1049 00ac E8EE287A 	 vfma.f32 s15,s16,s17
+ 1050 00b0 2061     	 str r0,[r4,#16]
+ 1051 00b2 C4ED057A 	 fsts s15,[r4,#20]
+ 1052 00b6 D4ED007A 	 flds s15,[r4]
+ 1053 00ba E7EE898A 	 vfma.f32 s17,s15,s18
+ 1054 00be 18EE900A 	 fmrs r0,s17
+ 1055 00c2 BDEC048B 	 fldmfdd sp!,{d8-d9}
+ 1056 00c6 BDE8F883 	 pop {r3,r4,r5,r6,r7,r8,r9,pc}
+ 1057              	.L133:
+ 1058 00ca 00BFAFF3 	 .align 3
+ 1058      0080
+ 1059              	.L132:
+ 1060 00d0 2D431CEB 	 .word -350469331
+ 1061 00d4 E2361A3F 	 .word 1058682594
+ 1063              	 .section .text.no_fault,"ax",%progbits
+ 1064              	 .align 1
+ 1065              	 .global no_fault
+ 1066              	 .thumb
+ 1067              	 .thumb_func
+ 1069              	no_fault:
+ 1070              	 
+ 1071              	 
+ 1072              	 
+ 1073 0000 254B     	 ldr r3,.L144
+ 1074 0002 264A     	 ldr r2,.L144+4
+ 1075 0004 D3ED006A 	 flds s13,[r3]
+ 1076 0008 D2ED007A 	 flds s15,[r2]
+ 1077 000c F4EEE76A 	 fcmpes s13,s15
+ 1078 0010 F1EE10FA 	 fmstat
+ 1079 0014 3EDC     	 bgt .L143
+ 1080 0016 B1EE677A 	 fnegs s14,s15
+ 1081 001a F4EEC76A 	 fcmpes s13,s14
+ 1082 001e F1EE10FA 	 fmstat
+ 1083 0022 37D4     	 bmi .L143
+ 1084 0024 D3ED016A 	 flds s13,[r3,#4]
+ 1085 0028 F4EEE76A 	 fcmpes s13,s15
+ 1086 002c F1EE10FA 	 fmstat
+ 1087 0030 30DC     	 bgt .L143
+ 1088 0032 F4EEC76A 	 fcmpes s13,s14
+ 1089 0036 F1EE10FA 	 fmstat
+ 1090 003a 2BD4     	 bmi .L143
+ 1091 003c D3ED026A 	 flds s13,[r3,#8]
+ 1092 0040 F4EEE76A 	 fcmpes s13,s15
+ 1093 0044 F1EE10FA 	 fmstat
+ 1094 0048 24DC     	 bgt .L143
+ 1095 004a F4EEC76A 	 fcmpes s13,s14
+ 1096 004e F1EE10FA 	 fmstat
+ 1097 0052 1FD4     	 bmi .L143
+ 1098 0054 124B     	 ldr r3,.L144+8
+ 1099 0056 134A     	 ldr r2,.L144+12
+ 1100 0058 D3ED047A 	 flds s15,[r3,#16]
+ 1101 005c 92ED007A 	 flds s14,[r2]
+ 1102 0060 F4EEC77A 	 fcmpes s15,s14
+ 1103 0064 F1EE10FA 	 fmstat
+ 1104 0068 14DC     	 bgt .L143
+ 1105 006a 0F4A     	 ldr r2,.L144+16
+ 1106 006c 92ED007A 	 flds s14,[r2]
+ 1107 0070 F4EEC77A 	 fcmpes s15,s14
+ 1108 0074 F1EE10FA 	 fmstat
+ 1109 0078 0CD4     	 bmi .L143
+ 1110 007a 93ED097A 	 flds s14,[r3,#36]
+ 1111 007e 0B4B     	 ldr r3,.L144+20
+ 1112 0080 D3ED007A 	 flds s15,[r3]
+ 1113 0084 B4EEE77A 	 fcmpes s14,s15
+ 1114 0088 F1EE10FA 	 fmstat
+ 1115 008c CCBF     	 ite gt
+ 1116 008e 0120     	 movgt r0,#1
+ 1117 0090 0020     	 movle r0,#0
+ 1118 0092 7047     	 bx lr
+ 1119              	.L143:
+ 1120 0094 0120     	 movs r0,#1
+ 1121 0096 7047     	 bx lr
+ 1122              	.L145:
+ 1123              	 .align 2
+ 1124              	.L144:
+ 1125 0098 00000000 	 .word .LANCHOR2
+ 1126 009c 00000000 	 .word .LANCHOR3
+ 1127 00a0 00000000 	 .word .LANCHOR4
+ 1128 00a4 00000000 	 .word .LANCHOR5
+ 1129 00a8 00000000 	 .word .LANCHOR6
+ 1130 00ac 00000000 	 .word .LANCHOR7
+ 1132              	 .section .text.ConverterStateMachine,"ax",%progbits
+ 1133              	 .align 1
+ 1134              	 .global ConverterStateMachine
+ 1135              	 .thumb
+ 1136              	 .thumb_func
+ 1138              	ConverterStateMachine:
+ 1139              	 
+ 1140              	 
+ 1141 0000 38B5     	 push {r3,r4,r5,lr}
+ 1142 0002 8F4D     	 ldr r5,.L194
+ 1143 0004 8F4C     	 ldr r4,.L194+4
+ 1144 0006 2B68     	 ldr r3,[r5]
+ 1145 0008 2288     	 ldrh r2,[r4]
+ 1146 000a 0133     	 adds r3,r3,#1
+ 1147 000c 92B2     	 uxth r2,r2
+ 1148 000e 2B60     	 str r3,[r5]
+ 1149 0010 042A     	 cmp r2,#4
+ 1150 0012 00F2BD80 	 bhi .L147
+ 1151 0016 DFE802F0 	 tbb [pc,r2]
+ 1152              	.L149:
+ 1153 001a 03       	 .byte (.L148-.L149)/2
+ 1154 001b 10       	 .byte (.L150-.L149)/2
+ 1155 001c 2B       	 .byte (.L151-.L149)/2
+ 1156 001d 31       	 .byte (.L152-.L149)/2
+ 1157 001e 48       	 .byte (.L153-.L149)/2
+ 1158 001f 00       	 .p2align 1
+ 1159              	.L148:
+ 1160 0020 894A     	 ldr r2,.L194+8
+ 1161 0022 1268     	 ldr r2,[r2]
+ 1162 0024 012A     	 cmp r2,#1
+ 1163 0026 40F0B380 	 bne .L147
+ 1164 002a 41F28831 	 movw r1,#5000
+ 1165 002e 8B42     	 cmp r3,r1
+ 1166 0030 40F3AE80 	 ble .L147
+ 1167 0034 2280     	 strh r2,[r4]
+ 1168 0036 0023     	 movs r3,#0
+ 1169 0038 18E0     	 b .L187
+ 1170              	.L150:
+ 1171 003a 41F28832 	 movw r2,#5000
+ 1172 003e 9342     	 cmp r3,r2
+ 1173 0040 0DDD     	 ble .L156
+ 1174 0042 824B     	 ldr r3,.L194+12
+ 1175 0044 DFED827A 	 flds s15,.L194+16
+ 1176 0048 93ED047A 	 flds s14,[r3,#16]
+ 1177 004c B4EEE77A 	 fcmpes s14,s15
+ 1178 0050 F1EE10FA 	 fmstat
+ 1179 0054 03DD     	 ble .L156
+ 1180 0056 0223     	 movs r3,#2
+ 1181              	.L193:
+ 1182 0058 2380     	 strh r3,[r4]
+ 1183 005a 0023     	 movs r3,#0
+ 1184 005c 2B60     	 str r3,[r5]
+ 1185              	.L156:
+ 1186 005e 7D4B     	 ldr r3,.L194+20
+ 1187 0060 1B68     	 ldr r3,[r3]
+ 1188 0062 012B     	 cmp r3,#1
+ 1189 0064 40F09480 	 bne .L147
+ 1190 0068 0023     	 movs r3,#0
+ 1191 006a 2380     	 strh r3,[r4]
+ 1192              	.L187:
+ 1193 006c 2B60     	 str r3,[r5]
+ 1194 006e 8FE0     	 b .L147
+ 1195              	.L151:
+ 1196 0070 41F28832 	 movw r2,#5000
+ 1197 0074 9342     	 cmp r3,r2
+ 1198 0076 F2DD     	 ble .L156
+ 1199 0078 0323     	 movs r3,#3
+ 1200 007a EDE7     	 b .L193
+ 1201              	.L152:
+ 1202 007c 724B     	 ldr r3,.L194+8
+ 1203 007e 1B68     	 ldr r3,[r3]
+ 1204 0080 012B     	 cmp r3,#1
+ 1205 0082 ECD1     	 bne .L156
+ 1206 0084 FFF7FEFF 	 bl no_fault
+ 1207 0088 0028     	 cmp r0,#0
+ 1208 008a E8D1     	 bne .L156
+ 1209 008c 724B     	 ldr r3,.L194+24
+ 1210 008e 1860     	 str r0,[r3]
+ 1211 0090 724B     	 ldr r3,.L194+28
+ 1212 0092 1860     	 str r0,[r3]
+ 1213 0094 724B     	 ldr r3,.L194+32
+ 1214 0096 1860     	 str r0,[r3]
+ 1215 0098 724B     	 ldr r3,.L194+36
+ 1216 009a 1860     	 str r0,[r3]
+ 1217 009c 724B     	 ldr r3,.L194+40
+ 1218 009e 1860     	 str r0,[r3]
+ 1219 00a0 724B     	 ldr r3,.L194+44
+ 1220 00a2 1860     	 str r0,[r3]
+ 1221 00a4 0423     	 movs r3,#4
+ 1222 00a6 2380     	 strh r3,[r4]
+ 1223 00a8 D9E7     	 b .L156
+ 1224              	.L153:
+ 1225 00aa 6A4B     	 ldr r3,.L194+20
+ 1226 00ac 704A     	 ldr r2,.L194+48
+ 1227 00ae 1B68     	 ldr r3,[r3]
+ 1228 00b0 D2ED007A 	 flds s15,[r2]
+ 1229 00b4 012B     	 cmp r3,#1
+ 1230 00b6 04BF     	 itt eq
+ 1231 00b8 0023     	 moveq r3,#0
+ 1232 00ba 2380     	 strheq r3,[r4]
+ 1233 00bc 6D4B     	 ldr r3,.L194+52
+ 1234 00be 93ED007A 	 flds s14,[r3]
+ 1235 00c2 B4EEE77A 	 fcmpes s14,s15
+ 1236 00c6 F1EE10FA 	 fmstat
+ 1237 00ca 06DC     	 bgt .L161
+ 1238 00cc F1EE676A 	 fnegs s13,s15
+ 1239 00d0 B4EEE67A 	 fcmpes s14,s13
+ 1240 00d4 F1EE10FA 	 fmstat
+ 1241 00d8 04D5     	 bpl .L162
+ 1242              	.L161:
+ 1243 00da 0022     	 movs r2,#0
+ 1244 00dc 2280     	 strh r2,[r4]
+ 1245 00de 5E4A     	 ldr r2,.L194+24
+ 1246 00e0 0121     	 movs r1,#1
+ 1247 00e2 1160     	 str r1,[r2]
+ 1248              	.L162:
+ 1249 00e4 93ED017A 	 flds s14,[r3,#4]
+ 1250 00e8 B4EEE77A 	 fcmpes s14,s15
+ 1251 00ec F1EE10FA 	 fmstat
+ 1252 00f0 06DC     	 bgt .L164
+ 1253 00f2 F1EE676A 	 fnegs s13,s15
+ 1254 00f6 B4EEE67A 	 fcmpes s14,s13
+ 1255 00fa F1EE10FA 	 fmstat
+ 1256 00fe 04D5     	 bpl .L165
+ 1257              	.L164:
+ 1258 0100 0022     	 movs r2,#0
+ 1259 0102 2280     	 strh r2,[r4]
+ 1260 0104 554A     	 ldr r2,.L194+28
+ 1261 0106 0121     	 movs r1,#1
+ 1262 0108 1160     	 str r1,[r2]
+ 1263              	.L165:
+ 1264 010a 93ED027A 	 flds s14,[r3,#8]
+ 1265 010e B4EEE77A 	 fcmpes s14,s15
+ 1266 0112 F1EE10FA 	 fmstat
+ 1267 0116 06DC     	 bgt .L167
+ 1268 0118 F1EE677A 	 fnegs s15,s15
+ 1269 011c B4EEE77A 	 fcmpes s14,s15
+ 1270 0120 F1EE10FA 	 fmstat
+ 1271 0124 04D5     	 bpl .L168
+ 1272              	.L167:
+ 1273 0126 0023     	 movs r3,#0
+ 1274 0128 2380     	 strh r3,[r4]
+ 1275 012a 4D4B     	 ldr r3,.L194+32
+ 1276 012c 0122     	 movs r2,#1
+ 1277 012e 1A60     	 str r2,[r3]
+ 1278              	.L168:
+ 1279 0130 514A     	 ldr r2,.L194+56
+ 1280 0132 464B     	 ldr r3,.L194+12
+ 1281 0134 92ED007A 	 flds s14,[r2]
+ 1282 0138 D3ED047A 	 flds s15,[r3,#16]
+ 1283 013c F4EEC77A 	 fcmpes s15,s14
+ 1284 0140 F1EE10FA 	 fmstat
+ 1285 0144 C1BF     	 itttt gt
+ 1286 0146 0022     	 movgt r2,#0
+ 1287 0148 2280     	 strhgt r2,[r4]
+ 1288 014a 464A     	 ldrgt r2,.L194+36
+ 1289 014c 0121     	 movgt r1,#1
+ 1290 014e C8BF     	 it gt
+ 1291 0150 1160     	 strgt r1,[r2]
+ 1292 0152 4A4A     	 ldr r2,.L194+60
+ 1293 0154 92ED007A 	 flds s14,[r2]
+ 1294 0158 F4EEC77A 	 fcmpes s15,s14
+ 1295 015c 93ED097A 	 flds s14,[r3,#36]
+ 1296 0160 474B     	 ldr r3,.L194+64
+ 1297 0162 F1EE10FA 	 fmstat
+ 1298 0166 48BF     	 it mi
+ 1299 0168 0022     	 movmi r2,#0
+ 1300 016a D3ED007A 	 flds s15,[r3]
+ 1301 016e 42BF     	 ittt mi
+ 1302 0170 2280     	 strhmi r2,[r4]
+ 1303 0172 3D4A     	 ldrmi r2,.L194+40
+ 1304 0174 0121     	 movmi r1,#1
+ 1305 0176 B4EEE77A 	 fcmpes s14,s15
+ 1306 017a 48BF     	 it mi
+ 1307 017c 1160     	 strmi r1,[r2]
+ 1308 017e F1EE10FA 	 fmstat
+ 1309 0182 C1BF     	 itttt gt
+ 1310 0184 0023     	 movgt r3,#0
+ 1311 0186 2380     	 strhgt r3,[r4]
+ 1312 0188 384B     	 ldrgt r3,.L194+44
+ 1313 018a 0122     	 movgt r2,#1
+ 1314 018c C8BF     	 it gt
+ 1315 018e 1A60     	 strgt r2,[r3]
+ 1316              	.L147:
+ 1317 0190 2488     	 ldrh r4,[r4]
+ 1318 0192 2C4B     	 ldr r3,.L194+4
+ 1319 0194 A4B2     	 uxth r4,r4
+ 1320 0196 8CB9     	 cbnz r4,.L175
+ 1321 0198 3A48     	 ldr r0,.L194+68
+ 1322 019a FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
+ 1323 019e 3A48     	 ldr r0,.L194+72
+ 1324 01a0 FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
+ 1325 01a4 3948     	 ldr r0,.L194+76
+ 1326 01a6 FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
+ 1327 01aa 3948     	 ldr r0,.L194+80
+ 1328 01ac FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
+ 1329 01b0 3848     	 ldr r0,.L194+84
+ 1330 01b2 FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
+ 1331 01b6 384B     	 ldr r3,.L194+88
+ 1332 01b8 1C60     	 str r4,[r3]
+ 1333 01ba 38BD     	 pop {r3,r4,r5,pc}
+ 1334              	.L175:
+ 1335 01bc 1A88     	 ldrh r2,[r3]
+ 1336 01be 92B2     	 uxth r2,r2
+ 1337 01c0 012A     	 cmp r2,#1
+ 1338 01c2 0CD1     	 bne .L177
+ 1339 01c4 2F48     	 ldr r0,.L194+68
+ 1340 01c6 FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
+ 1341 01ca 2F48     	 ldr r0,.L194+72
+ 1342 01cc FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
+ 1343 01d0 2E48     	 ldr r0,.L194+76
+ 1344 01d2 FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
+ 1345 01d6 2E48     	 ldr r0,.L194+80
+ 1346 01d8 FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
+ 1347 01dc 0FE0     	 b .L192
+ 1348              	.L177:
+ 1349 01de 1A88     	 ldrh r2,[r3]
+ 1350 01e0 92B2     	 uxth r2,r2
+ 1351 01e2 022A     	 cmp r2,#2
+ 1352 01e4 10D1     	 bne .L178
+ 1353              	.L179:
+ 1354 01e6 2748     	 ldr r0,.L194+68
+ 1355 01e8 FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
+ 1356 01ec 2648     	 ldr r0,.L194+72
+ 1357 01ee FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
+ 1358 01f2 2648     	 ldr r0,.L194+76
+ 1359 01f4 FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
+ 1360 01f8 2548     	 ldr r0,.L194+80
+ 1361 01fa FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
+ 1362              	.L192:
+ 1363 01fe 2548     	 ldr r0,.L194+84
+ 1364 0200 FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
+ 1365 0204 0022     	 movs r2,#0
+ 1366 0206 17E0     	 b .L189
+ 1367              	.L178:
+ 1368 0208 1A88     	 ldrh r2,[r3]
+ 1369 020a 92B2     	 uxth r2,r2
+ 1370 020c 032A     	 cmp r2,#3
+ 1371 020e EAD0     	 beq .L179
+ 1372 0210 1B88     	 ldrh r3,[r3]
+ 1373 0212 9BB2     	 uxth r3,r3
+ 1374 0214 042B     	 cmp r3,#4
+ 1375 0216 11D1     	 bne .L146
+ 1376 0218 1A48     	 ldr r0,.L194+68
+ 1377 021a FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
+ 1378 021e 1A48     	 ldr r0,.L194+72
+ 1379 0220 FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
+ 1380 0224 1948     	 ldr r0,.L194+76
+ 1381 0226 FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
+ 1382 022a 1948     	 ldr r0,.L194+80
+ 1383 022c FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
+ 1384 0230 1848     	 ldr r0,.L194+84
+ 1385 0232 FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
+ 1386 0236 0122     	 movs r2,#1
+ 1387              	.L189:
+ 1388 0238 174B     	 ldr r3,.L194+88
+ 1389 023a 1A60     	 str r2,[r3]
+ 1390              	.L146:
+ 1391 023c 38BD     	 pop {r3,r4,r5,pc}
+ 1392              	.L195:
+ 1393 023e 00BF     	 .align 2
+ 1394              	.L194:
+ 1395 0240 00000000 	 .word .LANCHOR8
+ 1396 0244 00000000 	 .word .LANCHOR9
+ 1397 0248 00000000 	 .word .LANCHOR10
+ 1398 024c 00000000 	 .word .LANCHOR4
+ 1399 0250 0000F042 	 .word 1123024896
+ 1400 0254 00000000 	 .word .LANCHOR11
+ 1401 0258 00000000 	 .word .LANCHOR12
+ 1402 025c 00000000 	 .word .LANCHOR13
+ 1403 0260 00000000 	 .word .LANCHOR14
+ 1404 0264 00000000 	 .word .LANCHOR15
+ 1405 0268 00000000 	 .word .LANCHOR16
+ 1406 026c 00000000 	 .word .LANCHOR17
+ 1407 0270 00000000 	 .word .LANCHOR3
+ 1408 0274 00000000 	 .word .LANCHOR2
+ 1409 0278 00000000 	 .word .LANCHOR5
+ 1410 027c 00000000 	 .word .LANCHOR6
+ 1411 0280 00000000 	 .word .LANCHOR7
+ 1412 0284 00000000 	 .word EN_1
+ 1413 0288 00000000 	 .word EN_2
+ 1414 028c 00000000 	 .word EN_3
+ 1415 0290 00000000 	 .word SSR1
+ 1416 0294 00000000 	 .word SSR2
+ 1417 0298 00000000 	 .word .LANCHOR18
+ 1419              	 .global __aeabi_dsub
+ 1420              	 .section .text.CCU80_3_IRQHandler,"ax",%progbits
+ 1421              	 .align 1
+ 1422              	 .global CCU80_3_IRQHandler
+ 1423              	 .thumb
+ 1424              	 .thumb_func
+ 1426              	CCU80_3_IRQHandler:
+ 1427              	 
+ 1428              	 
+ 1429 0000 2DE9F84F 	 push {r3,r4,r5,r6,r7,r8,r9,r10,fp,lr}
+ 1430 0004 C248     	 ldr r0,.L212+24
+ 1431 0006 C34E     	 ldr r6,.L212+28
+ 1432 0008 C34D     	 ldr r5,.L212+32
+ 1433 000a DFF8D0A3 	 ldr r10,.L212+228
+ 1434 000e C34F     	 ldr r7,.L212+36
+ 1435 0010 DFF8CCB3 	 ldr fp,.L212+232
+ 1436 0014 2DED028B 	 fstmfdd sp!,{d8}
+ 1437 0018 FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
+ 1438 001c C04B     	 ldr r3,.L212+40
+ 1439 001e C148     	 ldr r0,.L212+44
+ 1440 0020 1A7A     	 ldrb r2,[r3,#8]
+ 1441 0022 1B68     	 ldr r3,[r3]
+ 1442 0024 56F82220 	 ldr r2,[r6,r2,lsl#2]
+ 1443 0028 9B78     	 ldrb r3,[r3,#2]
+ 1444 002a 9FEDBF7A 	 flds s14,.L212+48
+ 1445 002e 9FEDBF6A 	 flds s12,.L212+52
+ 1446 0032 03F00F03 	 and r3,r3,#15
+ 1447 0036 C033     	 adds r3,r3,#192
+ 1448 0038 52F82330 	 ldr r3,[r2,r3,lsl#2]
+ 1449 003c BC4A     	 ldr r2,.L212+56
+ 1450 003e 0380     	 strh r3,[r0]
+ 1451 0040 117A     	 ldrb r1,[r2,#8]
+ 1452 0042 1268     	 ldr r2,[r2]
+ 1453 0044 56F82110 	 ldr r1,[r6,r1,lsl#2]
+ 1454 0048 9278     	 ldrb r2,[r2,#2]
+ 1455 004a 02F00F02 	 and r2,r2,#15
+ 1456 004e C032     	 adds r2,r2,#192
+ 1457 0050 9BB2     	 uxth r3,r3
+ 1458 0052 51F82210 	 ldr r1,[r1,r2,lsl#2]
+ 1459 0056 B74A     	 ldr r2,.L212+60
+ 1460 0058 4180     	 strh r1,[r0,#2]
+ 1461 005a 147A     	 ldrb r4,[r2,#8]
+ 1462 005c 1268     	 ldr r2,[r2]
+ 1463 005e 56F82440 	 ldr r4,[r6,r4,lsl#2]
+ 1464 0062 9278     	 ldrb r2,[r2,#2]
+ 1465 0064 07EE903A 	 fmsr s15,r3
+ 1466 0068 8BB2     	 uxth r3,r1
+ 1467 006a 06EE903A 	 fmsr s13,r3
+ 1468 006e 02F00F02 	 and r2,r2,#15
+ 1469 0072 F8EEE77A 	 fsitos s15,s15
+ 1470 0076 C032     	 adds r2,r2,#192
+ 1471 0078 77EEC77A 	 fsubs s15,s15,s14
+ 1472 007c F8EEE66A 	 fsitos s13,s13
+ 1473 0080 9FEDAD7A 	 flds s14,.L212+64
+ 1474 0084 54F82220 	 ldr r2,[r4,r2,lsl#2]
+ 1475 0088 8280     	 strh r2,[r0,#4]
+ 1476 008a 76EEC76A 	 fsubs s13,s13,s14
+ 1477 008e 93B2     	 uxth r3,r2
+ 1478 0090 66EE866A 	 fmuls s13,s13,s12
+ 1479 0094 07EE103A 	 fmsr s14,r3
+ 1480 0098 C5ED016A 	 fsts s13,[r5,#4]
+ 1481 009c F8EEC76A 	 fsitos s13,s14
+ 1482 00a0 9FEDA67A 	 flds s14,.L212+68
+ 1483 00a4 A649     	 ldr r1,.L212+72
+ 1484 00a6 A74A     	 ldr r2,.L212+76
+ 1485 00a8 36EEC77A 	 fsubs s14,s13,s14
+ 1486 00ac 67EE867A 	 fmuls s15,s15,s12
+ 1487 00b0 27EE067A 	 fmuls s14,s14,s12
+ 1488 00b4 17EE900A 	 fmrs r0,s15
+ 1489 00b8 C5ED007A 	 fsts s15,[r5]
+ 1490 00bc 85ED027A 	 fsts s14,[r5,#8]
+ 1491 00c0 FFF7FEFF 	 bl LPF1
+ 1492 00c4 A049     	 ldr r1,.L212+80
+ 1493 00c6 2860     	 str r0,[r5]
+ 1494 00c8 9E4A     	 ldr r2,.L212+76
+ 1495 00ca 6868     	 ldr r0,[r5,#4]
+ 1496 00cc FFF7FEFF 	 bl LPF1
+ 1497 00d0 9E49     	 ldr r1,.L212+84
+ 1498 00d2 6860     	 str r0,[r5,#4]
+ 1499 00d4 9B4A     	 ldr r2,.L212+76
+ 1500 00d6 A868     	 ldr r0,[r5,#8]
+ 1501 00d8 FFF7FEFF 	 bl LPF1
+ 1502 00dc 9C4B     	 ldr r3,.L212+88
+ 1503 00de A860     	 str r0,[r5,#8]
+ 1504 00e0 1A7A     	 ldrb r2,[r3,#8]
+ 1505 00e2 1B68     	 ldr r3,[r3]
+ 1506 00e4 56F82220 	 ldr r2,[r6,r2,lsl#2]
+ 1507 00e8 9B78     	 ldrb r3,[r3,#2]
+ 1508 00ea 9A48     	 ldr r0,.L212+92
+ 1509 00ec 9FED9A7A 	 flds s14,.L212+96
+ 1510 00f0 9FED9A6A 	 flds s12,.L212+100
+ 1511 00f4 03F00F03 	 and r3,r3,#15
+ 1512 00f8 C033     	 adds r3,r3,#192
+ 1513 00fa 52F82330 	 ldr r3,[r2,r3,lsl#2]
+ 1514 00fe 984A     	 ldr r2,.L212+104
+ 1515 0100 0380     	 strh r3,[r0]
+ 1516 0102 117A     	 ldrb r1,[r2,#8]
+ 1517 0104 1268     	 ldr r2,[r2]
+ 1518 0106 56F82110 	 ldr r1,[r6,r1,lsl#2]
+ 1519 010a 9278     	 ldrb r2,[r2,#2]
+ 1520 010c 02F00F02 	 and r2,r2,#15
+ 1521 0110 C032     	 adds r2,r2,#192
+ 1522 0112 9BB2     	 uxth r3,r3
+ 1523 0114 51F82210 	 ldr r1,[r1,r2,lsl#2]
+ 1524 0118 924A     	 ldr r2,.L212+108
+ 1525 011a 4180     	 strh r1,[r0,#2]
+ 1526 011c 147A     	 ldrb r4,[r2,#8]
+ 1527 011e 1268     	 ldr r2,[r2]
+ 1528 0120 56F82440 	 ldr r4,[r6,r4,lsl#2]
+ 1529 0124 9278     	 ldrb r2,[r2,#2]
+ 1530 0126 07EE903A 	 fmsr s15,r3
+ 1531 012a 8BB2     	 uxth r3,r1
+ 1532 012c 06EE903A 	 fmsr s13,r3
+ 1533 0130 02F00F02 	 and r2,r2,#15
+ 1534 0134 F8EEE77A 	 fsitos s15,s15
+ 1535 0138 C032     	 adds r2,r2,#192
+ 1536 013a 77EEC77A 	 fsubs s15,s15,s14
+ 1537 013e F8EEE66A 	 fsitos s13,s13
+ 1538 0142 9FED897A 	 flds s14,.L212+112
+ 1539 0146 54F82220 	 ldr r2,[r4,r2,lsl#2]
+ 1540 014a 884C     	 ldr r4,.L212+116
+ 1541 014c 8280     	 strh r2,[r0,#4]
+ 1542 014e 76EEC76A 	 fsubs s13,s13,s14
+ 1543 0152 93B2     	 uxth r3,r2
+ 1544 0154 66EE866A 	 fmuls s13,s13,s12
+ 1545 0158 07EE103A 	 fmsr s14,r3
+ 1546 015c C4ED016A 	 fsts s13,[r4,#4]
+ 1547 0160 F8EEC76A 	 fsitos s13,s14
+ 1548 0164 9FED827A 	 flds s14,.L212+120
+ 1549 0168 8249     	 ldr r1,.L212+124
+ 1550 016a 764A     	 ldr r2,.L212+76
+ 1551 016c 36EEC77A 	 fsubs s14,s13,s14
+ 1552 0170 67EE867A 	 fmuls s15,s15,s12
+ 1553 0174 27EE067A 	 fmuls s14,s14,s12
+ 1554 0178 17EE900A 	 fmrs r0,s15
+ 1555 017c C4ED007A 	 fsts s15,[r4]
+ 1556 0180 84ED027A 	 fsts s14,[r4,#8]
+ 1557 0184 FFF7FEFF 	 bl LPF1
+ 1558 0188 7B49     	 ldr r1,.L212+128
+ 1559 018a 2060     	 str r0,[r4]
+ 1560 018c 6D4A     	 ldr r2,.L212+76
+ 1561 018e 6068     	 ldr r0,[r4,#4]
+ 1562 0190 FFF7FEFF 	 bl LPF1
+ 1563 0194 7949     	 ldr r1,.L212+132
+ 1564 0196 6060     	 str r0,[r4,#4]
+ 1565 0198 6A4A     	 ldr r2,.L212+76
+ 1566 019a A068     	 ldr r0,[r4,#8]
+ 1567 019c FFF7FEFF 	 bl LPF1
+ 1568 01a0 774B     	 ldr r3,.L212+136
+ 1569 01a2 A060     	 str r0,[r4,#8]
+ 1570 01a4 1A7A     	 ldrb r2,[r3,#8]
+ 1571 01a6 1B68     	 ldr r3,[r3]
+ 1572 01a8 56F82220 	 ldr r2,[r6,r2,lsl#2]
+ 1573 01ac 9B78     	 ldrb r3,[r3,#2]
+ 1574 01ae 9FED757A 	 flds s14,.L212+140
+ 1575 01b2 7549     	 ldr r1,.L212+144
+ 1576 01b4 03F00F03 	 and r3,r3,#15
+ 1577 01b8 C033     	 adds r3,r3,#192
+ 1578 01ba 52F82330 	 ldr r3,[r2,r3,lsl#2]
+ 1579 01be 734A     	 ldr r2,.L212+148
+ 1580 01c0 1380     	 strh r3,[r2]
+ 1581 01c2 9BB2     	 uxth r3,r3
+ 1582 01c4 07EE903A 	 fmsr s15,r3
+ 1583 01c8 F8EEE77A 	 fsitos s15,s15
+ 1584 01cc 704A     	 ldr r2,.L212+152
+ 1585 01ce 77EEC77A 	 fsubs s15,s15,s14
+ 1586 01d2 9FED707A 	 flds s14,.L212+156
+ 1587 01d6 67EE877A 	 fmuls s15,s15,s14
+ 1588 01da 17EE900A 	 fmrs r0,s15
+ 1589 01de CAED007A 	 fsts s15,[r10]
+ 1590 01e2 FFF7FEFF 	 bl LPF1
+ 1591 01e6 6C4B     	 ldr r3,.L212+160
+ 1592 01e8 3861     	 str r0,[r7,#16]
+ 1593 01ea 1A7A     	 ldrb r2,[r3,#8]
+ 1594 01ec 1B68     	 ldr r3,[r3]
+ 1595 01ee 56F82220 	 ldr r2,[r6,r2,lsl#2]
+ 1596 01f2 9B78     	 ldrb r3,[r3,#2]
+ 1597 01f4 694E     	 ldr r6,.L212+164
+ 1598 01f6 03F00F03 	 and r3,r3,#15
+ 1599 01fa C033     	 adds r3,r3,#192
+ 1600 01fc 52F82330 	 ldr r3,[r2,r3,lsl#2]
+ 1601 0200 674A     	 ldr r2,.L212+168
+ 1602 0202 9BB2     	 uxth r3,r3
+ 1603 0204 07EE903A 	 fmsr s15,r3
+ 1604 0208 B8EE678A 	 fuitos s16,s15
+ 1605 020c 1380     	 strh r3,[r2]
+ 1606 020e 68EE087A 	 fmuls s15,s16,s16
+ 1607 0212 17EE900A 	 fmrs r0,s15
+ 1608 0216 FFF7FEFF 	 bl __aeabi_f2d
+ 1609 021a 37A3     	 adr r3,.L212
+ 1610 021c D3E90023 	 ldrd r2,[r3]
+ 1611 0220 FFF7FEFF 	 bl __aeabi_dmul
+ 1612 0224 8046     	 mov r8,r0
+ 1613 0226 18EE100A 	 fmrs r0,s16
+ 1614 022a 8946     	 mov r9,r1
+ 1615 022c FFF7FEFF 	 bl __aeabi_f2d
+ 1616 0230 33A3     	 adr r3,.L212+8
+ 1617 0232 D3E90023 	 ldrd r2,[r3]
+ 1618 0236 FFF7FEFF 	 bl __aeabi_dmul
+ 1619 023a 0246     	 mov r2,r0
+ 1620 023c 0B46     	 mov r3,r1
+ 1621 023e 4046     	 mov r0,r8
+ 1622 0240 4946     	 mov r1,r9
+ 1623 0242 FFF7FEFF 	 bl __aeabi_dadd
+ 1624 0246 30A3     	 adr r3,.L212+16
+ 1625 0248 D3E90023 	 ldrd r2,[r3]
+ 1626 024c FFF7FEFF 	 bl __aeabi_dsub
+ 1627 0250 FFF7FEFF 	 bl __aeabi_d2f
+ 1628 0254 07EE100A 	 fmsr s14,r0
+ 1629 0258 F1EE0C7A 	 fconsts s15,#28
+ 1630 025c 77EE277A 	 fadds s15,s14,s15
+ 1631 0260 504B     	 ldr r3,.L212+172
+ 1632 0262 5149     	 ldr r1,.L212+176
+ 1633 0264 514A     	 ldr r2,.L212+180
+ 1634 0266 C3ED007A 	 fsts s15,[r3]
+ 1635 026a 17EE900A 	 fmrs r0,s15
+ 1636 026e FFF7FEFF 	 bl LPF1
+ 1637 0272 4F4B     	 ldr r3,.L212+184
+ 1638 0274 DAF80020 	 ldr r2,[r10]
+ 1639 0278 1A60     	 str r2,[r3]
+ 1640 027a 4E4B     	 ldr r3,.L212+188
+ 1641 027c 2268     	 ldr r2,[r4]
+ 1642 027e 1A60     	 str r2,[r3]
+ 1643 0280 4D4B     	 ldr r3,.L212+192
+ 1644 0282 6268     	 ldr r2,[r4,#4]
+ 1645 0284 1A60     	 str r2,[r3]
+ 1646 0286 4D4B     	 ldr r3,.L212+196
+ 1647 0288 A268     	 ldr r2,[r4,#8]
+ 1648 028a 1A60     	 str r2,[r3]
+ 1649 028c 4C4B     	 ldr r3,.L212+200
+ 1650 028e 2A68     	 ldr r2,[r5]
+ 1651 0290 1A60     	 str r2,[r3]
+ 1652 0292 DFF85091 	 ldr r9,.L212+236
+ 1653 0296 4B4B     	 ldr r3,.L212+204
+ 1654 0298 6A68     	 ldr r2,[r5,#4]
+ 1655 029a 1A60     	 str r2,[r3]
+ 1656 029c 4A46     	 mov r2,r9
+ 1657 029e DFF848A1 	 ldr r10,.L212+240
+ 1658 02a2 494B     	 ldr r3,.L212+208
+ 1659 02a4 52F8041B 	 ldr r1,[r2],#4
+ 1660 02a8 7862     	 str r0,[r7,#36]
+ 1661 02aa A868     	 ldr r0,[r5,#8]
+ 1662 02ac 1860     	 str r0,[r3]
+ 1663 02ae FFF7FEFF 	 bl QSG
+ 1664 02b2 DAED007A 	 flds s15,[r10]
+ 1665 02b6 9BED007A 	 flds s14,[fp]
+ 1666 02ba 444D     	 ldr r5,.L212+212
+ 1667 02bc DFF82C81 	 ldr r8,.L212+244
+ 1668 02c0 D9F80430 	 ldr r3,[r9,#4]
+ 1669 02c4 D8F80020 	 ldr r2,[r8]
+ 1670 02c8 3360     	 str r3,[r6]
+ 1671 02ca 87EE877A 	 fdivs s14,s15,s14
+ 1672 02ce 3046     	 mov r0,r6
+ 1673 02d0 2946     	 mov r1,r5
+ 1674 02d2 D9ED027A 	 flds s15,[r9,#8]
+ 1675 02d6 67EE877A 	 fmuls s15,s15,s14
+ 1676 02da C6ED017A 	 fsts s15,[r6,#4]
+ 1677 02de FFF7FEFF 	 bl AB_dq
+ 1678 02e2 2868     	 ldr r0,[r5]
+ 1679 02e4 3A49     	 ldr r1,.L212+216
+ 1680 02e6 3B4A     	 ldr r2,.L212+220
+ 1681 02e8 FFF7FEFF 	 bl LPF1
+ 1682 02ec 3A49     	 ldr r1,.L212+224
+ 1683 02ee 2860     	 str r0,[r5]
+ 1684 02f0 7EE0     	 b .L213
+ 1685              	.L214:
+ 1686 02f2 00BFAFF3 	 .align 3
+ 1686      0080
+ 1687              	.L212:
+ 1688 02f8 04332A99 	 .word -1725287676
+ 1689 02fc 313F26BF 	 .word -1088012495
+ 1690 0300 59D47146 	 .word 1181865049
+ 1691 0304 DE63E63F 	 .word 1072063454
+ 1692 0308 31A880C5 	 .word -981424079
+ 1693 030c DB688440 	 .word 1082419419
+ 1694 0310 00000000 	 .word P_1_0
+ 1695 0314 00000000 	 .word group_ptrs
+ 1696 0318 00000000 	 .word .LANCHOR20
+ 1697 031c 00000000 	 .word .LANCHOR4
+ 1698 0320 00000000 	 .word ADC_MEASUREMENT_1_V1_1_handle
+ 1699 0324 00000000 	 .word .LANCHOR19
+ 1700 0328 5C9FE244 	 .word 1155702620
+ 1701 032c EC51383F 	 .word 1060655596
+ 1702 0330 00000000 	 .word ADC_MEASUREMENT_2_V2_1_handle
+ 1703 0334 00000000 	 .word ADC_MEASUREMENT_2_V2_3_handle
+ 1704 0338 1456E144 	 .word 1155618324
+ 1705 033c 1416E344 	 .word 1155733012
+ 1706 0340 00000000 	 .word .LANCHOR21
+ 1707 0344 00000000 	 .word .LANCHOR22
+ 1708 0348 00000000 	 .word .LANCHOR23
+ 1709 034c 00000000 	 .word .LANCHOR24
+ 1710 0350 00000000 	 .word ADC_MEASUREMENT_2_V2_2_handle
+ 1711 0354 00000000 	 .word .LANCHOR25
+ 1712 0358 3DBADE44 	 .word 1155447357
+ 1713 035c 5839B43C 	 .word 1018444120
+ 1714 0360 00000000 	 .word ADC_MEASUREMENT_1_V1_4_handle
+ 1715 0364 00000000 	 .word ADC_MEASUREMENT_1_V1_3_handle
+ 1716 0368 E102DF44 	 .word 1155465953
+ 1717 036c 00000000 	 .word .LANCHOR2
+ 1718 0370 668EDE44 	 .word 1155436134
+ 1719 0374 00000000 	 .word .LANCHOR26
+ 1720 0378 00000000 	 .word .LANCHOR27
+ 1721 037c 00000000 	 .word .LANCHOR28
+ 1722 0380 00000000 	 .word ADC_MEASUREMENT_1_V1_2_handle
+ 1723 0384 6636E244 	 .word 1155675750
+ 1724 0388 00000000 	 .word .LANCHOR31
+ 1725 038c 00000000 	 .word .LANCHOR29
+ 1726 0390 00000000 	 .word .LANCHOR32
+ 1727 0394 E17A14BF 	 .word -1089176863
+ 1728 0398 00000000 	 .word ADC_MEASUREMENT_3_V3_1_handle
+ 1729 039c 00000000 	 .word .LANCHOR38
+ 1730 03a0 00000000 	 .word .LANCHOR33
+ 1731 03a4 00000000 	 .word .LANCHOR34
+ 1732 03a8 00000000 	 .word .LANCHOR35
+ 1733 03ac 00000000 	 .word .LANCHOR36
+ 1734 03b0 00000000 	 .word scope_adc7
+ 1735 03b4 00000000 	 .word scope_adc1
+ 1736 03b8 00000000 	 .word scope_adc2
+ 1737 03bc 00000000 	 .word scope_adc3
+ 1738 03c0 00000000 	 .word scope_adc4
+ 1739 03c4 00000000 	 .word scope_adc5
+ 1740 03c8 00000000 	 .word scope_adc6
+ 1741 03cc 00000000 	 .word .LANCHOR41
+ 1742 03d0 00000000 	 .word .LANCHOR43
+ 1743 03d4 00000000 	 .word .LANCHOR44
+ 1744 03d8 00000000 	 .word .LANCHOR45
+ 1745 03dc 00000000 	 .word .LANCHOR30
+ 1746 03e0 00000000 	 .word .LANCHOR40
+ 1747 03e4 00000000 	 .word .LANCHOR37
+ 1748 03e8 00000000 	 .word .LANCHOR39
+ 1749 03ec 00000000 	 .word .LANCHOR42
+ 1750              	.L213:
+ 1751 03f0 8D4A     	 ldr r2,.L215
+ 1752 03f2 6868     	 ldr r0,[r5,#4]
+ 1753 03f4 FFF7FEFF 	 bl LPF1
+ 1754 03f8 2A68     	 ldr r2,[r5]
+ 1755 03fa 7A61     	 str r2,[r7,#20]
+ 1756 03fc 8B49     	 ldr r1,.L215+4
+ 1757 03fe 8C4A     	 ldr r2,.L215+8
+ 1758 0400 6860     	 str r0,[r5,#4]
+ 1759 0402 B861     	 str r0,[r7,#24]
+ 1760 0404 FFF7FEFF 	 bl PI_TR_p
+ 1761 0408 DBED007A 	 flds s15,[fp]
+ 1762 040c 894B     	 ldr r3,.L215+12
+ 1763 040e 8A49     	 ldr r1,.L215+16
+ 1764 0410 864A     	 ldr r2,.L215+4
+ 1765 0412 8A4D     	 ldr r5,.L215+20
+ 1766 0414 07EE100A 	 fmsr s14,r0
+ 1767 0418 77EE277A 	 fadds s15,s14,s15
+ 1768 041c 17EE900A 	 fmrs r0,s15
+ 1769 0420 CAED007A 	 fsts s15,[r10]
+ 1770 0424 FFF7FEFF 	 bl fw_integ
+ 1771 0428 8549     	 ldr r1,.L215+24
+ 1772 042a C8F80000 	 str r0,[r8]
+ 1773 042e 854A     	 ldr r2,.L215+28
+ 1774 0430 DAF80000 	 ldr r0,[r10]
+ 1775 0434 FFF7FEFF 	 bl LPF1
+ 1776 0438 DBED007A 	 flds s15,[fp]
+ 1777 043c 9FED826A 	 flds s12,.L215+32
+ 1778 0440 D9F80010 	 ldr r1,[r9]
+ 1779 0444 CAF80000 	 str r0,[r10]
+ 1780 0448 06EE900A 	 fmsr s13,r0
+ 1781 044c 27EEE77A 	 fnmuls s14,s15,s15
+ 1782 0450 67EE867A 	 fmuls s15,s15,s12
+ 1783 0454 A6EEA67A 	 vfma.f32 s14,s13,s13
+ 1784 0458 2A46     	 mov r2,r5
+ 1785 045a 2068     	 ldr r0,[r4]
+ 1786 045c 42F8041B 	 str r1,[r2],#4
+ 1787 0460 67EEA67A 	 fmuls s15,s15,s13
+ 1788 0464 DFF8ECA1 	 ldr r10,.L215+44
+ 1789 0468 DFF85892 	 ldr r9,.L215+156
+ 1790 046c C7EE277A 	 fdivs s15,s14,s15
+ 1791 0470 98ED007A 	 flds s14,[r8]
+ 1792 0474 77EE277A 	 fadds s15,s14,s15
+ 1793 0478 C7ED087A 	 fsts s15,[r7,#32]
+ 1794 047c FFF7FEFF 	 bl QSG
+ 1795 0480 7248     	 ldr r0,.L215+36
+ 1796 0482 6B68     	 ldr r3,[r5,#4]
+ 1797 0484 0360     	 str r3,[r0]
+ 1798 0486 AB68     	 ldr r3,[r5,#8]
+ 1799 0488 714D     	 ldr r5,.L215+40
+ 1800 048a D8F80020 	 ldr r2,[r8]
+ 1801 048e 7149     	 ldr r1,.L215+44
+ 1802 0490 4360     	 str r3,[r0,#4]
+ 1803 0492 FFF7FEFF 	 bl AB_dq
+ 1804 0496 2B88     	 ldrh r3,[r5]
+ 1805 0498 9AED007A 	 flds s14,[r10]
+ 1806 049c 6349     	 ldr r1,.L215+4
+ 1807 049e 6E4A     	 ldr r2,.L215+48
+ 1808 04a0 9BB2     	 uxth r3,r3
+ 1809 04a2 042B     	 cmp r3,#4
+ 1810 04a4 0ABF     	 itet eq
+ 1811 04a6 6D4B     	 ldreq r3,.L215+52
+ 1812 04a8 DFED6D7A 	 fldsne s15,.L215+56
+ 1813 04ac D3ED007A 	 fldseq s15,[r3]
+ 1814 04b0 2B88     	 ldrh r3,[r5]
+ 1815 04b2 B046     	 mov r8,r6
+ 1816 04b4 9BB2     	 uxth r3,r3
+ 1817 04b6 6B4E     	 ldr r6,.L215+60
+ 1818 04b8 042B     	 cmp r3,#4
+ 1819 04ba 08BF     	 it eq
+ 1820 04bc 6A4B     	 ldreq r3,.L215+64
+ 1821 04be C6ED007A 	 fsts s15,[r6]
+ 1822 04c2 77EEC77A 	 fsubs s15,s15,s14
+ 1823 04c6 0CBF     	 ite eq
+ 1824 04c8 1B68     	 ldreq r3,[r3]
+ 1825 04ca 0023     	 movne r3,#0
+ 1826 04cc 17EE900A 	 fmrs r0,s15
+ 1827 04d0 7360     	 str r3,[r6,#4]
+ 1828 04d2 FFF7FEFF 	 bl PI_TR_p
+ 1829 04d6 96ED017A 	 flds s14,[r6,#4]
+ 1830 04da DAED017A 	 flds s15,[r10,#4]
+ 1831 04de C9F80000 	 str r0,[r9]
+ 1832 04e2 77EE677A 	 fsubs s15,s14,s15
+ 1833 04e6 5149     	 ldr r1,.L215+4
+ 1834 04e8 604A     	 ldr r2,.L215+68
+ 1835 04ea 614E     	 ldr r6,.L215+72
+ 1836 04ec 17EE900A 	 fmrs r0,s15
+ 1837 04f0 FFF7FEFF 	 bl PI_TR_p
+ 1838 04f4 3146     	 mov r1,r6
+ 1839 04f6 C9F80400 	 str r0,[r9,#4]
+ 1840 04fa 3A6A     	 ldr r2,[r7,#32]
+ 1841 04fc 4846     	 mov r0,r9
+ 1842 04fe FFF7FEFF 	 bl dq_AB
+ 1843 0502 2B88     	 ldrh r3,[r5]
+ 1844 0504 5B49     	 ldr r1,.L215+76
+ 1845 0506 484A     	 ldr r2,.L215
+ 1846 0508 2068     	 ldr r0,[r4]
+ 1847 050a 9BB2     	 uxth r3,r3
+ 1848 050c 042B     	 cmp r3,#4
+ 1849 050e 0CBF     	 ite eq
+ 1850 0510 3368     	 ldreq r3,[r6]
+ 1851 0512 0023     	 movne r3,#0
+ 1852 0514 3360     	 str r3,[r6]
+ 1853 0516 584E     	 ldr r6,.L215+80
+ 1854 0518 F360     	 str r3,[r6,#12]
+ 1855 051a FFF7FEFF 	 bl LPF1
+ 1856 051e 574B     	 ldr r3,.L215+84
+ 1857 0520 574A     	 ldr r2,.L215+88
+ 1858 0522 1860     	 str r0,[r3]
+ 1859 0524 0146     	 mov r1,r0
+ 1860 0526 3046     	 mov r0,r6
+ 1861 0528 FFF7FEFF 	 bl Calc_prStruct
+ 1862 052c 2B88     	 ldrh r3,[r5]
+ 1863 052e 9BB2     	 uxth r3,r3
+ 1864 0530 042B     	 cmp r3,#4
+ 1865 0532 07EE900A 	 fmsr s15,r0
+ 1866 0536 07D1     	 bne .L207
+ 1867 0538 B2EE0E7A 	 fconsts s14,#46
+ 1868 053c F4EEC77A 	 fcmpes s15,s14
+ 1869 0540 F1EE10FA 	 fmstat
+ 1870 0544 0CDC     	 bgt .L208
+ 1871 0546 01E0     	 b .L200
+ 1872              	.L207:
+ 1873 0548 DFED457A 	 flds s15,.L215+56
+ 1874              	.L200:
+ 1875 054c BAEE0E7A 	 fconsts s14,#174
+ 1876 0550 F4EE477A 	 fcmps s15,s14
+ 1877 0554 F1EE10FA 	 fmstat
+ 1878 0558 48BF     	 it mi
+ 1879 055a F0EE477A 	 fcpysmi s15,s14
+ 1880 055e 01E0     	 b .L201
+ 1881              	.L208:
+ 1882 0560 F0EE477A 	 fcpys s15,s14
+ 1883              	.L201:
+ 1884 0564 97ED047A 	 flds s14,[r7,#16]
+ 1885 0568 464B     	 ldr r3,.L215+92
+ 1886 056a 474C     	 ldr r4,.L215+96
+ 1887 056c C3ED007A 	 fsts s15,[r3]
+ 1888 0570 F2EE046A 	 fconsts s13,#36
+ 1889 0574 B4EE667A 	 fcmps s14,s13
+ 1890 0578 F1EE10FA 	 fmstat
+ 1891 057c 48BF     	 it mi
+ 1892 057e B0EE667A 	 fcpysmi s14,s13
+ 1893 0582 D8ED006A 	 flds s13,[r8]
+ 1894 0586 414B     	 ldr r3,.L215+100
+ 1895 0588 37EE077A 	 fadds s14,s14,s14
+ 1896 058c 77EEA67A 	 fadds s15,s15,s13
+ 1897 0590 83ED007A 	 fsts s14,[r3]
+ 1898 0594 C7EE877A 	 fdivs s15,s15,s14
+ 1899 0598 3D4B     	 ldr r3,.L215+104
+ 1900 059a 0026     	 movs r6,#0
+ 1901 059c C3ED007A 	 fsts s15,[r3]
+ 1902 05a0 3C4B     	 ldr r3,.L215+108
+ 1903 05a2 C4ED007A 	 fsts s15,[r4]
+ 1904 05a6 B1EE677A 	 fnegs s14,s15
+ 1905 05aa 83ED007A 	 fsts s14,[r3]
+ 1906 05ae 84ED017A 	 fsts s14,[r4,#4]
+ 1907              	.L203:
+ 1908 05b2 2068     	 ldr r0,[r4]
+ 1909 05b4 3849     	 ldr r1,.L215+112
+ 1910 05b6 394D     	 ldr r5,.L215+116
+ 1911 05b8 FFF7FEFF 	 bl fminf
+ 1912 05bc 3849     	 ldr r1,.L215+120
+ 1913 05be FFF7FEFF 	 bl fmaxf
+ 1914 05c2 9FED387A 	 flds s14,.L215+124
+ 1915 05c6 44F8040B 	 str r0,[r4],#4
+ 1916 05ca 07EE900A 	 fmsr s15,r0
+ 1917 05ce 67EE877A 	 fmuls s15,s15,s14
+ 1918 05d2 FDEEE77A 	 ftosizs s15,s15
+ 1919 05d6 17EE903A 	 fmrs r3,s15
+ 1920 05da 5B10     	 asrs r3,r3,#1
+ 1921 05dc 03F59C53 	 add r3,r3,#4992
+ 1922 05e0 0833     	 adds r3,r3,#8
+ 1923 05e2 45F82630 	 str r3,[r5,r6,lsl#2]
+ 1924 05e6 0136     	 adds r6,r6,#1
+ 1925 05e8 032E     	 cmp r6,#3
+ 1926 05ea E2D1     	 bne .L203
+ 1927 05ec 2E4B     	 ldr r3,.L215+128
+ 1928 05ee 2968     	 ldr r1,[r5]
+ 1929 05f0 1960     	 str r1,[r3]
+ 1930 05f2 2E4B     	 ldr r3,.L215+132
+ 1931 05f4 6A68     	 ldr r2,[r5,#4]
+ 1932 05f6 1A60     	 str r2,[r3]
+ 1933 05f8 2D4B     	 ldr r3,.L215+136
+ 1934 05fa AA68     	 ldr r2,[r5,#8]
+ 1935 05fc 2D48     	 ldr r0,.L215+140
+ 1936 05fe 1A60     	 str r2,[r3]
+ 1937 0600 FFF7FEFF 	 bl PWM_SetDutyCycle
+ 1938 0604 6968     	 ldr r1,[r5,#4]
+ 1939 0606 2C48     	 ldr r0,.L215+144
+ 1940 0608 FFF7FEFF 	 bl PWM_SetDutyCycle
+ 1941 060c A968     	 ldr r1,[r5,#8]
+ 1942 060e 2B48     	 ldr r0,.L215+148
+ 1943 0610 FFF7FEFF 	 bl PWM_SetDutyCycle
+ 1944 0614 FFF7FEFF 	 bl ConverterStateMachine
+ 1945 0618 BDEC028B 	 fldmfdd sp!,{d8}
+ 1946 061c 2848     	 ldr r0,.L215+152
+ 1947 061e BDE8F84F 	 pop {r3,r4,r5,r6,r7,r8,r9,r10,fp,lr}
+ 1948 0622 FFF7FEBF 	 b DIGITAL_IO_SetOutputLow
+ 1949              	.L216:
+ 1950 0626 00BF     	 .align 2
+ 1951              	.L215:
+ 1952 0628 00000000 	 .word .LANCHOR44
+ 1953 062c 17B7D138 	 .word 953267991
+ 1954 0630 00000000 	 .word .LANCHOR46
+ 1955 0634 DB0FC940 	 .word 1086918619
+ 1956 0638 00000000 	 .word .LANCHOR47
+ 1957 063c 00000000 	 .word .LANCHOR50
+ 1958 0640 00000000 	 .word .LANCHOR48
+ 1959 0644 00000000 	 .word .LANCHOR49
+ 1960 0648 F404B53F 	 .word 1068827892
+ 1961 064c 00000000 	 .word .LANCHOR51
+ 1962 0650 00000000 	 .word .LANCHOR9
+ 1963 0654 00000000 	 .word .LANCHOR52
+ 1964 0658 00000000 	 .word .LANCHOR56
+ 1965 065c 00000000 	 .word .LANCHOR53
+ 1966 0660 00000000 	 .word 0
+ 1967 0664 00000000 	 .word .LANCHOR54
+ 1968 0668 00000000 	 .word .LANCHOR55
+ 1969 066c 00000000 	 .word .LANCHOR58
+ 1970 0670 00000000 	 .word .LANCHOR59
+ 1971 0674 00000000 	 .word .LANCHOR60
+ 1972 0678 00000000 	 .word PR_Test
+ 1973 067c 00000000 	 .word .LANCHOR61
+ 1974 0680 63149D43 	 .word 1134367843
+ 1975 0684 00000000 	 .word .LANCHOR62
+ 1976 0688 00000000 	 .word .LANCHOR63
+ 1977 068c 00000000 	 .word vdc_division
+ 1978 0690 00000000 	 .word m_u
+ 1979 0694 00000000 	 .word m_v
+ 1980 0698 EC51783F 	 .word 1064849900
+ 1981 069c 00000000 	 .word .LANCHOR64
+ 1982 06a0 EC5178BF 	 .word -1082633748
+ 1983 06a4 00401C46 	 .word 1176256512
+ 1984 06a8 00000000 	 .word scopeu1
+ 1985 06ac 00000000 	 .word scopeu2
+ 1986 06b0 00000000 	 .word scopeu3
+ 1987 06b4 00000000 	 .word PWM_a
+ 1988 06b8 00000000 	 .word PWM_b
+ 1989 06bc 00000000 	 .word PWM_c
+ 1990 06c0 00000000 	 .word P_1_0
+ 1991 06c4 00000000 	 .word .LANCHOR57
+ 1993              	 .section .text.startup.main,"ax",%progbits
+ 1994              	 .align 1
+ 1995              	 .global main
+ 1996              	 .thumb
+ 1997              	 .thumb_func
+ 1999              	main:
+ 2000              	 
+ 2001              	 
+ 2002 0000 08B5     	 push {r3,lr}
+ 2003 0002 FFF7FEFF 	 bl DAVE_Init
+ 2004 0006 00B1     	 cbz r0,.L218
+ 2005              	.L221:
+ 2006 0008 FEE7     	 b .L221
+ 2007              	.L218:
+ 2008 000a 1E4B     	 ldr r3,.L222
+ 2009 000c 1868     	 ldr r0,[r3]
+ 2010 000e 42F21073 	 movw r3,#10000
+ 2011 0012 B0FBF3F0 	 udiv r0,r0,r3
+ 2012 0016 FFF7FEFF 	 bl ProbeScope_Init
+ 2013 001a 1B48     	 ldr r0,.L222+4
+ 2014 001c FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
+ 2015 0020 1A48     	 ldr r0,.L222+8
+ 2016 0022 FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
+ 2017 0026 1A48     	 ldr r0,.L222+12
+ 2018 0028 FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
+ 2019 002c 1948     	 ldr r0,.L222+16
+ 2020 002e FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
+ 2021 0032 1948     	 ldr r0,.L222+20
+ 2022 0034 FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
+ 2023 0038 1848     	 ldr r0,.L222+24
+ 2024 003a FFF7FEFF 	 bl PWM_Stop
+ 2025 003e 1848     	 ldr r0,.L222+28
+ 2026 0040 FFF7FEFF 	 bl PWM_Stop
+ 2027 0044 1748     	 ldr r0,.L222+32
+ 2028 0046 FFF7FEFF 	 bl PWM_Stop
+ 2029 004a 1748     	 ldr r0,.L222+36
+ 2030 004c FFF7FEFF 	 bl PWM_Start
+ 2031 0050 1248     	 ldr r0,.L222+24
+ 2032 0052 FFF7FEFF 	 bl PWM_Start
+ 2033 0056 1248     	 ldr r0,.L222+28
+ 2034 0058 FFF7FEFF 	 bl PWM_Start
+ 2035 005c 1148     	 ldr r0,.L222+32
+ 2036 005e FFF7FEFF 	 bl PWM_Start
+ 2037 0062 124B     	 ldr r3,.L222+40
+ 2038 0064 4FF07F52 	 mov r2,#1069547520
+ 2039 0068 1A60     	 str r2,[r3]
+ 2040 006a 114A     	 ldr r2,.L222+44
+ 2041 006c 5A60     	 str r2,[r3,#4]
+ 2042 006e 114A     	 ldr r2,.L222+48
+ 2043 0070 9A60     	 str r2,[r3,#8]
+ 2044 0072 0022     	 movs r2,#0
+ 2045 0074 5A61     	 str r2,[r3,#20]
+ 2046 0076 1A61     	 str r2,[r3,#16]
+ 2047 0078 9A61     	 str r2,[r3,#24]
+ 2048 007a DA60     	 str r2,[r3,#12]
+ 2049              	.L220:
+ 2050 007c FFF7FEFF 	 bl ProbeScope_Sampling
+ 2051 0080 FCE7     	 b .L220
+ 2052              	.L223:
+ 2053 0082 00BF     	 .align 2
+ 2054              	.L222:
+ 2055 0084 00000000 	 .word SystemCoreClock
+ 2056 0088 00000000 	 .word ENABLE
+ 2057 008c 00000000 	 .word FAULT_RST
+ 2058 0090 00000000 	 .word EN_1
+ 2059 0094 00000000 	 .word EN_2
+ 2060 0098 00000000 	 .word EN_3
+ 2061 009c 00000000 	 .word PWM_a
+ 2062 00a0 00000000 	 .word PWM_b
+ 2063 00a4 00000000 	 .word PWM_c
+ 2064 00a8 00000000 	 .word PWM_update
+ 2065 00ac 00000000 	 .word PR_Test
+ 2066 00b0 0000C040 	 .word 1086324736
+ 2067 00b4 DD7E3C42 	 .word 1111260893
+ 2069              	 .global SCADA_Vdc_ref
+ 2070              	 .global SCADA_Iq_ref
+ 2071              	 .global SCADA_Id_ref
+ 2072              	 .global timer_sm
+ 2073              	 .global SCADA_error_Tmax
+ 2074              	 .global SCADA_error_VDCmin
+ 2075              	 .global SCADA_error_VDCmax
+ 2076              	 .global SCADA_error_Ic
+ 2077              	 .global SCADA_error_Ib
+ 2078              	 .global SCADA_error_Ia
+ 2079              	 .global SCADA_Tmax
+ 2080              	 .global SCADA_VDCmin
+ 2081              	 .global SCADA_VDCmax
+ 2082              	 .global SCADA_Imax
+ 2083              	 .global SCADA_status_button
+ 2084              	 .global SCADA_disable
+ 2085              	 .global SCADA_enable
+ 2086              	 .global ADC_LPFbuff_IC
+ 2087              	 .global ADC_LPFbuff_IB
+ 2088              	 .global ADC_LPFbuff_IA
+ 2089              	 .global ADC_LPFbuff_VC
+ 2090              	 .global ADC_LPFbuff_VB
+ 2091              	 .global ADC_LPFbuff_VA
+ 2092              	 .global LPFbuff_dq2_aux
+ 2093              	 .global LPFbuff_dq1_aux
+ 2094              	 .global LPFbuff_w_aux
+ 2095              	 .global w_aux
+ 2096              	 .global wt_aux
+ 2097              	 .global dq_aux
+ 2098              	 .global AB_aux
+ 2099              	 .global LPFbuff_v2
+ 2100              	 .global LPFbuff_v
+ 2101              	 .global LPFbuff_temp
+ 2102              	 .global LPFbuff_vdc
+ 2103              	 .comm aux_var7,4,4
+ 2104              	 .comm aux_var6,4,4
+ 2105              	 .comm aux_var5,4,4
+ 2106              	 .comm aux_var4,4,4
+ 2107              	 .comm aux_var3,4,4
+ 2108              	 .comm aux_var2,4,4
+ 2109              	 .comm aux_var1,4,4
+ 2110              	 .comm scope_adc7,4,4
+ 2111              	 .comm scope_adc6,4,4
+ 2112              	 .comm scope_adc5,4,4
+ 2113              	 .comm scope_adc4,4,4
+ 2114              	 .comm scope_adc3,4,4
+ 2115              	 .comm scope_adc2,4,4
+ 2116              	 .comm scope_adc1,4,4
+ 2117              	 .global wt_jump
+ 2118              	 .global wt13
+ 2119              	 .global wt11
+ 2120              	 .global wt7
+ 2121              	 .global wt5
+ 2122              	 .global wt_buff13
+ 2123              	 .global wt_buff11
+ 2124              	 .global wt_buff7
+ 2125              	 .global wt_buff5
+ 2126              	 .global vmabc
+ 2127              	 .global vmAB
+ 2128              	 .global vabc13
+ 2129              	 .global vAB13
+ 2130              	 .global vDQ13
+ 2131              	 .global vabc11
+ 2132              	 .global vAB11
+ 2133              	 .global vDQ11
+ 2134              	 .global vabc7
+ 2135              	 .global vAB7
+ 2136              	 .global vDQ7
+ 2137              	 .global vabc5
+ 2138              	 .global vAB5
+ 2139              	 .global vDQ5
+ 2140              	 .global V13
+ 2141              	 .global V11
+ 2142              	 .global V7
+ 2143              	 .global V5
+ 2144              	 .global Vn
+ 2145              	 .global vABn
+ 2146              	 .global vDQn
+ 2147              	 .global vDQn_ref
+ 2148              	 .global vABp
+ 2149              	 .global vDQp
+ 2150              	 .global vDQp_ref
+ 2151              	 .global fault
+ 2152              	 .global counter
+ 2153              	 .comm scopeu3,4,4
+ 2154              	 .comm scopeu2,4,4
+ 2155              	 .comm scopeu1,4,4
+ 2156              	 .comm scope3,4,4
+ 2157              	 .comm scope2,4,4
+ 2158              	 .comm scope1,4,4
+ 2159              	 .global CTRL_idq_ref
+ 2160              	 .global CTRL_idq
+ 2161              	 .global SOGI_i_AB
+ 2162              	 .global Iu_filt
+ 2163              	 .global PR_LPFbuff_Iu
+ 2164              	 .global PLL_LPFbuff_w
+ 2165              	 .global PLL_wt_buff
+ 2166              	 .global PLL_LPFbuff_q
+ 2167              	 .global PLL_LPFbuff_d
+ 2168              	 .global PLL_Vdq
+ 2169              	 .global PLL_wt
+ 2170              	 .global PLL_w0
+ 2171              	 .global PLL_w
+ 2172              	 .global SOGI_v_AB
+ 2173              	 .comm m_v,4,4
+ 2174              	 .comm m_u,4,4
+ 2175              	 .comm vdc_division,4,4
+ 2176              	 .comm vdc_bus_piout,4,4
+ 2177              	 .comm vdc_bus_error,4,4
+ 2178              	 .comm VDC_BUS_REF,4,4
+ 2179              	 .global PR_output
+ 2180              	 .global CTRL_Vab
+ 2181              	 .comm PR_Test,32,4
+ 2182              	 .global LPF_buff_Vdc_ref
+ 2183              	 .global LPF_buff_Vdc
+ 2184              	 .global LPF_buff_IB
+ 2185              	 .global LPF_buff_IA
+ 2186              	 .global LPF_buff_VB
+ 2187              	 .global LPF_buff_VA
+ 2188              	 .global LPF_buff_sync2
+ 2189              	 .global LPF_buff_conv_wt
+ 2190              	 .global LPF_buff_conv_w
+ 2191              	 .global LPF_buff_w
+ 2192              	 .global LPF_buff_w0
+ 2193              	 .global sync_aux3_buff
+ 2194              	 .global wt_buff
+ 2195              	 .global dw_buff
+ 2196              	 .global HPFq_buff
+ 2197              	 .global HPFd_buff
+ 2198              	 .global PI_V_DC_buff
+ 2199              	 .global PI_CCq_buff
+ 2200              	 .global PI_CCd_buff
+ 2201              	 .global PI_PLL_buff
+ 2202              	 .global sync_aux2
+ 2203              	 .global wt
+ 2204              	 .global wf
+ 2205              	 .global dw
+ 2206              	 .global w
+ 2207              	 .global Vm_AB2
+ 2208              	 .global Vm_dq
+ 2209              	 .global Vm_AB
+ 2210              	 .global Vm_abc
+ 2211              	 .global PI_sat_CC
+ 2212              	 .global ID_dq
+ 2213              	 .global Ie_dq
+ 2214              	 .global I_dq_ref_f
+ 2215              	 .global I_dq
+ 2216              	 .global V_dq
+ 2217              	 .global I_ABf
+ 2218              	 .global V_ABf
+ 2219              	 .global V_DCf
+ 2220              	 .global I_AB
+ 2221              	 .global V_AB
+ 2222              	 .global I_abc
+ 2223              	 .global V_abc
+ 2224              	 .global V_DC
+ 2225              	 .global conv_temp_C
+ 2226              	 .global I_abc_adc
+ 2227              	 .global V_abc_adc
+ 2228              	 .global m_abc
+ 2229              	 .global V_DC_adc
+ 2230              	 .global termistor_temp
+ 2231              	 .global sync_aux3
+ 2232              	 .global fan_pwm
+ 2233              	 .global error_code
+ 2234              	 .global fault_flag
+ 2235              	 .comm relayTimer,2,2
+ 2236              	 .global REARMcommand
+ 2237              	 .global SWcommand
+ 2238              	 .global fault_rst
+ 2239              	 .global B2command
+ 2240              	 .global sync
+ 2241              	 .global ramp
+ 2242              	 .global mode
+ 2243              	 .global relayTimerFlag
+ 2244              	 .global state
+ 2245              	 .global V_DC_ref_f
+ 2246              	 .global V_DC_ref
+ 2247              	 .global PQ_ref
+ 2248              	 .global I_dq_ref
+ 2249              	 .global V_dq_ref
+ 2250              	 .global i_dqsg
+ 2251              	 .global dqsg
+ 2252              	 .global PI_cc
+ 2253              	 .global PI_q
+ 2254              	 .global PI_d
+ 2255              	 .global PI_Vdc
+ 2256              	 .global PI_PLL
+ 2257              	 .global LPF2_K_1500
+ 2258              	 .global LPF2_K_500
+ 2259              	 .global LPF2_K_100
+ 2260              	 .global LPF2_K_50
+ 2261              	 .global LPF2_K_10
+ 2262              	 .global LPF_vAB
+ 2263              	 .global LPF_iAB
+ 2264              	 .global LPF_idq_ref
+ 2265              	 .global conv
+ 2266              	 .global conf
+ 2267              	 .global LPF_K_1500
+ 2268              	 .global LPF_K_500
+ 2269              	 .global LPF_K_100
+ 2270              	 .global LPF_K_50
+ 2271              	 .global LPF_K_10
+ 2272              	 .global LPF_K_1
+ 2273              	 .global HPF_K
+ 2274              	 .global PI_K_CC
+ 2275              	 .global K_sync
+ 2276              	 .global ADC
+ 2277              	 .global chargeTime
+ 2278              	 .global Vdc_error
+ 2279              	 .section .bss.LPF_buff_VA,"aw",%nobits
+ 2280              	 .align 2
+ 2283              	LPF_buff_VA:
+ 2284 0000 00000000 	 .space 8
+ 2284      00000000 
+ 2285              	 .section .bss.m_abc,"aw",%nobits
+ 2286              	 .align 2
+ 2287              	 .set .LANCHOR64,.+0
+ 2290              	m_abc:
+ 2291 0000 00000000 	 .space 12
+ 2291      00000000 
+ 2291      00000000 
+ 2292              	 .section .bss.LPF_buff_VB,"aw",%nobits
+ 2293              	 .align 2
+ 2296              	LPF_buff_VB:
+ 2297 0000 00000000 	 .space 8
+ 2297      00000000 
+ 2298              	 .section .bss.PLL_wt_buff,"aw",%nobits
+ 2299              	 .align 2
+ 2300              	 .set .LANCHOR47,.+0
+ 2303              	PLL_wt_buff:
+ 2304 0000 00000000 	 .space 4
+ 2305              	 .section .bss.SCADA_Id_ref,"aw",%nobits
+ 2306              	 .align 2
+ 2307              	 .set .LANCHOR53,.+0
+ 2310              	SCADA_Id_ref:
+ 2311 0000 00000000 	 .space 4
+ 2312              	 .section .bss.LPF_buff_conv_wt,"aw",%nobits
+ 2313              	 .align 2
+ 2316              	LPF_buff_conv_wt:
+ 2317 0000 00000000 	 .space 8
+ 2317      00000000 
+ 2318              	 .section .bss.LPF_buff_IA,"aw",%nobits
+ 2319              	 .align 2
+ 2322              	LPF_buff_IA:
+ 2323 0000 00000000 	 .space 8
+ 2323      00000000 
+ 2324              	 .section .bss.PLL_LPFbuff_d,"aw",%nobits
+ 2325              	 .align 2
+ 2326              	 .set .LANCHOR43,.+0
+ 2329              	PLL_LPFbuff_d:
+ 2330 0000 00000000 	 .space 8
+ 2330      00000000 
+ 2331              	 .section .bss.LPF_buff_IB,"aw",%nobits
+ 2332              	 .align 2
+ 2335              	LPF_buff_IB:
+ 2336 0000 00000000 	 .space 8
+ 2336      00000000 
+ 2337              	 .section .bss.SCADA_error_VDCmax,"aw",%nobits
+ 2338              	 .align 2
+ 2339              	 .set .LANCHOR15,.+0
+ 2342              	SCADA_error_VDCmax:
+ 2343 0000 00000000 	 .space 4
+ 2344              	 .section .bss.wt,"aw",%nobits
+ 2345              	 .align 2
+ 2348              	wt:
+ 2349 0000 00000000 	 .space 4
+ 2350              	 .section .bss.LPF_buff_Vdc_ref,"aw",%nobits
+ 2351              	 .align 2
+ 2354              	LPF_buff_Vdc_ref:
+ 2355 0000 00000000 	 .space 8
+ 2355      00000000 
+ 2356              	 .section .data.LPF2_K_10,"aw",%progbits
+ 2357              	 .align 2
+ 2360              	LPF2_K_10:
+ 2361 0000 E25C8138 	 .word 948002018
+ 2362 0004 E25C0139 	 .word 956390626
+ 2363 0008 E25C8138 	 .word 948002018
+ 2364 000c 0C957E40 	 .word 1082037516
+ 2365 0010 FDFEFFC0 	 .word -1056964867
+ 2366 0014 0D957E3E 	 .word 1048483085
+ 2367 0018 00000000 	 .word 0
+ 2368 001c 00000000 	 .word 0
+ 2369 0020 00000000 	 .word 0
+ 2370 0024 00000000 	 .word 0
+ 2371              	 .section .bss.SCADA_enable,"aw",%nobits
+ 2372              	 .align 2
+ 2373              	 .set .LANCHOR10,.+0
+ 2376              	SCADA_enable:
+ 2377 0000 00000000 	 .space 4
+ 2378              	 .section .bss.vAB5,"aw",%nobits
+ 2379              	 .align 2
+ 2382              	vAB5:
+ 2383 0000 00000000 	 .space 8
+ 2383      00000000 
+ 2384              	 .section .data.SCADA_Vdc_ref,"aw",%progbits
+ 2385              	 .align 2
+ 2388              	SCADA_Vdc_ref:
+ 2389 0000 00004843 	 .word 1128792064
+ 2390              	 .section .bss.vAB7,"aw",%nobits
+ 2391              	 .align 2
+ 2394              	vAB7:
+ 2395 0000 00000000 	 .space 8
+ 2395      00000000 
+ 2396              	 .section .bss.PLL_LPFbuff_q,"aw",%nobits
+ 2397              	 .align 2
+ 2398              	 .set .LANCHOR45,.+0
+ 2401              	PLL_LPFbuff_q:
+ 2402 0000 00000000 	 .space 8
+ 2402      00000000 
+ 2403              	 .section .data.Vm_dq,"aw",%progbits
+ 2404              	 .align 2
+ 2407              	Vm_dq:
+ 2408 0000 0000F041 	 .word 1106247680
+ 2409 0004 00000000 	 .word 0
+ 2410              	 .section .rodata.K_sync,"a",%progbits
+ 2411              	 .align 2
+ 2414              	K_sync:
+ 2415 0000 00504347 	 .word 1195593728
+ 2416 0004 0000403F 	 .word 1061158912
+ 2417 0008 00002041 	 .word 1092616192
+ 2418 000c 00000000 	 .space 4
+ 2419              	 .section .bss.wt_jump,"aw",%nobits
+ 2420              	 .align 2
+ 2423              	wt_jump:
+ 2424 0000 00000000 	 .space 4
+ 2425              	 .section .bss.vDQ7,"aw",%nobits
+ 2426              	 .align 2
+ 2429              	vDQ7:
+ 2430 0000 00000000 	 .space 8
+ 2430      00000000 
+ 2431              	 .section .bss.PLL_LPFbuff_w,"aw",%nobits
+ 2432              	 .align 2
+ 2433              	 .set .LANCHOR48,.+0
+ 2436              	PLL_LPFbuff_w:
+ 2437 0000 00000000 	 .space 8
+ 2437      00000000 
+ 2438              	 .section .bss.vabc11,"aw",%nobits
+ 2439              	 .align 2
+ 2442              	vabc11:
+ 2443 0000 00000000 	 .space 12
+ 2443      00000000 
+ 2443      00000000 
+ 2444              	 .section .bss.vabc13,"aw",%nobits
+ 2445              	 .align 2
+ 2448              	vabc13:
+ 2449 0000 00000000 	 .space 12
+ 2449      00000000 
+ 2449      00000000 
+ 2450              	 .section .bss.HPFd_buff,"aw",%nobits
+ 2451              	 .align 2
+ 2454              	HPFd_buff:
+ 2455 0000 00000000 	 .space 8
+ 2455      00000000 
+ 2456              	 .section .bss.LPFbuff_v2,"aw",%nobits
+ 2457              	 .align 2
+ 2460              	LPFbuff_v2:
+ 2461 0000 00000000 	 .space 8
+ 2461      00000000 
+ 2462              	 .section .data.conf,"aw",%progbits
+ 2463              	 .align 2
+ 2464              	 .set .LANCHOR1,.+0
+ 2467              	conf:
+ 2468 0000 00803B44 	 .word 1144750080
+ 2469 0004 0000AF43 	 .word 1135542272
+ 2470 0008 AE07BB43 	 .word 1136330670
+ 2471 000c 293C8A43 	 .word 1133132841
+ 2472 0010 85CBA143 	 .word 1134676869
+ 2473 0014 9A399543 	 .word 1133853082
+ 2474 0018 00007041 	 .word 1097859072
+ 2475 001c 000070C1 	 .word -1049624576
+ 2476 0020 00409C45 	 .word 1167867904
+ 2477              	 .section .bss.SOGI_i_AB,"aw",%nobits
+ 2478              	 .align 2
+ 2479              	 .set .LANCHOR51,.+0
+ 2482              	SOGI_i_AB:
+ 2483 0000 00000000 	 .space 8
+ 2483      00000000 
+ 2484              	 .section .bss.SCADA_error_VDCmin,"aw",%nobits
+ 2485              	 .align 2
+ 2486              	 .set .LANCHOR16,.+0
+ 2489              	SCADA_error_VDCmin:
+ 2490 0000 00000000 	 .space 4
+ 2491              	 .section .data.V_dq_ref,"aw",%progbits
+ 2492              	 .align 2
+ 2495              	V_dq_ref:
+ 2496 0000 00008241 	 .word 1099038720
+ 2497 0004 00000000 	 .word 0
+ 2498              	 .section .bss.wt_aux,"aw",%nobits
+ 2499              	 .align 2
+ 2502              	wt_aux:
+ 2503 0000 00000000 	 .space 4
+ 2504              	 .section .data.LPF2_K_500,"aw",%progbits
+ 2505              	 .align 2
+ 2508              	LPF2_K_500:
+ 2509 0000 9093F43D 	 .word 1039438736
+ 2510 0004 9093743E 	 .word 1047827344
+ 2511 0008 9093F43D 	 .word 1039438736
+ 2512 000c 55164940 	 .word 1078531669
+ 2513 0010 645BF8C0 	 .word -1057465500
+ 2514 0014 7DE8483E 	 .word 1044965501
+ 2515 0018 00000000 	 .word 0
+ 2516 001c 00000000 	 .word 0
+ 2517 0020 00000000 	 .word 0
+ 2518 0024 00000000 	 .word 0
+ 2519              	 .section .bss.vabc5,"aw",%nobits
+ 2520              	 .align 2
+ 2523              	vabc5:
+ 2524 0000 00000000 	 .space 12
+ 2524      00000000 
+ 2524      00000000 
+ 2525              	 .section .bss.CTRL_Vab,"aw",%nobits
+ 2526              	 .align 2
+ 2529              	CTRL_Vab:
+ 2530 0000 00000000 	 .space 8
+ 2530      00000000 
+ 2531              	 .section .bss.vabc7,"aw",%nobits
+ 2532              	 .align 2
+ 2535              	vabc7:
+ 2536 0000 00000000 	 .space 12
+ 2536      00000000 
+ 2536      00000000 
+ 2537              	 .section .bss.ADC_LPFbuff_VB,"aw",%nobits
+ 2538              	 .align 2
+ 2539              	 .set .LANCHOR23,.+0
+ 2542              	ADC_LPFbuff_VB:
+ 2543 0000 00000000 	 .space 8
+ 2543      00000000 
+ 2544              	 .section .bss.ADC_LPFbuff_VC,"aw",%nobits
+ 2545              	 .align 2
+ 2546              	 .set .LANCHOR24,.+0
+ 2549              	ADC_LPFbuff_VC:
+ 2550 0000 00000000 	 .space 8
+ 2550      00000000 
+ 2551              	 .section .rodata.LPF_K_1,"a",%progbits
+ 2552              	 .align 2
+ 2553              	 .set .LANCHOR36,.+0
+ 2556              	LPF_K_1:
+ 2557 0000 0000803F 	 .word 1065353216
+ 2558 0004 88A8A439 	 .word 967092360
+ 2559 0008 D6D67F3F 	 .word 1065342678
+ 2560              	 .section .bss.sync_aux3,"aw",%nobits
+ 2561              	 .align 1
+ 2564              	sync_aux3:
+ 2565 0000 0000     	 .space 2
+ 2566              	 .section .data.Vn,"aw",%progbits
+ 2567              	 .align 2
+ 2570              	Vn:
+ 2571 0000 0000003F 	 .word 1056964608
+ 2572              	 .section .data.LPF2_K_1500,"aw",%progbits
+ 2573              	 .align 2
+ 2576              	LPF2_K_1500:
+ 2577 0000 5165633F 	 .word 1063478609
+ 2578 0004 5165E33F 	 .word 1071867217
+ 2579 0008 5165633F 	 .word 1063478609
+ 2580 000c FD3D0E40 	 .word 1074675197
+ 2581 0010 AC26C7C0 	 .word -1060690260
+ 2582 0014 B18E073E 	 .word 1040682673
+ 2583 0018 00000000 	 .word 0
+ 2584 001c 00000000 	 .word 0
+ 2585 0020 00000000 	 .word 0
+ 2586 0024 00000000 	 .word 0
+ 2587              	 .section .bss.vAB11,"aw",%nobits
+ 2588              	 .align 2
+ 2591              	vAB11:
+ 2592 0000 00000000 	 .space 8
+ 2592      00000000 
+ 2593              	 .section .bss.timer_sm,"aw",%nobits
+ 2594              	 .align 2
+ 2595              	 .set .LANCHOR8,.+0
+ 2598              	timer_sm:
+ 2599 0000 00000000 	 .space 4
+ 2600              	 .section .bss.Vdc_error,"aw",%nobits
+ 2601              	 .align 2
+ 2604              	Vdc_error:
+ 2605 0000 00000000 	 .space 4
+ 2606              	 .section .bss.SCADA_error_Ia,"aw",%nobits
+ 2607              	 .align 2
+ 2608              	 .set .LANCHOR12,.+0
+ 2611              	SCADA_error_Ia:
+ 2612 0000 00000000 	 .space 4
+ 2613              	 .section .bss.SCADA_error_Ib,"aw",%nobits
+ 2614              	 .align 2
+ 2615              	 .set .LANCHOR13,.+0
+ 2618              	SCADA_error_Ib:
+ 2619 0000 00000000 	 .space 4
+ 2620              	 .section .bss.SCADA_error_Ic,"aw",%nobits
+ 2621              	 .align 2
+ 2622              	 .set .LANCHOR14,.+0
+ 2625              	SCADA_error_Ic:
+ 2626 0000 00000000 	 .space 4
+ 2627              	 .section .bss.Iu_filt,"aw",%nobits
+ 2628              	 .align 2
+ 2629              	 .set .LANCHOR61,.+0
+ 2632              	Iu_filt:
+ 2633 0000 00000000 	 .space 4
+ 2634              	 .section .bss.V_abc_adc,"aw",%nobits
+ 2635              	 .align 1
+ 2636              	 .set .LANCHOR19,.+0
+ 2639              	V_abc_adc:
+ 2640 0000 00000000 	 .space 6
+ 2640      0000
+ 2641              	 .section .bss.Vm_AB2,"aw",%nobits
+ 2642              	 .align 2
+ 2645              	Vm_AB2:
+ 2646 0000 00000000 	 .space 4
+ 2647              	 .section .bss.vDQ11,"aw",%nobits
+ 2648              	 .align 2
+ 2651              	vDQ11:
+ 2652 0000 00000000 	 .space 8
+ 2652      00000000 
+ 2653              	 .section .bss.vDQ13,"aw",%nobits
+ 2654              	 .align 2
+ 2657              	vDQ13:
+ 2658 0000 00000000 	 .space 8
+ 2658      00000000 
+ 2659              	 .section .bss.PI_V_DC_buff,"aw",%nobits
+ 2660              	 .align 2
+ 2663              	PI_V_DC_buff:
+ 2664 0000 00000000 	 .space 12
+ 2664      00000000 
+ 2664      00000000 
+ 2665              	 .section .bss.I_dq,"aw",%nobits
+ 2666              	 .align 2
+ 2669              	I_dq:
+ 2670 0000 00000000 	 .space 8
+ 2670      00000000 
+ 2671              	 .section .bss.wt_buff,"aw",%nobits
+ 2672              	 .align 2
+ 2675              	wt_buff:
+ 2676 0000 00000000 	 .space 4
+ 2677              	 .section .bss.V5,"aw",%nobits
+ 2678              	 .align 2
+ 2681              	V5:
+ 2682 0000 00000000 	 .space 4
+ 2683              	 .section .bss.wf,"aw",%nobits
+ 2684              	 .align 2
+ 2687              	wf:
+ 2688 0000 00000000 	 .space 4
+ 2689              	 .section .bss.PR_LPFbuff_Iu,"aw",%nobits
+ 2690              	 .align 2
+ 2691              	 .set .LANCHOR60,.+0
+ 2694              	PR_LPFbuff_Iu:
+ 2695 0000 00000000 	 .space 8
+ 2695      00000000 
+ 2696              	 .section .bss.wt_buff11,"aw",%nobits
+ 2697              	 .align 2
+ 2700              	wt_buff11:
+ 2701 0000 00000000 	 .space 4
+ 2702              	 .section .bss.wt_buff13,"aw",%nobits
+ 2703              	 .align 2
+ 2706              	wt_buff13:
+ 2707 0000 00000000 	 .space 4
+ 2708              	 .section .bss.vmabc,"aw",%nobits
+ 2709              	 .align 2
+ 2710              	 .set .LANCHOR63,.+0
+ 2713              	vmabc:
+ 2714 0000 00000000 	 .space 12
+ 2714      00000000 
+ 2714      00000000 
+ 2715              	 .section .rodata.chargeTime,"a",%progbits
+ 2716              	 .align 2
+ 2719              	chargeTime:
+ 2720 0000 80841E00 	 .word 2000000
+ 2721              	 .section .bss.vABp,"aw",%nobits
+ 2722              	 .align 2
+ 2725              	vABp:
+ 2726 0000 00000000 	 .space 8
+ 2726      00000000 
+ 2727              	 .section .data.LPF_vAB,"aw",%progbits
+ 2728              	 .align 2
+ 2731              	LPF_vAB:
+ 2732 0000 0000803F 	 .word 1065353216
+ 2733 0004 D6DD163E 	 .word 1041685974
+ 2734 0008 1591343F 	 .word 1060409621
+ 2735 000c 00000000 	 .word 0
+ 2736 0010 00000000 	 .word 0
+ 2737 0014 00000000 	 .word 0
+ 2738 0018 00000000 	 .word 0
+ 2739              	 .section .data.ADC,"aw",%progbits
+ 2740              	 .align 2
+ 2743              	ADC:
+ 2744 0000 5940533A 	 .word 978534489
+ 2745 0004 3333D33F 	 .word 1070805811
+ 2746 0008 F910AE43 	 .word 1135481081
+ 2747 000c 2200483E 	 .word 1044906018
+ 2748 0010 0080ED41 	 .word 1106083840
+ 2749              	 .section .data.PLL_w,"aw",%progbits
+ 2750              	 .align 2
+ 2751              	 .set .LANCHOR39,.+0
+ 2754              	PLL_w:
+ 2755 0000 63149D43 	 .word 1134367843
+ 2756              	 .section .bss.PI_CCd_buff,"aw",%nobits
+ 2757              	 .align 2
+ 2760              	PI_CCd_buff:
+ 2761 0000 00000000 	 .space 12
+ 2761      00000000 
+ 2761      00000000 
+ 2762              	 .section .bss.sync_aux3_buff,"aw",%nobits
+ 2763              	 .align 1
+ 2766              	sync_aux3_buff:
+ 2767 0000 0000     	 .space 2
+ 2768              	 .section .rodata.LPF_K_10,"a",%progbits
+ 2769              	 .align 2
+ 2770              	 .set .LANCHOR49,.+0
+ 2773              	LPF_K_10:
+ 2774 0000 0000803F 	 .word 1065353216
+ 2775 0004 202D803B 	 .word 998255904
+ 2776 0008 4BFF7D3F 	 .word 1065221963
+ 2777              	 .section .bss.fault_rst,"aw",%nobits
+ 2778              	 .align 1
+ 2781              	fault_rst:
+ 2782 0000 0000     	 .space 2
+ 2783              	 .section .data.counter,"aw",%progbits
+ 2784              	 .align 2
+ 2787              	counter:
+ 2788 0000 01000000 	 .word 1
+ 2789              	 .section .data.PI_sat_CC,"aw",%progbits
+ 2790              	 .align 2
+ 2793              	PI_sat_CC:
+ 2794 0000 00000000 	 .word 0
+ 2795 0004 00000080 	 .word -2147483648
+ 2796              	 .section .bss.LPFbuff_v,"aw",%nobits
+ 2797              	 .align 2
+ 2800              	LPFbuff_v:
+ 2801 0000 00000000 	 .space 8
+ 2801      00000000 
+ 2802              	 .section .data.w_aux,"aw",%progbits
+ 2803              	 .align 2
+ 2806              	w_aux:
+ 2807 0000 63149D43 	 .word 1134367843
+ 2808              	 .section .bss.termistor_temp,"aw",%nobits
+ 2809              	 .align 1
+ 2810              	 .set .LANCHOR33,.+0
+ 2813              	termistor_temp:
+ 2814 0000 0000     	 .space 2
+ 2815              	 .section .bss.I_abc,"aw",%nobits
+ 2816              	 .align 2
+ 2817              	 .set .LANCHOR2,.+0
+ 2820              	I_abc:
+ 2821 0000 00000000 	 .space 12
+ 2821      00000000 
+ 2821      00000000 
+ 2822              	 .section .bss.I_dq_ref,"aw",%nobits
+ 2823              	 .align 2
+ 2824              	 .set .LANCHOR57,.+0
+ 2827              	I_dq_ref:
+ 2828 0000 00000000 	 .space 8
+ 2828      00000000 
+ 2829              	 .section .bss.V_ABf,"aw",%nobits
+ 2830              	 .align 2
+ 2833              	V_ABf:
+ 2834 0000 00000000 	 .space 8
+ 2834      00000000 
+ 2835              	 .section .bss.fan_pwm,"aw",%nobits
+ 2836              	 .align 2
+ 2839              	fan_pwm:
+ 2840 0000 00000000 	 .space 4
+ 2841              	 .section .data.PLL_w0,"aw",%progbits
+ 2842              	 .align 2
+ 2843              	 .set .LANCHOR40,.+0
+ 2846              	PLL_w0:
+ 2847 0000 63149D43 	 .word 1134367843
+ 2848              	 .section .bss.mode,"aw",%nobits
+ 2851              	mode:
+ 2852 0000 00       	 .space 1
+ 2853              	 .section .bss.V_DC_ref,"aw",%nobits
+ 2854              	 .align 2
+ 2857              	V_DC_ref:
+ 2858 0000 00000000 	 .space 4
+ 2859              	 .section .bss.HPFq_buff,"aw",%nobits
+ 2860              	 .align 2
+ 2863              	HPFq_buff:
+ 2864 0000 00000000 	 .space 8
+ 2864      00000000 
+ 2865              	 .section .bss.V11,"aw",%nobits
+ 2866              	 .align 2
+ 2869              	V11:
+ 2870 0000 00000000 	 .space 4
+ 2871              	 .section .bss.V13,"aw",%nobits
+ 2872              	 .align 2
+ 2875              	V13:
+ 2876 0000 00000000 	 .space 4
+ 2877              	 .section .bss.LPFbuff_temp,"aw",%nobits
+ 2878              	 .align 2
+ 2879              	 .set .LANCHOR35,.+0
+ 2882              	LPFbuff_temp:
+ 2883 0000 00000000 	 .space 8
+ 2883      00000000 
+ 2884              	 .section .rodata.LPF_K_500,"a",%progbits
+ 2885              	 .align 2
+ 2886              	 .set .LANCHOR44,.+0
+ 2889              	LPF_K_500:
+ 2890 0000 0000803F 	 .word 1065353216
+ 2891 0004 D6DD163E 	 .word 1041685974
+ 2892 0008 1591343F 	 .word 1060409621
+ 2893              	 .section .bss.I_ABf,"aw",%nobits
+ 2894              	 .align 2
+ 2897              	I_ABf:
+ 2898 0000 00000000 	 .space 8
+ 2898      00000000 
+ 2899              	 .section .data.PI_d,"aw",%progbits
+ 2900              	 .align 2
+ 2901              	 .set .LANCHOR56,.+0
+ 2904              	PI_d:
+ 2905 0000 CDCC4C3D 	 .word 1028443341
+ 2906 0004 00002042 	 .word 1109393408
+ 2907 0008 00007041 	 .word 1097859072
+ 2908 000c 000070C1 	 .word -1049624576
+ 2909 0010 00000000 	 .word 0
+ 2910 0014 00000000 	 .word 0
+ 2911 0018 00       	 .byte 0
+ 2912 0019 000000   	 .space 3
+ 2913              	 .section .bss.fault_flag,"aw",%nobits
+ 2914              	 .align 1
+ 2917              	fault_flag:
+ 2918 0000 0000     	 .space 2
+ 2919              	 .section .bss.AB_aux,"aw",%nobits
+ 2920              	 .align 2
+ 2923              	AB_aux:
+ 2924 0000 00000000 	 .space 8
+ 2924      00000000 
+ 2925              	 .section .bss.LPF_buff_conv_w,"aw",%nobits
+ 2926              	 .align 2
+ 2929              	LPF_buff_conv_w:
+ 2930 0000 00000000 	 .space 8
+ 2930      00000000 
+ 2931              	 .section .data.dqsg,"aw",%progbits
+ 2932              	 .align 2
+ 2933              	 .set .LANCHOR37,.+0
+ 2936              	dqsg:
+ 2937 0000 63149D43 	 .word 1134367843
+ 2938 0004 00000000 	 .word 0
+ 2939 0008 00000000 	 .word 0
+ 2940 000c F404B53F 	 .word 1068827892
+ 2941 0010 00000000 	 .word 0
+ 2942 0014 00000000 	 .word 0
+ 2943 0018 17B7D138 	 .word 953267991
+ 2944 001c 00000000 	 .word 0
+ 2945 0020 00000000 	 .word 0
+ 2946 0024 F404B53F 	 .word 1068827892
+ 2947 0028 00000000 	 .word 0
+ 2948 002c 00000000 	 .word 0
+ 2949 0030 17B7D138 	 .word 953267991
+ 2950              	 .section .bss.SOGI_v_AB,"aw",%nobits
+ 2951              	 .align 2
+ 2952              	 .set .LANCHOR38,.+0
+ 2955              	SOGI_v_AB:
+ 2956 0000 00000000 	 .space 8
+ 2956      00000000 
+ 2957              	 .section .bss.dw,"aw",%nobits
+ 2958              	 .align 2
+ 2961              	dw:
+ 2962 0000 00000000 	 .space 4
+ 2963              	 .section .bss.ADC_LPFbuff_VA,"aw",%nobits
+ 2964              	 .align 2
+ 2965              	 .set .LANCHOR21,.+0
+ 2968              	ADC_LPFbuff_VA:
+ 2969 0000 00000000 	 .space 8
+ 2969      00000000 
+ 2970              	 .section .bss.wt_buff5,"aw",%nobits
+ 2971              	 .align 2
+ 2974              	wt_buff5:
+ 2975 0000 00000000 	 .space 4
+ 2976              	 .section .bss.wt5,"aw",%nobits
+ 2977              	 .align 2
+ 2980              	wt5:
+ 2981 0000 00000000 	 .space 4
+ 2982              	 .section .bss.wt_buff7,"aw",%nobits
+ 2983              	 .align 2
+ 2986              	wt_buff7:
+ 2987 0000 00000000 	 .space 4
+ 2988              	 .section .bss.wt7,"aw",%nobits
+ 2989              	 .align 2
+ 2992              	wt7:
+ 2993 0000 00000000 	 .space 4
+ 2994              	 .section .bss.ADC_LPFbuff_IA,"aw",%nobits
+ 2995              	 .align 2
+ 2996              	 .set .LANCHOR26,.+0
+ 2999              	ADC_LPFbuff_IA:
+ 3000 0000 00000000 	 .space 8
+ 3000      00000000 
+ 3001              	 .section .data.LPF2_K_50,"aw",%progbits
+ 3002              	 .align 2
+ 3005              	LPF2_K_50:
+ 3006 0000 D65C813A 	 .word 981556438
+ 3007 0004 D65C013B 	 .word 989945046
+ 3008 0008 D65C813A 	 .word 981556438
+ 3009 000c 54607A40 	 .word 1081761876
+ 3010 0010 D4EFFFC0 	 .word -1056968748
+ 3011 0014 52607A3E 	 .word 1048207442
+ 3012 0018 00000000 	 .word 0
+ 3013 001c 00000000 	 .word 0
+ 3014 0020 00000000 	 .word 0
+ 3015 0024 00000000 	 .word 0
+ 3016              	 .section .bss.fault,"aw",%nobits
+ 3017              	 .align 2
+ 3020              	fault:
+ 3021 0000 00000000 	 .space 4
+ 3022              	 .section .bss.CTRL_idq_ref,"aw",%nobits
+ 3023              	 .align 2
+ 3024              	 .set .LANCHOR54,.+0
+ 3027              	CTRL_idq_ref:
+ 3028 0000 00000000 	 .space 8
+ 3028      00000000 
+ 3029              	 .section .bss.PR_output,"aw",%nobits
+ 3030              	 .align 2
+ 3031              	 .set .LANCHOR62,.+0
+ 3034              	PR_output:
+ 3035 0000 00000000 	 .space 4
+ 3036              	 .section .bss.SCADA_Iq_ref,"aw",%nobits
+ 3037              	 .align 2
+ 3038              	 .set .LANCHOR55,.+0
+ 3041              	SCADA_Iq_ref:
+ 3042 0000 00000000 	 .space 4
+ 3043              	 .section .bss.vABn,"aw",%nobits
+ 3044              	 .align 2
+ 3047              	vABn:
+ 3048 0000 00000000 	 .space 8
+ 3048      00000000 
+ 3049              	 .section .data.SCADA_VDCmax,"aw",%progbits
+ 3050              	 .align 2
+ 3051              	 .set .LANCHOR5,.+0
+ 3054              	SCADA_VDCmax:
+ 3055 0000 00003443 	 .word 1127481344
+ 3056              	 .section .bss.error_code,"aw",%nobits
+ 3057              	 .align 2
+ 3060              	error_code:
+ 3061 0000 00000000 	 .space 4
+ 3062              	 .section .bss.SWcommand,"aw",%nobits
+ 3063              	 .align 1
+ 3066              	SWcommand:
+ 3067 0000 0000     	 .space 2
+ 3068              	 .section .bss.I_dq_ref_f,"aw",%nobits
+ 3069              	 .align 2
+ 3072              	I_dq_ref_f:
+ 3073 0000 00000000 	 .space 8
+ 3073      00000000 
+ 3074              	 .section .data.LPF2_K_100,"aw",%progbits
+ 3075              	 .align 2
+ 3078              	LPF2_K_100:
+ 3079 0000 F15C813B 	 .word 998333681
+ 3080 0004 F15C013C 	 .word 1006722289
+ 3081 0008 F15C813B 	 .word 998333681
+ 3082 000c FDE07440 	 .word 1081401597
+ 3083 0010 52BFFFC0 	 .word -1056981166
+ 3084 0014 EDE0743E 	 .word 1047847149
+ 3085 0018 00000000 	 .word 0
+ 3086 001c 00000000 	 .word 0
+ 3087 0020 00000000 	 .word 0
+ 3088 0024 00000000 	 .word 0
+ 3089              	 .section .rodata.PI_K_CC,"a",%progbits
+ 3090              	 .align 2
+ 3093              	PI_K_CC:
+ 3094 0000 0AD72340 	 .word 1076090634
+ 3095 0004 00209944 	 .word 1150885888
+ 3096              	 .section .bss.LPFbuff_dq1_aux,"aw",%nobits
+ 3097              	 .align 2
+ 3100              	LPFbuff_dq1_aux:
+ 3101 0000 00000000 	 .space 8
+ 3101      00000000 
+ 3102              	 .section .bss.V_dq,"aw",%nobits
+ 3103              	 .align 2
+ 3106              	V_dq:
+ 3107 0000 00000000 	 .space 8
+ 3107      00000000 
+ 3108              	 .section .data.PI_q,"aw",%progbits
+ 3109              	 .align 2
+ 3110              	 .set .LANCHOR58,.+0
+ 3113              	PI_q:
+ 3114 0000 CDCC4C3D 	 .word 1028443341
+ 3115 0004 00002042 	 .word 1109393408
+ 3116 0008 00007041 	 .word 1097859072
+ 3117 000c 000070C1 	 .word -1049624576
+ 3118 0010 00000000 	 .word 0
+ 3119 0014 00000000 	 .word 0
+ 3120 0018 00       	 .byte 0
+ 3121 0019 000000   	 .space 3
+ 3122              	 .section .rodata.LPF_K_1500,"a",%progbits
+ 3123              	 .align 2
+ 3124              	 .set .LANCHOR22,.+0
+ 3127              	LPF_K_1500:
+ 3128 0000 0000803F 	 .word 1065353216
+ 3129 0004 77FEA33E 	 .word 1050934903
+ 3130 0008 1303B83E 	 .word 1052246803
+ 3131              	 .section .data.PI_cc,"aw",%progbits
+ 3132              	 .align 2
+ 3135              	PI_cc:
+ 3136 0000 0AD72340 	 .word 1076090634
+ 3137 0004 00004445 	 .word 1162084352
+ 3138 0008 00803144 	 .word 1144094720
+ 3139 000c 00002FC4 	 .word -1003552768
+ 3140 0010 00000000 	 .word 0
+ 3141 0014 00000000 	 .word 0
+ 3142 0018 00000000 	 .word 0
+ 3143 001c 00000000 	 .word 0
+ 3144 0020 00       	 .byte 0
+ 3145 0021 000000   	 .space 3
+ 3146              	 .section .data.PI_PLL,"aw",%progbits
+ 3147              	 .align 2
+ 3148              	 .set .LANCHOR46,.+0
+ 3151              	PI_PLL:
+ 3152 0000 295CAF3F 	 .word 1068457001
+ 3153 0004 00002343 	 .word 1126367232
+ 3154 0008 949E6B44 	 .word 1147903636
+ 3155 000c 949E6BC4 	 .word -999580012
+ 3156 0010 00000000 	 .word 0
+ 3157 0014 00000000 	 .word 0
+ 3158 0018 00       	 .byte 0
+ 3159 0019 000000   	 .space 3
+ 3160              	 .section .bss.V_DCf,"aw",%nobits
+ 3161              	 .align 2
+ 3164              	V_DCf:
+ 3165 0000 00000000 	 .space 4
+ 3166              	 .section .data.LPF_iAB,"aw",%progbits
+ 3167              	 .align 2
+ 3170              	LPF_iAB:
+ 3171 0000 0000803F 	 .word 1065353216
+ 3172 0004 D6DD163E 	 .word 1041685974
+ 3173 0008 1591343F 	 .word 1060409621
+ 3174 000c 00000000 	 .word 0
+ 3175 0010 00000000 	 .word 0
+ 3176 0014 00000000 	 .word 0
+ 3177 0018 00000000 	 .word 0
+ 3178              	 .section .data.SCADA_VDCmin,"aw",%progbits
+ 3179              	 .align 2
+ 3180              	 .set .LANCHOR6,.+0
+ 3183              	SCADA_VDCmin:
+ 3184 0000 000020C1 	 .word -1054867456
+ 3185              	 .section .bss.REARMcommand,"aw",%nobits
+ 3186              	 .align 1
+ 3189              	REARMcommand:
+ 3190 0000 0000     	 .space 2
+ 3191              	 .section .data.i_dqsg,"aw",%progbits
+ 3192              	 .align 2
+ 3193              	 .set .LANCHOR50,.+0
+ 3196              	i_dqsg:
+ 3197 0000 63149D43 	 .word 1134367843
+ 3198 0004 00000000 	 .word 0
+ 3199 0008 00000000 	 .word 0
+ 3200 000c F404B53F 	 .word 1068827892
+ 3201 0010 00000000 	 .word 0
+ 3202 0014 00000000 	 .word 0
+ 3203 0018 17B7D138 	 .word 953267991
+ 3204 001c 00000000 	 .word 0
+ 3205 0020 00000000 	 .word 0
+ 3206 0024 F404B53F 	 .word 1068827892
+ 3207 0028 00000000 	 .word 0
+ 3208 002c 00000000 	 .word 0
+ 3209 0030 17B7D138 	 .word 953267991
+ 3210              	 .section .bss.ADC_LPFbuff_IB,"aw",%nobits
+ 3211              	 .align 2
+ 3212              	 .set .LANCHOR27,.+0
+ 3215              	ADC_LPFbuff_IB:
+ 3216 0000 00000000 	 .space 8
+ 3216      00000000 
+ 3217              	 .section .bss.ADC_LPFbuff_IC,"aw",%nobits
+ 3218              	 .align 2
+ 3219              	 .set .LANCHOR28,.+0
+ 3222              	ADC_LPFbuff_IC:
+ 3223 0000 00000000 	 .space 8
+ 3223      00000000 
+ 3224              	 .section .bss.V_DC_adc,"aw",%nobits
+ 3225              	 .align 1
+ 3226              	 .set .LANCHOR29,.+0
+ 3229              	V_DC_adc:
+ 3230 0000 0000     	 .space 2
+ 3231              	 .section .bss.LPFbuff_w_aux,"aw",%nobits
+ 3232              	 .align 2
+ 3235              	LPFbuff_w_aux:
+ 3236 0000 00000000 	 .space 8
+ 3236      00000000 
+ 3237              	 .section .bss.LPF_buff_w,"aw",%nobits
+ 3238              	 .align 2
+ 3241              	LPF_buff_w:
+ 3242 0000 00000000 	 .space 8
+ 3242      00000000 
+ 3243              	 .section .bss.PLL_wt,"aw",%nobits
+ 3244              	 .align 2
+ 3245              	 .set .LANCHOR42,.+0
+ 3248              	PLL_wt:
+ 3249 0000 00000000 	 .space 4
+ 3250              	 .section .bss.dq_aux,"aw",%nobits
+ 3251              	 .align 2
+ 3254              	dq_aux:
+ 3255 0000 00000000 	 .space 8
+ 3255      00000000 
+ 3256              	 .section .bss.Vm_abc,"aw",%nobits
+ 3257              	 .align 2
+ 3260              	Vm_abc:
+ 3261 0000 00000000 	 .space 12
+ 3261      00000000 
+ 3261      00000000 
+ 3262              	 .section .bss.I_AB,"aw",%nobits
+ 3263              	 .align 2
+ 3264              	 .set .LANCHOR59,.+0
+ 3267              	I_AB:
+ 3268 0000 00000000 	 .space 8
+ 3268      00000000 
+ 3269              	 .section .bss.SCADA_disable,"aw",%nobits
+ 3270              	 .align 2
+ 3271              	 .set .LANCHOR11,.+0
+ 3274              	SCADA_disable:
+ 3275 0000 00000000 	 .space 4
+ 3276              	 .section .bss.LPF_buff_w0,"aw",%nobits
+ 3277              	 .align 2
+ 3280              	LPF_buff_w0:
+ 3281 0000 00000000 	 .space 8
+ 3281      00000000 
+ 3282              	 .section .bss.LPF_buff_Vdc,"aw",%nobits
+ 3283              	 .align 2
+ 3286              	LPF_buff_Vdc:
+ 3287 0000 00000000 	 .space 8
+ 3287      00000000 
+ 3288              	 .section .bss.sync,"aw",%nobits
+ 3289              	 .align 1
+ 3292              	sync:
+ 3293 0000 0000     	 .space 2
+ 3294              	 .section .rodata.LPF_K_50,"a",%progbits
+ 3295              	 .align 2
+ 3298              	LPF_K_50:
+ 3299 0000 0000803F 	 .word 1065353216
+ 3300 0004 04617D3C 	 .word 1014849796
+ 3301 0008 F714783F 	 .word 1064834295
+ 3302              	 .section .bss.vDQn,"aw",%nobits
+ 3303              	 .align 2
+ 3306              	vDQn:
+ 3307 0000 00000000 	 .space 8
+ 3307      00000000 
+ 3308              	 .section .bss.PQ_ref,"aw",%nobits
+ 3309              	 .align 2
+ 3312              	PQ_ref:
+ 3313 0000 00000000 	 .space 8
+ 3313      00000000 
+ 3314              	 .section .bss.I_abc_adc,"aw",%nobits
+ 3315              	 .align 1
+ 3316              	 .set .LANCHOR25,.+0
+ 3319              	I_abc_adc:
+ 3320 0000 00000000 	 .space 6
+ 3320      0000
+ 3321              	 .section .data.vDQp_ref,"aw",%progbits
+ 3322              	 .align 2
+ 3325              	vDQp_ref:
+ 3326 0000 0000803F 	 .word 1065353216
+ 3327 0004 00000000 	 .word 0
+ 3328              	 .section .bss.PI_PLL_buff,"aw",%nobits
+ 3329              	 .align 2
+ 3332              	PI_PLL_buff:
+ 3333 0000 00000000 	 .space 12
+ 3333      00000000 
+ 3333      00000000 
+ 3334              	 .section .bss.dw_buff,"aw",%nobits
+ 3335              	 .align 2
+ 3338              	dw_buff:
+ 3339 0000 00000000 	 .space 4
+ 3340              	 .section .bss.PI_CCq_buff,"aw",%nobits
+ 3341              	 .align 2
+ 3344              	PI_CCq_buff:
+ 3345 0000 00000000 	 .space 12
+ 3345      00000000 
+ 3345      00000000 
+ 3346              	 .section .bss.vDQn_ref,"aw",%nobits
+ 3347              	 .align 2
+ 3350              	vDQn_ref:
+ 3351 0000 00000000 	 .space 8
+ 3351      00000000 
+ 3352              	 .section .data.SCADA_Tmax,"aw",%progbits
+ 3353              	 .align 2
+ 3354              	 .set .LANCHOR7,.+0
+ 3357              	SCADA_Tmax:
+ 3358 0000 00007042 	 .word 1114636288
+ 3359              	 .section .rodata.HPF_K,"a",%progbits
+ 3360              	 .align 2
+ 3363              	HPF_K:
+ 3364 0000 7B698A38 	 .word 948595067
+ 3365 0004 7B698AB8 	 .word -1198888581
+ 3366 0008 022B873D 	 .word 1032268546
+ 3367 000c 94F6863D 	 .word 1032255124
+ 3368              	 .section .data.ramp,"aw",%progbits
+ 3371              	ramp:
+ 3372 0000 FF       	 .byte -1
+ 3373              	 .section .bss.CTRL_idq,"aw",%nobits
+ 3374              	 .align 2
+ 3375              	 .set .LANCHOR52,.+0
+ 3378              	CTRL_idq:
+ 3379 0000 00000000 	 .space 8
+ 3379      00000000 
+ 3380              	 .section .bss.Ie_dq,"aw",%nobits
+ 3381              	 .align 2
+ 3384              	Ie_dq:
+ 3385 0000 00000000 	 .space 8
+ 3385      00000000 
+ 3386              	 .section .bss.sync_aux2,"aw",%nobits
+ 3387              	 .align 2
+ 3390              	sync_aux2:
+ 3391 0000 00000000 	 .space 4
+ 3392              	 .section .bss.conv,"aw",%nobits
+ 3393              	 .align 2
+ 3394              	 .set .LANCHOR4,.+0
+ 3397              	conv:
+ 3398 0000 00000000 	 .space 40
+ 3398      00000000 
+ 3398      00000000 
+ 3398      00000000 
+ 3398      00000000 
+ 3399              	 .section .data.LPF_idq_ref,"aw",%progbits
+ 3400              	 .align 2
+ 3403              	LPF_idq_ref:
+ 3404 0000 0000803F 	 .word 1065353216
+ 3405 0004 04617D3C 	 .word 1014849796
+ 3406 0008 F714783F 	 .word 1064834295
+ 3407 000c 00000000 	 .word 0
+ 3408 0010 00000000 	 .word 0
+ 3409 0014 00000000 	 .word 0
+ 3410 0018 00000000 	 .word 0
+ 3411              	 .section .bss.LPFbuff_vdc,"aw",%nobits
+ 3412              	 .align 2
+ 3413              	 .set .LANCHOR31,.+0
+ 3416              	LPFbuff_vdc:
+ 3417 0000 00000000 	 .space 8
+ 3417      00000000 
+ 3418              	 .section .bss.B2command,"aw",%nobits
+ 3419              	 .align 1
+ 3422              	B2command:
+ 3423 0000 0000     	 .space 2
+ 3424              	 .section .bss.relayTimerFlag,"aw",%nobits
+ 3425              	 .align 1
+ 3428              	relayTimerFlag:
+ 3429 0000 0000     	 .space 2
+ 3430              	 .section .bss.Vm_AB,"aw",%nobits
+ 3431              	 .align 2
+ 3434              	Vm_AB:
+ 3435 0000 00000000 	 .space 8
+ 3435      00000000 
+ 3436              	 .section .bss.conv_temp_C,"aw",%nobits
+ 3437              	 .align 2
+ 3438              	 .set .LANCHOR34,.+0
+ 3441              	conv_temp_C:
+ 3442 0000 00000000 	 .space 4
+ 3443              	 .section .bss.state,"aw",%nobits
+ 3444              	 .align 1
+ 3445              	 .set .LANCHOR9,.+0
+ 3448              	state:
+ 3449 0000 0000     	 .space 2
+ 3450              	 .section .bss.V7,"aw",%nobits
+ 3451              	 .align 2
+ 3454              	V7:
+ 3455 0000 00000000 	 .space 4
+ 3456              	 .section .bss.PLL_Vdq,"aw",%nobits
+ 3457              	 .align 2
+ 3458              	 .set .LANCHOR41,.+0
+ 3461              	PLL_Vdq:
+ 3462 0000 00000000 	 .space 8
+ 3462      00000000 
+ 3463              	 .section .bss.wt11,"aw",%nobits
+ 3464              	 .align 2
+ 3467              	wt11:
+ 3468 0000 00000000 	 .space 4
+ 3469              	 .section .bss.wt13,"aw",%nobits
+ 3470              	 .align 2
+ 3473              	wt13:
+ 3474 0000 00000000 	 .space 4
+ 3475              	 .section .data.w,"aw",%progbits
+ 3476              	 .align 2
+ 3479              	w:
+ 3480 0000 63149D43 	 .word 1134367843
+ 3481              	 .section .bss.vAB13,"aw",%nobits
+ 3482              	 .align 2
+ 3485              	vAB13:
+ 3486 0000 00000000 	 .space 8
+ 3486      00000000 
+ 3487              	 .section .bss.vDQ5,"aw",%nobits
+ 3488              	 .align 2
+ 3491              	vDQ5:
+ 3492 0000 00000000 	 .space 8
+ 3492      00000000 
+ 3493              	 .section .bss.V_DC,"aw",%nobits
+ 3494              	 .align 2
+ 3495              	 .set .LANCHOR30,.+0
+ 3498              	V_DC:
+ 3499 0000 00000000 	 .space 4
+ 3500              	 .section .bss.V_AB,"aw",%nobits
+ 3501              	 .align 2
+ 3504              	V_AB:
+ 3505 0000 00000000 	 .space 8
+ 3505      00000000 
+ 3506              	 .section .rodata.LPF_K_100,"a",%progbits
+ 3507              	 .align 2
+ 3508              	 .set .LANCHOR32,.+0
+ 3511              	LPF_K_100:
+ 3512 0000 0000803F 	 .word 1065353216
+ 3513 0004 4085F93C 	 .word 1022985536
+ 3514 0008 AC67703F 	 .word 1064331180
+ 3515              	 .section .bss.vmAB,"aw",%nobits
+ 3516              	 .align 2
+ 3519              	vmAB:
+ 3520 0000 00000000 	 .space 8
+ 3520      00000000 
+ 3521              	 .section .bss.ID_dq,"aw",%nobits
+ 3522              	 .align 2
+ 3525              	ID_dq:
+ 3526 0000 00000000 	 .space 8
+ 3526      00000000 
+ 3527              	 .section .bss.V_abc,"aw",%nobits
+ 3528              	 .align 2
+ 3529              	 .set .LANCHOR20,.+0
+ 3532              	V_abc:
+ 3533 0000 00000000 	 .space 12
+ 3533      00000000 
+ 3533      00000000 
+ 3534              	 .section .data.SCADA_Imax,"aw",%progbits
+ 3535              	 .align 2
+ 3536              	 .set .LANCHOR3,.+0
+ 3539              	SCADA_Imax:
+ 3540 0000 00007041 	 .word 1097859072
+ 3541              	 .section .bss.SCADA_status_button,"aw",%nobits
+ 3542              	 .align 2
+ 3543              	 .set .LANCHOR18,.+0
+ 3546              	SCADA_status_button:
+ 3547 0000 00000000 	 .space 4
+ 3548              	 .section .bss.vDQp,"aw",%nobits
+ 3549              	 .align 2
+ 3552              	vDQp:
+ 3553 0000 00000000 	 .space 8
+ 3553      00000000 
+ 3554              	 .section .data.PI_Vdc,"aw",%progbits
+ 3555              	 .align 2
+ 3556              	 .set .LANCHOR0,.+0
+ 3559              	PI_Vdc:
+ 3560 0000 52499D39 	 .word 966609234
+ 3561 0004 A69BC43B 	 .word 1002740646
+ 3562 0008 00007041 	 .word 1097859072
+ 3563 000c 000070C1 	 .word -1049624576
+ 3564 0010 00000000 	 .word 0
+ 3565 0014 00000000 	 .word 0
+ 3566 0018 00       	 .byte 0
+ 3567 0019 000000   	 .space 3
+ 3568              	 .section .bss.LPFbuff_dq2_aux,"aw",%nobits
+ 3569              	 .align 2
+ 3572              	LPFbuff_dq2_aux:
+ 3573 0000 00000000 	 .space 8
+ 3573      00000000 
+ 3574              	 .section .bss.SCADA_error_Tmax,"aw",%nobits
+ 3575              	 .align 2
+ 3576              	 .set .LANCHOR17,.+0
+ 3579              	SCADA_error_Tmax:
+ 3580 0000 00000000 	 .space 4
+ 3581              	 .section .bss.LPF_buff_sync2,"aw",%nobits
+ 3582              	 .align 2
+ 3585              	LPF_buff_sync2:
+ 3586 0000 00000000 	 .space 8
+ 3586      00000000 
+ 3587              	 .section .bss.V_DC_ref_f,"aw",%nobits
+ 3588              	 .align 2
+ 3591              	V_DC_ref_f:
+ 3592 0000 00000000 	 .space 4
+ 3593              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+    {standard input}:17     .text.DIGITAL_IO_SetOutputHigh:00000000 $t
+    {standard input}:21     .text.DIGITAL_IO_SetOutputHigh:00000000 DIGITAL_IO_SetOutputHigh
+    {standard input}:33     .text.DIGITAL_IO_SetOutputLow:00000000 $t
+    {standard input}:37     .text.DIGITAL_IO_SetOutputLow:00000000 DIGITAL_IO_SetOutputLow
+    {standard input}:49     .text.HPF1:00000000 $t
+    {standard input}:54     .text.HPF1:00000000 HPF1
+    {standard input}:74     .text.fw_integ:00000000 $t
+    {standard input}:79     .text.fw_integ:00000000 fw_integ
+    {standard input}:111    .text.tr_integ:00000000 $t
+    {standard input}:116    .text.tr_integ:00000000 tr_integ
+    {standard input}:147    .text.tr_integ:00000050 $d
+    {standard input}:150    .text.deriv:00000000 $t
+    {standard input}:155    .text.deriv:00000000 deriv
+    {standard input}:169    .text.abc_AB:00000000 $t
+    {standard input}:174    .text.abc_AB:00000000 abc_AB
+    {standard input}:198    .text.abc_AB:00000044 $d
+    {standard input}:202    .text.abc_AB_Dy:00000000 $t
+    {standard input}:207    .text.abc_AB_Dy:00000000 abc_AB_Dy
+    {standard input}:232    .text.abc_AB_Dy:00000048 $d
+    {standard input}:236    .text.AB_dq:00000000 $t
+    {standard input}:241    .text.AB_dq:00000000 AB_dq
+    {standard input}:276    .text.dq_AB:00000000 $t
+    {standard input}:281    .text.dq_AB:00000000 dq_AB
+    {standard input}:309    .text.AB_abc:00000000 $t
+    {standard input}:314    .text.AB_abc:00000000 AB_abc
+    {standard input}:336    .text.AB_abc:00000038 $d
+    {standard input}:339    .text.LPF1:00000000 $t
+    {standard input}:344    .text.LPF1:00000000 LPF1
+    {standard input}:364    .text.LPF2:00000000 $t
+    {standard input}:369    .text.LPF2:00000000 LPF2
+    {standard input}:400    .text.LPF1_dq:00000000 $t
+    {standard input}:405    .text.LPF1_dq:00000000 LPF1_dq
+    {standard input}:442    .text.conv2DAC:00000000 $t
+    {standard input}:447    .text.conv2DAC:00000000 conv2DAC
+    {standard input}:477    .text.conv2DAC:00000044 $d
+    {standard input}:480    .text.PI_FW:00000000 $t
+    {standard input}:485    .text.PI_FW:00000000 PI_FW
+    {standard input}:501    .text.PI_TR:00000000 $t
+    {standard input}:506    .text.PI_TR:00000000 PI_TR
+    {standard input}:562    .text.PI_TR_p:00000000 $t
+    {standard input}:567    .text.PI_TR_p:00000000 PI_TR_p
+    {standard input}:610    .text.PI_TR_dq:00000000 $t
+    {standard input}:615    .text.PI_TR_dq:00000000 PI_TR_dq
+    {standard input}:698    .text.abs_sat:00000000 $t
+    {standard input}:703    .text.abs_sat:00000000 abs_sat
+    {standard input}:738    .text.sat2D:00000000 $t
+    {standard input}:743    .text.sat2D:00000000 sat2D
+    {standard input}:803    .text.sat2D:000000ac $d
+    {standard input}:806    .text.QSG:00000000 $t
+    {standard input}:811    .text.QSG:00000000 QSG
+    {standard input}:836    .text.DSOGI_filter:00000000 $t
+    {standard input}:841    .text.DSOGI_filter:00000000 DSOGI_filter
+    {standard input}:871    .text.FFDSOGI_filter:00000000 $t
+    {standard input}:876    .text.FFDSOGI_filter:00000000 FFDSOGI_filter
+    {standard input}:913    .text.update_config:00000000 $t
+    {standard input}:918    .text.update_config:00000000 update_config
+    {standard input}:932    .text.update_config:00000010 $d
+    {standard input}:936    .text.run_DC_ctrl:00000000 $t
+    {standard input}:941    .text.run_DC_ctrl:00000000 run_DC_ctrl
+    {standard input}:948    .text.Init_prStruct:00000000 $t
+    {standard input}:953    .text.Init_prStruct:00000000 Init_prStruct
+    {standard input}:968    .text.set_PR_ref:00000000 $t
+    {standard input}:973    .text.set_PR_ref:00000000 set_PR_ref
+    {standard input}:985    .text.Calc_prStruct:00000000 $t
+    {standard input}:990    .text.Calc_prStruct:00000000 Calc_prStruct
+    {standard input}:1060   .text.Calc_prStruct:000000d0 $d
+    {standard input}:1064   .text.no_fault:00000000 $t
+    {standard input}:1069   .text.no_fault:00000000 no_fault
+    {standard input}:1125   .text.no_fault:00000098 $d
+    {standard input}:1133   .text.ConverterStateMachine:00000000 $t
+    {standard input}:1138   .text.ConverterStateMachine:00000000 ConverterStateMachine
+    {standard input}:1153   .text.ConverterStateMachine:0000001a $d
+    {standard input}:1395   .text.ConverterStateMachine:00000240 $d
+    {standard input}:1421   .text.CCU80_3_IRQHandler:00000000 $t
+    {standard input}:1426   .text.CCU80_3_IRQHandler:00000000 CCU80_3_IRQHandler
+    {standard input}:1688   .text.CCU80_3_IRQHandler:000002f8 $d
+                            *COM*:00000004 scope_adc7
+                            *COM*:00000004 scope_adc1
+                            *COM*:00000004 scope_adc2
+                            *COM*:00000004 scope_adc3
+                            *COM*:00000004 scope_adc4
+                            *COM*:00000004 scope_adc5
+                            *COM*:00000004 scope_adc6
+    {standard input}:1751   .text.CCU80_3_IRQHandler:000003f0 $t
+    {standard input}:1952   .text.CCU80_3_IRQHandler:00000628 $d
+                            *COM*:00000020 PR_Test
+                            *COM*:00000004 vdc_division
+                            *COM*:00000004 m_u
+                            *COM*:00000004 m_v
+                            *COM*:00000004 scopeu1
+                            *COM*:00000004 scopeu2
+                            *COM*:00000004 scopeu3
+    {standard input}:1994   .text.startup.main:00000000 $t
+    {standard input}:1999   .text.startup.main:00000000 main
+    {standard input}:2055   .text.startup.main:00000084 $d
+    {standard input}:2388   .data.SCADA_Vdc_ref:00000000 SCADA_Vdc_ref
+    {standard input}:3041   .bss.SCADA_Iq_ref:00000000 SCADA_Iq_ref
+    {standard input}:2310   .bss.SCADA_Id_ref:00000000 SCADA_Id_ref
+    {standard input}:2598   .bss.timer_sm:00000000 timer_sm
+    {standard input}:3579   .bss.SCADA_error_Tmax:00000000 SCADA_error_Tmax
+    {standard input}:2489   .bss.SCADA_error_VDCmin:00000000 SCADA_error_VDCmin
+    {standard input}:2342   .bss.SCADA_error_VDCmax:00000000 SCADA_error_VDCmax
+    {standard input}:2625   .bss.SCADA_error_Ic:00000000 SCADA_error_Ic
+    {standard input}:2618   .bss.SCADA_error_Ib:00000000 SCADA_error_Ib
+    {standard input}:2611   .bss.SCADA_error_Ia:00000000 SCADA_error_Ia
+    {standard input}:3357   .data.SCADA_Tmax:00000000 SCADA_Tmax
+    {standard input}:3183   .data.SCADA_VDCmin:00000000 SCADA_VDCmin
+    {standard input}:3054   .data.SCADA_VDCmax:00000000 SCADA_VDCmax
+    {standard input}:3539   .data.SCADA_Imax:00000000 SCADA_Imax
+    {standard input}:3546   .bss.SCADA_status_button:00000000 SCADA_status_button
+    {standard input}:3274   .bss.SCADA_disable:00000000 SCADA_disable
+    {standard input}:2376   .bss.SCADA_enable:00000000 SCADA_enable
+    {standard input}:3222   .bss.ADC_LPFbuff_IC:00000000 ADC_LPFbuff_IC
+    {standard input}:3215   .bss.ADC_LPFbuff_IB:00000000 ADC_LPFbuff_IB
+    {standard input}:2999   .bss.ADC_LPFbuff_IA:00000000 ADC_LPFbuff_IA
+    {standard input}:2549   .bss.ADC_LPFbuff_VC:00000000 ADC_LPFbuff_VC
+    {standard input}:2542   .bss.ADC_LPFbuff_VB:00000000 ADC_LPFbuff_VB
+    {standard input}:2968   .bss.ADC_LPFbuff_VA:00000000 ADC_LPFbuff_VA
+    {standard input}:3572   .bss.LPFbuff_dq2_aux:00000000 LPFbuff_dq2_aux
+    {standard input}:3100   .bss.LPFbuff_dq1_aux:00000000 LPFbuff_dq1_aux
+    {standard input}:3235   .bss.LPFbuff_w_aux:00000000 LPFbuff_w_aux
+    {standard input}:2806   .data.w_aux:00000000 w_aux
+    {standard input}:2502   .bss.wt_aux:00000000 wt_aux
+    {standard input}:3254   .bss.dq_aux:00000000 dq_aux
+    {standard input}:2923   .bss.AB_aux:00000000 AB_aux
+    {standard input}:2460   .bss.LPFbuff_v2:00000000 LPFbuff_v2
+    {standard input}:2800   .bss.LPFbuff_v:00000000 LPFbuff_v
+    {standard input}:2882   .bss.LPFbuff_temp:00000000 LPFbuff_temp
+    {standard input}:3416   .bss.LPFbuff_vdc:00000000 LPFbuff_vdc
+                            *COM*:00000004 aux_var7
+                            *COM*:00000004 aux_var6
+                            *COM*:00000004 aux_var5
+                            *COM*:00000004 aux_var4
+                            *COM*:00000004 aux_var3
+                            *COM*:00000004 aux_var2
+                            *COM*:00000004 aux_var1
+    {standard input}:2423   .bss.wt_jump:00000000 wt_jump
+    {standard input}:3473   .bss.wt13:00000000 wt13
+    {standard input}:3467   .bss.wt11:00000000 wt11
+    {standard input}:2992   .bss.wt7:00000000 wt7
+    {standard input}:2980   .bss.wt5:00000000 wt5
+    {standard input}:2706   .bss.wt_buff13:00000000 wt_buff13
+    {standard input}:2700   .bss.wt_buff11:00000000 wt_buff11
+    {standard input}:2986   .bss.wt_buff7:00000000 wt_buff7
+    {standard input}:2974   .bss.wt_buff5:00000000 wt_buff5
+    {standard input}:2713   .bss.vmabc:00000000 vmabc
+    {standard input}:3519   .bss.vmAB:00000000 vmAB
+    {standard input}:2448   .bss.vabc13:00000000 vabc13
+    {standard input}:3485   .bss.vAB13:00000000 vAB13
+    {standard input}:2657   .bss.vDQ13:00000000 vDQ13
+    {standard input}:2442   .bss.vabc11:00000000 vabc11
+    {standard input}:2591   .bss.vAB11:00000000 vAB11
+    {standard input}:2651   .bss.vDQ11:00000000 vDQ11
+    {standard input}:2535   .bss.vabc7:00000000 vabc7
+    {standard input}:2394   .bss.vAB7:00000000 vAB7
+    {standard input}:2429   .bss.vDQ7:00000000 vDQ7
+    {standard input}:2523   .bss.vabc5:00000000 vabc5
+    {standard input}:2382   .bss.vAB5:00000000 vAB5
+    {standard input}:3491   .bss.vDQ5:00000000 vDQ5
+    {standard input}:2875   .bss.V13:00000000 V13
+    {standard input}:2869   .bss.V11:00000000 V11
+    {standard input}:3454   .bss.V7:00000000 V7
+    {standard input}:2681   .bss.V5:00000000 V5
+    {standard input}:2570   .data.Vn:00000000 Vn
+    {standard input}:3047   .bss.vABn:00000000 vABn
+    {standard input}:3306   .bss.vDQn:00000000 vDQn
+    {standard input}:3350   .bss.vDQn_ref:00000000 vDQn_ref
+    {standard input}:2725   .bss.vABp:00000000 vABp
+    {standard input}:3552   .bss.vDQp:00000000 vDQp
+    {standard input}:3325   .data.vDQp_ref:00000000 vDQp_ref
+    {standard input}:3020   .bss.fault:00000000 fault
+    {standard input}:2787   .data.counter:00000000 counter
+                            *COM*:00000004 scope3
+                            *COM*:00000004 scope2
+                            *COM*:00000004 scope1
+    {standard input}:3027   .bss.CTRL_idq_ref:00000000 CTRL_idq_ref
+    {standard input}:3378   .bss.CTRL_idq:00000000 CTRL_idq
+    {standard input}:2482   .bss.SOGI_i_AB:00000000 SOGI_i_AB
+    {standard input}:2632   .bss.Iu_filt:00000000 Iu_filt
+    {standard input}:2694   .bss.PR_LPFbuff_Iu:00000000 PR_LPFbuff_Iu
+    {standard input}:2436   .bss.PLL_LPFbuff_w:00000000 PLL_LPFbuff_w
+    {standard input}:2303   .bss.PLL_wt_buff:00000000 PLL_wt_buff
+    {standard input}:2401   .bss.PLL_LPFbuff_q:00000000 PLL_LPFbuff_q
+    {standard input}:2329   .bss.PLL_LPFbuff_d:00000000 PLL_LPFbuff_d
+    {standard input}:3461   .bss.PLL_Vdq:00000000 PLL_Vdq
+    {standard input}:3248   .bss.PLL_wt:00000000 PLL_wt
+    {standard input}:2846   .data.PLL_w0:00000000 PLL_w0
+    {standard input}:2754   .data.PLL_w:00000000 PLL_w
+    {standard input}:2955   .bss.SOGI_v_AB:00000000 SOGI_v_AB
+                            *COM*:00000004 vdc_bus_piout
+                            *COM*:00000004 vdc_bus_error
+                            *COM*:00000004 VDC_BUS_REF
+    {standard input}:3034   .bss.PR_output:00000000 PR_output
+    {standard input}:2529   .bss.CTRL_Vab:00000000 CTRL_Vab
+    {standard input}:2354   .bss.LPF_buff_Vdc_ref:00000000 LPF_buff_Vdc_ref
+    {standard input}:3286   .bss.LPF_buff_Vdc:00000000 LPF_buff_Vdc
+    {standard input}:2335   .bss.LPF_buff_IB:00000000 LPF_buff_IB
+    {standard input}:2322   .bss.LPF_buff_IA:00000000 LPF_buff_IA
+    {standard input}:2296   .bss.LPF_buff_VB:00000000 LPF_buff_VB
+    {standard input}:2283   .bss.LPF_buff_VA:00000000 LPF_buff_VA
+    {standard input}:3585   .bss.LPF_buff_sync2:00000000 LPF_buff_sync2
+    {standard input}:2316   .bss.LPF_buff_conv_wt:00000000 LPF_buff_conv_wt
+    {standard input}:2929   .bss.LPF_buff_conv_w:00000000 LPF_buff_conv_w
+    {standard input}:3241   .bss.LPF_buff_w:00000000 LPF_buff_w
+    {standard input}:3280   .bss.LPF_buff_w0:00000000 LPF_buff_w0
+    {standard input}:2766   .bss.sync_aux3_buff:00000000 sync_aux3_buff
+    {standard input}:2675   .bss.wt_buff:00000000 wt_buff
+    {standard input}:3338   .bss.dw_buff:00000000 dw_buff
+    {standard input}:2863   .bss.HPFq_buff:00000000 HPFq_buff
+    {standard input}:2454   .bss.HPFd_buff:00000000 HPFd_buff
+    {standard input}:2663   .bss.PI_V_DC_buff:00000000 PI_V_DC_buff
+    {standard input}:3344   .bss.PI_CCq_buff:00000000 PI_CCq_buff
+    {standard input}:2760   .bss.PI_CCd_buff:00000000 PI_CCd_buff
+    {standard input}:3332   .bss.PI_PLL_buff:00000000 PI_PLL_buff
+    {standard input}:3390   .bss.sync_aux2:00000000 sync_aux2
+    {standard input}:2348   .bss.wt:00000000 wt
+    {standard input}:2687   .bss.wf:00000000 wf
+    {standard input}:2961   .bss.dw:00000000 dw
+    {standard input}:3479   .data.w:00000000 w
+    {standard input}:2645   .bss.Vm_AB2:00000000 Vm_AB2
+    {standard input}:2407   .data.Vm_dq:00000000 Vm_dq
+    {standard input}:3434   .bss.Vm_AB:00000000 Vm_AB
+    {standard input}:3260   .bss.Vm_abc:00000000 Vm_abc
+    {standard input}:2793   .data.PI_sat_CC:00000000 PI_sat_CC
+    {standard input}:3525   .bss.ID_dq:00000000 ID_dq
+    {standard input}:3384   .bss.Ie_dq:00000000 Ie_dq
+    {standard input}:3072   .bss.I_dq_ref_f:00000000 I_dq_ref_f
+    {standard input}:2669   .bss.I_dq:00000000 I_dq
+    {standard input}:3106   .bss.V_dq:00000000 V_dq
+    {standard input}:2897   .bss.I_ABf:00000000 I_ABf
+    {standard input}:2833   .bss.V_ABf:00000000 V_ABf
+    {standard input}:3164   .bss.V_DCf:00000000 V_DCf
+    {standard input}:3267   .bss.I_AB:00000000 I_AB
+    {standard input}:3504   .bss.V_AB:00000000 V_AB
+    {standard input}:2820   .bss.I_abc:00000000 I_abc
+    {standard input}:3532   .bss.V_abc:00000000 V_abc
+    {standard input}:3498   .bss.V_DC:00000000 V_DC
+    {standard input}:3441   .bss.conv_temp_C:00000000 conv_temp_C
+    {standard input}:3319   .bss.I_abc_adc:00000000 I_abc_adc
+    {standard input}:2639   .bss.V_abc_adc:00000000 V_abc_adc
+    {standard input}:2290   .bss.m_abc:00000000 m_abc
+    {standard input}:3229   .bss.V_DC_adc:00000000 V_DC_adc
+    {standard input}:2813   .bss.termistor_temp:00000000 termistor_temp
+    {standard input}:2564   .bss.sync_aux3:00000000 sync_aux3
+    {standard input}:2839   .bss.fan_pwm:00000000 fan_pwm
+    {standard input}:3060   .bss.error_code:00000000 error_code
+    {standard input}:2917   .bss.fault_flag:00000000 fault_flag
+                            *COM*:00000002 relayTimer
+    {standard input}:3189   .bss.REARMcommand:00000000 REARMcommand
+    {standard input}:3066   .bss.SWcommand:00000000 SWcommand
+    {standard input}:2781   .bss.fault_rst:00000000 fault_rst
+    {standard input}:3422   .bss.B2command:00000000 B2command
+    {standard input}:3292   .bss.sync:00000000 sync
+    {standard input}:3371   .data.ramp:00000000 ramp
+    {standard input}:2851   .bss.mode:00000000 mode
+    {standard input}:3428   .bss.relayTimerFlag:00000000 relayTimerFlag
+    {standard input}:3448   .bss.state:00000000 state
+    {standard input}:3591   .bss.V_DC_ref_f:00000000 V_DC_ref_f
+    {standard input}:2857   .bss.V_DC_ref:00000000 V_DC_ref
+    {standard input}:3312   .bss.PQ_ref:00000000 PQ_ref
+    {standard input}:2827   .bss.I_dq_ref:00000000 I_dq_ref
+    {standard input}:2495   .data.V_dq_ref:00000000 V_dq_ref
+    {standard input}:3196   .data.i_dqsg:00000000 i_dqsg
+    {standard input}:2936   .data.dqsg:00000000 dqsg
+    {standard input}:3135   .data.PI_cc:00000000 PI_cc
+    {standard input}:3113   .data.PI_q:00000000 PI_q
+    {standard input}:2904   .data.PI_d:00000000 PI_d
+    {standard input}:3559   .data.PI_Vdc:00000000 PI_Vdc
+    {standard input}:3151   .data.PI_PLL:00000000 PI_PLL
+    {standard input}:2576   .data.LPF2_K_1500:00000000 LPF2_K_1500
+    {standard input}:2508   .data.LPF2_K_500:00000000 LPF2_K_500
+    {standard input}:3078   .data.LPF2_K_100:00000000 LPF2_K_100
+    {standard input}:3005   .data.LPF2_K_50:00000000 LPF2_K_50
+    {standard input}:2360   .data.LPF2_K_10:00000000 LPF2_K_10
+    {standard input}:2731   .data.LPF_vAB:00000000 LPF_vAB
+    {standard input}:3170   .data.LPF_iAB:00000000 LPF_iAB
+    {standard input}:3403   .data.LPF_idq_ref:00000000 LPF_idq_ref
+    {standard input}:3397   .bss.conv:00000000 conv
+    {standard input}:2467   .data.conf:00000000 conf
+    {standard input}:3127   .rodata.LPF_K_1500:00000000 LPF_K_1500
+    {standard input}:2889   .rodata.LPF_K_500:00000000 LPF_K_500
+    {standard input}:3511   .rodata.LPF_K_100:00000000 LPF_K_100
+    {standard input}:3298   .rodata.LPF_K_50:00000000 LPF_K_50
+    {standard input}:2773   .rodata.LPF_K_10:00000000 LPF_K_10
+    {standard input}:2556   .rodata.LPF_K_1:00000000 LPF_K_1
+    {standard input}:3363   .rodata.HPF_K:00000000 HPF_K
+    {standard input}:3093   .rodata.PI_K_CC:00000000 PI_K_CC
+    {standard input}:2414   .rodata.K_sync:00000000 K_sync
+    {standard input}:2743   .data.ADC:00000000 ADC
+    {standard input}:2719   .rodata.chargeTime:00000000 chargeTime
+    {standard input}:2604   .bss.Vdc_error:00000000 Vdc_error
+    {standard input}:2280   .bss.LPF_buff_VA:00000000 $d
+    {standard input}:2286   .bss.m_abc:00000000 $d
+    {standard input}:2293   .bss.LPF_buff_VB:00000000 $d
+    {standard input}:2299   .bss.PLL_wt_buff:00000000 $d
+    {standard input}:2306   .bss.SCADA_Id_ref:00000000 $d
+    {standard input}:2313   .bss.LPF_buff_conv_wt:00000000 $d
+    {standard input}:2319   .bss.LPF_buff_IA:00000000 $d
+    {standard input}:2325   .bss.PLL_LPFbuff_d:00000000 $d
+    {standard input}:2332   .bss.LPF_buff_IB:00000000 $d
+    {standard input}:2338   .bss.SCADA_error_VDCmax:00000000 $d
+    {standard input}:2345   .bss.wt:00000000 $d
+    {standard input}:2351   .bss.LPF_buff_Vdc_ref:00000000 $d
+    {standard input}:2357   .data.LPF2_K_10:00000000 $d
+    {standard input}:2372   .bss.SCADA_enable:00000000 $d
+    {standard input}:2379   .bss.vAB5:00000000 $d
+    {standard input}:2385   .data.SCADA_Vdc_ref:00000000 $d
+    {standard input}:2391   .bss.vAB7:00000000 $d
+    {standard input}:2397   .bss.PLL_LPFbuff_q:00000000 $d
+    {standard input}:2404   .data.Vm_dq:00000000 $d
+    {standard input}:2411   .rodata.K_sync:00000000 $d
+    {standard input}:2420   .bss.wt_jump:00000000 $d
+    {standard input}:2426   .bss.vDQ7:00000000 $d
+    {standard input}:2432   .bss.PLL_LPFbuff_w:00000000 $d
+    {standard input}:2439   .bss.vabc11:00000000 $d
+    {standard input}:2445   .bss.vabc13:00000000 $d
+    {standard input}:2451   .bss.HPFd_buff:00000000 $d
+    {standard input}:2457   .bss.LPFbuff_v2:00000000 $d
+    {standard input}:2463   .data.conf:00000000 $d
+    {standard input}:2478   .bss.SOGI_i_AB:00000000 $d
+    {standard input}:2485   .bss.SCADA_error_VDCmin:00000000 $d
+    {standard input}:2492   .data.V_dq_ref:00000000 $d
+    {standard input}:2499   .bss.wt_aux:00000000 $d
+    {standard input}:2505   .data.LPF2_K_500:00000000 $d
+    {standard input}:2520   .bss.vabc5:00000000 $d
+    {standard input}:2526   .bss.CTRL_Vab:00000000 $d
+    {standard input}:2532   .bss.vabc7:00000000 $d
+    {standard input}:2538   .bss.ADC_LPFbuff_VB:00000000 $d
+    {standard input}:2545   .bss.ADC_LPFbuff_VC:00000000 $d
+    {standard input}:2552   .rodata.LPF_K_1:00000000 $d
+    {standard input}:2561   .bss.sync_aux3:00000000 $d
+    {standard input}:2567   .data.Vn:00000000 $d
+    {standard input}:2573   .data.LPF2_K_1500:00000000 $d
+    {standard input}:2588   .bss.vAB11:00000000 $d
+    {standard input}:2594   .bss.timer_sm:00000000 $d
+    {standard input}:2601   .bss.Vdc_error:00000000 $d
+    {standard input}:2607   .bss.SCADA_error_Ia:00000000 $d
+    {standard input}:2614   .bss.SCADA_error_Ib:00000000 $d
+    {standard input}:2621   .bss.SCADA_error_Ic:00000000 $d
+    {standard input}:2628   .bss.Iu_filt:00000000 $d
+    {standard input}:2635   .bss.V_abc_adc:00000000 $d
+    {standard input}:2642   .bss.Vm_AB2:00000000 $d
+    {standard input}:2648   .bss.vDQ11:00000000 $d
+    {standard input}:2654   .bss.vDQ13:00000000 $d
+    {standard input}:2660   .bss.PI_V_DC_buff:00000000 $d
+    {standard input}:2666   .bss.I_dq:00000000 $d
+    {standard input}:2672   .bss.wt_buff:00000000 $d
+    {standard input}:2678   .bss.V5:00000000 $d
+    {standard input}:2684   .bss.wf:00000000 $d
+    {standard input}:2690   .bss.PR_LPFbuff_Iu:00000000 $d
+    {standard input}:2697   .bss.wt_buff11:00000000 $d
+    {standard input}:2703   .bss.wt_buff13:00000000 $d
+    {standard input}:2709   .bss.vmabc:00000000 $d
+    {standard input}:2716   .rodata.chargeTime:00000000 $d
+    {standard input}:2722   .bss.vABp:00000000 $d
+    {standard input}:2728   .data.LPF_vAB:00000000 $d
+    {standard input}:2740   .data.ADC:00000000 $d
+    {standard input}:2750   .data.PLL_w:00000000 $d
+    {standard input}:2757   .bss.PI_CCd_buff:00000000 $d
+    {standard input}:2763   .bss.sync_aux3_buff:00000000 $d
+    {standard input}:2769   .rodata.LPF_K_10:00000000 $d
+    {standard input}:2778   .bss.fault_rst:00000000 $d
+    {standard input}:2784   .data.counter:00000000 $d
+    {standard input}:2790   .data.PI_sat_CC:00000000 $d
+    {standard input}:2797   .bss.LPFbuff_v:00000000 $d
+    {standard input}:2803   .data.w_aux:00000000 $d
+    {standard input}:2809   .bss.termistor_temp:00000000 $d
+    {standard input}:2816   .bss.I_abc:00000000 $d
+    {standard input}:2823   .bss.I_dq_ref:00000000 $d
+    {standard input}:2830   .bss.V_ABf:00000000 $d
+    {standard input}:2836   .bss.fan_pwm:00000000 $d
+    {standard input}:2842   .data.PLL_w0:00000000 $d
+    {standard input}:2852   .bss.mode:00000000 $d
+    {standard input}:2854   .bss.V_DC_ref:00000000 $d
+    {standard input}:2860   .bss.HPFq_buff:00000000 $d
+    {standard input}:2866   .bss.V11:00000000 $d
+    {standard input}:2872   .bss.V13:00000000 $d
+    {standard input}:2878   .bss.LPFbuff_temp:00000000 $d
+    {standard input}:2885   .rodata.LPF_K_500:00000000 $d
+    {standard input}:2894   .bss.I_ABf:00000000 $d
+    {standard input}:2900   .data.PI_d:00000000 $d
+    {standard input}:2914   .bss.fault_flag:00000000 $d
+    {standard input}:2920   .bss.AB_aux:00000000 $d
+    {standard input}:2926   .bss.LPF_buff_conv_w:00000000 $d
+    {standard input}:2932   .data.dqsg:00000000 $d
+    {standard input}:2951   .bss.SOGI_v_AB:00000000 $d
+    {standard input}:2958   .bss.dw:00000000 $d
+    {standard input}:2964   .bss.ADC_LPFbuff_VA:00000000 $d
+    {standard input}:2971   .bss.wt_buff5:00000000 $d
+    {standard input}:2977   .bss.wt5:00000000 $d
+    {standard input}:2983   .bss.wt_buff7:00000000 $d
+    {standard input}:2989   .bss.wt7:00000000 $d
+    {standard input}:2995   .bss.ADC_LPFbuff_IA:00000000 $d
+    {standard input}:3002   .data.LPF2_K_50:00000000 $d
+    {standard input}:3017   .bss.fault:00000000 $d
+    {standard input}:3023   .bss.CTRL_idq_ref:00000000 $d
+    {standard input}:3030   .bss.PR_output:00000000 $d
+    {standard input}:3037   .bss.SCADA_Iq_ref:00000000 $d
+    {standard input}:3044   .bss.vABn:00000000 $d
+    {standard input}:3050   .data.SCADA_VDCmax:00000000 $d
+    {standard input}:3057   .bss.error_code:00000000 $d
+    {standard input}:3063   .bss.SWcommand:00000000 $d
+    {standard input}:3069   .bss.I_dq_ref_f:00000000 $d
+    {standard input}:3075   .data.LPF2_K_100:00000000 $d
+    {standard input}:3090   .rodata.PI_K_CC:00000000 $d
+    {standard input}:3097   .bss.LPFbuff_dq1_aux:00000000 $d
+    {standard input}:3103   .bss.V_dq:00000000 $d
+    {standard input}:3109   .data.PI_q:00000000 $d
+    {standard input}:3123   .rodata.LPF_K_1500:00000000 $d
+    {standard input}:3132   .data.PI_cc:00000000 $d
+    {standard input}:3147   .data.PI_PLL:00000000 $d
+    {standard input}:3161   .bss.V_DCf:00000000 $d
+    {standard input}:3167   .data.LPF_iAB:00000000 $d
+    {standard input}:3179   .data.SCADA_VDCmin:00000000 $d
+    {standard input}:3186   .bss.REARMcommand:00000000 $d
+    {standard input}:3192   .data.i_dqsg:00000000 $d
+    {standard input}:3211   .bss.ADC_LPFbuff_IB:00000000 $d
+    {standard input}:3218   .bss.ADC_LPFbuff_IC:00000000 $d
+    {standard input}:3225   .bss.V_DC_adc:00000000 $d
+    {standard input}:3232   .bss.LPFbuff_w_aux:00000000 $d
+    {standard input}:3238   .bss.LPF_buff_w:00000000 $d
+    {standard input}:3244   .bss.PLL_wt:00000000 $d
+    {standard input}:3251   .bss.dq_aux:00000000 $d
+    {standard input}:3257   .bss.Vm_abc:00000000 $d
+    {standard input}:3263   .bss.I_AB:00000000 $d
+    {standard input}:3270   .bss.SCADA_disable:00000000 $d
+    {standard input}:3277   .bss.LPF_buff_w0:00000000 $d
+    {standard input}:3283   .bss.LPF_buff_Vdc:00000000 $d
+    {standard input}:3289   .bss.sync:00000000 $d
+    {standard input}:3295   .rodata.LPF_K_50:00000000 $d
+    {standard input}:3303   .bss.vDQn:00000000 $d
+    {standard input}:3309   .bss.PQ_ref:00000000 $d
+    {standard input}:3315   .bss.I_abc_adc:00000000 $d
+    {standard input}:3322   .data.vDQp_ref:00000000 $d
+    {standard input}:3329   .bss.PI_PLL_buff:00000000 $d
+    {standard input}:3335   .bss.dw_buff:00000000 $d
+    {standard input}:3341   .bss.PI_CCq_buff:00000000 $d
+    {standard input}:3347   .bss.vDQn_ref:00000000 $d
+    {standard input}:3353   .data.SCADA_Tmax:00000000 $d
+    {standard input}:3360   .rodata.HPF_K:00000000 $d
+    {standard input}:3374   .bss.CTRL_idq:00000000 $d
+    {standard input}:3381   .bss.Ie_dq:00000000 $d
+    {standard input}:3387   .bss.sync_aux2:00000000 $d
+    {standard input}:3393   .bss.conv:00000000 $d
+    {standard input}:3400   .data.LPF_idq_ref:00000000 $d
+    {standard input}:3412   .bss.LPFbuff_vdc:00000000 $d
+    {standard input}:3419   .bss.B2command:00000000 $d
+    {standard input}:3425   .bss.relayTimerFlag:00000000 $d
+    {standard input}:3431   .bss.Vm_AB:00000000 $d
+    {standard input}:3437   .bss.conv_temp_C:00000000 $d
+    {standard input}:3444   .bss.state:00000000 $d
+    {standard input}:3451   .bss.V7:00000000 $d
+    {standard input}:3457   .bss.PLL_Vdq:00000000 $d
+    {standard input}:3464   .bss.wt11:00000000 $d
+    {standard input}:3470   .bss.wt13:00000000 $d
+    {standard input}:3476   .data.w:00000000 $d
+    {standard input}:3482   .bss.vAB13:00000000 $d
+    {standard input}:3488   .bss.vDQ5:00000000 $d
+    {standard input}:3494   .bss.V_DC:00000000 $d
+    {standard input}:3501   .bss.V_AB:00000000 $d
+    {standard input}:3507   .rodata.LPF_K_100:00000000 $d
+    {standard input}:3516   .bss.vmAB:00000000 $d
+    {standard input}:3522   .bss.ID_dq:00000000 $d
+    {standard input}:3528   .bss.V_abc:00000000 $d
+    {standard input}:3535   .data.SCADA_Imax:00000000 $d
+    {standard input}:3542   .bss.SCADA_status_button:00000000 $d
+    {standard input}:3549   .bss.vDQp:00000000 $d
+    {standard input}:3555   .data.PI_Vdc:00000000 $d
+    {standard input}:3569   .bss.LPFbuff_dq2_aux:00000000 $d
+    {standard input}:3575   .bss.SCADA_error_Tmax:00000000 $d
+    {standard input}:3582   .bss.LPF_buff_sync2:00000000 $d
+    {standard input}:3588   .bss.V_DC_ref_f:00000000 $d
+    {standard input}:1158   .text.ConverterStateMachine:0000001f $d
+    {standard input}:1158   .text.ConverterStateMachine:00000020 $t
+
+UNDEFINED SYMBOLS
+arm_cos_f32
+arm_sin_f32
+fminf
+fmaxf
+sqrtf
+__aeabi_f2d
+__aeabi_dmul
+__aeabi_dadd
+__aeabi_d2f
+EN_1
+EN_2
+EN_3
+SSR1
+SSR2
+__aeabi_dsub
+P_1_0
+group_ptrs
+ADC_MEASUREMENT_1_V1_1_handle
+ADC_MEASUREMENT_2_V2_1_handle
+ADC_MEASUREMENT_2_V2_3_handle
+ADC_MEASUREMENT_2_V2_2_handle
+ADC_MEASUREMENT_1_V1_4_handle
+ADC_MEASUREMENT_1_V1_3_handle
+ADC_MEASUREMENT_1_V1_2_handle
+ADC_MEASUREMENT_3_V3_1_handle
+PWM_SetDutyCycle
+PWM_a
+PWM_b
+PWM_c
+DAVE_Init
+ProbeScope_Init
+PWM_Stop
+PWM_Start
+ProbeScope_Sampling
+SystemCoreClock
+ENABLE
+FAULT_RST
+PWM_update

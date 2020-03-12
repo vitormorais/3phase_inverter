@@ -1,0 +1,346 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "xmc_dsd.c"
+  16              	 .section .text.XMC_DSD_Enable,"ax",%progbits
+  17              	 .align 1
+  18              	 .global XMC_DSD_Enable
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	XMC_DSD_Enable:
+  23              	 
+  24              	 
+  25              	 
+  26 0000 0220     	 movs r0,#2
+  27 0002 FFF7FEBF 	 b XMC_SCU_RESET_DeassertPeripheralReset
+  29              	 .section .text.XMC_DSD_Disable,"ax",%progbits
+  30              	 .align 1
+  31              	 .global XMC_DSD_Disable
+  32              	 .thumb
+  33              	 .thumb_func
+  35              	XMC_DSD_Disable:
+  36              	 
+  37              	 
+  38              	 
+  39 0000 0220     	 movs r0,#2
+  40 0002 FFF7FEBF 	 b XMC_SCU_RESET_AssertPeripheralReset
+  42              	 .section .text.XMC_DSD_EnableClock,"ax",%progbits
+  43              	 .align 1
+  44              	 .global XMC_DSD_EnableClock
+  45              	 .thumb
+  46              	 .thumb_func
+  48              	XMC_DSD_EnableClock:
+  49              	 
+  50              	 
+  51              	 
+  52 0000 0368     	 ldr r3,[r0]
+  53 0002 23F00103 	 bic r3,r3,#1
+  54 0006 0360     	 str r3,[r0]
+  55 0008 D0F88030 	 ldr r3,[r0,#128]
+  56 000c 43F00103 	 orr r3,r3,#1
+  57 0010 C0F88030 	 str r3,[r0,#128]
+  58 0014 7047     	 bx lr
+  60              	 .section .text.XMC_DSD_DisableClock,"ax",%progbits
+  61              	 .align 1
+  62              	 .global XMC_DSD_DisableClock
+  63              	 .thumb
+  64              	 .thumb_func
+  66              	XMC_DSD_DisableClock:
+  67              	 
+  68              	 
+  69              	 
+  70 0000 D0F88030 	 ldr r3,[r0,#128]
+  71 0004 23F00703 	 bic r3,r3,#7
+  72 0008 C0F88030 	 str r3,[r0,#128]
+  73 000c 0368     	 ldr r3,[r0]
+  74 000e 43F00103 	 orr r3,r3,#1
+  75 0012 0360     	 str r3,[r0]
+  76 0014 7047     	 bx lr
+  78              	 .section .text.XMC_DSD_Init,"ax",%progbits
+  79              	 .align 1
+  80              	 .global XMC_DSD_Init
+  81              	 .thumb
+  82              	 .thumb_func
+  84              	XMC_DSD_Init:
+  85              	 
+  86              	 
+  87 0000 10B5     	 push {r4,lr}
+  88 0002 0446     	 mov r4,r0
+  89 0004 0220     	 movs r0,#2
+  90 0006 FFF7FEFF 	 bl XMC_SCU_RESET_DeassertPeripheralReset
+  91 000a 2046     	 mov r0,r4
+  92 000c BDE81040 	 pop {r4,lr}
+  93 0010 FFF7FEBF 	 b XMC_DSD_EnableClock
+  95              	 .section .text.XMC_DSD_IsEnabled,"ax",%progbits
+  96              	 .align 1
+  97              	 .global XMC_DSD_IsEnabled
+  98              	 .thumb
+  99              	 .thumb_func
+ 101              	XMC_DSD_IsEnabled:
+ 102              	 
+ 103              	 
+ 104 0000 08B5     	 push {r3,lr}
+ 105 0002 0220     	 movs r0,#2
+ 106 0004 FFF7FEFF 	 bl XMC_SCU_RESET_IsPeripheralResetAsserted
+ 107 0008 80F00100 	 eor r0,r0,#1
+ 108 000c C0B2     	 uxtb r0,r0
+ 109 000e 08BD     	 pop {r3,pc}
+ 111              	 .section .text.XMC_DSD_Generator_Init,"ax",%progbits
+ 112              	 .align 1
+ 113              	 .global XMC_DSD_Generator_Init
+ 114              	 .thumb
+ 115              	 .thumb_func
+ 117              	XMC_DSD_Generator_Init:
+ 118              	 
+ 119              	 
+ 120              	 
+ 121 0000 D0F8A030 	 ldr r3,[r0,#160]
+ 122 0004 23F0FF03 	 bic r3,r3,#255
+ 123 0008 C0F8A030 	 str r3,[r0,#160]
+ 124 000c 0B68     	 ldr r3,[r1]
+ 125 000e C0F8A030 	 str r3,[r0,#160]
+ 126 0012 7047     	 bx lr
+ 128              	 .section .text.XMC_DSD_CH_MainFilter_Init,"ax",%progbits
+ 129              	 .align 1
+ 130              	 .global XMC_DSD_CH_MainFilter_Init
+ 131              	 .thumb
+ 132              	 .thumb_func
+ 134              	XMC_DSD_CH_MainFilter_Init:
+ 135              	 
+ 136              	 
+ 137              	 
+ 138 0000 0B78     	 ldrb r3,[r1]
+ 139 0002 03F00F03 	 and r3,r3,#15
+ 140 0006 1B04     	 lsls r3,r3,#16
+ 141 0008 43F40003 	 orr r3,r3,#8388608
+ 142 000c 0360     	 str r3,[r0]
+ 143 000e 4B68     	 ldr r3,[r1,#4]
+ 144 0010 43F00043 	 orr r3,r3,#-2147483648
+ 145 0014 43F08003 	 orr r3,r3,#128
+ 146 0018 8360     	 str r3,[r0,#8]
+ 147 001a 8B68     	 ldr r3,[r1,#8]
+ 148 001c 43F48062 	 orr r2,r3,#1024
+ 149 0020 CB68     	 ldr r3,[r1,#12]
+ 150 0022 013B     	 subs r3,r3,#1
+ 151 0024 1A43     	 orrs r2,r2,r3
+ 152 0026 0B69     	 ldr r3,[r1,#16]
+ 153 0028 013B     	 subs r3,r3,#1
+ 154 002a 42EA0343 	 orr r3,r2,r3,lsl#16
+ 155 002e 4361     	 str r3,[r0,#20]
+ 156 0030 4B88     	 ldrh r3,[r1,#2]
+ 157 0032 8363     	 str r3,[r0,#56]
+ 158 0034 7047     	 bx lr
+ 160              	 .section .text.XMC_DSD_CH_Timestamp_Init,"ax",%progbits
+ 161              	 .align 1
+ 162              	 .global XMC_DSD_CH_Timestamp_Init
+ 163              	 .thumb
+ 164              	 .thumb_func
+ 166              	XMC_DSD_CH_Timestamp_Init:
+ 167              	 
+ 168              	 
+ 169              	 
+ 170 0000 8368     	 ldr r3,[r0,#8]
+ 171 0002 0A68     	 ldr r2,[r1]
+ 172 0004 23F4F843 	 bic r3,r3,#31744
+ 173 0008 42F40042 	 orr r2,r2,#32768
+ 174 000c 1343     	 orrs r3,r3,r2
+ 175 000e 8360     	 str r3,[r0,#8]
+ 176 0010 7047     	 bx lr
+ 178              	 .section .text.XMC_DSD_CH_AuxFilter_Init,"ax",%progbits
+ 179              	 .align 1
+ 180              	 .global XMC_DSD_CH_AuxFilter_Init
+ 181              	 .thumb
+ 182              	 .thumb_func
+ 184              	XMC_DSD_CH_AuxFilter_Init:
+ 185              	 
+ 186              	 
+ 187              	 
+ 188 0000 4B68     	 ldr r3,[r1,#4]
+ 189 0002 8362     	 str r3,[r0,#40]
+ 190 0004 8B68     	 ldr r3,[r1,#8]
+ 191 0006 5A1E     	 subs r2,r3,#1
+ 192 0008 0B68     	 ldr r3,[r1]
+ 193 000a 1343     	 orrs r3,r3,r2
+ 194 000c 8361     	 str r3,[r0,#24]
+ 195 000e 7047     	 bx lr
+ 197              	 .section .text.XMC_DSD_CH_Integrator_Init,"ax",%progbits
+ 198              	 .align 1
+ 199              	 .global XMC_DSD_CH_Integrator_Init
+ 200              	 .thumb
+ 201              	 .thumb_func
+ 203              	XMC_DSD_CH_Integrator_Init:
+ 204              	 
+ 205              	 
+ 206 0000 8B68     	 ldr r3,[r1,#8]
+ 207 0002 CA68     	 ldr r2,[r1,#12]
+ 208 0004 1B04     	 lsls r3,r3,#16
+ 209 0006 10B5     	 push {r4,lr}
+ 210 0008 43EAC254 	 orr r4,r3,r2,lsl#23
+ 211 000c 4B68     	 ldr r3,[r1,#4]
+ 212 000e 013B     	 subs r3,r3,#1
+ 213 0010 44EA0332 	 orr r2,r4,r3,lsl#12
+ 214 0014 0B69     	 ldr r3,[r1,#16]
+ 215 0016 013B     	 subs r3,r3,#1
+ 216 0018 42EA0363 	 orr r3,r2,r3,lsl#24
+ 217 001c 0362     	 str r3,[r0,#32]
+ 218 001e 8368     	 ldr r3,[r0,#8]
+ 219 0020 23F47343 	 bic r3,r3,#62208
+ 220 0024 43F40043 	 orr r3,r3,#32768
+ 221 0028 8360     	 str r3,[r0,#8]
+ 222 002a 0A68     	 ldr r2,[r1]
+ 223 002c 1343     	 orrs r3,r3,r2
+ 224 002e 8360     	 str r3,[r0,#8]
+ 225 0030 10BD     	 pop {r4,pc}
+ 227              	 .section .text.XMC_DSD_CH_Rectify_Init,"ax",%progbits
+ 228              	 .align 1
+ 229              	 .global XMC_DSD_CH_Rectify_Init
+ 230              	 .thumb
+ 231              	 .thumb_func
+ 233              	XMC_DSD_CH_Rectify_Init:
+ 234              	 
+ 235              	 
+ 236              	 
+ 237 0000 0B68     	 ldr r3,[r1]
+ 238 0002 43F00103 	 orr r3,r3,#1
+ 239 0006 C0F8A830 	 str r3,[r0,#168]
+ 240 000a 0B79     	 ldrb r3,[r1,#4]
+ 241 000c 4A79     	 ldrb r2,[r1,#5]
+ 242 000e 1A44     	 add r2,r2,r3
+ 243 0010 1B04     	 lsls r3,r3,#16
+ 244 0012 43EA0263 	 orr r3,r3,r2,lsl#24
+ 245 0016 C0F8A030 	 str r3,[r0,#160]
+ 246 001a 7047     	 bx lr
+ 248              	 .section .text.XMC_DSD_CH_Init,"ax",%progbits
+ 249              	 .align 1
+ 250              	 .global XMC_DSD_CH_Init
+ 251              	 .thumb
+ 252              	 .thumb_func
+ 254              	XMC_DSD_CH_Init:
+ 255              	 
+ 256              	 
+ 257 0000 38B5     	 push {r3,r4,r5,lr}
+ 258 0002 0C46     	 mov r4,r1
+ 259 0004 0968     	 ldr r1,[r1]
+ 260 0006 0546     	 mov r5,r0
+ 261 0008 B9B1     	 cbz r1,.L18
+ 262 000a FFF7FEFF 	 bl XMC_DSD_CH_MainFilter_Init
+ 263 000e E168     	 ldr r1,[r4,#12]
+ 264 0010 11B1     	 cbz r1,.L15
+ 265 0012 2846     	 mov r0,r5
+ 266 0014 FFF7FEFF 	 bl XMC_DSD_CH_AuxFilter_Init
+ 267              	.L15:
+ 268 0018 6168     	 ldr r1,[r4,#4]
+ 269 001a 11B1     	 cbz r1,.L16
+ 270 001c 2846     	 mov r0,r5
+ 271 001e FFF7FEFF 	 bl XMC_DSD_CH_Integrator_Init
+ 272              	.L16:
+ 273 0022 2169     	 ldr r1,[r4,#16]
+ 274 0024 11B1     	 cbz r1,.L17
+ 275 0026 2846     	 mov r0,r5
+ 276 0028 FFF7FEFF 	 bl XMC_DSD_CH_Rectify_Init
+ 277              	.L17:
+ 278 002c A168     	 ldr r1,[r4,#8]
+ 279 002e 11B1     	 cbz r1,.L29
+ 280 0030 2846     	 mov r0,r5
+ 281 0032 FFF7FEFF 	 bl XMC_DSD_CH_Timestamp_Init
+ 282              	.L29:
+ 283 0036 0020     	 movs r0,#0
+ 284 0038 38BD     	 pop {r3,r4,r5,pc}
+ 285              	.L18:
+ 286 003a 0120     	 movs r0,#1
+ 287 003c 38BD     	 pop {r3,r4,r5,pc}
+ 289              	 .section .text.XMC_DSD_CH_GetResult_TS,"ax",%progbits
+ 290              	 .align 1
+ 291              	 .global XMC_DSD_CH_GetResult_TS
+ 292              	 .thumb
+ 293              	 .thumb_func
+ 295              	XMC_DSD_CH_GetResult_TS:
+ 296              	 
+ 297              	 
+ 298              	 
+ 299 0000 006D     	 ldr r0,[r0,#80]
+ 300 0002 0880     	 strh r0,[r1]
+ 301 0004 C0F30741 	 ubfx r1,r0,#16,#8
+ 302 0008 C0F30560 	 ubfx r0,r0,#24,#6
+ 303 000c 1170     	 strb r1,[r2]
+ 304 000e 1870     	 strb r0,[r3]
+ 305 0010 7047     	 bx lr
+ 307              	 .section .text.XMC_DSD_CH_GetResult_TS_Time,"ax",%progbits
+ 308              	 .align 1
+ 309              	 .global XMC_DSD_CH_GetResult_TS_Time
+ 310              	 .thumb
+ 311              	 .thumb_func
+ 313              	XMC_DSD_CH_GetResult_TS_Time:
+ 314              	 
+ 315              	 
+ 316 0000 70B5     	 push {r4,r5,r6,lr}
+ 317 0002 056D     	 ldr r5,[r0,#80]
+ 318 0004 4369     	 ldr r3,[r0,#20]
+ 319 0006 DCB2     	 uxtb r4,r3
+ 320 0008 036A     	 ldr r3,[r0,#32]
+ 321 000a C5F30746 	 ubfx r6,r5,#16,#8
+ 322 000e 13F0800F 	 tst r3,#128
+ 323 0012 A4EB0600 	 sub r0,r4,r6
+ 324 0016 09D0     	 beq .L33
+ 325 0018 C5F30563 	 ubfx r3,r5,#24,#6
+ 326 001c A642     	 cmp r6,r4
+ 327 001e 08BF     	 it eq
+ 328 0020 0133     	 addeq r3,r3,#1
+ 329 0022 04FB0333 	 mla r3,r4,r3,r3
+ 330 0026 0344     	 add r3,r3,r0
+ 331 0028 1360     	 str r3,[r2]
+ 332 002a 00E0     	 b .L35
+ 333              	.L33:
+ 334 002c 1060     	 str r0,[r2]
+ 335              	.L35:
+ 336 002e 0D80     	 strh r5,[r1]
+ 337 0030 70BD     	 pop {r4,r5,r6,pc}
+ 339              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 xmc_dsd.c
+    {standard input}:17     .text.XMC_DSD_Enable:00000000 $t
+    {standard input}:22     .text.XMC_DSD_Enable:00000000 XMC_DSD_Enable
+    {standard input}:30     .text.XMC_DSD_Disable:00000000 $t
+    {standard input}:35     .text.XMC_DSD_Disable:00000000 XMC_DSD_Disable
+    {standard input}:43     .text.XMC_DSD_EnableClock:00000000 $t
+    {standard input}:48     .text.XMC_DSD_EnableClock:00000000 XMC_DSD_EnableClock
+    {standard input}:61     .text.XMC_DSD_DisableClock:00000000 $t
+    {standard input}:66     .text.XMC_DSD_DisableClock:00000000 XMC_DSD_DisableClock
+    {standard input}:79     .text.XMC_DSD_Init:00000000 $t
+    {standard input}:84     .text.XMC_DSD_Init:00000000 XMC_DSD_Init
+    {standard input}:96     .text.XMC_DSD_IsEnabled:00000000 $t
+    {standard input}:101    .text.XMC_DSD_IsEnabled:00000000 XMC_DSD_IsEnabled
+    {standard input}:112    .text.XMC_DSD_Generator_Init:00000000 $t
+    {standard input}:117    .text.XMC_DSD_Generator_Init:00000000 XMC_DSD_Generator_Init
+    {standard input}:129    .text.XMC_DSD_CH_MainFilter_Init:00000000 $t
+    {standard input}:134    .text.XMC_DSD_CH_MainFilter_Init:00000000 XMC_DSD_CH_MainFilter_Init
+    {standard input}:161    .text.XMC_DSD_CH_Timestamp_Init:00000000 $t
+    {standard input}:166    .text.XMC_DSD_CH_Timestamp_Init:00000000 XMC_DSD_CH_Timestamp_Init
+    {standard input}:179    .text.XMC_DSD_CH_AuxFilter_Init:00000000 $t
+    {standard input}:184    .text.XMC_DSD_CH_AuxFilter_Init:00000000 XMC_DSD_CH_AuxFilter_Init
+    {standard input}:198    .text.XMC_DSD_CH_Integrator_Init:00000000 $t
+    {standard input}:203    .text.XMC_DSD_CH_Integrator_Init:00000000 XMC_DSD_CH_Integrator_Init
+    {standard input}:228    .text.XMC_DSD_CH_Rectify_Init:00000000 $t
+    {standard input}:233    .text.XMC_DSD_CH_Rectify_Init:00000000 XMC_DSD_CH_Rectify_Init
+    {standard input}:249    .text.XMC_DSD_CH_Init:00000000 $t
+    {standard input}:254    .text.XMC_DSD_CH_Init:00000000 XMC_DSD_CH_Init
+    {standard input}:290    .text.XMC_DSD_CH_GetResult_TS:00000000 $t
+    {standard input}:295    .text.XMC_DSD_CH_GetResult_TS:00000000 XMC_DSD_CH_GetResult_TS
+    {standard input}:308    .text.XMC_DSD_CH_GetResult_TS_Time:00000000 $t
+    {standard input}:313    .text.XMC_DSD_CH_GetResult_TS_Time:00000000 XMC_DSD_CH_GetResult_TS_Time
+
+UNDEFINED SYMBOLS
+XMC_SCU_RESET_DeassertPeripheralReset
+XMC_SCU_RESET_AssertPeripheralReset
+XMC_SCU_RESET_IsPeripheralResetAsserted

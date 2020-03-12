@@ -1,0 +1,112 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "arm_sqrt_q31.c"
+  16              	 .section .text.arm_sqrt_q31,"ax",%progbits
+  17              	 .align 1
+  18              	 .global arm_sqrt_q31
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	arm_sqrt_q31:
+  23              	 
+  24              	 
+  25 0000 2DE9F043 	 push {r4,r5,r6,r7,r8,r9,lr}
+  26 0004 041E     	 subs r4,r0,#0
+  27 0006 65DD     	 ble .L2
+  28 0008 B4FA84F6 	 clz r6,r4
+  29 000c 771E     	 subs r7,r6,#1
+  30 000e 17F00100 	 ands r0,r7,#1
+  31 0012 1ABF     	 itte ne
+  32 0014 B31E     	 subne r3,r6,#2
+  33 0016 04FA03FE 	 lslne lr,r4,r3
+  34 001a 04FA07FE 	 lsleq lr,r4,r7
+  35 001e 07EE90EA 	 fmsr s15,lr
+  36 0022 FAEEE07A 	 vcvt.f32.s32 s15,s15,#31
+  37 0026 2E4C     	 ldr r4,.L9
+  38 0028 17EE903A 	 fmrs r3,s15
+  39 002c 5B10     	 asrs r3,r3,#1
+  40 002e E41A     	 subs r4,r4,r3
+  41 0030 07EE904A 	 fmsr s15,r4
+  42 0034 FEEEC17A 	 vcvt.s32.f32 s15,s15,#30
+  43 0038 4FEA6E0C 	 asr ip,lr,#1
+  44 003c 17EE905A 	 fmrs r5,s15
+  45 0040 85FB0589 	 smull r8,r9,r5,r5
+  46 0044 4FEAD872 	 lsr r2,r8,#31
+  47 0048 42EA4902 	 orr r2,r2,r9,lsl#1
+  48 004c 82FB0C23 	 smull r2,r3,r2,ip
+  49 0050 D40F     	 lsrs r4,r2,#31
+  50 0052 44EA4304 	 orr r4,r4,r3,lsl#1
+  51 0056 C4F14054 	 rsb r4,r4,#805306368
+  52 005a 85FB0445 	 smull r4,r5,r5,r4
+  53 005e E20F     	 lsrs r2,r4,#31
+  54 0060 42EA4502 	 orr r2,r2,r5,lsl#1
+  55 0064 9300     	 lsls r3,r2,#2
+  56 0066 83FB0389 	 smull r8,r9,r3,r3
+  57 006a 4FEAD874 	 lsr r4,r8,#31
+  58 006e 44EA4904 	 orr r4,r4,r9,lsl#1
+  59 0072 84FB0C45 	 smull r4,r5,r4,ip
+  60 0076 E20F     	 lsrs r2,r4,#31
+  61 0078 42EA4502 	 orr r2,r2,r5,lsl#1
+  62 007c C2F14052 	 rsb r2,r2,#805306368
+  63 0080 83FB0223 	 smull r2,r3,r3,r2
+  64 0084 D20F     	 lsrs r2,r2,#31
+  65 0086 42EA4302 	 orr r2,r2,r3,lsl#1
+  66 008a 9300     	 lsls r3,r2,#2
+  67 008c 83FB0345 	 smull r4,r5,r3,r3
+  68 0090 E40F     	 lsrs r4,r4,#31
+  69 0092 44EA4504 	 orr r4,r4,r5,lsl#1
+  70 0096 84FB0C45 	 smull r4,r5,r4,ip
+  71 009a E20F     	 lsrs r2,r4,#31
+  72 009c 42EA4502 	 orr r2,r2,r5,lsl#1
+  73 00a0 C2F14052 	 rsb r2,r2,#805306368
+  74 00a4 83FB0223 	 smull r2,r3,r3,r2
+  75 00a8 D40F     	 lsrs r4,r2,#31
+  76 00aa 44EA4304 	 orr r4,r4,r3,lsl#1
+  77 00ae A400     	 lsls r4,r4,#2
+  78 00b0 8EFB0445 	 smull r4,r5,lr,r4
+  79 00b4 E30F     	 lsrs r3,r4,#31
+  80 00b6 43EA4503 	 orr r3,r3,r5,lsl#1
+  81 00ba 5B00     	 lsls r3,r3,#1
+  82 00bc 10B9     	 cbnz r0,.L5
+  83 00be 7F10     	 asrs r7,r7,#1
+  84 00c0 3B41     	 asrs r3,r3,r7
+  85 00c2 04E0     	 b .L6
+  86              	.L5:
+  87 00c4 023E     	 subs r6,r6,#2
+  88 00c6 0222     	 movs r2,#2
+  89 00c8 96FBF2F6 	 sdiv r6,r6,r2
+  90 00cc 3341     	 asrs r3,r3,r6
+  91              	.L6:
+  92 00ce 0B60     	 str r3,[r1]
+  93 00d0 0020     	 movs r0,#0
+  94 00d2 02E0     	 b .L7
+  95              	.L2:
+  96 00d4 0023     	 movs r3,#0
+  97 00d6 0B60     	 str r3,[r1]
+  98 00d8 FF20     	 movs r0,#255
+  99              	.L7:
+ 100 00da 40B2     	 sxtb r0,r0
+ 101 00dc BDE8F083 	 pop {r4,r5,r6,r7,r8,r9,pc}
+ 102              	.L10:
+ 103              	 .align 2
+ 104              	.L9:
+ 105 00e0 DF59375F 	 .word 1597463007
+ 107              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 arm_sqrt_q31.c
+    {standard input}:17     .text.arm_sqrt_q31:00000000 $t
+    {standard input}:22     .text.arm_sqrt_q31:00000000 arm_sqrt_q31
+    {standard input}:105    .text.arm_sqrt_q31:000000e0 $d
+
+NO UNDEFINED SYMBOLS

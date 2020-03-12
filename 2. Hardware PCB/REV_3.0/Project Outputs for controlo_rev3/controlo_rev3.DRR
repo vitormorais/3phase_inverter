@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------------------------------------------------------------------
-NCDrill File Report For: controlo_rev3.PcbDoc   22/01/2020  17:25:43
+NCDrill File Report For: controlo_rev3.PcbDoc   05/03/2020  21:41:47
 ----------------------------------------------------------------------------------------------------------------------------------
 
 Layer Pair : Top Layer to Bottom Layer
@@ -7,9 +7,9 @@ ASCII RoundHoles File : controlo_rev3.TXT
 
 Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
 ----------------------------------------------------------------------------------------------------------------------------------
-T1      16mil (0.4mm)                                             Round             233       PTH        53.63inch (1362.28mm)
+T1      16mil (0.4mm)                                             Round             234       PTH        53.94inch (1370.13mm)
 T2      20mil (0.508mm)                                           Round             3         PTH        3.00inch (76.25mm)
-T3      28mil (0.711mm)                                           Round             29        PTH        13.43inch (341.08mm)
+T3      28mil (0.711mm)                                           Round             28        PTH        13.63inch (346.18mm)
 T4      30mil (0.762mm)                                           Round             76        PTH        13.27inch (336.97mm)
 T5      35mil (0.9mm)                                             Round             80        PTH        12.19inch (309.70mm)
 T6      47mil (1.2mm)                                             Round             6         PTH        2.20inch (55.93mm)

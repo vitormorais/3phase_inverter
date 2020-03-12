@@ -1,0 +1,56 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "dac_conf.c"
+  16              	 .global DAC_0
+  17              	 .global DAC_0_Channel_Config
+  18              	 .section .data.DAC_0_Channel_Config,"aw",%progbits
+  19              	 .align 2
+  22              	DAC_0_Channel_Config:
+  23 0000 0000     	 .space 2
+  24 0002 80       	 .byte 128
+  25 0003 00       	 .byte 0
+  26 0004 00       	 .byte 0
+  27 0005 00       	 .byte 0
+  28 0006 0000     	 .space 2
+  29              	 .section .data.DAC_0,"aw",%progbits
+  30              	 .align 2
+  33              	DAC_0:
+  34 0000 00800148 	 .word 1208057856
+  35 0004 00000000 	 .word DAC_0_Channel_Config
+  36 0008 00001000 	 .word 1048576
+  37 000c 00000000 	 .word 0
+  38 0010 00       	 .byte 0
+  39 0011 000000   	 .space 3
+  40 0014 00000000 	 .word 0
+  41 0018 0000     	 .short 0
+  42 001a 0000     	 .short 0
+  43 001c 0000     	 .short 0
+  44 001e 0000     	 .short 0
+  45 0020 00       	 .byte 0
+  46 0021 00       	 .byte 0
+  47 0022 01       	 .byte 1
+  48 0023 00       	 .space 1
+  49 0024 00000000 	 .word 0
+  50 0028 01       	 .byte 1
+  51 0029 000000   	 .space 3
+  52              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 dac_conf.c
+    {standard input}:33     .data.DAC_0:00000000 DAC_0
+    {standard input}:22     .data.DAC_0_Channel_Config:00000000 DAC_0_Channel_Config
+    {standard input}:19     .data.DAC_0_Channel_Config:00000000 $d
+    {standard input}:30     .data.DAC_0:00000000 $d
+
+NO UNDEFINED SYMBOLS

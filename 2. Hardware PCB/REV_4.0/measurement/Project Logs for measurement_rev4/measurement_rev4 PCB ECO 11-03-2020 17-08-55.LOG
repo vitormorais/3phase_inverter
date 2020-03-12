@@ -1,0 +1,5 @@
+Added Pin To Net: NetName=3V3 Pin=XMC1-19
+Added Pin To Net: NetName=3V3 Pin=XMC1-59
+Added Pin To Net: NetName=3V3 Pin=XMC1-62
+Added Member To Class: ClassName=measurement_rev4 Member=Component U3 P 2p 5mm
+Added Member To Class: ClassName=measurement_rev4 Member=Component U5 P 2p 5mm

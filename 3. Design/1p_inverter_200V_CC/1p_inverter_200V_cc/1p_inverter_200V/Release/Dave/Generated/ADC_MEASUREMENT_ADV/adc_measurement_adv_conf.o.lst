@@ -1,0 +1,506 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "adc_measurement_adv_conf.c"
+  16              	 .global ADC_MEASUREMENT_3
+  17              	 .global ADC_MEASUREMENT_3_V3_1_handle
+  18              	 .global ADC_MEASUREMENT_2
+  19              	 .global ADC_MEASUREMENT_2_V2_3_handle
+  20              	 .global ADC_MEASUREMENT_2_V2_2_handle
+  21              	 .global ADC_MEASUREMENT_2_V2_1_handle
+  22              	 .global ADC_MEASUREMENT_1
+  23              	 .global ADC_MEASUREMENT_1_V1_4_handle
+  24              	 .global ADC_MEASUREMENT_1_V1_3_handle
+  25              	 .global ADC_MEASUREMENT_1_V1_2_handle
+  26              	 .global ADC_MEASUREMENT_1_V1_1_handle
+  27              	 .section .data.ADC_MEASUREMENT_2_channel_array,"aw",%progbits
+  28              	 .align 2
+  31              	ADC_MEASUREMENT_2_channel_array:
+  32 0000 00000000 	 .word ADC_MEASUREMENT_2_V2_1_handle
+  33 0004 00000000 	 .word ADC_MEASUREMENT_2_V2_2_handle
+  34 0008 00000000 	 .word ADC_MEASUREMENT_2_V2_3_handle
+  35              	 .section .rodata.ADC_MEASUREMENT_2_V2_1_queue_entry_0,"a",%progbits
+  36              	 .align 2
+  39              	ADC_MEASUREMENT_2_V2_1_queue_entry_0:
+  40 0000 25       	 .byte 37
+  41 0001 000000   	 .space 3
+  42              	 .section .rodata.ADC_MEASUREMENT_3_V3_1_res_config,"a",%progbits
+  43              	 .align 2
+  46              	ADC_MEASUREMENT_3_V3_1_res_config:
+  47 0000 00000000 	 .space 4
+  48              	 .section .rodata.ADC_MEASUREMENT_1_V1_4_queue_entry_3,"a",%progbits
+  49              	 .align 2
+  52              	ADC_MEASUREMENT_1_V1_4_queue_entry_3:
+  53 0000 27       	 .byte 39
+  54 0001 000000   	 .space 3
+  55              	 .section .rodata.ADC_MEASUREMENT_1_V1_2_res_config,"a",%progbits
+  56              	 .align 2
+  59              	ADC_MEASUREMENT_1_V1_2_res_config:
+  60 0000 00000000 	 .space 4
+  61              	 .section .rodata.ADC_MEASUREMENT_2_queue_handle,"a",%progbits
+  62              	 .align 2
+  65              	ADC_MEASUREMENT_2_queue_handle:
+  66 0000 00000000 	 .word 0
+  67 0004 00000000 	 .word 0
+  68 0008 00000000 	 .word 0
+  69 000c 00       	 .byte 0
+  70 000d 000000   	 .space 3
+  71 0010 00       	 .byte 0
+  72 0011 00       	 .byte 0
+  73 0012 00       	 .byte 0
+  74 0013 00       	 .byte 0
+  75 0014 00000000 	 .word ADC_MEASUREMENT_2_queue_config
+  76 0018 01       	 .byte 1
+  77 0019 00       	 .byte 0
+  78 001a 00       	 .byte 0
+  79 001b 00       	 .space 1
+  80              	 .section .rodata.ADC_MEASUREMENT_1_V1_2_queue_entry_1,"a",%progbits
+  81              	 .align 2
+  84              	ADC_MEASUREMENT_1_V1_2_queue_entry_1:
+  85 0000 23       	 .byte 35
+  86 0001 000000   	 .space 3
+  87              	 .section .rodata.ADC_MEASUREMENT_1_V1_2_ch_config,"a",%progbits
+  88              	 .align 2
+  91              	ADC_MEASUREMENT_1_V1_2_ch_config:
+  92 0000 00       	 .byte 0
+  93 0001 00       	 .byte 0
+  94 0002 24       	 .byte 36
+  95 0003 00       	 .byte 0
+  96 0004 00000000 	 .word 0
+  97 0008 01       	 .byte 1
+  98 0009 FF       	 .byte -1
+  99 000a 0000     	 .space 2
+ 100              	 .section .rodata.ADC_MEASUREMENT_1_V1_1_queue_entry_0,"a",%progbits
+ 101              	 .align 2
+ 104              	ADC_MEASUREMENT_1_V1_1_queue_entry_0:
+ 105 0000 20       	 .byte 32
+ 106 0001 000000   	 .space 3
+ 107              	 .section .rodata.ADC_MEASUREMENT_2_V2_2_handle,"a",%progbits
+ 108              	 .align 2
+ 111              	ADC_MEASUREMENT_2_V2_2_handle:
+ 112 0000 00000000 	 .word ADC_MEASUREMENT_2_V2_2_ch_config
+ 113 0004 00000000 	 .word ADC_MEASUREMENT_2_V2_2_res_config
+ 114 0008 01       	 .byte 1
+ 115 0009 07       	 .byte 7
+ 116 000a 0000     	 .space 2
+ 117              	 .section .rodata.ADC_MEASUREMENT_3_V3_1_queue_entry_0,"a",%progbits
+ 118              	 .align 2
+ 121              	ADC_MEASUREMENT_3_V3_1_queue_entry_0:
+ 122 0000 22       	 .byte 34
+ 123 0001 000000   	 .space 3
+ 124              	 .section .rodata.ADC_MEASUREMENT_2_V2_2_res_config,"a",%progbits
+ 125              	 .align 2
+ 128              	ADC_MEASUREMENT_2_V2_2_res_config:
+ 129 0000 00000000 	 .space 4
+ 130              	 .section .rodata.ADC_MEASUREMENT_1_V1_4_handle,"a",%progbits
+ 131              	 .align 2
+ 134              	ADC_MEASUREMENT_1_V1_4_handle:
+ 135 0000 00000000 	 .word ADC_MEASUREMENT_1_V1_4_ch_config
+ 136 0004 00000000 	 .word ADC_MEASUREMENT_1_V1_4_res_config
+ 137 0008 00       	 .byte 0
+ 138 0009 07       	 .byte 7
+ 139 000a 0000     	 .space 2
+ 140              	 .section .rodata.ADC_MEASUREMENT_3_V3_1_ch_config,"a",%progbits
+ 141              	 .align 2
+ 144              	ADC_MEASUREMENT_3_V3_1_ch_config:
+ 145 0000 00       	 .byte 0
+ 146 0001 00       	 .byte 0
+ 147 0002 24       	 .byte 36
+ 148 0003 00       	 .byte 0
+ 149 0004 00000000 	 .word 0
+ 150 0008 01       	 .byte 1
+ 151 0009 FF       	 .byte -1
+ 152 000a 0000     	 .space 2
+ 153              	 .section .rodata.ADC_MEASUREMENT_1_V1_1_handle,"a",%progbits
+ 154              	 .align 2
+ 157              	ADC_MEASUREMENT_1_V1_1_handle:
+ 158 0000 00000000 	 .word ADC_MEASUREMENT_1_V1_1_ch_config
+ 159 0004 00000000 	 .word ADC_MEASUREMENT_1_V1_1_res_config
+ 160 0008 00       	 .byte 0
+ 161 0009 00       	 .byte 0
+ 162 000a 0000     	 .space 2
+ 163              	 .section .data.ADC_MEASUREMENT_3_queue_entries,"aw",%progbits
+ 164              	 .align 2
+ 167              	ADC_MEASUREMENT_3_queue_entries:
+ 168 0000 00000000 	 .word ADC_MEASUREMENT_3_V3_1_queue_entry_0
+ 169              	 .section .data.ADC_MEASUREMENT_1_queue_entries,"aw",%progbits
+ 170              	 .align 2
+ 173              	ADC_MEASUREMENT_1_queue_entries:
+ 174 0000 00000000 	 .word ADC_MEASUREMENT_1_V1_1_queue_entry_0
+ 175 0004 00000000 	 .word ADC_MEASUREMENT_1_V1_2_queue_entry_1
+ 176 0008 00000000 	 .word ADC_MEASUREMENT_1_V1_3_queue_entry_2
+ 177 000c 00000000 	 .word ADC_MEASUREMENT_1_V1_4_queue_entry_3
+ 178              	 .section .rodata.ADC_MEASUREMENT_1_V1_1_ch_config,"a",%progbits
+ 179              	 .align 2
+ 182              	ADC_MEASUREMENT_1_V1_1_ch_config:
+ 183 0000 00       	 .byte 0
+ 184 0001 00       	 .byte 0
+ 185 0002 2F       	 .byte 47
+ 186 0003 00       	 .byte 0
+ 187 0004 00000000 	 .word 0
+ 188 0008 01       	 .byte 1
+ 189 0009 01       	 .byte 1
+ 190 000a 0000     	 .space 2
+ 191              	 .section .data.ADC_MEASUREMENT_2_queue_entries,"aw",%progbits
+ 192              	 .align 2
+ 195              	ADC_MEASUREMENT_2_queue_entries:
+ 196 0000 00000000 	 .word ADC_MEASUREMENT_2_V2_1_queue_entry_0
+ 197 0004 00000000 	 .word ADC_MEASUREMENT_2_V2_2_queue_entry_1
+ 198 0008 00000000 	 .word ADC_MEASUREMENT_2_V2_3_queue_entry_2
+ 199              	 .section .rodata.ADC_MEASUREMENT_2_V2_1_ch_config,"a",%progbits
+ 200              	 .align 2
+ 203              	ADC_MEASUREMENT_2_V2_1_ch_config:
+ 204 0000 00       	 .byte 0
+ 205 0001 00       	 .byte 0
+ 206 0002 20       	 .byte 32
+ 207 0003 00       	 .byte 0
+ 208 0004 00000000 	 .word 0
+ 209 0008 01       	 .byte 1
+ 210 0009 FF       	 .byte -1
+ 211 000a 0000     	 .space 2
+ 212              	 .section .rodata.ADC_MEASUREMENT_2_V2_1_res_config,"a",%progbits
+ 213              	 .align 2
+ 216              	ADC_MEASUREMENT_2_V2_1_res_config:
+ 217 0000 00000000 	 .space 4
+ 218              	 .section .rodata.ADC_MEASUREMENT_2_V2_1_handle,"a",%progbits
+ 219              	 .align 2
+ 222              	ADC_MEASUREMENT_2_V2_1_handle:
+ 223 0000 00000000 	 .word ADC_MEASUREMENT_2_V2_1_ch_config
+ 224 0004 00000000 	 .word ADC_MEASUREMENT_2_V2_1_res_config
+ 225 0008 01       	 .byte 1
+ 226 0009 05       	 .byte 5
+ 227 000a 0000     	 .space 2
+ 228              	 .section .rodata.ADC_MEASUREMENT_1_V1_4_ch_config,"a",%progbits
+ 229              	 .align 2
+ 232              	ADC_MEASUREMENT_1_V1_4_ch_config:
+ 233 0000 00       	 .byte 0
+ 234 0001 00       	 .byte 0
+ 235 0002 28       	 .byte 40
+ 236 0003 00       	 .byte 0
+ 237 0004 00000000 	 .word 0
+ 238 0008 01       	 .byte 1
+ 239 0009 FF       	 .byte -1
+ 240 000a 0000     	 .space 2
+ 241              	 .section .rodata.ADC_MEASUREMENT_1_queue_config,"a",%progbits
+ 242              	 .align 2
+ 245              	ADC_MEASUREMENT_1_queue_config:
+ 246 0000 00000000 	 .space 12
+ 246      00000000 
+ 246      00000000 
+ 247              	 .section .rodata.ADC_MEASUREMENT_1_V1_3_res_config,"a",%progbits
+ 248              	 .align 2
+ 251              	ADC_MEASUREMENT_1_V1_3_res_config:
+ 252 0000 00000000 	 .space 4
+ 253              	 .section .rodata.ADC_MEASUREMENT_1_V1_3_handle,"a",%progbits
+ 254              	 .align 2
+ 257              	ADC_MEASUREMENT_1_V1_3_handle:
+ 258 0000 00000000 	 .word ADC_MEASUREMENT_1_V1_3_ch_config
+ 259 0004 00000000 	 .word ADC_MEASUREMENT_1_V1_3_res_config
+ 260 0008 00       	 .byte 0
+ 261 0009 05       	 .byte 5
+ 262 000a 0000     	 .space 2
+ 263              	 .section .rodata.ADC_MEASUREMENT_1_V1_1_res_config,"a",%progbits
+ 264              	 .align 2
+ 267              	ADC_MEASUREMENT_1_V1_1_res_config:
+ 268 0000 00000000 	 .space 4
+ 269              	 .section .rodata.ADC_MEASUREMENT_2_V2_3_handle,"a",%progbits
+ 270              	 .align 2
+ 273              	ADC_MEASUREMENT_2_V2_3_handle:
+ 274 0000 00000000 	 .word ADC_MEASUREMENT_2_V2_3_ch_config
+ 275 0004 00000000 	 .word ADC_MEASUREMENT_2_V2_3_res_config
+ 276 0008 01       	 .byte 1
+ 277 0009 06       	 .byte 6
+ 278 000a 0000     	 .space 2
+ 279              	 .section .rodata.ADC_MEASUREMENT_2_V2_2_queue_entry_1,"a",%progbits
+ 280              	 .align 2
+ 283              	ADC_MEASUREMENT_2_V2_2_queue_entry_1:
+ 284 0000 27       	 .byte 39
+ 285 0001 000000   	 .space 3
+ 286              	 .section .rodata.ADC_MEASUREMENT_1_V1_3_queue_entry_2,"a",%progbits
+ 287              	 .align 2
+ 290              	ADC_MEASUREMENT_1_V1_3_queue_entry_2:
+ 291 0000 25       	 .byte 37
+ 292 0001 000000   	 .space 3
+ 293              	 .section .rodata.ADC_MEASUREMENT_3_queue_handle,"a",%progbits
+ 294              	 .align 2
+ 297              	ADC_MEASUREMENT_3_queue_handle:
+ 298 0000 00000000 	 .word 0
+ 299 0004 00000000 	 .word 0
+ 300 0008 00000000 	 .word 0
+ 301 000c 00       	 .byte 0
+ 302 000d 000000   	 .space 3
+ 303 0010 00       	 .byte 0
+ 304 0011 00       	 .byte 0
+ 305 0012 00       	 .byte 0
+ 306 0013 00       	 .byte 0
+ 307 0014 00000000 	 .word ADC_MEASUREMENT_3_queue_config
+ 308 0018 01       	 .byte 1
+ 309 0019 00       	 .byte 0
+ 310 001a 00       	 .byte 0
+ 311 001b 00       	 .space 1
+ 312              	 .section .rodata.ADC_MEASUREMENT_2_V2_3_res_config,"a",%progbits
+ 313              	 .align 2
+ 316              	ADC_MEASUREMENT_2_V2_3_res_config:
+ 317 0000 00000000 	 .space 4
+ 318              	 .section .rodata.ADC_MEASUREMENT_2_V2_2_ch_config,"a",%progbits
+ 319              	 .align 2
+ 322              	ADC_MEASUREMENT_2_V2_2_ch_config:
+ 323 0000 00       	 .byte 0
+ 324 0001 00       	 .byte 0
+ 325 0002 2F       	 .byte 47
+ 326 0003 00       	 .byte 0
+ 327 0004 00000000 	 .word 0
+ 328 0008 01       	 .byte 1
+ 329 0009 FF       	 .byte -1
+ 330 000a 0000     	 .space 2
+ 331              	 .section .rodata.ADC_MEASUREMENT_2_V2_3_queue_entry_2,"a",%progbits
+ 332              	 .align 2
+ 335              	ADC_MEASUREMENT_2_V2_3_queue_entry_2:
+ 336 0000 26       	 .byte 38
+ 337 0001 000000   	 .space 3
+ 338              	 .section .data.ADC_MEASUREMENT_1_initialization_status,"aw",%progbits
+ 341              	ADC_MEASUREMENT_1_initialization_status:
+ 342 0000 02       	 .byte 2
+ 343              	 .section .rodata.ADC_MEASUREMENT_1_V1_2_handle,"a",%progbits
+ 344              	 .align 2
+ 347              	ADC_MEASUREMENT_1_V1_2_handle:
+ 348 0000 00000000 	 .word ADC_MEASUREMENT_1_V1_2_ch_config
+ 349 0004 00000000 	 .word ADC_MEASUREMENT_1_V1_2_res_config
+ 350 0008 00       	 .byte 0
+ 351 0009 03       	 .byte 3
+ 352 000a 0000     	 .space 2
+ 353              	 .section .rodata.ADC_MEASUREMENT_2_V2_3_ch_config,"a",%progbits
+ 354              	 .align 2
+ 357              	ADC_MEASUREMENT_2_V2_3_ch_config:
+ 358 0000 00       	 .byte 0
+ 359 0001 00       	 .byte 0
+ 360 0002 23       	 .byte 35
+ 361 0003 00       	 .byte 0
+ 362 0004 00000000 	 .word 0
+ 363 0008 01       	 .byte 1
+ 364 0009 FF       	 .byte -1
+ 365 000a 0000     	 .space 2
+ 366              	 .section .data.ADC_MEASUREMENT_2_initialization_status,"aw",%progbits
+ 369              	ADC_MEASUREMENT_2_initialization_status:
+ 370 0000 02       	 .byte 2
+ 371              	 .section .data.ADC_MEASUREMENT_3_initialization_status,"aw",%progbits
+ 374              	ADC_MEASUREMENT_3_initialization_status:
+ 375 0000 02       	 .byte 2
+ 376              	 .section .rodata.ADC_MEASUREMENT_1_V1_3_ch_config,"a",%progbits
+ 377              	 .align 2
+ 380              	ADC_MEASUREMENT_1_V1_3_ch_config:
+ 381 0000 00       	 .byte 0
+ 382 0001 00       	 .byte 0
+ 383 0002 25       	 .byte 37
+ 384 0003 00       	 .byte 0
+ 385 0004 00000000 	 .word 0
+ 386 0008 01       	 .byte 1
+ 387 0009 FF       	 .byte -1
+ 388 000a 0000     	 .space 2
+ 389              	 .section .rodata.ADC_MEASUREMENT_1,"a",%progbits
+ 390              	 .align 2
+ 393              	ADC_MEASUREMENT_1:
+ 394 0000 00000000 	 .word ADC_MEASUREMENT_1_channel_array
+ 395 0004 00000000 	 .word ADC_MEASUREMENT_1_queue_entries
+ 396 0008 00000000 	 .word 0
+ 397 000c 00000000 	 .word ADC_MEASUREMENT_1_queue_handle
+ 398 0010 00000000 	 .word ADC_MEASUREMENT_1_initialization_status
+ 399 0014 03       	 .byte 3
+ 400 0015 00       	 .byte 0
+ 401 0016 04       	 .byte 4
+ 402 0017 04       	 .byte 4
+ 403 0018 01       	 .byte 1
+ 404 0019 000000   	 .space 3
+ 405              	 .section .rodata.ADC_MEASUREMENT_2,"a",%progbits
+ 406              	 .align 2
+ 409              	ADC_MEASUREMENT_2:
+ 410 0000 00000000 	 .word ADC_MEASUREMENT_2_channel_array
+ 411 0004 00000000 	 .word ADC_MEASUREMENT_2_queue_entries
+ 412 0008 00000000 	 .word 0
+ 413 000c 00000000 	 .word ADC_MEASUREMENT_2_queue_handle
+ 414 0010 00000000 	 .word ADC_MEASUREMENT_2_initialization_status
+ 415 0014 03       	 .byte 3
+ 416 0015 01       	 .byte 1
+ 417 0016 03       	 .byte 3
+ 418 0017 03       	 .byte 3
+ 419 0018 01       	 .byte 1
+ 420 0019 000000   	 .space 3
+ 421              	 .section .rodata.ADC_MEASUREMENT_3,"a",%progbits
+ 422              	 .align 2
+ 425              	ADC_MEASUREMENT_3:
+ 426 0000 00000000 	 .word ADC_MEASUREMENT_3_channel_array
+ 427 0004 00000000 	 .word ADC_MEASUREMENT_3_queue_entries
+ 428 0008 00000000 	 .word 0
+ 429 000c 00000000 	 .word ADC_MEASUREMENT_3_queue_handle
+ 430 0010 00000000 	 .word ADC_MEASUREMENT_3_initialization_status
+ 431 0014 03       	 .byte 3
+ 432 0015 03       	 .byte 3
+ 433 0016 01       	 .byte 1
+ 434 0017 01       	 .byte 1
+ 435 0018 01       	 .byte 1
+ 436 0019 000000   	 .space 3
+ 437              	 .section .rodata.ADC_MEASUREMENT_3_V3_1_handle,"a",%progbits
+ 438              	 .align 2
+ 441              	ADC_MEASUREMENT_3_V3_1_handle:
+ 442 0000 00000000 	 .word ADC_MEASUREMENT_3_V3_1_ch_config
+ 443 0004 00000000 	 .word ADC_MEASUREMENT_3_V3_1_res_config
+ 444 0008 03       	 .byte 3
+ 445 0009 02       	 .byte 2
+ 446 000a 0000     	 .space 2
+ 447              	 .section .rodata.ADC_MEASUREMENT_1_V1_4_res_config,"a",%progbits
+ 448              	 .align 2
+ 451              	ADC_MEASUREMENT_1_V1_4_res_config:
+ 452 0000 00000000 	 .space 4
+ 453              	 .section .data.ADC_MEASUREMENT_3_channel_array,"aw",%progbits
+ 454              	 .align 2
+ 457              	ADC_MEASUREMENT_3_channel_array:
+ 458 0000 00000000 	 .word ADC_MEASUREMENT_3_V3_1_handle
+ 459              	 .section .data.ADC_MEASUREMENT_1_channel_array,"aw",%progbits
+ 460              	 .align 2
+ 463              	ADC_MEASUREMENT_1_channel_array:
+ 464 0000 00000000 	 .word ADC_MEASUREMENT_1_V1_1_handle
+ 465 0004 00000000 	 .word ADC_MEASUREMENT_1_V1_2_handle
+ 466 0008 00000000 	 .word ADC_MEASUREMENT_1_V1_3_handle
+ 467 000c 00000000 	 .word ADC_MEASUREMENT_1_V1_4_handle
+ 468              	 .section .rodata.ADC_MEASUREMENT_3_queue_config,"a",%progbits
+ 469              	 .align 2
+ 472              	ADC_MEASUREMENT_3_queue_config:
+ 473 0000 00000000 	 .space 12
+ 473      00000000 
+ 473      00000000 
+ 474              	 .section .rodata.ADC_MEASUREMENT_2_queue_config,"a",%progbits
+ 475              	 .align 2
+ 478              	ADC_MEASUREMENT_2_queue_config:
+ 479 0000 00000000 	 .space 12
+ 479      00000000 
+ 479      00000000 
+ 480              	 .section .rodata.ADC_MEASUREMENT_1_queue_handle,"a",%progbits
+ 481              	 .align 2
+ 484              	ADC_MEASUREMENT_1_queue_handle:
+ 485 0000 00000000 	 .word 0
+ 486 0004 00000000 	 .word 0
+ 487 0008 00000000 	 .word 0
+ 488 000c 00       	 .byte 0
+ 489 000d 000000   	 .space 3
+ 490 0010 00       	 .byte 0
+ 491 0011 00       	 .byte 0
+ 492 0012 00       	 .byte 0
+ 493 0013 00       	 .byte 0
+ 494 0014 00000000 	 .word ADC_MEASUREMENT_1_queue_config
+ 495 0018 01       	 .byte 1
+ 496 0019 00       	 .byte 0
+ 497 001a 00       	 .byte 0
+ 498 001b 00       	 .space 1
+ 499              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 adc_measurement_adv_conf.c
+    {standard input}:425    .rodata.ADC_MEASUREMENT_3:00000000 ADC_MEASUREMENT_3
+    {standard input}:441    .rodata.ADC_MEASUREMENT_3_V3_1_handle:00000000 ADC_MEASUREMENT_3_V3_1_handle
+    {standard input}:409    .rodata.ADC_MEASUREMENT_2:00000000 ADC_MEASUREMENT_2
+    {standard input}:273    .rodata.ADC_MEASUREMENT_2_V2_3_handle:00000000 ADC_MEASUREMENT_2_V2_3_handle
+    {standard input}:111    .rodata.ADC_MEASUREMENT_2_V2_2_handle:00000000 ADC_MEASUREMENT_2_V2_2_handle
+    {standard input}:222    .rodata.ADC_MEASUREMENT_2_V2_1_handle:00000000 ADC_MEASUREMENT_2_V2_1_handle
+    {standard input}:393    .rodata.ADC_MEASUREMENT_1:00000000 ADC_MEASUREMENT_1
+    {standard input}:134    .rodata.ADC_MEASUREMENT_1_V1_4_handle:00000000 ADC_MEASUREMENT_1_V1_4_handle
+    {standard input}:257    .rodata.ADC_MEASUREMENT_1_V1_3_handle:00000000 ADC_MEASUREMENT_1_V1_3_handle
+    {standard input}:347    .rodata.ADC_MEASUREMENT_1_V1_2_handle:00000000 ADC_MEASUREMENT_1_V1_2_handle
+    {standard input}:157    .rodata.ADC_MEASUREMENT_1_V1_1_handle:00000000 ADC_MEASUREMENT_1_V1_1_handle
+    {standard input}:28     .data.ADC_MEASUREMENT_2_channel_array:00000000 $d
+    {standard input}:31     .data.ADC_MEASUREMENT_2_channel_array:00000000 ADC_MEASUREMENT_2_channel_array
+    {standard input}:36     .rodata.ADC_MEASUREMENT_2_V2_1_queue_entry_0:00000000 $d
+    {standard input}:39     .rodata.ADC_MEASUREMENT_2_V2_1_queue_entry_0:00000000 ADC_MEASUREMENT_2_V2_1_queue_entry_0
+    {standard input}:43     .rodata.ADC_MEASUREMENT_3_V3_1_res_config:00000000 $d
+    {standard input}:46     .rodata.ADC_MEASUREMENT_3_V3_1_res_config:00000000 ADC_MEASUREMENT_3_V3_1_res_config
+    {standard input}:49     .rodata.ADC_MEASUREMENT_1_V1_4_queue_entry_3:00000000 $d
+    {standard input}:52     .rodata.ADC_MEASUREMENT_1_V1_4_queue_entry_3:00000000 ADC_MEASUREMENT_1_V1_4_queue_entry_3
+    {standard input}:56     .rodata.ADC_MEASUREMENT_1_V1_2_res_config:00000000 $d
+    {standard input}:59     .rodata.ADC_MEASUREMENT_1_V1_2_res_config:00000000 ADC_MEASUREMENT_1_V1_2_res_config
+    {standard input}:62     .rodata.ADC_MEASUREMENT_2_queue_handle:00000000 $d
+    {standard input}:65     .rodata.ADC_MEASUREMENT_2_queue_handle:00000000 ADC_MEASUREMENT_2_queue_handle
+    {standard input}:478    .rodata.ADC_MEASUREMENT_2_queue_config:00000000 ADC_MEASUREMENT_2_queue_config
+    {standard input}:81     .rodata.ADC_MEASUREMENT_1_V1_2_queue_entry_1:00000000 $d
+    {standard input}:84     .rodata.ADC_MEASUREMENT_1_V1_2_queue_entry_1:00000000 ADC_MEASUREMENT_1_V1_2_queue_entry_1
+    {standard input}:88     .rodata.ADC_MEASUREMENT_1_V1_2_ch_config:00000000 $d
+    {standard input}:91     .rodata.ADC_MEASUREMENT_1_V1_2_ch_config:00000000 ADC_MEASUREMENT_1_V1_2_ch_config
+    {standard input}:101    .rodata.ADC_MEASUREMENT_1_V1_1_queue_entry_0:00000000 $d
+    {standard input}:104    .rodata.ADC_MEASUREMENT_1_V1_1_queue_entry_0:00000000 ADC_MEASUREMENT_1_V1_1_queue_entry_0
+    {standard input}:108    .rodata.ADC_MEASUREMENT_2_V2_2_handle:00000000 $d
+    {standard input}:322    .rodata.ADC_MEASUREMENT_2_V2_2_ch_config:00000000 ADC_MEASUREMENT_2_V2_2_ch_config
+    {standard input}:128    .rodata.ADC_MEASUREMENT_2_V2_2_res_config:00000000 ADC_MEASUREMENT_2_V2_2_res_config
+    {standard input}:118    .rodata.ADC_MEASUREMENT_3_V3_1_queue_entry_0:00000000 $d
+    {standard input}:121    .rodata.ADC_MEASUREMENT_3_V3_1_queue_entry_0:00000000 ADC_MEASUREMENT_3_V3_1_queue_entry_0
+    {standard input}:125    .rodata.ADC_MEASUREMENT_2_V2_2_res_config:00000000 $d
+    {standard input}:131    .rodata.ADC_MEASUREMENT_1_V1_4_handle:00000000 $d
+    {standard input}:232    .rodata.ADC_MEASUREMENT_1_V1_4_ch_config:00000000 ADC_MEASUREMENT_1_V1_4_ch_config
+    {standard input}:451    .rodata.ADC_MEASUREMENT_1_V1_4_res_config:00000000 ADC_MEASUREMENT_1_V1_4_res_config
+    {standard input}:141    .rodata.ADC_MEASUREMENT_3_V3_1_ch_config:00000000 $d
+    {standard input}:144    .rodata.ADC_MEASUREMENT_3_V3_1_ch_config:00000000 ADC_MEASUREMENT_3_V3_1_ch_config
+    {standard input}:154    .rodata.ADC_MEASUREMENT_1_V1_1_handle:00000000 $d
+    {standard input}:182    .rodata.ADC_MEASUREMENT_1_V1_1_ch_config:00000000 ADC_MEASUREMENT_1_V1_1_ch_config
+    {standard input}:267    .rodata.ADC_MEASUREMENT_1_V1_1_res_config:00000000 ADC_MEASUREMENT_1_V1_1_res_config
+    {standard input}:164    .data.ADC_MEASUREMENT_3_queue_entries:00000000 $d
+    {standard input}:167    .data.ADC_MEASUREMENT_3_queue_entries:00000000 ADC_MEASUREMENT_3_queue_entries
+    {standard input}:170    .data.ADC_MEASUREMENT_1_queue_entries:00000000 $d
+    {standard input}:173    .data.ADC_MEASUREMENT_1_queue_entries:00000000 ADC_MEASUREMENT_1_queue_entries
+    {standard input}:290    .rodata.ADC_MEASUREMENT_1_V1_3_queue_entry_2:00000000 ADC_MEASUREMENT_1_V1_3_queue_entry_2
+    {standard input}:179    .rodata.ADC_MEASUREMENT_1_V1_1_ch_config:00000000 $d
+    {standard input}:192    .data.ADC_MEASUREMENT_2_queue_entries:00000000 $d
+    {standard input}:195    .data.ADC_MEASUREMENT_2_queue_entries:00000000 ADC_MEASUREMENT_2_queue_entries
+    {standard input}:283    .rodata.ADC_MEASUREMENT_2_V2_2_queue_entry_1:00000000 ADC_MEASUREMENT_2_V2_2_queue_entry_1
+    {standard input}:335    .rodata.ADC_MEASUREMENT_2_V2_3_queue_entry_2:00000000 ADC_MEASUREMENT_2_V2_3_queue_entry_2
+    {standard input}:200    .rodata.ADC_MEASUREMENT_2_V2_1_ch_config:00000000 $d
+    {standard input}:203    .rodata.ADC_MEASUREMENT_2_V2_1_ch_config:00000000 ADC_MEASUREMENT_2_V2_1_ch_config
+    {standard input}:213    .rodata.ADC_MEASUREMENT_2_V2_1_res_config:00000000 $d
+    {standard input}:216    .rodata.ADC_MEASUREMENT_2_V2_1_res_config:00000000 ADC_MEASUREMENT_2_V2_1_res_config
+    {standard input}:219    .rodata.ADC_MEASUREMENT_2_V2_1_handle:00000000 $d
+    {standard input}:229    .rodata.ADC_MEASUREMENT_1_V1_4_ch_config:00000000 $d
+    {standard input}:242    .rodata.ADC_MEASUREMENT_1_queue_config:00000000 $d
+    {standard input}:245    .rodata.ADC_MEASUREMENT_1_queue_config:00000000 ADC_MEASUREMENT_1_queue_config
+    {standard input}:248    .rodata.ADC_MEASUREMENT_1_V1_3_res_config:00000000 $d
+    {standard input}:251    .rodata.ADC_MEASUREMENT_1_V1_3_res_config:00000000 ADC_MEASUREMENT_1_V1_3_res_config
+    {standard input}:254    .rodata.ADC_MEASUREMENT_1_V1_3_handle:00000000 $d
+    {standard input}:380    .rodata.ADC_MEASUREMENT_1_V1_3_ch_config:00000000 ADC_MEASUREMENT_1_V1_3_ch_config
+    {standard input}:264    .rodata.ADC_MEASUREMENT_1_V1_1_res_config:00000000 $d
+    {standard input}:270    .rodata.ADC_MEASUREMENT_2_V2_3_handle:00000000 $d
+    {standard input}:357    .rodata.ADC_MEASUREMENT_2_V2_3_ch_config:00000000 ADC_MEASUREMENT_2_V2_3_ch_config
+    {standard input}:316    .rodata.ADC_MEASUREMENT_2_V2_3_res_config:00000000 ADC_MEASUREMENT_2_V2_3_res_config
+    {standard input}:280    .rodata.ADC_MEASUREMENT_2_V2_2_queue_entry_1:00000000 $d
+    {standard input}:287    .rodata.ADC_MEASUREMENT_1_V1_3_queue_entry_2:00000000 $d
+    {standard input}:294    .rodata.ADC_MEASUREMENT_3_queue_handle:00000000 $d
+    {standard input}:297    .rodata.ADC_MEASUREMENT_3_queue_handle:00000000 ADC_MEASUREMENT_3_queue_handle
+    {standard input}:472    .rodata.ADC_MEASUREMENT_3_queue_config:00000000 ADC_MEASUREMENT_3_queue_config
+    {standard input}:313    .rodata.ADC_MEASUREMENT_2_V2_3_res_config:00000000 $d
+    {standard input}:319    .rodata.ADC_MEASUREMENT_2_V2_2_ch_config:00000000 $d
+    {standard input}:332    .rodata.ADC_MEASUREMENT_2_V2_3_queue_entry_2:00000000 $d
+    {standard input}:341    .data.ADC_MEASUREMENT_1_initialization_status:00000000 ADC_MEASUREMENT_1_initialization_status
+    {standard input}:344    .rodata.ADC_MEASUREMENT_1_V1_2_handle:00000000 $d
+    {standard input}:354    .rodata.ADC_MEASUREMENT_2_V2_3_ch_config:00000000 $d
+    {standard input}:369    .data.ADC_MEASUREMENT_2_initialization_status:00000000 ADC_MEASUREMENT_2_initialization_status
+    {standard input}:374    .data.ADC_MEASUREMENT_3_initialization_status:00000000 ADC_MEASUREMENT_3_initialization_status
+    {standard input}:377    .rodata.ADC_MEASUREMENT_1_V1_3_ch_config:00000000 $d
+    {standard input}:390    .rodata.ADC_MEASUREMENT_1:00000000 $d
+    {standard input}:463    .data.ADC_MEASUREMENT_1_channel_array:00000000 ADC_MEASUREMENT_1_channel_array
+    {standard input}:484    .rodata.ADC_MEASUREMENT_1_queue_handle:00000000 ADC_MEASUREMENT_1_queue_handle
+    {standard input}:406    .rodata.ADC_MEASUREMENT_2:00000000 $d
+    {standard input}:422    .rodata.ADC_MEASUREMENT_3:00000000 $d
+    {standard input}:457    .data.ADC_MEASUREMENT_3_channel_array:00000000 ADC_MEASUREMENT_3_channel_array
+    {standard input}:438    .rodata.ADC_MEASUREMENT_3_V3_1_handle:00000000 $d
+    {standard input}:448    .rodata.ADC_MEASUREMENT_1_V1_4_res_config:00000000 $d
+    {standard input}:454    .data.ADC_MEASUREMENT_3_channel_array:00000000 $d
+    {standard input}:460    .data.ADC_MEASUREMENT_1_channel_array:00000000 $d
+    {standard input}:469    .rodata.ADC_MEASUREMENT_3_queue_config:00000000 $d
+    {standard input}:475    .rodata.ADC_MEASUREMENT_2_queue_config:00000000 $d
+    {standard input}:481    .rodata.ADC_MEASUREMENT_1_queue_handle:00000000 $d
+
+NO UNDEFINED SYMBOLS

@@ -1,0 +1,63 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "arm_pid_init_q15.c"
+  16              	 .section .text.arm_pid_init_q15,"ax",%progbits
+  17              	 .align 1
+  18              	 .global arm_pid_init_q15
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	arm_pid_init_q15:
+  23              	 
+  24              	 
+  25 0000 10B5     	 push {r4,lr}
+  26 0002 B0F90E30 	 ldrsh r3,[r0,#14]
+  27 0006 B0F91020 	 ldrsh r2,[r0,#16]
+  28              	
+  29 000a 93FA12F2 	 qadd16 r2,r3,r2
+  30              	
+  31              	 .thumb
+  32 000e B0F91240 	 ldrsh r4,[r0,#18]
+  33              	
+  34 0012 92FA14F2 	 qadd16 r2,r2,r4
+  35              	
+  36              	 .thumb
+  37 0016 0280     	 strh r2,[r0]
+  38              	
+  39 0018 94FA14F2 	 qadd16 r2,r4,r4
+  40              	
+  41              	
+  42 001c 92FA13F3 	 qadd16 r3,r2,r3
+  43              	
+  44              	 .thumb
+  45 0020 5B42     	 negs r3,r3
+  46 0022 9BB2     	 uxth r3,r3
+  47 0024 43EA0443 	 orr r3,r3,r4,lsl#16
+  48 0028 4360     	 str r3,[r0,#4]
+  49 002a 31B1     	 cbz r1,.L1
+  50 002c 0830     	 adds r0,r0,#8
+  51 002e 0021     	 movs r1,#0
+  52 0030 0622     	 movs r2,#6
+  53 0032 BDE81040 	 pop {r4,lr}
+  54 0036 FFF7FEBF 	 b memset
+  55              	.L1:
+  56 003a 10BD     	 pop {r4,pc}
+  58              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 arm_pid_init_q15.c
+    {standard input}:17     .text.arm_pid_init_q15:00000000 $t
+    {standard input}:22     .text.arm_pid_init_q15:00000000 arm_pid_init_q15
+
+UNDEFINED SYMBOLS
+memset

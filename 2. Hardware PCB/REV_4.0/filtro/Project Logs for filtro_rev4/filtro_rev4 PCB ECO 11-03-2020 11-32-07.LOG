@@ -1,0 +1,84 @@
+Added Component: Designator=C2(PWR_CAP_PP_2u)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Mouser VPN"; Value = "871-B32676E6205K"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "3,62"; VariantName = "[No Variations]"
+Added Component: Designator=C4(PWR_CAP_PP_2u)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Mouser VPN"; Value = "871-B32676E6205K"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "3,62"; VariantName = "[No Variations]"
+Added Component: Designator=C6(PWR_CAP_PP_2u)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Mouser VPN"; Value = "871-B32676E6205K"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "3,62"; VariantName = "[No Variations]"
+Added Component: Designator=R1(PWR_RESC_5W)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Mouser VPN"; Value = "756-WP5S-10RJT075"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "0,315"; VariantName = "[No Variations]"
+Added Component: Designator=R2(PWR_RESC_5W)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Mouser VPN"; Value = "756-WP5S-10RJT075"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "0,315"; VariantName = "[No Variations]"
+Added Component: Designator=R3(PWR_RESC_5W)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Mouser VPN"; Value = "756-WP5S-10RJT075"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "0,315"; VariantName = "[No Variations]"
+Added Component: Designator=R4(PWR_RESC_5W)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Mouser VPN"; Value = "756-WP5S-10RJT075"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "0,315"; VariantName = "[No Variations]"
+Added Component: Designator=R5(PWR_RESC_5W)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Mouser VPN"; Value = "756-WP5S-10RJT075"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "0,315"; VariantName = "[No Variations]"
+Added Component: Designator=R6(PWR_RESC_5W)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Mouser VPN"; Value = "756-WP5S-10RJT075"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "0,315"; VariantName = "[No Variations]"
+Added Component: Designator=R7(PWR_RESC_5W)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Mouser VPN"; Value = "756-WP5S-10RJT075"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "0,315"; VariantName = "[No Variations]"
+Added Component: Designator=R8(PWR_RESC_5W)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Mouser VPN"; Value = "756-WP5S-10RJT075"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "0,315"; VariantName = "[No Variations]"
+Added Component: Designator=R9(PWR_RESC_5W)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Mouser VPN"; Value = "756-WP5S-10RJT075"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "0,315"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GRID_N Pin=C2-1
+Added Pin To Net: NetName=NetC2_2 Pin=C2-2
+Added Pin To Net: NetName=GRID_N Pin=C4-1
+Added Pin To Net: NetName=NetC4_2 Pin=C4-2
+Added Pin To Net: NetName=GRID_N Pin=C6-1
+Added Pin To Net: NetName=NetC6_2 Pin=C6-2
+Added Pin To Net: NetName=NetC2_2 Pin=R1-1
+Added Pin To Net: NetName=NetCC1_3 Pin=R1-2
+Added Pin To Net: NetName=NetC2_2 Pin=R2-1
+Added Pin To Net: NetName=NetCC1_3 Pin=R2-2
+Added Pin To Net: NetName=NetC2_2 Pin=R3-1
+Added Pin To Net: NetName=NetCC1_3 Pin=R3-2
+Added Pin To Net: NetName=NetC4_2 Pin=R4-1
+Added Pin To Net: NetName=NetCC2_3 Pin=R4-2
+Added Pin To Net: NetName=NetC4_2 Pin=R5-1
+Added Pin To Net: NetName=NetCC2_3 Pin=R5-2
+Added Pin To Net: NetName=NetC4_2 Pin=R6-1
+Added Pin To Net: NetName=NetCC2_3 Pin=R6-2
+Added Pin To Net: NetName=NetC6_2 Pin=R7-1
+Added Pin To Net: NetName=NetCC3_3 Pin=R7-2
+Added Pin To Net: NetName=NetC6_2 Pin=R8-1
+Added Pin To Net: NetName=NetCC3_3 Pin=R8-2
+Added Pin To Net: NetName=NetC6_2 Pin=R9-1
+Added Pin To Net: NetName=NetCC3_3 Pin=R9-2
+Added Member To Class: ClassName=filtro_rev4 Member=Component C2 C 2uF PPCap TH 630V
+Added Member To Class: ClassName=filtro_rev4 Member=Component C4 C 2uF PPCap TH 630V
+Added Member To Class: ClassName=filtro_rev4 Member=Component C6 C 2uF PPCap TH 630V
+Added Member To Class: ClassName=filtro_rev4 Member=Component R1 R 10 5W TH 5%
+Added Member To Class: ClassName=filtro_rev4 Member=Component R2 R 10 5W TH 5%
+Added Member To Class: ClassName=filtro_rev4 Member=Component R3 R 10 5W TH 5%
+Added Member To Class: ClassName=filtro_rev4 Member=Component R4 R 10 5W TH 5%
+Added Member To Class: ClassName=filtro_rev4 Member=Component R5 R 10 5W TH 5%
+Added Member To Class: ClassName=filtro_rev4 Member=Component R6 R 10 5W TH 5%
+Added Member To Class: ClassName=filtro_rev4 Member=Component R7 R 10 5W TH 5%
+Added Member To Class: ClassName=filtro_rev4 Member=Component R8 R 10 5W TH 5%
+Added Member To Class: ClassName=filtro_rev4 Member=Component R9 R 10 5W TH 5%

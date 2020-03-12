@@ -1,0 +1,79 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "arm_sin_f32.c"
+  16              	 .section .text.arm_sin_f32,"ax",%progbits
+  17              	 .align 1
+  18              	 .global arm_sin_f32
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	arm_sin_f32:
+  23              	 
+  24              	 
+  25              	 
+  26 0000 07EE900A 	 fmsr s15,r0
+  27 0004 F5EEC07A 	 fcmpezs s15
+  28 0008 F1EE10FA 	 fmstat
+  29 000c 06D5     	 bpl .L2
+  30 000e 9FED1F7A 	 flds s14,.L11
+  31 0012 F4EEC77A 	 fcmpes s15,s14
+  32 0016 F1EE10FA 	 fmstat
+  33 001a 33DA     	 bge .L4
+  34              	.L2:
+  35 001c 9FED1C7A 	 flds s14,.L11+4
+  36 0020 1C4A     	 ldr r2,.L11+8
+  37 0022 27EE877A 	 fmuls s14,s15,s14
+  38 0026 F5EEC07A 	 fcmpezs s15
+  39 002a FDEEC76A 	 ftosizs s13,s14
+  40 002e F1EE10FA 	 fmstat
+  41 0032 16EE903A 	 fmrs r3,s13
+  42 0036 48BF     	 it mi
+  43 0038 03F1FF33 	 addmi r3,r3,#-1
+  44 003c 07EE903A 	 fmsr s15,r3
+  45 0040 F8EEE77A 	 fsitos s15,s15
+  46 0044 F7EE006A 	 fconsts s13,#112
+  47 0048 37EE677A 	 fsubs s14,s14,s15
+  48 004c DFED127A 	 flds s15,.L11+12
+  49 0050 67EE277A 	 fmuls s15,s14,s15
+  50 0054 BCEEE77A 	 ftouizs s14,s15
+  51 0058 17EE103A 	 fmrs r3,s14
+  52 005c C3F30803 	 ubfx r3,r3,#0,#9
+  53 0060 07EE103A 	 fmsr s14,r3
+  54 0064 B8EE477A 	 fuitos s14,s14
+  55 0068 02EB8301 	 add r1,r2,r3,lsl#2
+  56 006c 77EEC77A 	 fsubs s15,s15,s14
+  57 0070 91ED017A 	 flds s14,[r1,#4]
+  58 0074 76EEE76A 	 fsubs s13,s13,s15
+  59 0078 67EE877A 	 fmuls s15,s15,s14
+  60 007c 91ED007A 	 flds s14,[r1]
+  61 0080 E6EE877A 	 vfma.f32 s15,s13,s14
+  62              	.L4:
+  63 0084 17EE900A 	 fmrs r0,s15
+  64 0088 7047     	 bx lr
+  65              	.L12:
+  66 008a 00BF     	 .align 2
+  67              	.L11:
+  68 008c CD024CB4 	 .word -1270086963
+  69 0090 83F9223E 	 .word 1042479491
+  70 0094 00000000 	 .word sinTable_f32
+  71 0098 00000044 	 .word 1140850688
+  73              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 arm_sin_f32.c
+    {standard input}:17     .text.arm_sin_f32:00000000 $t
+    {standard input}:22     .text.arm_sin_f32:00000000 arm_sin_f32
+    {standard input}:68     .text.arm_sin_f32:0000008c $d
+
+UNDEFINED SYMBOLS
+sinTable_f32
