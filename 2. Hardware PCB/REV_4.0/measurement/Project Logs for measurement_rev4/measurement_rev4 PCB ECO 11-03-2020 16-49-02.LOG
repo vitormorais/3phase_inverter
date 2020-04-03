@@ -1,4 +1,0 @@
-Removed Pin From Net: NetName=vabc_0 Pin=XMC1-8
-Removed Pin From Net: NetName=vabc_2 Pin=XMC1-10
-Added Pin To Net: NetName=vabc_2 Pin=XMC1-8
-Added Pin To Net: NetName=vabc_0 Pin=XMC1-10
