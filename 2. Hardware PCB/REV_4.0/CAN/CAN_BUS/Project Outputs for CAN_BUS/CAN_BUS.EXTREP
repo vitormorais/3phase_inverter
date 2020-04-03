@@ -1,0 +1,25 @@
+------------------------------------------------------------------------------------------
+Gerber File Extension Report For: CAN_BUS.GBR   05/03/2020  22:38:07
+------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------
+Layer Extension     Layer Description                      
+------------------------------------------------------------------------------------------
+.gbr                Top Layer                               
+.gbr                Bottom Layer                            
+.gbr                Bottom Overlay                          
+.gbr                Top Solder                              
+.gbr                Top Overlay                             
+.gbr                Bottom Solder                           
+.gbr                Keep-Out Layer                          
+.gbr                Mechanical 1                            
+.gbr                Mechanical 13                           
+.gbr                Mechanical 15                           
+.gbr                Mechanical 2                            
+.gbr                Profile                                 
+.gbr                Non-plated through-hole drill file      
+.gbr                Plated through-hole drill file          
+.gbr                Drill Drawing                           
+.gbr                Drill Guide                             
+------------------------------------------------------------------------------------------

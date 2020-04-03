@@ -1,0 +1,257 @@
+*************************************************************
+FileName = CAN_BUS.GBR
+AutoAperture = True
+*************************************************************
+Generating : Top Layer
+      File : CAN_BUS_Copper_Signal_Top.gbr
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D10
+    D11
+    D12
+    D13
+    D14
+    D15
+    D16
+    D17
+    D18
+    D19
+    D20
+    D21
+    D22
+    D23
+    D24
+    D25
+    D26
+    D27
+    D28
+    D29
+    D30
+    D31
+    D32
+*************************************************************
+
+*************************************************************
+Generating : Bottom Layer
+      File : CAN_BUS_Copper_Signal_Bot.gbr
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D21
+    D25
+    D26
+    D27
+    D28
+    D29
+    D30
+    D31
+    D32
+    D33
+*************************************************************
+
+*************************************************************
+Generating : Bottom Overlay
+      File : CAN_BUS_Legend_Bot.gbr
+
+    Adding Layer      : Bottom Overlay
+
+
+Used DCodes :
+*************************************************************
+
+*************************************************************
+Generating : Top Solder
+      File : CAN_BUS_Soldermask_Top.gbr
+
+    Adding Layer      : Top Solder
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D10
+    D11
+    D12
+    D13
+    D14
+    D15
+    D16
+    D25
+    D26
+    D27
+    D28
+    D29
+    D30
+    D31
+    D32
+    D34
+*************************************************************
+
+*************************************************************
+Generating : Top Overlay
+      File : CAN_BUS_Legend_Top.gbr
+
+    Adding Layer      : Top Overlay
+
+
+Used DCodes :
+    D35
+    D36
+    D37
+    D38
+    D39
+    D40
+    D41
+    D42
+    D43
+    D44
+*************************************************************
+
+*************************************************************
+Generating : Bottom Solder
+      File : CAN_BUS_Soldermask_Bot.gbr
+
+    Adding Layer      : Bottom Solder
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D25
+    D26
+    D27
+    D28
+    D29
+    D30
+    D31
+    D32
+*************************************************************
+
+*************************************************************
+Generating : Keep-Out Layer
+      File : CAN_BUS_Keep-out.gbr
+
+    Adding Layer      : Keep-Out Layer
+
+
+Used DCodes :
+*************************************************************
+
+*************************************************************
+Generating : Mechanical 1
+      File : CAN_BUS_Mechanical_1.gbr
+
+    Adding Layer      : Mechanical 1
+
+
+Used DCodes :
+    D45
+*************************************************************
+
+*************************************************************
+Generating : Mechanical 13
+      File : CAN_BUS_Mechanical_13.gbr
+
+    Adding Layer      : Mechanical 13
+
+
+Used DCodes :
+    D40
+    D46
+*************************************************************
+
+*************************************************************
+Generating : Mechanical 15
+      File : CAN_BUS_Mechanical_15.gbr
+
+    Adding Layer      : Mechanical 15
+
+
+Used DCodes :
+    D46
+    D47
+*************************************************************
+
+*************************************************************
+Generating : Mechanical 2
+      File : CAN_BUS_Mechanical_2.gbr
+
+    Adding Layer      : Mechanical 2
+
+
+Used DCodes :
+*************************************************************
+
+*************************************************************
+Generating : Profile
+      File : CAN_BUS_Profile.gbr
+
+
+Used DCodes :
+    D48
+*************************************************************
+
+*************************************************************
+Generating : Non-plated through-hole drill file
+      File : CAN_BUS_NPTH_Drill.gbr
+
+
+Used DCodes :
+    D49
+*************************************************************
+
+*************************************************************
+Generating : Plated through-hole drill file
+      File : CAN_BUS_PTH_Drill.gbr
+
+
+Used DCodes :
+    D50
+    D51
+    D52
+    D53
+    D54
+    D55
+    D56
+*************************************************************
+
+*************************************************************
+Generating : Drill Drawing
+      File : CAN_BUS_Drawing_1.gbr
+
+    Adding Drill Pair : Bottom Layer-Top Layer
+
+    Adding Layer      : Drill Drawing
+
+
+Used DCodes :
+    D39
+    D58
+*************************************************************
+
+*************************************************************
+Generating : Drill Guide
+      File : CAN_BUS_Drillmap_1.gbr
+
+    Adding Drill Pair : Bottom Layer-Top Layer
+
+    Adding Layer      : Drill Guide
+
+
+Used DCodes :
+    D39
+*************************************************************
+

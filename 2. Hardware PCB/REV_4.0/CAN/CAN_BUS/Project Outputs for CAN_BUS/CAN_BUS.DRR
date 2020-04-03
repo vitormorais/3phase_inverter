@@ -1,0 +1,21 @@
+----------------------------------------------------------------------------------------------------------------------------------
+NCDrill File Report For: CAN_BUS.PcbDoc   05/03/2020  22:38:42
+----------------------------------------------------------------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : CAN_BUS.TXT
+EIA File   : CAN_BUS.DRL
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T1      15mil (0.381mm)                                           Round             134       PTH        20.20inch (513.07mm)
+T2      20mil (0.508mm)                                           Round             1         PTH        0.00inch (0.00mm)
+T3      32mil (0.813mm)                                           Round             1         PTH        0.00inch (0.00mm)
+T4      35mil (0.9mm)                                             Round             87        PTH        13.45inch (341.54mm)
+T5      49mil (1.25mm)                                            Round             2         PTH        0.71inch (18.03mm)
+T6      63mil (1.6mm)                                             Round             2         PTH        0.61inch (15.50mm)
+T7      128mil (3.25mm)                                           Round             2         NPTH       0.45inch (11.43mm)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              229
+
+Total Processing Time (hh:mm:ss) : 00:00:00

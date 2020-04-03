@@ -1,0 +1,4 @@
+Removed Pin From Net: NetName=-VDCBUS Pin=C_bus5-1
+Removed Pin From Net: NetName=+VDCBUS Pin=C_bus5-2
+Removed Member From Class: ClassName=inversor_rev4 Member=C_bus5
+Added Room: Name=inversor_rev4

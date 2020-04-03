@@ -1,0 +1,6 @@
+Added Pin To Net: NetName=Relay_A Pin=U6-2
+Added Pin To Net: NetName=Relay_A Pin=XMC1-23
+Added Net: Name=Relay_A
+Added Pin To Net: NetName=Relay_B Pin=U6-4
+Added Pin To Net: NetName=Relay_B Pin=XMC1-24
+Added Net: Name=Relay_B

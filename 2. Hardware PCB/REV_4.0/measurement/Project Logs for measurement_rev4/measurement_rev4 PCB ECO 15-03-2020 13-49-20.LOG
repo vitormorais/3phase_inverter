@@ -1,0 +1,9 @@
+Removed Pin From Net: NetName=NetR1_2 Pin=U1-2
+Removed Pin From Net: NetName=NetR2_2 Pin=U10-2
+Added Pin To Net: NetName=NetR2_2 Pin=U1-2
+Added Pin To Net: NetName=NetR1_2 Pin=U10-2
+Added Member To Class: ClassName=measurement_rev4 Member=Component R1 R 10 1/8W 0805 1%
+Added Member To Class: ClassName=measurement_rev4 Member=Component R2 R 10 1/8W 0805 1%
+Added Member To Class: ClassName=measurement_rev4 Member=Component U1 IC Relay 5A 5V 5x20mm
+Added Member To Class: ClassName=measurement_rev4 Member=Component U5 P 2p 5mm
+Added Member To Class: ClassName=measurement_rev4 Member=Component U6 IC DUAL MOS DRIVER MIC4127

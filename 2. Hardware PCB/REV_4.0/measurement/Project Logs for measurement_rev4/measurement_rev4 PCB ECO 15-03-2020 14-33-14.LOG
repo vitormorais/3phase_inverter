@@ -1,0 +1,26 @@
+Added Component: Designator=P?(Header 8x1 8.5mm)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Mouser VPN"; Value = "538-87937-0800"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "0,621"; VariantName = "[No Variations]"
+Added Component: Designator=P?(Header 8x1 8.5mm)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Mouser VPN"; Value = "538-87937-0800"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "0,621"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=3V3GND Pin=P?-1
+Added Pin To Net: NetName=3V3 Pin=P?-1
+Added Pin To Net: NetName=3V3GND Pin=P?-2
+Added Pin To Net: NetName=iabc_2 Pin=P?-2
+Added Pin To Net: NetName=3V3GND Pin=P?-3
+Added Pin To Net: NetName=iabc_1 Pin=P?-3
+Added Pin To Net: NetName=3V3GND Pin=P?-4
+Added Pin To Net: NetName=iabc_0 Pin=P?-4
+Added Pin To Net: NetName=3V3GND Pin=P?-5
+Added Pin To Net: NetName=vabc_2 Pin=P?-5
+Added Pin To Net: NetName=3V3GND Pin=P?-6
+Added Pin To Net: NetName=vabc_1 Pin=P?-6
+Added Pin To Net: NetName=3V3GND Pin=P?-7
+Added Pin To Net: NetName=vabc_0 Pin=P?-7
+Added Pin To Net: NetName=3V3GND Pin=P?-8
+Added Pin To Net: NetName=5V Pin=P?-8
+Added Member To Class: ClassName=measurement_rev4 Member=Component P? P 8p 2.54 SR DW 8P
+Added Member To Class: ClassName=measurement_rev4 Member=Component P? P 8p 2.54 SR DW 8P

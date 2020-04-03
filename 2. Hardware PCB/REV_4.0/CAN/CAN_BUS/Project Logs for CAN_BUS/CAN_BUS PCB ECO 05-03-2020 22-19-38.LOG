@@ -1,0 +1,68 @@
+Change component parameters: Designator = "C_1"; Footprint = "CAPC_0805"; UniqueID = "\MRREVILN"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C28323"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "1u"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C_2"; Footprint = "CAPC_0805"; UniqueID = "\FTTSXSCP"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C49678"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "0.1 uF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C_3"; Footprint = "CAPC_0805"; UniqueID = "\SDNFUTIR"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C1710"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "0.01 uF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C_4"; Footprint = "CAPC_0805"; UniqueID = "\KIDNUXTJ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C1710"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "0.01 uF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C_5"; Footprint = "CAPC_0805"; UniqueID = "\FPASLKPV"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C49678"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "0.1 uF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C_6"; Footprint = "CAPC_0805"; UniqueID = "\NTVNEVOQ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C28323"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "1uF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "LED1"; Footprint = "CD2012-0805"; UniqueID = "\ROUMHKTQ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C2297"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Kingbright"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "MPN"; Value = "APT2012CGCK"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "Green"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Vendor"; Value = "Digikey"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "VPN"; Value = "754-1127-1-ND"; VariantName = "[No Variations]"
+Change component parameters: Designator = "LED2"; Footprint = "CD2012-0805"; UniqueID = "\QQVNWGUB"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C2297"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Kingbright"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "MPN"; Value = "APT2012CGCK"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "Green"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Vendor"; Value = "Digikey"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "VPN"; Value = "754-1127-1-ND"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R3"; Footprint = "RESC_0805"; UniqueID = "\XOLUGFDU"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C17802"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Generic"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "N.A."; VariantName = "[No Variations]"
+Change component parameters: Designator = "R4"; Footprint = "RESC_0805"; UniqueID = "\FVRWDPPA"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C17802"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Generic"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "N.A."; VariantName = "[No Variations]"
+Change component parameters: Designator = "R_TX"; Footprint = "RESC_0805"; UniqueID = "\XQXRBGRN"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C17720"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Generic"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "49.9"; VariantName = "[No Variations]"
+Change component parameters: Designator = "RLed1"; Footprint = "RESC_0805"; UniqueID = "\MLBRFPUR"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C17557"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Generic"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "220"; VariantName = "[No Variations]"
+Change component parameters: Designator = "Transceiver_CAN"; Footprint = "DUB8_M"; UniqueID = "\XYRHCMKU"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C16428"; VariantName = "[No Variations]"
+Change component parameters: Designator = "TVS"; Footprint = "SOT23-3"; UniqueID = "\WVJWAPYC"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C151237"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "SM24CANB-02HTG"; VariantName = "[No Variations]"
+Added Room: Name=CAN_BUS

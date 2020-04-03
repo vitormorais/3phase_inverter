@@ -1,0 +1,39 @@
+Altium Designer Pick and Place Locations
+F:\Projects\20200102 - dissertacao_Lídio\5.CAN\CAN\CAN_BUS\Project Outputs for CAN_BUS\Pick Place for CAN_BUS.txt
+
+========================================================================================================================
+File Design Information:
+
+Date:       05/03/20
+Time:       22:39
+Revision:   Not in VersionControl
+Variant:    No variations
+Units used: mil
+
+Designator     Comment         Layer    Footprint               Center-X(mil) Center-Y(mil) Rotation Description                                                                         LCSC PART # 
+U2             Diode_TVS_Array TopLayer SOT23-3                 1174.488      -990.000      360                                                                                          C151237     
+R4             49.9            TopLayer RESC_0805               1990.000      -940.000      360      Thick film resistor, SMD 0402, 1/16W, 1%                                            C17720      
+R7             N.A.            TopLayer RESC_0805               1087.874      -760.000      0        Thick film resistor, SMD 0402, 1/16W, 1%                                            C17802      
+R6             N.A.            TopLayer RESC_0805               1087.874      -1210.000     0        Thick film resistor, SMD 0402, 1/16W, 1%                                            C17802      
+C8             Capacitor       TopLayer CAPC_0805               960.000       -990.000      180      Capacitor                                                                                       
+C1             Capacitor       TopLayer CAPC_0805               1990.000      -1040.000     180      Capacitor                                                                           C1794       
+C5             Capacitor       TopLayer CAPC_0805               780.000       -1375.000     90       Capacitor                                                                           C28323      
+C6             Capacitor       TopLayer CAPC_0805               880.000       -1375.000     90       Capacitor                                                                           C49678      
+C3             Capacitor       TopLayer CAPC_0805               1920.000      -1700.000     360      Capacitor                                                                           C49678      
+C2             Capacitor       TopLayer CAPC_0805               1920.000      -1600.000     360      Capacitor                                                                           C28323      
+xmc1           XMC             TopLayer XMC4500_Relax_Lite      1110.000      -1000.000     0                                                                                                        
+C4             Capacitor       TopLayer CAPC_0805               1810.000      -1287.402     90       Capacitor                                                                           C1710       
+C7             Capacitor       TopLayer CAPC_0805               1440.000      -1282.599     90       Capacitor                                                                           C1710       
+LED1           Green           TopLayer CD2012-0805             2110.000      -1190.000     270      LED 2X1.2MM 570NM GN WTR CLR SMD                                                    C2297       
+LED2           Green           TopLayer CD2012-0805             1290.000      -1350.000     360      LED 2X1.2MM 570NM GN WTR CLR SMD                                                    C2297       
+R5             N.A.            TopLayer RESC_0805               1330.000      -990.000      90       Thick film resistor, SMD 0402, 1/16W, 1%                                                        
+R1             220             TopLayer RESC_0805               1980.000      -1150.000     360      Thick film resistor, SMD 0402, 1/16W, 1%                                            C17557      
+R2             470             TopLayer RESC_0805               1290.000      -1250.000     180      Thick film resistor, SMD 0402, 1/16W, 1%                                                        
+U1             ISO1050DUBR     TopLayer DUB8_M                  1630.000      -990.000      180      Isolated CAN Transceiver, -55 to 105 degC, 8-pin SOP (DUB), Green (RoHS & no Sb/Br) C16428      
+CAN_H1         testePoint      TopLayer PAD_2.5MM_-_FURO_1.25MM 1064.252      -1340.000     90                                                                                                       
+CAN_L1         testePoint      TopLayer PAD_2.5MM_-_FURO_1.25MM 1064.252      -630.000      90                                                                                                       
+R3             N.A.            TopLayer RESC_0805               545.000       -1375.630     90       Thick film resistor, SMD 0402, 1/16W, 1%                                                        
+CAN Connector1 61500814221     TopLayer 61500814221             512.913       -960.000      270      Modular Jack Horizontal Shielded 8P8C Tab Down WR-MJ                                            
+GND1           Logotipo        TopLayer Dangerous_Logo          -10674.518    -18443.309    0                                                                                                        
+GND2           Logotipo        TopLayer Dangerous_Logo          -10674.518    -18443.309    0                                                                                                        
+PowerFlow1     Logotipo        TopLayer PowerFlow_LOGO          -10674.518    -18443.309    360                                                                                                      

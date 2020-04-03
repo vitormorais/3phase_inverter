@@ -1,0 +1,26 @@
+Change Physical Footprint: Designator=C_1 Old Footprint=CAPC_0805 New Footprint=CAPC_0805
+Change Physical Footprint: Designator=C_2 Old Footprint=CAPC_0805 New Footprint=CAPC_0805
+Change Physical Footprint: Designator=C_3 Old Footprint=CAPC_0805 New Footprint=CAPC_0805
+Change Physical Footprint: Designator=C_4 Old Footprint=CAPC_0805 New Footprint=CAPC_0805
+Change Physical Footprint: Designator=C_5 Old Footprint=CAPC_0805 New Footprint=CAPC_0805
+Change Physical Footprint: Designator=C_6 Old Footprint=CAPC_0805 New Footprint=CAPC_0805
+Change Physical Footprint: Designator=C_Rx Old Footprint=CAPC_0805 New Footprint=CAPC_0805
+Change Physical Footprint: Designator=CAN_H Old Footprint=PAD 2.5MM - FURO 1.25MM New Footprint=PAD 2.5MM - FURO 1.25MM
+Change Physical Footprint: Designator=CAN_L Old Footprint=PAD 2.5MM - FURO 1.25MM New Footprint=PAD 2.5MM - FURO 1.25MM
+Change Physical Footprint: Designator=CAN Connector Old Footprint=61500814221 New Footprint=61500814221
+Change Physical Footprint: Designator=CL Old Footprint=CAPC_0805 New Footprint=CAPC_0805
+Change Physical Footprint: Designator=GND1 Old Footprint=Dangerous_Logo New Footprint=Dangerous_Logo
+Change Physical Footprint: Designator=GND2 Old Footprint=Dangerous_Logo New Footprint=Dangerous_Logo
+Change Physical Footprint: Designator=LED1 Old Footprint=CD2012-0805 New Footprint=CD2012-0805
+Change Physical Footprint: Designator=LED2 Old Footprint=CD2012-0805 New Footprint=CD2012-0805
+Change Physical Footprint: Designator=PowerFlow Old Footprint=PowerFlow_LOGO New Footprint=PowerFlow_LOGO
+Change Physical Footprint: Designator=R2 Old Footprint=RESC_0805 New Footprint=RESC_0805
+Change Physical Footprint: Designator=R3 Old Footprint=RESC_0805 New Footprint=RESC_0805
+Change Physical Footprint: Designator=R4 Old Footprint=RESC_0805 New Footprint=RESC_0805
+Change Physical Footprint: Designator=R_shield Old Footprint=RESC_0805 New Footprint=RESC_0805
+Change Physical Footprint: Designator=R_TX Old Footprint=RESC_0805 New Footprint=RESC_0805
+Change Physical Footprint: Designator=RLed1 Old Footprint=RESC_0805 New Footprint=RESC_0805
+Change Physical Footprint: Designator=RLed2 Old Footprint=RESC_0805 New Footprint=RESC_0805
+Change Physical Footprint: Designator=Transceiver_CAN Old Footprint=DUB8_M New Footprint=DUB8_M
+Change Physical Footprint: Designator=TVS Old Footprint=SOT23-3 New Footprint=SOT23-3
+Change Physical Footprint: Designator=xmc4500_Relax_Lite Old Footprint=XMC4500_RELAX_LITE New Footprint=XMC4500_Relax_Lite

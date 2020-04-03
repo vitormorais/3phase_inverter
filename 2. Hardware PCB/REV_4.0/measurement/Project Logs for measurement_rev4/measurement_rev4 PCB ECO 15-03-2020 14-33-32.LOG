@@ -1,0 +1,23 @@
+Removed Member From Class: ClassName=measurement_rev4 Member=P?
+Change Component Designator: OldDesignator=P1 NewDesignator=P3
+Change Component Designator: OldDesignator=P2 NewDesignator=P4
+Change Component Designator: OldDesignator=P3 NewDesignator=P5
+Change Component Designator: OldDesignator=P? NewDesignator=P1
+Change Component Designator: OldDesignator=P? NewDesignator=P2
+Change Component Designator: OldDesignator=U1 NewDesignator=U10
+Change Component Designator: OldDesignator=U5 NewDesignator=U11
+Change Component Designator: OldDesignator=U10 NewDesignator=U1
+Change Component Designator: OldDesignator=U11 NewDesignator=U5
+Change Net Name : Old Net Name=NetP1_1 New Net Name=NetP3_1
+Change Net Name : Old Net Name=NetP1_2 New Net Name=NetP3_2
+Change Net Name : Old Net Name=NetP2_1 New Net Name=NetP4_1
+Change Net Name : Old Net Name=NetP2_2 New Net Name=NetP4_2
+Change Net Name : Old Net Name=NetP3_1 New Net Name=NetP5_1
+Change Net Name : Old Net Name=NetP3_2 New Net Name=NetP5_2
+Change Net Name : Old Net Name=NetU1_3 New Net Name=NetU10_3
+Change Net Name : Old Net Name=NetU1_4 New Net Name=NetU10_4
+Change Net Name : Old Net Name=NetU10_3 New Net Name=NetU1_3
+Change Net Name : Old Net Name=NetU10_4 New Net Name=NetU1_4
+Added Member To Class: ClassName=measurement_rev4 Member=Component P4 P 2p 5mm
+Added Member To Class: ClassName=measurement_rev4 Member=Component P5 P 2p 5mm
+Added Room: Name=measurement_rev4
