@@ -1,4 +1,0 @@
-Removed Pin From Net: NetName=iabc_0 Pin=CC1-7
-Removed Pin From Net: NetName=iabc_1 Pin=CC2-7
-Added Pin To Net: NetName=iabc_1 Pin=CC1-7
-Added Pin To Net: NetName=iabc_0 Pin=CC2-7
