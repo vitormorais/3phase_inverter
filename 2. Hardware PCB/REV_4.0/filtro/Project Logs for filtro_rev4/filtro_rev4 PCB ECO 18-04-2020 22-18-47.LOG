@@ -1,0 +1,23 @@
+Added Component: Designator=P1(Header 8x1 8.5mm)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Mouser VPN"; Value = "538-87937-0800"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "0,621"; VariantName = "[No Variations]"
+Added Component: Designator=P2(Header 8x1 8.5mm)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Mouser VPN"; Value = "538-87937-0800"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "0,621"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=5VDC1 Pin=P1-1
+Added Pin To Net: NetName=I_U Pin=P1-2
+Added Pin To Net: NetName=I_V Pin=P1-3
+Added Pin To Net: NetName=I_W Pin=P1-4
+Added Pin To Net: NetName=5VDC1 Pin=P1-8
+Added Pin To Net: NetName=5gnd1 Pin=P2-1
+Added Pin To Net: NetName=5gnd1 Pin=P2-2
+Added Pin To Net: NetName=5gnd1 Pin=P2-3
+Added Pin To Net: NetName=5gnd1 Pin=P2-4
+Added Pin To Net: NetName=5gnd1 Pin=P2-5
+Added Pin To Net: NetName=5gnd1 Pin=P2-6
+Added Pin To Net: NetName=5gnd1 Pin=P2-7
+Added Pin To Net: NetName=5gnd1 Pin=P2-8
+Added Member To Class: ClassName=filtro_rev4 Member=Component P1 P 8p 2.54 SR DW 8P
+Added Member To Class: ClassName=filtro_rev4 Member=Component P2 P 8p 2.54 SR DW 8P

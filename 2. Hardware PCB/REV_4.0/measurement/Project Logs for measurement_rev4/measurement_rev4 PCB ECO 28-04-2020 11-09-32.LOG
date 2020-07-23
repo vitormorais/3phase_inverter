@@ -1,0 +1,185 @@
+Removed Pin From Net: NetName=NetCC1_3 Pin=U8-1
+Removed Pin From Net: NetName=NetCC1_1 Pin=U8-2
+Removed Pin From Net: NetName=NetCC2_3 Pin=U9-1
+Removed Pin From Net: NetName=NetCC2_1 Pin=U9-2
+Removed Pin From Net: NetName=NetU10_3 Pin=U10-3
+Removed Pin From Net: NetName=NetU10_4 Pin=U10-4
+Removed Pin From Net: NetName=NetU10_3 Pin=U11-1
+Removed Pin From Net: NetName=NetU10_4 Pin=U11-2
+Removed Pin From Net: NetName=Relay_A Pin=U12-2
+Removed Pin From Net: NetName=3V3GND Pin=U12-3
+Removed Pin From Net: NetName=Relay_B Pin=U12-4
+Removed Pin From Net: NetName=NetR16_1 Pin=U12-5
+Removed Pin From Net: NetName=5V Pin=U12-6
+Removed Pin From Net: NetName=NetR20_1 Pin=U12-7
+Removed Pin From Net: NetName=NetU13_3 Pin=U13-3
+Removed Pin From Net: NetName=NetU13_4 Pin=U13-4
+Removed Pin From Net: NetName=NetU13_3 Pin=U14-1
+Removed Pin From Net: NetName=NetU13_4 Pin=U14-2
+Removed Pin From Net: NetName=NetCC3_3 Pin=U15-1
+Removed Pin From Net: NetName=NetCC3_1 Pin=U15-2
+Removed Pin From Net: NetName=3V3GND Pin=XMC1-1
+Removed Pin From Net: NetName=3V3GND Pin=XMC1-2
+Removed Pin From Net: NetName=3V3GND Pin=XMC1-3
+Removed Pin From Net: NetName=vabc_2 Pin=XMC1-8
+Removed Pin From Net: NetName=vabc_1 Pin=XMC1-9
+Removed Pin From Net: NetName=vabc_0 Pin=XMC1-10
+Removed Pin From Net: NetName=3V3 Pin=XMC1-19
+Removed Pin From Net: NetName=5V Pin=XMC1-20
+Removed Pin From Net: NetName=5V Pin=XMC1-21
+Removed Pin From Net: NetName=3V3 Pin=XMC1-22
+Removed Pin From Net: NetName=Relay_A Pin=XMC1-23
+Removed Pin From Net: NetName=Relay_B Pin=XMC1-24
+Removed Pin From Net: NetName=iabc_1 Pin=XMC1-33
+Removed Pin From Net: NetName=iabc_0 Pin=XMC1-34
+Removed Pin From Net: NetName=iabc_2 Pin=XMC1-36
+Removed Pin From Net: NetName=3V3GND Pin=XMC1-39
+Removed Pin From Net: NetName=3V3GND Pin=XMC1-40
+Removed Pin From Net: NetName=3V3GND Pin=XMC1-41
+Removed Pin From Net: NetName=3V3GND Pin=XMC1-42
+Removed Pin From Net: NetName=TX_CAN Pin=XMC1-47
+Removed Pin From Net: NetName=DRX_D Pin=XMC1-49
+Removed Pin From Net: NetName=3V3GND Pin=XMC1-58
+Removed Pin From Net: NetName=3V3 Pin=XMC1-59
+Removed Pin From Net: NetName=5V Pin=XMC1-60
+Removed Pin From Net: NetName=5V Pin=XMC1-61
+Removed Pin From Net: NetName=3V3 Pin=XMC1-62
+Removed Pin From Net: NetName=3V3GND Pin=XMC1-63
+Removed Pin From Net: NetName=DTX_D Pin=XMC1-73
+Removed Pin From Net: NetName=RX_CAN Pin=XMC1-75
+Removed Pin From Net: NetName=3V3GND Pin=XMC1-79
+Removed Pin From Net: NetName=3V3GND Pin=XMC1-80
+Removed Member From Class: ClassName=measurement_rev4 Member=U8
+Removed Member From Class: ClassName=measurement_rev4 Member=U9
+Removed Member From Class: ClassName=measurement_rev4 Member=U11
+Removed Member From Class: ClassName=measurement_rev4 Member=U12
+Removed Member From Class: ClassName=measurement_rev4 Member=U14
+Removed Member From Class: ClassName=measurement_rev4 Member=U15
+Removed Member From Class: ClassName=measurement_rev4 Member=XMC1
+Change Component Comment : Designator=CC1 Old Comment=* New Comment=IC CC 30A SO-8
+Change Component Comment : Designator=CC2 Old Comment=* New Comment=IC CC 30A SO-8
+Change Component Comment : Designator=CC3 Old Comment=* New Comment=IC CC 30A SO-8
+Change Component Comment : Designator=P2 Old Comment=* New Comment=P 8p 2.54 SR DW 8P
+Change Component Comment : Designator=P3 Old Comment=* New Comment=P 8p 2.54 SR DW 8P
+Change component parameters: Designator = "P2"; Footprint = "Header 8x1 8.5mm"; UniqueID = "\XSEYCYYA"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "538-87937-0800"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,621"; VariantName = "[No Variations]"
+Change component parameters: Designator = "P3"; Footprint = "Header 8x1 8.5mm"; UniqueID = "\TPDLFOCL"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "538-87937-0800"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,621"; VariantName = "[No Variations]"
+Change component parameters: Designator = "CC1"; Footprint = "CC6303_SOP8"; UniqueID = "\QAPKRRJY"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C163283"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "630-ACHS-7123-000E"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "3,47"; VariantName = "[No Variations]"
+Change component parameters: Designator = "CC2"; Footprint = "CC6303_SOP8"; UniqueID = "\FLCKJWOE"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C163283"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "630-ACHS-7123-000E"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "3,47"; VariantName = "[No Variations]"
+Change component parameters: Designator = "CC3"; Footprint = "CC6303_SOP8"; UniqueID = "\KFPPFCIX"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C163283"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "630-ACHS-7123-000E"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "3,47"; VariantName = "[No Variations]"
+Added Component: Designator=P?(connector1x2_parafuso)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Price"; Value = "0,24"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS VPN"; Value = "896-6696"; VariantName = "[No Variations]"
+Added Component: Designator=P?(connector1x2_parafuso)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Price"; Value = "0,24"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS VPN"; Value = "896-6696"; VariantName = "[No Variations]"
+Added Component: Designator=P?(connector1x2_parafuso)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Price"; Value = "0,24"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS VPN"; Value = "896-6696"; VariantName = "[No Variations]"
+Added Component: Designator=P?(connector1x2_parafuso)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Price"; Value = "0,24"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS VPN"; Value = "896-6696"; VariantName = "[No Variations]"
+Added Component: Designator=P?(connector1x2_parafuso)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Price"; Value = "0,24"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS VPN"; Value = "896-6696"; VariantName = "[No Variations]"
+Added Component: Designator=U?(SOIC-MIC4126)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Equivalente"; Value = "TC4427AEOA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LCSC PART #"; Value = "C20551"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser VPN"; Value = "998-MIC4126YME"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "0,756"; VariantName = "[No Variations]"
+Added Component: Designator=XMC?(XMC4500)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Farnell VPN"; Value = "2443552"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "14,628"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS VPN"; Value = "251-8418"; VariantName = "[No Variations]"
+Added Component: Designator=XMC?(XMC4500)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Farnell VPN"; Value = "2443552"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "14,628"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS VPN"; Value = "251-8418"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetCC1_3 Pin=P?-1
+Added Pin To Net: NetName=NetCC2_3 Pin=P?-1
+Added Pin To Net: NetName=NetCC3_3 Pin=P?-1
+Added Pin To Net: NetName=NetU10_3 Pin=P?-1
+Added Pin To Net: NetName=NetU10_4 Pin=P?-1
+Added Pin To Net: NetName=NetCC1_1 Pin=P?-2
+Added Pin To Net: NetName=NetCC2_1 Pin=P?-2
+Added Pin To Net: NetName=NetCC3_1 Pin=P?-2
+Added Pin To Net: NetName=NetU13_3 Pin=P?-2
+Added Pin To Net: NetName=NetU13_4 Pin=P?-2
+Added Pin To Net: NetName=NetU10_4 Pin=U10-3
+Added Pin To Net: NetName=NetU13_4 Pin=U10-4
+Added Pin To Net: NetName=NetU10_3 Pin=U13-3
+Added Pin To Net: NetName=NetU13_3 Pin=U13-4
+Added Pin To Net: NetName=Relay_A Pin=U?-2
+Added Pin To Net: NetName=3V3GND Pin=U?-3
+Added Pin To Net: NetName=Relay_B Pin=U?-4
+Added Pin To Net: NetName=NetR16_1 Pin=U?-5
+Added Pin To Net: NetName=5V Pin=U?-6
+Added Pin To Net: NetName=NetR20_1 Pin=U?-7
+Added Pin To Net: NetName=3V3GND Pin=XMC?-1
+Added Pin To Net: NetName=3V3GND Pin=XMC?-2
+Added Pin To Net: NetName=3V3GND Pin=XMC?-3
+Added Pin To Net: NetName=vabc_2 Pin=XMC?-8
+Added Pin To Net: NetName=vabc_1 Pin=XMC?-9
+Added Pin To Net: NetName=vabc_0 Pin=XMC?-10
+Added Pin To Net: NetName=3V3 Pin=XMC?-19
+Added Pin To Net: NetName=5V Pin=XMC?-20
+Added Pin To Net: NetName=5V Pin=XMC?-21
+Added Pin To Net: NetName=3V3 Pin=XMC?-22
+Added Pin To Net: NetName=Relay_A Pin=XMC?-23
+Added Pin To Net: NetName=Relay_B Pin=XMC?-24
+Added Pin To Net: NetName=iabc_1 Pin=XMC?-33
+Added Pin To Net: NetName=iabc_0 Pin=XMC?-34
+Added Pin To Net: NetName=iabc_2 Pin=XMC?-36
+Added Pin To Net: NetName=3V3GND Pin=XMC?-39
+Added Pin To Net: NetName=3V3GND Pin=XMC?-40
+Added Pin To Net: NetName=3V3GND Pin=XMC?-41
+Added Pin To Net: NetName=3V3GND Pin=XMC?-42
+Added Pin To Net: NetName=TX_CAN Pin=XMC?-47
+Added Pin To Net: NetName=DRX_D Pin=XMC?-49
+Added Pin To Net: NetName=3V3GND Pin=XMC?-58
+Added Pin To Net: NetName=3V3 Pin=XMC?-59
+Added Pin To Net: NetName=5V Pin=XMC?-60
+Added Pin To Net: NetName=5V Pin=XMC?-61
+Added Pin To Net: NetName=3V3 Pin=XMC?-62
+Added Pin To Net: NetName=3V3GND Pin=XMC?-63
+Added Pin To Net: NetName=DTX_D Pin=XMC?-73
+Added Pin To Net: NetName=RX_CAN Pin=XMC?-75
+Added Pin To Net: NetName=3V3GND Pin=XMC?-79
+Added Pin To Net: NetName=3V3GND Pin=XMC?-80
+Change Net Name : Old Net Name=NetU10_3 New Net Name=NetP?_1
+Change Net Name : Old Net Name=NetU10_4 New Net Name=NetP?_1
+Change Net Name : Old Net Name=NetU13_3 New Net Name=NetP?_2
+Change Net Name : Old Net Name=NetU13_4 New Net Name=NetP?_2
+Added Member To Class: ClassName=measurement_rev4 Member=Component P? P 2p 5mm
+Added Member To Class: ClassName=measurement_rev4 Member=Component P? P 2p 5mm
+Added Member To Class: ClassName=measurement_rev4 Member=Component P? P 2p 5mm
+Added Member To Class: ClassName=measurement_rev4 Member=Component P? P 2p 5mm
+Added Member To Class: ClassName=measurement_rev4 Member=Component P? P 2p 5mm
+Added Member To Class: ClassName=measurement_rev4 Member=Component U? IC DUAL MOS DRIVER MIC4127
+Added Member To Class: ClassName=measurement_rev4 Member=Component XMC? IC XMC4500 Relax LITE
+Added Member To Class: ClassName=measurement_rev4 Member=Component XMC? IC XMC4500 Relax LITE

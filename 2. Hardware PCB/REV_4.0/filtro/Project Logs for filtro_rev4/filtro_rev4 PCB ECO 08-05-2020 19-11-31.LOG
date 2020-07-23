@@ -1,0 +1,13 @@
+Change Component Designator: OldDesignator=R4 NewDesignator=R2
+Change Component Designator: OldDesignator=R7 NewDesignator=R3
+Change Component Designator: OldDesignator=U3 NewDesignator=U4
+Change Component Designator: OldDesignator=U4 NewDesignator=U5
+Change Component Designator: OldDesignator=U5 NewDesignator=U6
+Change Component Designator: OldDesignator=U6 NewDesignator=U7
+Added Component: Designator=U3(connector1x2_parafuso)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Price"; Value = "0,24"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS VPN"; Value = "896-6696"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GRID_N Pin=U3-1
+Added Pin To Net: NetName=GRID_N Pin=U3-2
+Added Member To Class: ClassName=filtro_rev4 Member=Component U7 P 2p 5mm

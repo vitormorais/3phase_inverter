@@ -1,0 +1,6 @@
+Removed Pin From Net: NetName=Shield Pin=C8-2
+Removed Pin From Net: NetName=CAN_L Pin=R6-2
+Removed Pin From Net: NetName=CAN_H Pin=R7-2
+Removed Member From Class: ClassName=measurement_rev4 Member=C8
+Removed Member From Class: ClassName=measurement_rev4 Member=R6
+Removed Member From Class: ClassName=measurement_rev4 Member=R7

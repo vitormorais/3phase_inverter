@@ -1,0 +1,27 @@
+Removed Pin From Net: NetName=3V3GND Pin=C1-1
+Removed Pin From Net: NetName=5V Pin=C1-2
+Removed Pin From Net: NetName=3V3GND Pin=C2-1
+Removed Pin From Net: NetName=5V Pin=C2-2
+Removed Pin From Net: NetName=3V3GND Pin=C3-1
+Removed Pin From Net: NetName=5V Pin=C3-2
+Added Component: Designator=C1(CAPC_0805)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "LCSC PART #"; Value = " C49678"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser VPN"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=C2(CAPC_0805)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "LCSC PART #"; Value = "C28323"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser VPN"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=C3(CAPC_0805)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "LCSC PART #"; Value = "C15850"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser VPN"; Value = "963-TMK212BBJ106KG-T"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "0,162"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=3V3GND Pin=C1-1
+Added Pin To Net: NetName=5V Pin=C1-2
+Added Pin To Net: NetName=3V3GND Pin=C2-1
+Added Pin To Net: NetName=5V Pin=C2-2
+Added Pin To Net: NetName=3V3GND Pin=C3-1
+Added Pin To Net: NetName=5V Pin=C3-2

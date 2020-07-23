@@ -1,0 +1,30 @@
+Change Component Designator: OldDesignator=CAN Connector1 NewDesignator=P3
+Change Component Designator: OldDesignator=LED1 NewDesignator=L1
+Change Component Designator: OldDesignator=LED2 NewDesignator=L2
+Change Component Designator: OldDesignator=P3 NewDesignator=P4
+Change Component Designator: OldDesignator=P4 NewDesignator=P5
+Change Component Designator: OldDesignator=P5 NewDesignator=P6
+Change Net Name : Old Net Name=NetLED1_A New Net Name=NetL1_A
+Change Net Name : Old Net Name=NetLED2_A New Net Name=NetL2_A
+Change Net Name : Old Net Name=NetP3_1 New Net Name=NetP4_1
+Change Net Name : Old Net Name=NetP3_2 New Net Name=NetP4_2
+Change Net Name : Old Net Name=NetP4_1 New Net Name=NetP5_1
+Change Net Name : Old Net Name=NetP4_2 New Net Name=NetP5_2
+Change Net Name : Old Net Name=NetP5_1 New Net Name=NetP6_1
+Change Net Name : Old Net Name=NetP5_2 New Net Name=NetP6_2
+Added Member To Class: ClassName=measurement_rev4 Member=Component C1 Capacitor
+Added Member To Class: ClassName=measurement_rev4 Member=Component C2 Capacitor
+Added Member To Class: ClassName=measurement_rev4 Member=Component C3 Capacitor
+Added Member To Class: ClassName=measurement_rev4 Member=Component C4 Capacitor
+Added Member To Class: ClassName=measurement_rev4 Member=Component C5 Capacitor
+Added Member To Class: ClassName=measurement_rev4 Member=Component C6 Capacitor
+Added Member To Class: ClassName=measurement_rev4 Member=Component C8 Capacitor
+Added Member To Class: ClassName=measurement_rev4 Member=Component R1 220
+Added Member To Class: ClassName=measurement_rev4 Member=Component R2 470
+Added Member To Class: ClassName=measurement_rev4 Member=Component R3 N.A.
+Added Member To Class: ClassName=measurement_rev4 Member=Component R4 49.9
+Added Member To Class: ClassName=measurement_rev4 Member=Component R5 N.A.
+Added Member To Class: ClassName=measurement_rev4 Member=Component R6 N.A.
+Added Member To Class: ClassName=measurement_rev4 Member=Component R7 N.A.
+Added Member To Class: ClassName=measurement_rev4 Member=Component U1 ISO1050DUBR
+Added Member To Class: ClassName=measurement_rev4 Member=Component U2 Diode_TVS_Array

@@ -1,0 +1,6 @@
+Removed Pin From Net: NetName=SGND Pin=R3-1
+Removed Member From Class: ClassName=measurement_rev4 Member=R3
+Added Pin To Net: NetName=3V3GND Pin=P3-6
+Added Pin To Net: NetName=3V3GND Pin=P3-S1
+Added Pin To Net: NetName=3V3GND Pin=P3-S2
+Change Net Name : Old Net Name=3V3GND New Net Name=Shield

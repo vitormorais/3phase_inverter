@@ -4,111 +4,111 @@ C:\Users\VMORAIS\Desktop\3phase_inverter\2. Hardware PCB\REV_4.0\inversor\Projec
 ========================================================================================================================;;;;;;;;
 File Design Information:;;;;;;;;
 ;;;;;;;;
-Date:       02/04/20;;;;;;;;
-Time:       18:00;;;;;;;;
+Date:       14/05/20;;;;;;;;
+Time:       19:14;;;;;;;;
 Revision:   Not in VersionControl;;;;;;;;
 Variant:    No variations;;;;;;;;
 Units used: mil;;;;;;;;
 ;;;;;;;;
 Designator;Comment;Layer;Footprint;Center-X(mil);Center-Y(mil);Rotation;Description;LCSC PART #
-CC1;IC CC 30A SO-8;TopLayer;CC6303_SOP8;201.000;2420.000;270;Sensores de Corrente de Montagem de Painel Hall Effect IC LF 30A 66 mV/A;C10681
-C25;C 100nF MLCC 1812 X7R 1kV;TopLayer;CAPC_1812;1301.000;2424.528;180;Capacitores de cerâmica multicamada MLCC - SMD/SMT 1000V 0.1uF X7R 1812 10% AEC-Q200;
-C24;C 100nF MLCC 1812 X7R 1kV;TopLayer;CAPC_1812;1613.000;610.528;0;Capacitores de cerâmica multicamada MLCC - SMD/SMT 1000V 0.1uF X7R 1812 10% AEC-Q200;
-C23;C 100nF MLCC 1812 X7R 1kV;TopLayer;CAPC_1812;2011.000;-85.472;90;Capacitores de cerâmica multicamada MLCC - SMD/SMT 1000V 0.1uF X7R 1812 10% AEC-Q200;
-C22;C 100nF MLCC 1812 X7R 1kV;TopLayer;CAPC_1812;1804.333;-85.472;90;Capacitores de cerâmica multicamada MLCC - SMD/SMT 1000V 0.1uF X7R 1812 10% AEC-Q200;
-C21;C 100nF MLCC 1812 X7R 1kV;TopLayer;CAPC_1812;1597.667;-85.472;90;Capacitores de cerâmica multicamada MLCC - SMD/SMT 1000V 0.1uF X7R 1812 10% AEC-Q200;
-C20;C 100nF MLCC 1812 X7R 1kV;TopLayer;CAPC_1812;1391.000;-85.472;90;Capacitores de cerâmica multicamada MLCC - SMD/SMT 1000V 0.1uF X7R 1812 10% AEC-Q200;
-C18;C 100nF MLCC 1812 X7R 1kV;TopLayer;CAPC_1812;1572.667;3069.528;90;Capacitores de cerâmica multicamada MLCC - SMD/SMT 1000V 0.1uF X7R 1812 10% AEC-Q200;
-C19;C 100nF MLCC 1812 X7R 1kV;TopLayer;CAPC_1812;1986.000;3069.528;90;Capacitores de cerâmica multicamada MLCC - SMD/SMT 1000V 0.1uF X7R 1812 10% AEC-Q200;
-C17;C 100nF MLCC 1812 X7R 1kV;TopLayer;CAPC_1812;1779.333;3069.528;90;Capacitores de cerâmica multicamada MLCC - SMD/SMT 1000V 0.1uF X7R 1812 10% AEC-Q200;
-C16;C 100nF MLCC 1812 X7R 1kV;TopLayer;CAPC_1812;1366.000;3069.528;90;Capacitores de cerâmica multicamada MLCC - SMD/SMT 1000V 0.1uF X7R 1812 10% AEC-Q200;
-0;P 2p 5mm;TopLayer;connector1x2_parafuso;-169.000;2989.528;90;Bloques de terminales de PCB de perfil estándar RS de 5,0 mm;
-0;P 2p 5mm;TopLayer;connector1x2_parafuso;-169.000;50.000;90;Bloques de terminales de PCB de perfil estándar RS de 5,0 mm;
-C27;C 10uF 2917 TANT 50V;TopLayer;CAPC_2917;2871.000;795.000;360;Condensadores de tântalo - revestimento sólido de SMD 50V 10uF 10% ESR=0.8Ohms;
-C26;C 10uF 2917 TANT 50V;BottomLayer;CAPC_2917;2611.000;870.000;90;Condensadores de tântalo - revestimento sólido de SMD 50V 10uF 10% ESR=0.8Ohms;
-D3;IC DIO generic;BottomLayer;Diode_th;1643.205;909.780;360;Diodos - Fins gerais, energia, comutação Hi Conductance Fast;
-D2;IC DIO generic;BottomLayer;Diode_th;1645.331;1100.000;360;Diodos - Fins gerais, energia, comutação Hi Conductance Fast;
-D1;IC DIO generic;BottomLayer;Diode_th;1646.669;1280.000;360;Diodos - Fins gerais, energia, comutação Hi Conductance Fast;
-R11;R 1k8 1/8W 0805 1%;BottomLayer;RESC_0805;2046.000;1030.000;360;Resistores de Filme Espesso - SMD ResA-AS 0805 1k8 1% 125mW TC100;C17398
-R13;R 100 1/8W 0805 1%;BottomLayer;RESC_0805;1261.000;960.000;360;Resistores de Filme Espesso - SMD 1/8Watt 100ohms 1% Commercial Use;C17408
-R12;R 100 1/8W 0805 1%;BottomLayer;RESC_0805;1271.000;1150.000;360;Resistores de Filme Espesso - SMD 1/8Watt 100ohms 1% Commercial Use;C17408
-R10;R 100 1/8W 0805 1%;BottomLayer;RESC_0805;1271.000;1340.000;360;Resistores de Filme Espesso - SMD 1/8Watt 100ohms 1% Commercial Use;C17408
-C32;C 10nF 0805 MLCC 50V X7R;BottomLayer;CAPC_0805;1311.000;1230.000;180;Capacitores de cerâmica multicamada MLCC - SMD/SMT 10nF 50V X7R 10%;C1710
-C31;C 10nF 0805 MLCC 50V X7R;BottomLayer;CAPC_0805;1311.000;1040.000;180;Capacitores de cerâmica multicamada MLCC - SMD/SMT 10nF 50V X7R 10%;C1710
-C30;C 10nF 0805 MLCC 50V X7R;BottomLayer;CAPC_0805;1311.000;850.000;180;Capacitores de cerâmica multicamada MLCC - SMD/SMT 10nF 50V X7R 10%;C1710
-R15;R 0 1/8W 0805;TopLayer;RESC_0805;2791.000;200.000;270;Resistores de Filme Espesso - SMD 1/8Watt 0ohms Commercial Use;C17477
-C15;C 1nF 0805 MLCC 50V X7R;BottomLayer;CAPC_0805;2671.000;1500.000;180;Capacitores de cerâmica multicamada MLCC - SMD/SMT WCAP-CSGP 1000pF 0805 10% 50V MLCC;C46653
-C14;C 1nF 0805 MLCC 50V X7R;BottomLayer;CAPC_0805;2671.000;1260.000;180;Capacitores de cerâmica multicamada MLCC - SMD/SMT WCAP-CSGP 1000pF 0805 10% 50V MLCC;C46653
-C13;C 1nF 0805 MLCC 50V X7R;BottomLayer;CAPC_0805;2671.000;1420.000;180;Capacitores de cerâmica multicamada MLCC - SMD/SMT WCAP-CSGP 1000pF 0805 10% 50V MLCC;C46653
-C12;C 1nF 0805 MLCC 50V X7R;BottomLayer;CAPC_0805;2671.000;1180.000;180;Capacitores de cerâmica multicamada MLCC - SMD/SMT WCAP-CSGP 1000pF 0805 10% 50V MLCC;C46653
-C11;C 1nF 0805 MLCC 50V X7R;BottomLayer;CAPC_0805;2671.000;1340.000;180;Capacitores de cerâmica multicamada MLCC - SMD/SMT WCAP-CSGP 1000pF 0805 10% 50V MLCC;C46653
-C10;C 1nF 0805 MLCC 50V X7R;BottomLayer;CAPC_0805;2671.000;1100.000;180;Capacitores de cerâmica multicamada MLCC - SMD/SMT WCAP-CSGP 1000pF 0805 10% 50V MLCC;C46653
-R1;R 100 1/8W 0805 1%;TopLayer;RESC_0805;2671.000;1100.000;0;Resistores de Filme Espesso - SMD 1/8Watt 100ohms 1% Commercial Use;C17408
-R2;R 100 1/8W 0805 1%;TopLayer;RESC_0805;2671.000;1180.000;0;Resistores de Filme Espesso - SMD 1/8Watt 100ohms 1% Commercial Use;C17408
-R3;R 100 1/8W 0805 1%;TopLayer;RESC_0805;2671.000;1260.000;360;Resistores de Filme Espesso - SMD 1/8Watt 100ohms 1% Commercial Use;C17408
-R4;R 100 1/8W 0805 1%;TopLayer;RESC_0805;2671.000;1340.000;360;Resistores de Filme Espesso - SMD 1/8Watt 100ohms 1% Commercial Use;C17408
-R5;R 100 1/8W 0805 1%;TopLayer;RESC_0805;2671.000;1420.000;360;Resistores de Filme Espesso - SMD 1/8Watt 100ohms 1% Commercial Use;C17408
-R6;R 100 1/8W 0805 1%;TopLayer;RESC_0805;2671.000;1500.000;360;Resistores de Filme Espesso - SMD 1/8Watt 100ohms 1% Commercial Use;C17408
-C8;C 10uF 2917 TANT 50V;TopLayer;CAPC_2917;2626.000;1680.000;360;Condensadores de tântalo - revestimento sólido de SMD 50V 10uF 10% ESR=0.8Ohms;
-C6;C 10uF 2917 TANT 50V;TopLayer;CAPC_2917;2509.937;1950.000;180;Condensadores de tântalo - revestimento sólido de SMD 50V 10uF 10% ESR=0.8Ohms;
-C4;C 10uF 2917 TANT 50V;TopLayer;CAPC_2917;2521.000;2220.000;180;Condensadores de tântalo - revestimento sólido de SMD 50V 10uF 10% ESR=0.8Ohms;
-0;P 2p 5mm;TopLayer;connector1x2_parafuso;263.000;-325.000;180;Bloques de terminales de PCB de perfil estándar RS de 5,0 mm;
-0;P 2p 5mm;TopLayer;connector1x2_parafuso;294.000;3362.000;0;Bloques de terminales de PCB de perfil estándar RS de 5,0 mm;
-P7;P 8p 2.54 SR DW 3P;BottomLayer;MOLEX_3p_105431_1103;3342.000;1740.000;180;Distribuidores e Alojamento de Fios CGrid Hrd SRDW THo le 8ckt;
-P6;P 8p 2.54 SR DW 3P;BottomLayer;MOLEX_3p_105431_1103;206.000;701.000;180;Distribuidores e Alojamento de Fios CGrid Hrd SRDW THo le 8ckt;
-P5;P 8p 2.54 SR DW 3P;BottomLayer;MOLEX_3p_105431_1103;206.000;1460.500;180;Distribuidores e Alojamento de Fios CGrid Hrd SRDW THo le 8ckt;
-P4;P 8p 2.54 SR DW 3P;BottomLayer;MOLEX_3p_105431_1103;206.000;2220.000;180;Distribuidores e Alojamento de Fios CGrid Hrd SRDW THo le 8ckt;
-W1;P 2p 5mm;TopLayer;connector1x2_parafuso;-169.000;930.000;90;Bloques de terminales de PCB de perfil estándar RS de 5,0 mm;
-V1;P 2p 5mm;TopLayer;connector1x2_parafuso;-169.000;1679.213;90;Bloques de terminales de PCB de perfil estándar RS de 5,0 mm;
-U1;P 2p 5mm;TopLayer;connector1x2_parafuso;-169.000;2428.425;90;Bloques de terminales de PCB de perfil estándar RS de 5,0 mm;
-C3;C 10uF 0805 MLCC 25V X5R;TopLayer;CAPC_0805;197.000;595.000;360;Capacitores de cerâmica multicamada MLCC - SMD/SMT 10uF 25V X5R +/-10% 0805 Gen Purp;C15850
-C2;C 10uF 0805 MLCC 25V X5R;TopLayer;CAPC_0805;197.000;1363.000;360;Capacitores de cerâmica multicamada MLCC - SMD/SMT 10uF 25V X5R +/-10% 0805 Gen Purp;C15850
-C1;C 10uF 0805 MLCC 25V X5R;TopLayer;CAPC_0805;197.000;2131.000;360;Capacitores de cerâmica multicamada MLCC - SMD/SMT 10uF 25V X5R +/-10% 0805 Gen Purp;C15850
-U2;IC IGBT IPM  IKCM30F60GA;BottomLayer;ikcm30f60ga;1653.784;1553.953;180;Controladores e drivers de Motor/Movimento/Ignição IFPS MODULES;
-C7;C 10uF 2917 TANT 50V;BottomLayer;CAPC_2917;2521.000;1950.000;180;Condensadores de tântalo - revestimento sólido de SMD 50V 10uF 10% ESR=0.8Ohms;
-C5;C 10uF 2917 TANT 50V;BottomLayer;CAPC_2917;2511.000;2220.000;180;Condensadores de tântalo - revestimento sólido de SMD 50V 10uF 10% ESR=0.8Ohms;
-C9;C 10uF 2917 TANT 50V;BottomLayer;CAPC_2917;2621.000;1685.000;360;Condensadores de tântalo - revestimento sólido de SMD 50V 10uF 10% ESR=0.8Ohms;
-C_bus2;C 470uF EleCap TH 450V;BottomLayer;Capacitor_DCBUS;2297.000;3056.851;90;Capacitores eletrolíticos de alumínio - terminal de pressão 450V 470uF 20% Tol.;
-C_bus1;C 470uF EleCap TH 450V;BottomLayer;Capacitor_DCBUS;1087.000;3058.851;90;Capacitores eletrolíticos de alumínio - terminal de pressão 450V 470uF 20% Tol.;
-C_bus4;C 470uF EleCap TH 450V;BottomLayer;Capacitor_DCBUS;1087.000;-61.150;90;Capacitores eletrolíticos de alumínio - terminal de pressão 450V 470uF 20% Tol.;
-C_bus3;C 470uF EleCap TH 450V;BottomLayer;Capacitor_DCBUS;2297.000;-61.150;90;Capacitores eletrolíticos de alumínio - terminal de pressão 450V 470uF 20% Tol.;
-CC2;IC CC 30A SO-8;TopLayer;CC6303_SOP8;201.000;1669.000;270;Sensores de Corrente de Montagem de Painel Hall Effect IC LF 30A 66 mV/A;C10681
-CC3;IC CC 30A SO-8;TopLayer;CC6303_SOP8;201.000;918.000;270;Sensores de Corrente de Montagem de Painel Hall Effect IC LF 30A 66 mV/A;C10681
-C33;C 10uF 0805 MLCC 25V X5R;TopLayer;CAPC_0805;3130.000;2350.000;90;Capacitores de cerâmica multicamada MLCC - SMD/SMT 10uF 25V X5R +/-10% 0805 Gen Purp;C15850
-C34;C 10uF 2917 TANT 50V;TopLayer;CAPC_2917;3368.000;2594.000;360;Condensadores de tântalo - revestimento sólido de SMD 50V 10uF 10% ESR=0.8Ohms;
-C37;C1uF 0805 MLCC 50V X5R;TopLayer;CAPC_0805;3313.000;2784.000;90;Capacitores de cerâmica multicamada MLCC - SMD/SMT 0805 50V 1uF 20% X5R;C28323
-C38;C1uF 0805 MLCC 50V X5R;TopLayer;CAPC_0805;3290.000;1656.000;360;Capacitores de cerâmica multicamada MLCC - SMD/SMT 0805 50V 1uF 20% X5R;C28323
-C39;C 10uF 0805 MLCC 25V X5R;TopLayer;CAPC_0805;3440.000;1618.000;90;Capacitores de cerâmica multicamada MLCC - SMD/SMT 10uF 25V X5R +/-10% 0805 Gen Purp;C15850
-R7;R 0040 10W 7146 1%;TopLayer;RESC7247X15N;817.000;1239.000;180;MCLRP12FTWRR039 -  SMD Current Sense Resistor, 0.039 ohm, LRP Series, 2512 [6432 Metric], 3 W, ± 1%, Metal Strip;
-R8;R 0040 10W 7146 1%;BottomLayer;RESC7247X15N;817.000;1082.000;180;MCLRP12FTWRR039 -  SMD Current Sense Resistor, 0.039 ohm, LRP Series, 2512 [6432 Metric], 3 W, ± 1%, Metal Strip;
-R9;R 0040 10W 7146 1%;TopLayer;RESC7247X15N;817.000;929.000;180;MCLRP12FTWRR039 -  SMD Current Sense Resistor, 0.039 ohm, LRP Series, 2512 [6432 Metric], 3 W, ± 1%, Metal Strip;
-R24;R 330 1/8 0805 1%;TopLayer;RESC_0805;3418.000;1889.000;270;Resistores de Filme Espesso - SMD 1/8Watt 330ohms 1% Commercial Use;C17630
-R25;R 150R 1/8W 0805 1%;TopLayer;RESC_0805;3397.000;2812.000;90;Resistores de Filme Espesso - SMD 1/8watt 150ohms 1% 100ppm;C17471
-U3;IC CC/CC 1W 5V;BottomLayer;DC/DC_ISO;3197.000;2209.410;90;Conversores CC/CC com isolação 1W 5Vin 5Vout 200mA SIP7;
-U5;IC AmpIso UNI AMC1311;TopLayer;AMC1311_-_SOIC8;3391.000;2230.433;270;Amplificadores de isolamento A 595-AMC1311DWV;
-R14;R 3K 1/8W 0805 1%;BottomLayer;RESC_0805;2046.000;820.000;180;Resistores de Filme Espesso - SMD 1/8watt 3Kohms 1% 100ppm;C17661
-C29;C 10nF 0805 MLCC 50V X7R;BottomLayer;CAPC_0805;2316.000;980.000;90;Capacitores de cerâmica multicamada MLCC - SMD/SMT 10nF 50V X7R 10%;C1710
-R20;R 30k 1/8W 0805 1%;BottomLayer;RESC_0805;3424.000;3105.000;360;Resistores de Filme Espesso - SMD 0805 30Kohms 1% AEC-Q200;C17621
-R21;R 30k 1/8W 0805 1%;TopLayer;RESC_0805;3425.000;3106.000;180;Resistores de Filme Espesso - SMD 0805 30Kohms 1% AEC-Q200;C17621
-R22;R 30k 1/8W 0805 1%;TopLayer;RESC_0805;3423.000;2968.000;360;Resistores de Filme Espesso - SMD 0805 30Kohms 1% AEC-Q200;C17621
-R23;R 30k 1/8W 0805 1%;TopLayer;RESC_0805;3480.000;2812.000;270;Resistores de Filme Espesso - SMD 0805 30Kohms 1% AEC-Q200;C17621
-R26;R 30k 1/8W 0805 1%;BottomLayer;RESC_0805;3424.000;3282.000;0;Resistores de Filme Espesso - SMD 0805 30Kohms 1% AEC-Q200;C17621
-R27;R 30k 1/8W 0805 1%;TopLayer;RESC_0805;3422.000;3284.000;180;Resistores de Filme Espesso - SMD 0805 30Kohms 1% AEC-Q200;C17621
-R28;R 30k 1/8W 0805 1%;TopLayer;RESC_0805;3215.402;3336.902;270;Resistores de Filme Espesso - SMD 0805 30Kohms 1% AEC-Q200;C17621
-R29;R 30k 1/8W 0805 1%;TopLayer;RESC_0805;3178.000;3196.000;180;Resistores de Filme Espesso - SMD 0805 30Kohms 1% AEC-Q200;C17621
-R30;R 30k 1/8W 0805 1%;TopLayer;RESC_0805;2816.000;3411.000;0;Resistores de Filme Espesso - SMD 0805 30Kohms 1% AEC-Q200;C17621
-R31;R 30k 1/8W 0805 1%;TopLayer;RESC_0805;2997.000;3412.000;0;Resistores de Filme Espesso - SMD 0805 30Kohms 1% AEC-Q200;C17621
-R32;R 30k 1/8W 0805 1%;TopLayer;RESC_0805;3000.000;3303.500;180;Resistores de Filme Espesso - SMD 0805 30Kohms 1% AEC-Q200;C17621
-R33;R 30k 1/8W 0805 1%;TopLayer;RESC_0805;2997.000;3195.000;0;Resistores de Filme Espesso - SMD 0805 30Kohms 1% AEC-Q200;C17621
-C28;C 10uF 0805 MLCC 25V X5R;TopLayer;CAPC_0805;2516.000;960.000;90;Capacitores de cerâmica multicamada MLCC - SMD/SMT 10uF 25V X5R +/-10% 0805 Gen Purp;C15850
-C35;C1uF 0805 MLCC 50V X5R;TopLayer;CAPC_0805;3386.000;1265.000;180;Capacitores de cerâmica multicamada MLCC - SMD/SMT 0805 50V 1uF 20% X5R;C28323
-C36;C 10uF 0805 MLCC 25V X5R;TopLayer;CAPC_0805;3121.000;1985.000;270;Capacitores de cerâmica multicamada MLCC - SMD/SMT 10uF 25V X5R +/-10% 0805 Gen Purp;C15850
-P8;P 8p 2.54 SR DW 3P;BottomLayer;MOLEX_3p_105431_1103;3336.000;1345.000;360;Distribuidores e Alojamento de Fios CGrid Hrd SRDW THo le 8ckt;
-R16;R 3k6 1/8W 0805 1%;BottomLayer;RESC_0805;2976.000;2465.000;180;Resistores de Filme Espesso - SMD 1/8watt 3.6Kohms 1%;C18359
-R17;R 49k9 1/8W 0805 1%;BottomLayer;RESC_0805;2896.000;2360.000;360;Resistores de Filme Espesso - SMD 1/8Watt 49.9Kohms 1% Commercial Use;C17719
-R19;R 330 1/8 0805 1%;TopLayer;RESC_0805;3291.000;1450.000;0;Resistores de Filme Espesso - SMD 1/8Watt 330ohms 1% Commercial Use;C17630
-U4;IC AmpIso UNI AMC1311;TopLayer;AMC1311_-_SOIC8;2966.000;2145.433;270;Amplificadores de isolamento A 595-AMC1311DWV;
-R18;R 49k9 1/8W 0805 1%;BottomLayer;RESC_0805;2971.000;2285.000;180;Resistores de Filme Espesso - SMD 1/8Watt 49.9Kohms 1% Commercial Use;C17719
-P2;P 8p 2.54 SR DW 3P;BottomLayer;MOLEX_3p_105431_1103;3335.998;635.000;180;Distribuidores e Alojamento de Fios CGrid Hrd SRDW THo le 8ckt;
-P3;P 8p 2.54 SR DW 3P;BottomLayer;MOLEX_3p_105431_1103;3335.998;990.413;180;Distribuidores e Alojamento de Fios CGrid Hrd SRDW THo le 8ckt;
 P1;P 8p 2.54 SR DW 3P;BottomLayer;MOLEX_3p_105431_1103;2906.000;635.000;180;Distribuidores e Alojamento de Fios CGrid Hrd SRDW THo le 8ckt;
+P3;P 8p 2.54 SR DW 3P;BottomLayer;MOLEX_3p_105431_1103;3335.998;990.413;180;Distribuidores e Alojamento de Fios CGrid Hrd SRDW THo le 8ckt;
+P2;P 8p 2.54 SR DW 3P;BottomLayer;MOLEX_3p_105431_1103;3335.998;635.000;180;Distribuidores e Alojamento de Fios CGrid Hrd SRDW THo le 8ckt;
+R18;R 49k9 1/8W 0805 1%;BottomLayer;RESC_0805;2971.000;2285.000;180;Resistores de Filme Espesso - SMD 1/8Watt 49.9Kohms 1% Commercial Use;C17719
+U4;IC AmpIso UNI AMC1311;TopLayer;AMC1311_-_SOIC8;2966.000;2145.433;270;Amplificadores de isolamento A 595-AMC1311DWV;
+R19;R 330 1/8 0805 1%;TopLayer;RESC_0805;3291.000;1450.000;0;Resistores de Filme Espesso - SMD 1/8Watt 330ohms 1% Commercial Use;C17630
+R17;R 49k9 1/8W 0805 1%;BottomLayer;RESC_0805;2896.000;2360.000;360;Resistores de Filme Espesso - SMD 1/8Watt 49.9Kohms 1% Commercial Use;C17719
+R16;R 3k6 1/8W 0805 1%;BottomLayer;RESC_0805;2976.000;2465.000;180;Resistores de Filme Espesso - SMD 1/8watt 3.6Kohms 1%;C18359
+P8;P 8p 2.54 SR DW 3P;BottomLayer;MOLEX_3p_105431_1103;3336.000;1345.000;360;Distribuidores e Alojamento de Fios CGrid Hrd SRDW THo le 8ckt;
+C36;C 10uF 0805 MLCC 25V X5R;TopLayer;CAPC_0805;3121.000;1985.000;270;Capacitores de cerâmica multicamada MLCC - SMD/SMT 10uF 25V X5R +/-10% 0805 Gen Purp;C15850
+C35;C1uF 0805 MLCC 50V X5R;TopLayer;CAPC_0805;3386.000;1265.000;180;Capacitores de cerâmica multicamada MLCC - SMD/SMT 0805 50V 1uF 20% X5R;C28323
+C28;C 10uF 0805 MLCC 25V X5R;TopLayer;CAPC_0805;2516.000;960.000;90;Capacitores de cerâmica multicamada MLCC - SMD/SMT 10uF 25V X5R +/-10% 0805 Gen Purp;C15850
+R33;R 30k 1/8W 0805 1%;TopLayer;RESC_0805;2997.000;3195.000;0;Resistores de Filme Espesso - SMD 0805 30Kohms 1% AEC-Q200;C17621
+R32;R 30k 1/8W 0805 1%;TopLayer;RESC_0805;3000.000;3303.500;180;Resistores de Filme Espesso - SMD 0805 30Kohms 1% AEC-Q200;C17621
+R31;R 30k 1/8W 0805 1%;TopLayer;RESC_0805;2997.000;3412.000;0;Resistores de Filme Espesso - SMD 0805 30Kohms 1% AEC-Q200;C17621
+R30;R 30k 1/8W 0805 1%;TopLayer;RESC_0805;2816.000;3411.000;0;Resistores de Filme Espesso - SMD 0805 30Kohms 1% AEC-Q200;C17621
+R29;R 30k 1/8W 0805 1%;TopLayer;RESC_0805;3178.000;3196.000;180;Resistores de Filme Espesso - SMD 0805 30Kohms 1% AEC-Q200;C17621
+R28;R 30k 1/8W 0805 1%;TopLayer;RESC_0805;3215.402;3336.902;270;Resistores de Filme Espesso - SMD 0805 30Kohms 1% AEC-Q200;C17621
+R27;R 30k 1/8W 0805 1%;TopLayer;RESC_0805;3422.000;3284.000;180;Resistores de Filme Espesso - SMD 0805 30Kohms 1% AEC-Q200;C17621
+R26;R 30k 1/8W 0805 1%;BottomLayer;RESC_0805;3424.000;3282.000;0;Resistores de Filme Espesso - SMD 0805 30Kohms 1% AEC-Q200;C17621
+R23;R 30k 1/8W 0805 1%;TopLayer;RESC_0805;3480.000;2812.000;270;Resistores de Filme Espesso - SMD 0805 30Kohms 1% AEC-Q200;C17621
+R22;R 30k 1/8W 0805 1%;TopLayer;RESC_0805;3423.000;2968.000;360;Resistores de Filme Espesso - SMD 0805 30Kohms 1% AEC-Q200;C17621
+R21;R 30k 1/8W 0805 1%;TopLayer;RESC_0805;3425.000;3106.000;180;Resistores de Filme Espesso - SMD 0805 30Kohms 1% AEC-Q200;C17621
+R20;R 30k 1/8W 0805 1%;BottomLayer;RESC_0805;3424.000;3105.000;360;Resistores de Filme Espesso - SMD 0805 30Kohms 1% AEC-Q200;C17621
+C29;C 10nF 0805 MLCC 50V X7R;BottomLayer;CAPC_0805;2316.000;980.000;90;Capacitores de cerâmica multicamada MLCC - SMD/SMT 10nF 50V X7R 10%;C1710
+R14;R 3K 1/8W 0805 1%;BottomLayer;RESC_0805;2046.000;820.000;180;Resistores de Filme Espesso - SMD 1/8watt 3Kohms 1% 100ppm;C17661
+U5;IC AmpIso UNI AMC1311;TopLayer;AMC1311_-_SOIC8;3391.000;2230.433;270;Amplificadores de isolamento A 595-AMC1311DWV;
+U3;IC CC/CC 1W 5V;BottomLayer;DC/DC_ISO;3197.000;2209.410;90;Conversores CC/CC com isolação 1W 5Vin 5Vout 200mA SIP7;
+R25;R 150R 1/8W 0805 1%;TopLayer;RESC_0805;3397.000;2812.000;90;Resistores de Filme Espesso - SMD 1/8watt 150ohms 1% 100ppm;C17471
+R24;R 330 1/8 0805 1%;TopLayer;RESC_0805;3418.000;1889.000;270;Resistores de Filme Espesso - SMD 1/8Watt 330ohms 1% Commercial Use;C17630
+R9;R 0040 10W 7146 1%;TopLayer;RESC7247X15N;817.000;929.000;180;MCLRP12FTWRR039 -  SMD Current Sense Resistor, 0.039 ohm, LRP Series, 2512 [6432 Metric], 3 W, ± 1%, Metal Strip;
+R8;R 0040 10W 7146 1%;BottomLayer;RESC7247X15N;817.000;1082.000;180;MCLRP12FTWRR039 -  SMD Current Sense Resistor, 0.039 ohm, LRP Series, 2512 [6432 Metric], 3 W, ± 1%, Metal Strip;
+R7;R 0040 10W 7146 1%;TopLayer;RESC7247X15N;817.000;1239.000;180;MCLRP12FTWRR039 -  SMD Current Sense Resistor, 0.039 ohm, LRP Series, 2512 [6432 Metric], 3 W, ± 1%, Metal Strip;
+C39;C 10uF 0805 MLCC 25V X5R;TopLayer;CAPC_0805;3440.000;1618.000;90;Capacitores de cerâmica multicamada MLCC - SMD/SMT 10uF 25V X5R +/-10% 0805 Gen Purp;C15850
+C38;C1uF 0805 MLCC 50V X5R;TopLayer;CAPC_0805;3290.000;1656.000;360;Capacitores de cerâmica multicamada MLCC - SMD/SMT 0805 50V 1uF 20% X5R;C28323
+C37;C1uF 0805 MLCC 50V X5R;TopLayer;CAPC_0805;3313.000;2784.000;90;Capacitores de cerâmica multicamada MLCC - SMD/SMT 0805 50V 1uF 20% X5R;C28323
+C34;C 10uF 2917 TANT 50V;TopLayer;CAPC_2917;3368.000;2594.000;360;Condensadores de tântalo - revestimento sólido de SMD 50V 10uF 10% ESR=0.8Ohms;C89596
+C33;C 10uF 0805 MLCC 25V X5R;TopLayer;CAPC_0805;3130.000;2350.000;90;Capacitores de cerâmica multicamada MLCC - SMD/SMT 10uF 25V X5R +/-10% 0805 Gen Purp;C15850
+CC3;IC CC 30A SO-8;TopLayer;CC6303_SOP8;201.000;918.000;270;Sensores de Corrente de Montagem de Painel Hall Effect IC LF 30A 66 mV/A;C163283
+CC2;IC CC 30A SO-8;TopLayer;CC6303_SOP8;201.000;1669.000;270;Sensores de Corrente de Montagem de Painel Hall Effect IC LF 30A 66 mV/A;C163283
+C_bus3;C 470uF EleCap TH 450V;BottomLayer;Capacitor_DCBUS;2297.000;-61.150;90;Capacitores eletrolíticos de alumínio - terminal de pressão 450V 470uF 20% Tol.;
+C_bus4;C 470uF EleCap TH 450V;BottomLayer;Capacitor_DCBUS;1087.000;-61.150;90;Capacitores eletrolíticos de alumínio - terminal de pressão 450V 470uF 20% Tol.;
+C_bus1;C 470uF EleCap TH 450V;BottomLayer;Capacitor_DCBUS;1087.000;3058.851;90;Capacitores eletrolíticos de alumínio - terminal de pressão 450V 470uF 20% Tol.;
+C_bus2;C 470uF EleCap TH 450V;BottomLayer;Capacitor_DCBUS;2297.000;3056.851;90;Capacitores eletrolíticos de alumínio - terminal de pressão 450V 470uF 20% Tol.;
+C9;C 10uF 2917 TANT 50V;BottomLayer;CAPC_2917;2621.000;1685.000;360;Condensadores de tântalo - revestimento sólido de SMD 50V 10uF 10% ESR=0.8Ohms;C89596
+C5;C 10uF 2917 TANT 50V;BottomLayer;CAPC_2917;2511.000;2220.000;180;Condensadores de tântalo - revestimento sólido de SMD 50V 10uF 10% ESR=0.8Ohms;C89596
+C7;C 10uF 2917 TANT 50V;BottomLayer;CAPC_2917;2521.000;1950.000;180;Condensadores de tântalo - revestimento sólido de SMD 50V 10uF 10% ESR=0.8Ohms;C89596
+U2;IC IGBT IPM  IKCM30F60GA;BottomLayer;ikcm30f60ga;1653.784;1553.953;180;Controladores e drivers de Motor/Movimento/Ignição IFPS MODULES;
+C1;C 10uF 0805 MLCC 25V X5R;TopLayer;CAPC_0805;197.000;2131.000;360;Capacitores de cerâmica multicamada MLCC - SMD/SMT 10uF 25V X5R +/-10% 0805 Gen Purp;C15850
+C2;C 10uF 0805 MLCC 25V X5R;TopLayer;CAPC_0805;197.000;1363.000;360;Capacitores de cerâmica multicamada MLCC - SMD/SMT 10uF 25V X5R +/-10% 0805 Gen Purp;C15850
+C3;C 10uF 0805 MLCC 25V X5R;TopLayer;CAPC_0805;197.000;595.000;360;Capacitores de cerâmica multicamada MLCC - SMD/SMT 10uF 25V X5R +/-10% 0805 Gen Purp;C15850
+U1;P 2p 5mm;TopLayer;connector1x2_parafuso;-169.000;2428.425;90;Bloques de terminales de PCB de perfil estándar RS de 5,0 mm;
+V1;P 2p 5mm;TopLayer;connector1x2_parafuso;-169.000;1679.213;90;Bloques de terminales de PCB de perfil estándar RS de 5,0 mm;
+W1;P 2p 5mm;TopLayer;connector1x2_parafuso;-169.000;930.000;90;Bloques de terminales de PCB de perfil estándar RS de 5,0 mm;
+P4;P 8p 2.54 SR DW 3P;BottomLayer;MOLEX_3p_105431_1103;206.000;2220.000;180;Distribuidores e Alojamento de Fios CGrid Hrd SRDW THo le 8ckt;
+P5;P 8p 2.54 SR DW 3P;BottomLayer;MOLEX_3p_105431_1103;206.000;1460.500;180;Distribuidores e Alojamento de Fios CGrid Hrd SRDW THo le 8ckt;
+P6;P 8p 2.54 SR DW 3P;BottomLayer;MOLEX_3p_105431_1103;206.000;701.000;180;Distribuidores e Alojamento de Fios CGrid Hrd SRDW THo le 8ckt;
+P7;P 8p 2.54 SR DW 3P;BottomLayer;MOLEX_3p_105431_1103;3342.000;1740.000;180;Distribuidores e Alojamento de Fios CGrid Hrd SRDW THo le 8ckt;
+0;P 2p 5mm;TopLayer;connector1x2_parafuso;294.000;3362.000;0;Bloques de terminales de PCB de perfil estándar RS de 5,0 mm;
+0;P 2p 5mm;TopLayer;connector1x2_parafuso;263.000;-325.000;180;Bloques de terminales de PCB de perfil estándar RS de 5,0 mm;
+C4;C 10uF 2917 TANT 50V;TopLayer;CAPC_2917;2521.000;2220.000;180;Condensadores de tântalo - revestimento sólido de SMD 50V 10uF 10% ESR=0.8Ohms;C89596
+C6;C 10uF 2917 TANT 50V;TopLayer;CAPC_2917;2509.937;1950.000;180;Condensadores de tântalo - revestimento sólido de SMD 50V 10uF 10% ESR=0.8Ohms;C89596
+C8;C 10uF 2917 TANT 50V;TopLayer;CAPC_2917;2626.000;1680.000;360;Condensadores de tântalo - revestimento sólido de SMD 50V 10uF 10% ESR=0.8Ohms;C89596
+R6;R 100 1/8W 0805 1%;TopLayer;RESC_0805;2671.000;1500.000;360;Resistores de Filme Espesso - SMD 1/8Watt 100ohms 1% Commercial Use;C17408
+R5;R 100 1/8W 0805 1%;TopLayer;RESC_0805;2671.000;1420.000;360;Resistores de Filme Espesso - SMD 1/8Watt 100ohms 1% Commercial Use;C17408
+R4;R 100 1/8W 0805 1%;TopLayer;RESC_0805;2671.000;1340.000;360;Resistores de Filme Espesso - SMD 1/8Watt 100ohms 1% Commercial Use;C17408
+R3;R 100 1/8W 0805 1%;TopLayer;RESC_0805;2671.000;1260.000;360;Resistores de Filme Espesso - SMD 1/8Watt 100ohms 1% Commercial Use;C17408
+R2;R 100 1/8W 0805 1%;TopLayer;RESC_0805;2671.000;1180.000;0;Resistores de Filme Espesso - SMD 1/8Watt 100ohms 1% Commercial Use;C17408
+R1;R 100 1/8W 0805 1%;TopLayer;RESC_0805;2671.000;1100.000;0;Resistores de Filme Espesso - SMD 1/8Watt 100ohms 1% Commercial Use;C17408
+C10;C 1nF 0805 MLCC 50V X7R;BottomLayer;CAPC_0805;2671.000;1100.000;180;Capacitores de cerâmica multicamada MLCC - SMD/SMT WCAP-CSGP 1000pF 0805 10% 50V MLCC;C46653
+C11;C 1nF 0805 MLCC 50V X7R;BottomLayer;CAPC_0805;2671.000;1340.000;180;Capacitores de cerâmica multicamada MLCC - SMD/SMT WCAP-CSGP 1000pF 0805 10% 50V MLCC;C46653
+C12;C 1nF 0805 MLCC 50V X7R;BottomLayer;CAPC_0805;2671.000;1180.000;180;Capacitores de cerâmica multicamada MLCC - SMD/SMT WCAP-CSGP 1000pF 0805 10% 50V MLCC;C46653
+C13;C 1nF 0805 MLCC 50V X7R;BottomLayer;CAPC_0805;2671.000;1420.000;180;Capacitores de cerâmica multicamada MLCC - SMD/SMT WCAP-CSGP 1000pF 0805 10% 50V MLCC;C46653
+C14;C 1nF 0805 MLCC 50V X7R;BottomLayer;CAPC_0805;2671.000;1260.000;180;Capacitores de cerâmica multicamada MLCC - SMD/SMT WCAP-CSGP 1000pF 0805 10% 50V MLCC;C46653
+C15;C 1nF 0805 MLCC 50V X7R;BottomLayer;CAPC_0805;2671.000;1500.000;180;Capacitores de cerâmica multicamada MLCC - SMD/SMT WCAP-CSGP 1000pF 0805 10% 50V MLCC;C46653
+R15;R 0 1/8W 0805;TopLayer;RESC_0805;2791.000;200.000;270;Resistores de Filme Espesso - SMD 1/8Watt 0ohms Commercial Use;C17477
+C30;C 10nF 0805 MLCC 50V X7R;BottomLayer;CAPC_0805;1311.000;850.000;180;Capacitores de cerâmica multicamada MLCC - SMD/SMT 10nF 50V X7R 10%;C1710
+C31;C 10nF 0805 MLCC 50V X7R;BottomLayer;CAPC_0805;1311.000;1040.000;180;Capacitores de cerâmica multicamada MLCC - SMD/SMT 10nF 50V X7R 10%;C1710
+C32;C 10nF 0805 MLCC 50V X7R;BottomLayer;CAPC_0805;1311.000;1230.000;180;Capacitores de cerâmica multicamada MLCC - SMD/SMT 10nF 50V X7R 10%;C1710
+R10;R 100 1/8W 0805 1%;BottomLayer;RESC_0805;1271.000;1340.000;360;Resistores de Filme Espesso - SMD 1/8Watt 100ohms 1% Commercial Use;C17408
+R12;R 100 1/8W 0805 1%;BottomLayer;RESC_0805;1271.000;1150.000;360;Resistores de Filme Espesso - SMD 1/8Watt 100ohms 1% Commercial Use;C17408
+R13;R 100 1/8W 0805 1%;BottomLayer;RESC_0805;1261.000;960.000;360;Resistores de Filme Espesso - SMD 1/8Watt 100ohms 1% Commercial Use;C17408
+R11;R 1k8 1/8W 0805 1%;BottomLayer;RESC_0805;2046.000;1030.000;360;Resistores de Filme Espesso - SMD ResA-AS 0805 1k8 1% 125mW TC100;C17398
+D1;IC DIO generic;BottomLayer;Diode_th;1646.669;1280.000;360;Diodos - Fins gerais, energia, comutação Hi Conductance Fast;
+D2;IC DIO generic;BottomLayer;Diode_th;1645.331;1100.000;360;Diodos - Fins gerais, energia, comutação Hi Conductance Fast;
+D3;IC DIO generic;BottomLayer;Diode_th;1643.205;909.780;360;Diodos - Fins gerais, energia, comutação Hi Conductance Fast;
+C26;C 10uF 2917 TANT 50V;BottomLayer;CAPC_2917;2611.000;870.000;90;Condensadores de tântalo - revestimento sólido de SMD 50V 10uF 10% ESR=0.8Ohms;C89596
+C27;C 10uF 2917 TANT 50V;TopLayer;CAPC_2917;2871.000;795.000;360;Condensadores de tântalo - revestimento sólido de SMD 50V 10uF 10% ESR=0.8Ohms;C89596
+0;P 2p 5mm;TopLayer;connector1x2_parafuso;-169.000;50.000;90;Bloques de terminales de PCB de perfil estándar RS de 5,0 mm;
+0;P 2p 5mm;TopLayer;connector1x2_parafuso;-169.000;2989.528;90;Bloques de terminales de PCB de perfil estándar RS de 5,0 mm;
+C16;C 100nF MLCC 1812 X7R 1kV;TopLayer;CAPC_1812;1366.000;3069.528;90;Capacitores de cerâmica multicamada MLCC - SMD/SMT 1000V 0.1uF X7R 1812 10% AEC-Q200;
+C17;C 100nF MLCC 1812 X7R 1kV;TopLayer;CAPC_1812;1779.333;3069.528;90;Capacitores de cerâmica multicamada MLCC - SMD/SMT 1000V 0.1uF X7R 1812 10% AEC-Q200;
+C19;C 100nF MLCC 1812 X7R 1kV;TopLayer;CAPC_1812;1986.000;3069.528;90;Capacitores de cerâmica multicamada MLCC - SMD/SMT 1000V 0.1uF X7R 1812 10% AEC-Q200;
+C18;C 100nF MLCC 1812 X7R 1kV;TopLayer;CAPC_1812;1572.667;3069.528;90;Capacitores de cerâmica multicamada MLCC - SMD/SMT 1000V 0.1uF X7R 1812 10% AEC-Q200;
+C20;C 100nF MLCC 1812 X7R 1kV;TopLayer;CAPC_1812;1391.000;-85.472;90;Capacitores de cerâmica multicamada MLCC - SMD/SMT 1000V 0.1uF X7R 1812 10% AEC-Q200;
+C21;C 100nF MLCC 1812 X7R 1kV;TopLayer;CAPC_1812;1597.667;-85.472;90;Capacitores de cerâmica multicamada MLCC - SMD/SMT 1000V 0.1uF X7R 1812 10% AEC-Q200;
+C22;C 100nF MLCC 1812 X7R 1kV;TopLayer;CAPC_1812;1804.333;-85.472;90;Capacitores de cerâmica multicamada MLCC - SMD/SMT 1000V 0.1uF X7R 1812 10% AEC-Q200;
+C23;C 100nF MLCC 1812 X7R 1kV;TopLayer;CAPC_1812;2011.000;-85.472;90;Capacitores de cerâmica multicamada MLCC - SMD/SMT 1000V 0.1uF X7R 1812 10% AEC-Q200;
+C24;C 100nF MLCC 1812 X7R 1kV;TopLayer;CAPC_1812;1613.000;610.528;0;Capacitores de cerâmica multicamada MLCC - SMD/SMT 1000V 0.1uF X7R 1812 10% AEC-Q200;
+C25;C 100nF MLCC 1812 X7R 1kV;TopLayer;CAPC_1812;1301.000;2424.528;180;Capacitores de cerâmica multicamada MLCC - SMD/SMT 1000V 0.1uF X7R 1812 10% AEC-Q200;
+CC1;IC CC 30A SO-8;TopLayer;CC6303_SOP8;201.000;2420.000;270;Sensores de Corrente de Montagem de Painel Hall Effect IC LF 30A 66 mV/A;C163283

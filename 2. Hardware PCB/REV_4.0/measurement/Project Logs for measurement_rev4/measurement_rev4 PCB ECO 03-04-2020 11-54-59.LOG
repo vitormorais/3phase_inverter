@@ -1,0 +1,14 @@
+Change Component Designator: OldDesignator=U2 NewDesignator=U3
+Change Component Designator: OldDesignator=U3 NewDesignator=U4
+Change Component Designator: OldDesignator=U4 NewDesignator=U5
+Change Component Designator: OldDesignator=U5 NewDesignator=U2
+Change Component Designator: OldDesignator=U10 NewDesignator=U7
+Change Component Designator: OldDesignator=U11 NewDesignator=U8
+Change Component Designator: OldDesignator=U12 NewDesignator=U9
+Change Component Designator: OldDesignator=U13 NewDesignator=U10
+Change Component Designator: OldDesignator=U14 NewDesignator=U11
+Change Component Designator: OldDesignator=U15 NewDesignator=U12
+Change Component Designator: OldDesignator=U16 NewDesignator=U13
+Change Component Designator: OldDesignator=U17 NewDesignator=U14
+Change Net Name : Old Net Name=NetU10_3 New Net Name=NetU7_3
+Change Net Name : Old Net Name=NetU10_4 New Net Name=NetU7_4

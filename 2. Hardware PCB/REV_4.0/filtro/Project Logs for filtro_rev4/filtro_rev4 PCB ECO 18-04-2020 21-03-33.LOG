@@ -1,0 +1,6 @@
+Removed Pin From Net: NetName=I_U Pin=CC2-7
+Removed Pin From Net: NetName=I_U Pin=CC3-7
+Added Pin To Net: NetName=I_V Pin=CC2-7
+Added Net: Name=I_V
+Added Pin To Net: NetName=I_W Pin=CC3-7
+Added Net: Name=I_W

@@ -1,0 +1,22 @@
+Removed Pin From Net: NetName=5VDC1 Pin=P1-1
+Removed Pin From Net: NetName=5VDC1 Pin=P1-1
+Removed Pin From Net: NetName=I_U Pin=P1-2
+Removed Pin From Net: NetName=I_U Pin=P1-2
+Removed Pin From Net: NetName=5gnd1 Pin=P1-3
+Removed Pin From Net: NetName=5gnd1 Pin=P1-3
+Removed Pin From Net: NetName=5VDC1 Pin=P2-1
+Removed Pin From Net: NetName=5VDC1 Pin=P2-1
+Removed Pin From Net: NetName=I_U Pin=P2-2
+Removed Pin From Net: NetName=I_U Pin=P2-2
+Removed Pin From Net: NetName=5gnd1 Pin=P2-3
+Removed Pin From Net: NetName=5gnd1 Pin=P2-3
+Removed Pin From Net: NetName=5VDC1 Pin=P3-1
+Removed Pin From Net: NetName=5VDC1 Pin=P3-1
+Removed Pin From Net: NetName=I_U Pin=P3-2
+Removed Pin From Net: NetName=I_U Pin=P3-2
+Removed Pin From Net: NetName=5gnd1 Pin=P3-3
+Removed Pin From Net: NetName=5gnd1 Pin=P3-3
+Removed Member From Class: ClassName=filtro_rev4 Member=P1
+Removed Member From Class: ClassName=filtro_rev4 Member=P2
+Removed Member From Class: ClassName=filtro_rev4 Member=P3
+Added Room: Name=filtro_rev4

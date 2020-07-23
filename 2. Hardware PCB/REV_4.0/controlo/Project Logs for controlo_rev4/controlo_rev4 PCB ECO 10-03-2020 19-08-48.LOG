@@ -1,5 +1,0 @@
-Removed Pin From Net: NetName=Vamp12 Pin=U9-2
-Removed Pin From Net: NetName=Vamp22 Pin=U9-3
-Added Pin To Net: NetName=Vamp22 Pin=U9-2
-Added Pin To Net: NetName=Vamp12 Pin=U9-3
-Added Room: Name=controlo_rev4

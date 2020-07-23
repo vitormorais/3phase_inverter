@@ -1,6 +1,0 @@
-Change component parameters: Designator = "U12"; Footprint = "SOIC-MIC4126"; UniqueID = "\ENJSXMBP"
-Change component parameters. Clean all parameters for all variants
-Change component parameters (AddParameter): Name = "Equivalente"; Value = "TC4427AEOA"; VariantName = "[No Variations]"
-Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C20551"; VariantName = "[No Variations]"
-Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "998-MIC4126YME"; VariantName = "[No Variations]"
-Change component parameters (AddParameter): Name = "Price"; Value = "0,756"; VariantName = "[No Variations]"

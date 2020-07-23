@@ -1,0 +1,8 @@
+Removed Pin From Net: NetName=Shield Pin=P3-6
+Removed Pin From Net: NetName=Shield Pin=P3-S1
+Removed Pin From Net: NetName=Shield Pin=P3-S2
+Added Pin To Net: NetName=SGND Pin=P3-6
+Added Pin To Net: NetName=SGND Pin=P3-S1
+Added Pin To Net: NetName=SGND Pin=P3-S2
+Change Net Name : Old Net Name=SGND New Net Name=Shield
+Change Net Name : Old Net Name=Shield New Net Name=3V3GND

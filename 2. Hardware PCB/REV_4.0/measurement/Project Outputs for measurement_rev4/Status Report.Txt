@@ -1,9 +1,10 @@
-Output: Bill of Materials
-Type  : BOM
+Output: &Generates pick and place files
+Type  : Pick Place
 From  : Variant [[No Variations]] of Project [measurement_rev4.PrjPcb]
+   Generated File[Pick Place for measurement_rev4.csv]
 
 
-Files Generated   : 0
+Files Generated   : 1
 Documents Printed : 0
 
-Finished Output Generation At 15:07:43 On 15/03/2020
+Finished Output Generation At 11:22:33 On 28/04/2020

@@ -1,0 +1,130 @@
+Removed Pin From Net: NetName=3V3 Pin=XMC1-19
+Removed Pin From Net: NetName=3V3 Pin=XMC1-62
+Change Component DesignItemId : Designator=C1 Old DesignItemId=Capacitor SMD New DesignItemId=Capacitor
+Change Component DesignItemId : Designator=C2 Old DesignItemId=Capacitor SMD New DesignItemId=Capacitor
+Change Component DesignItemId : Designator=C3 Old DesignItemId=Capacitor SMD New DesignItemId=Capacitor
+Change Component Footprint: Designator=C1 Old Footprint=CAPC_0805 New Footprint=CAPC_1206
+Change Component Footprint: Designator=C2 Old Footprint=CAPC_0805 New Footprint=CAPC_1206
+Change Component Footprint: Designator=C3 Old Footprint=CAPC_0805 New Footprint=CAPC_1206
+Change Component Comment : Designator=C2 Old Comment=C 1uF 0805 MLCC 25V X5R New Comment=Capacitor
+Change Component Comment : Designator=C3 Old Comment=C 10uF 0805 MLCC 25V X5R New Comment=Capacitor
+Change Component Comment : Designator=C1 Old Comment=C 100nF 0805 MLCC 25V X5R New Comment=Capacitor
+Change Component Comment : Designator=CC1 Old Comment=IC CC 30A SO-8 New Comment=*
+Change Component Comment : Designator=CC2 Old Comment=IC CC 30A SO-8 New Comment=*
+Change Component Comment : Designator=CC3 Old Comment=IC CC 30A SO-8 New Comment=*
+Change Component Comment : Designator=U12 Old Comment=IC DUAL MOS DRIVER MIC4127 New Comment=*
+Change Component Comment : Designator=U10 Old Comment=IC Relay 5A 5V 5x20mm New Comment=relay G6DN
+Change Component Comment : Designator=U13 Old Comment=IC Relay 5A 5V 5x20mm New Comment=relay G6DN
+Change Component Comment : Designator=XMC1 Old Comment=IC XMC4500 Relax LITE New Comment=*
+Change Component Comment : Designator=U8 Old Comment=P 2p 5mm New Comment=*
+Change Component Comment : Designator=U9 Old Comment=P 2p 5mm New Comment=*
+Change Component Comment : Designator=U11 Old Comment=P 2p 5mm New Comment=*
+Change Component Comment : Designator=U14 Old Comment=P 2p 5mm New Comment=*
+Change Component Comment : Designator=U15 Old Comment=P 2p 5mm New Comment=*
+Change Component Comment : Designator=P2 Old Comment=P 8p 2.54 SR DW 8P New Comment=*
+Change Component Comment : Designator=P3 Old Comment=P 8p 2.54 SR DW 8P New Comment=*
+Change Component Comment : Designator=R16 Old Comment=R 10 1/8W 0805 1% New Comment=Resistor
+Change Component Comment : Designator=R20 Old Comment=R 10 1/8W 0805 1% New Comment=Resistor
+Change Component Designator: OldDesignator=L1 NewDesignator=L2
+Change Component Designator: OldDesignator=L2 NewDesignator=L1
+Change Component Designator: OldDesignator=R1 NewDesignator=R4
+Change Component Designator: OldDesignator=R2 NewDesignator=R1
+Change Component Designator: OldDesignator=R3 NewDesignator=R2
+Change Component Designator: OldDesignator=R4 NewDesignator=R3
+Change Component Description : Designator=XMC1 Old Description="  KIT_XMC45_RELAX_LITE_V1 -  Evaluation Board, XMC4500 MCU, Detachable On-Board Debugger, USB Powered " New Description=
+Change Component Description : Designator=U8 Old Description=Bloques de terminales de PCB de perfil estándar RS de 5,0 mm New Description=
+Change Component Description : Designator=U9 Old Description=Bloques de terminales de PCB de perfil estándar RS de 5,0 mm New Description=
+Change Component Description : Designator=U11 Old Description=Bloques de terminales de PCB de perfil estándar RS de 5,0 mm New Description=
+Change Component Description : Designator=U14 Old Description=Bloques de terminales de PCB de perfil estándar RS de 5,0 mm New Description=
+Change Component Description : Designator=U15 Old Description=Bloques de terminales de PCB de perfil estándar RS de 5,0 mm New Description=
+Change Component Description : Designator=C3 Old Description=Capacitores de cerâmica multicamada MLCC - SMD/SMT 10uF 25V X5R +/-10% 0805 Gen Purp New Description=Capacitor
+Change Component Description : Designator=P2 Old Description=Distribuidores e Alojamento de Fios CGrid Hrd SRDW THo le 8ckt New Description=
+Change Component Description : Designator=P3 Old Description=Distribuidores e Alojamento de Fios CGrid Hrd SRDW THo le 8ckt New Description=
+Change Component Description : Designator=U12 Old Description=Drivers de portas 1.5A Dual High Speed MOSFET Driver with Low Thermal Impedance New Description=
+Change Component Description : Designator=C2 Old Description=MULTILAYER CERAMIC CAPACITORS MLCC - SMD/SMT 1UF 50V 0805 ROHS New Description=Capacitor
+Change Component Description : Designator=C1 Old Description=MULTILAYER CERAMIC CAPACITORS MLCC - SMD/SMT 100NF 50V 0805 ROHS New Description=Capacitor
+Change Component Description : Designator=U10 Old Description=Relés para uso geral 1 form A w/ 5VDC Coil-standard type New Description=relay G6DN
+Change Component Description : Designator=U13 Old Description=Relés para uso geral 1 form A w/ 5VDC Coil-standard type New Description=relay G6DN
+Change Component Description : Designator=R16 Old Description=Resistores de Filme Espesso - SMD 1/8Watt 10ohms 1% Commercial Use New Description=Resistor
+Change Component Description : Designator=R20 Old Description=Resistores de Filme Espesso - SMD 1/8Watt 10ohms 1% Commercial Use New Description=Resistor
+Change Component Description : Designator=CC1 Old Description=Sensores de Corrente de Montagem de Painel Hall Effect IC LF 30A 66 mV/A New Description=
+Change Component Description : Designator=CC2 Old Description=Sensores de Corrente de Montagem de Painel Hall Effect IC LF 30A 66 mV/A New Description=
+Change Component Description : Designator=CC3 Old Description=Sensores de Corrente de Montagem de Painel Hall Effect IC LF 30A 66 mV/A New Description=
+Change Component Library : Designator=C1 Old Library=vi_measurement.SchLib New Library=CentralNode.SCHLIB
+Change Component Library : Designator=C2 Old Library=vi_measurement.SchLib New Library=CentralNode.SCHLIB
+Change Component Library : Designator=C3 Old Library=vi_measurement.SchLib New Library=CentralNode.SCHLIB
+Change component parameters: Designator = "P2"; Footprint = "Header 8x1 8.5mm"; UniqueID = "\AMBKRGVH"
+Change component parameters. Clean all parameters for all variants
+Change component parameters: Designator = "P3"; Footprint = "Header 8x1 8.5mm"; UniqueID = "\OTUDITPX"
+Change component parameters. Clean all parameters for all variants
+Change component parameters: Designator = "U10"; Footprint = "Relay - G6DN"; UniqueID = "\ASJQVYHU"
+Change component parameters. Clean all parameters for all variants
+Change component parameters: Designator = "U13"; Footprint = "Relay - G6DN"; UniqueID = "\DRVDBTGX"
+Change component parameters. Clean all parameters for all variants
+Change component parameters: Designator = "U8"; Footprint = "connector1x2_parafuso"; UniqueID = "\GKHFITKQ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters: Designator = "U9"; Footprint = "connector1x2_parafuso"; UniqueID = "\IKQEACEJ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters: Designator = "U11"; Footprint = "connector1x2_parafuso"; UniqueID = "\CGRQMQSX"
+Change component parameters. Clean all parameters for all variants
+Change component parameters: Designator = "U14"; Footprint = "connector1x2_parafuso"; UniqueID = "\FDVLHFNE"
+Change component parameters. Clean all parameters for all variants
+Change component parameters: Designator = "U15"; Footprint = "connector1x2_parafuso"; UniqueID = "\THUAPBNL"
+Change component parameters. Clean all parameters for all variants
+Change component parameters: Designator = "XMC1"; Footprint = "XMC4500"; UniqueID = "\VMIBHVBM"
+Change component parameters. Clean all parameters for all variants
+Change component parameters: Designator = "CC1"; Footprint = "CC6303_SOP8"; UniqueID = "\NWCUEION"
+Change component parameters. Clean all parameters for all variants
+Change component parameters: Designator = "CC2"; Footprint = "CC6303_SOP8"; UniqueID = "\VBQDYLUV"
+Change component parameters. Clean all parameters for all variants
+Change component parameters: Designator = "CC3"; Footprint = "CC6303_SOP8"; UniqueID = "\QPTSWGPB"
+Change component parameters. Clean all parameters for all variants
+Change component parameters: Designator = "R16"; UniqueID = "\KJHASWUL"
+Change component parameters. Clean all parameters for all variants
+Change component parameters: Designator = "R20"; UniqueID = "\LDHBQFIA"
+Change component parameters. Clean all parameters for all variants
+Change component parameters: Designator = "U12"; Footprint = "SOIC-MIC4126"; UniqueID = "\EXBYBCSF"
+Change component parameters. Clean all parameters for all variants
+Change component parameters: Designator = "C1"; Footprint = "CAPC_1206"; UniqueID = "\TPPXALJM"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Value"; Value = "10 uF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C2"; Footprint = "CAPC_1206"; UniqueID = "\WWONAVRF"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Value"; Value = "10 uF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C3"; Footprint = "CAPC_1206"; UniqueID = "\IOLVGNAE"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Value"; Value = "10 uF"; VariantName = "[No Variations]"
+Added Component: Designator=DC Pluyg1(DC Plug)
+Add component. Clean all parameters for all variants
+Added Component: Designator=rs1(molex 3P)
+Add component. Clean all parameters for all variants
+Added Component: Designator=U3(PG-SOT-223)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "LCSC Part #"; Value = "C91389"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "IFX1117ME3V3"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=5V Pin=DC Pluyg1-1
+Added Pin To Net: NetName=3V3GND Pin=DC Pluyg1-2
+Added Pin To Net: NetName=3V3GND Pin=DC Pluyg1-3
+Added Pin To Net: NetName=NetRA1_1 Pin=rs1-1
+Added Pin To Net: NetName=NetRAB1_2 Pin=rs1-2
+Added Pin To Net: NetName=3V3GND Pin=rs1-3
+Added Pin To Net: NetName=3V3GND Pin=U3-1
+Added Pin To Net: NetName=NetC11_2 Pin=U3-2
+Added Pin To Net: NetName=5V Pin=U3-3
+Added Pin To Net: NetName=NetC11_2 Pin=U3-4
+Change Net Name : Old Net Name=NetL1_A New Net Name=NetL2_A
+Change Net Name : Old Net Name=NetL2_A New Net Name=NetL1_A
+Added Member To Class: ClassName=measurement_rev4 Member=Component C1 Capacitor
+Added Member To Class: ClassName=measurement_rev4 Member=Component C2 Capacitor
+Added Member To Class: ClassName=measurement_rev4 Member=Component C3 Capacitor
+Added Member To Class: ClassName=measurement_rev4 Member=Component DC Pluyg1 DC PLUG
+Added Member To Class: ClassName=measurement_rev4 Member=Component R8 R 10k 1/8W 0805
+Added Member To Class: ClassName=measurement_rev4 Member=Component R9 R 10k 1/8W 0805
+Added Member To Class: ClassName=measurement_rev4 Member=Component R10 R 470 1/8W 0805
+Added Member To Class: ClassName=measurement_rev4 Member=Component R11 R 10k 1/8W 0805
+Added Member To Class: ClassName=measurement_rev4 Member=Component R12 R 10k 1/8W 0805
+Added Member To Class: ClassName=measurement_rev4 Member=Component rs1 con-phoenix-3
+Added Member To Class: ClassName=measurement_rev4 Member=Component U3 IC DCDC 3V3 SOT223
+Added Member To Class: ClassName=measurement_rev4 Member=Component U5 IC MOS P 20V 1.5A
+Added Member To Class: ClassName=measurement_rev4 Member=Component U6 IC MOS N 100V 170MA
+Added Member To Class: ClassName=measurement_rev4 Member=Component U7 IC MOS P 20V 1.5A

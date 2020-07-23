@@ -1,4 +1,4 @@
-DRC Rules Export File for PCB: F:\Projects\20190909 - 3phase_inverter\3phase_inverter\2. Hardware PCB\REV_4.0\filtro\filtro_rev4.PcbDoc
+DRC Rules Export File for PCB: C:\Users\VMORAIS\Desktop\3phase_inverter\2. Hardware PCB\REV_4.0\filtro\filtro_rev4.PcbDoc
 RuleKind=ShortCircuit|RuleName=ShortCircuit|Scope=Board|Allowed=0
 RuleKind=Clearance|RuleName=Clearance|Scope=Board|Minimum=10.00
 RuleKind=Width|RuleName=Width|Scope=Board|Minimum=10.00

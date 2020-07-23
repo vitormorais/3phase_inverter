@@ -1,0 +1,27 @@
+Removed Pin From Net: NetName=NetC2_2 Pin=R2-1
+Removed Pin From Net: NetName=NetCC1_3 Pin=R2-2
+Removed Pin From Net: NetName=NetC2_2 Pin=R3-1
+Removed Pin From Net: NetName=NetCC1_3 Pin=R3-2
+Removed Pin From Net: NetName=NetC4_2 Pin=R5-1
+Removed Pin From Net: NetName=NetCC2_3 Pin=R5-2
+Removed Pin From Net: NetName=NetC4_2 Pin=R6-1
+Removed Pin From Net: NetName=NetCC2_3 Pin=R6-2
+Removed Pin From Net: NetName=NetC6_2 Pin=R8-1
+Removed Pin From Net: NetName=NetCC3_3 Pin=R8-2
+Removed Pin From Net: NetName=NetC6_2 Pin=R9-1
+Removed Pin From Net: NetName=NetCC3_3 Pin=R9-2
+Removed Member From Class: ClassName=filtro_rev4 Member=R2
+Removed Member From Class: ClassName=filtro_rev4 Member=R3
+Removed Member From Class: ClassName=filtro_rev4 Member=R5
+Removed Member From Class: ClassName=filtro_rev4 Member=R6
+Removed Member From Class: ClassName=filtro_rev4 Member=R8
+Removed Member From Class: ClassName=filtro_rev4 Member=R9
+Change Component Footprint: Designator=R1 Old Footprint=PWR_RESC_5W New Footprint=PWR_RESC_3W
+Change Component Footprint: Designator=R4 Old Footprint=PWR_RESC_5W New Footprint=PWR_RESC_3W
+Change Component Footprint: Designator=R7 Old Footprint=PWR_RESC_5W New Footprint=PWR_RESC_3W
+Change Component Comment : Designator=R1 Old Comment=R 10 5W TH 5% New Comment=R 2.2 3W TH 5%
+Change Component Description : Designator=R1 Old Description=Resistores de Fio Enrolado - Orifício de Passagem 5W 10 Ohms 5% New Description=Resistencia TE Connectivity, de 2.2O ±5%, 3W, Serie ROX3S
+Change component parameters: Designator = "R1"; Footprint = "PWR_RESC_3W"; UniqueID = "\PNDFGWOT"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Price"; Value = "0,351"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "RS_VPN"; Value = "214-2409"; VariantName = "[No Variations]"

@@ -1,0 +1,9 @@
+Change Component Footprint: Designator=C2 Old Footprint=PWR_CAP_PP_2u New Footprint=PWR_CAP_PP_8u
+Change Component Footprint: Designator=C4 Old Footprint=PWR_CAP_PP_2u New Footprint=PWR_CAP_PP_8u
+Change Component Footprint: Designator=C6 Old Footprint=PWR_CAP_PP_2u New Footprint=PWR_CAP_PP_8u
+Change Component Comment : Designator=C2 Old Comment=C 2uF PPCap TH 630V New Comment=C 8uF PPCap TH 900V
+Change Component Description : Designator=C2 Old Description=Capacitores de película 2.0uF 630volts 10% 37.5mmL/S 1.0mmL/D New Description=Condensador de polipropileno PP KEMET, 8µF, ±5%, 900V dc, Montaje en orificio pasante
+Change component parameters: Designator = "C2"; Footprint = "PWR_CAP_PP_8u"; UniqueID = "\QVNPHVXD"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Price"; Value = "4,83"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "RS VPN"; Value = "137-2363"; VariantName = "[No Variations]"

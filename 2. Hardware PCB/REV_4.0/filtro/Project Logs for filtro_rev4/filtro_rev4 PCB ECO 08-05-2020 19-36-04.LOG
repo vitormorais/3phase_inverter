@@ -1,0 +1,11 @@
+Change Component Comment : Designator=R2 Old Comment=R 10 5W TH 5% New Comment=R 2.2 3W TH 5%
+Change Component Description : Designator=R2 Old Description=Resistores de Fio Enrolado - Orifício de Passagem 5W 10 Ohms 5% New Description=Resistencia TE Connectivity, de 2.2O ±5%, 3W, Serie ROX3S
+Change component parameters: Designator = "R3"; Footprint = "PWR_RESC_3W"; UniqueID = "\XEIYQKTV"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Price"; Value = "0,315"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "RS_VPN"; Value = "214-2409"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R2"; Footprint = "PWR_RESC_3W"; UniqueID = "\NWIVUABK"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Price"; Value = "0,351"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "RS_VPN"; Value = "214-2409"; VariantName = "[No Variations]"
+Added Member To Class: ClassName=filtro_rev4 Member=Component U3 P 2p 5mm

@@ -1,5 +1,0 @@
-Added Component: Designator=X1(COOLER)
-Add component. Clean all parameters for all variants
-Add component (AddParameter): Name = "PCDIGA VPN"; Value = "Cooler CPU Cooler Master Hyper H412R"; VariantName = "[No Variations]"
-Add component (AddParameter): Name = "Price"; Value = "22,90"; VariantName = "[No Variations]"
-Added Member To Class: ClassName=inversor_rev4 Member=Component X1 X COOLER H412R

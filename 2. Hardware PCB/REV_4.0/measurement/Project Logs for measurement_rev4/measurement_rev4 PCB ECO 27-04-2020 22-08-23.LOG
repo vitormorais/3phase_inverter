@@ -1,0 +1,6 @@
+Change Component Description : Designator=RAB1 Old Description=CHIP RESISTOR - SURFACE MOUNT 120OHMS ±1% 1/8W 0805 ROHS New Description=CHIP RESISTOR - SURFACE MOUNT 120OHMS ±1% 1/4W 1206 ROHS
+Change component parameters: Designator = "RAB1"; Footprint = "RESC_1206"; UniqueID = "\XXXQECDB"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC Part #"; Value = "C17909"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Generic"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "120"; VariantName = "[No Variations]"

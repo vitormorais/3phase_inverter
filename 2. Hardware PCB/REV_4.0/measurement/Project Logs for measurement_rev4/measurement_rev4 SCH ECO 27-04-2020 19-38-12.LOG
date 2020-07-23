@@ -1,0 +1,20 @@
+Replace Part C1 Capacitor in C:\Users\VMORAIS\Desktop\3phase_inverter\2. Hardware PCB\REV_4.0\measurement\measurement_rev4.SchDoc with Capacitor from CentralNode.SCHLIB
+Replace Part C2 Capacitor in C:\Users\VMORAIS\Desktop\3phase_inverter\2. Hardware PCB\REV_4.0\measurement\measurement_rev4.SchDoc with Capacitor from CentralNode.SCHLIB
+Replace Part C3 Capacitor in C:\Users\VMORAIS\Desktop\3phase_inverter\2. Hardware PCB\REV_4.0\measurement\measurement_rev4.SchDoc with Capacitor from CentralNode.SCHLIB
+Replace Part CC1 Current_Sensor_cc6303 in C:\Users\VMORAIS\Desktop\3phase_inverter\2. Hardware PCB\REV_4.0\measurement\measurement_rev4.SchDoc with Current_Sensor_cc6303 from vmorais_libraries.SchLib
+Replace Part CC2 Current_Sensor_cc6303 in C:\Users\VMORAIS\Desktop\3phase_inverter\2. Hardware PCB\REV_4.0\measurement\measurement_rev4.SchDoc with Current_Sensor_cc6303 from vmorais_libraries.SchLib
+Replace Part CC3 Current_Sensor_cc6303 in C:\Users\VMORAIS\Desktop\3phase_inverter\2. Hardware PCB\REV_4.0\measurement\measurement_rev4.SchDoc with Current_Sensor_cc6303 from vmorais_libraries.SchLib
+Replace Part P2 jumper_8p in C:\Users\VMORAIS\Desktop\3phase_inverter\2. Hardware PCB\REV_4.0\measurement\measurement_rev4.SchDoc with jumper_8p from vmorais_libraries.SchLib
+Replace Part P3 jumper_8p in C:\Users\VMORAIS\Desktop\3phase_inverter\2. Hardware PCB\REV_4.0\measurement\measurement_rev4.SchDoc with jumper_8p from vmorais_libraries.SchLib
+Replace Part R16 Resistor in C:\Users\VMORAIS\Desktop\3phase_inverter\2. Hardware PCB\REV_4.0\measurement\measurement_rev4.SchDoc with Resistor from vmorais_libraries.SchLib
+Replace Part R20 Resistor in C:\Users\VMORAIS\Desktop\3phase_inverter\2. Hardware PCB\REV_4.0\measurement\measurement_rev4.SchDoc with Resistor from vmorais_libraries.SchLib
+Replace Part U8 gen_purpose_conn_1x2 in C:\Users\VMORAIS\Desktop\3phase_inverter\2. Hardware PCB\REV_4.0\measurement\measurement_rev4.SchDoc with gen_purpose_conn_1x2 from vmorais_libraries.SchLib
+Replace Part U9 gen_purpose_conn_1x2 in C:\Users\VMORAIS\Desktop\3phase_inverter\2. Hardware PCB\REV_4.0\measurement\measurement_rev4.SchDoc with gen_purpose_conn_1x2 from vmorais_libraries.SchLib
+Replace Part U10 Relay - G6DN in C:\Users\VMORAIS\Desktop\3phase_inverter\2. Hardware PCB\REV_4.0\measurement\measurement_rev4.SchDoc with Relay - G6DN from vmorais_libraries.SchLib
+Replace Part U11 gen_purpose_conn_1x2 in C:\Users\VMORAIS\Desktop\3phase_inverter\2. Hardware PCB\REV_4.0\measurement\measurement_rev4.SchDoc with gen_purpose_conn_1x2 from vmorais_libraries.SchLib
+Replace Part U12 MOS_DRIVER-MIC4126 in C:\Users\VMORAIS\Desktop\3phase_inverter\2. Hardware PCB\REV_4.0\measurement\measurement_rev4.SchDoc with MOS_DRIVER-MIC4126 from vmorais_libraries.SchLib
+Replace Part U13 Relay - G6DN in C:\Users\VMORAIS\Desktop\3phase_inverter\2. Hardware PCB\REV_4.0\measurement\measurement_rev4.SchDoc with Relay - G6DN from vmorais_libraries.SchLib
+Replace Part U14 gen_purpose_conn_1x2 in C:\Users\VMORAIS\Desktop\3phase_inverter\2. Hardware PCB\REV_4.0\measurement\measurement_rev4.SchDoc with gen_purpose_conn_1x2 from vmorais_libraries.SchLib
+Replace Part U15 gen_purpose_conn_1x2 in C:\Users\VMORAIS\Desktop\3phase_inverter\2. Hardware PCB\REV_4.0\measurement\measurement_rev4.SchDoc with gen_purpose_conn_1x2 from vmorais_libraries.SchLib
+Replace Part XMC1 XMC4500 in C:\Users\VMORAIS\Desktop\3phase_inverter\2. Hardware PCB\REV_4.0\measurement\measurement_rev4.SchDoc with XMC4500 from vmorais_libraries.SchLib
+Replace Part XMC1 XMC4500 in C:\Users\VMORAIS\Desktop\3phase_inverter\2. Hardware PCB\REV_4.0\measurement\measurement_rev4.SchDoc with XMC4500 from vmorais_libraries.SchLib

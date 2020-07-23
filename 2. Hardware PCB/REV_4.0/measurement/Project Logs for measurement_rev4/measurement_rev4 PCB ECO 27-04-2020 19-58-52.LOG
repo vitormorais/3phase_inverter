@@ -1,0 +1,20 @@
+Added Pin To Net: NetName=3V3 Pin=XMC1-19
+Added Pin To Net: NetName=3V3 Pin=XMC1-62
+Added Member To Class: ClassName=measurement_rev4 Member=Component C1 Capacitor
+Added Member To Class: ClassName=measurement_rev4 Member=Component C2 Capacitor
+Added Member To Class: ClassName=measurement_rev4 Member=Component C3 Capacitor
+Added Member To Class: ClassName=measurement_rev4 Member=Component C11 C 100nF 0805 MLCC 25V X5R
+Added Member To Class: ClassName=measurement_rev4 Member=Component C12 C 1uF 0805 MLCC 25V X5R
+Added Member To Class: ClassName=measurement_rev4 Member=Component C13 C 10uF 0805 MLCC 25V X5R
+Added Member To Class: ClassName=measurement_rev4 Member=Component C14 C 100nF 0805 MLCC 25V X5R
+Added Member To Class: ClassName=measurement_rev4 Member=Component P3 *
+Added Member To Class: ClassName=measurement_rev4 Member=Component R10 R 470 1/8W 0805
+Added Member To Class: ClassName=measurement_rev4 Member=Component R11 R 10k 1/8W 0805
+Added Member To Class: ClassName=measurement_rev4 Member=Component R12 R 10k 1/8W 0805
+Added Member To Class: ClassName=measurement_rev4 Member=Component R16 Resistor
+Added Member To Class: ClassName=measurement_rev4 Member=Component R20 Resistor
+Added Member To Class: ClassName=measurement_rev4 Member=Component U8 *
+Added Member To Class: ClassName=measurement_rev4 Member=Component U9 *
+Added Member To Class: ClassName=measurement_rev4 Member=Component U12 *
+Added Member To Class: ClassName=measurement_rev4 Member=Component U13 relay G6DN
+Added Member To Class: ClassName=measurement_rev4 Member=Component U14 *

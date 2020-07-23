@@ -1,0 +1,70 @@
+Change Component Comment : Designator=CC1 Old Comment=* New Comment=IC CC 30A SO-8
+Change Component Comment : Designator=CC2 Old Comment=* New Comment=IC CC 30A SO-8
+Change Component Comment : Designator=CC3 Old Comment=* New Comment=IC CC 30A SO-8
+Change Component Comment : Designator=U12 Old Comment=* New Comment=IC DUAL MOS DRIVER MIC4127
+Change Component Comment : Designator=XMC1 Old Comment=* New Comment=IC XMC4500 Relax LITE
+Change Component Comment : Designator=U8 Old Comment=* New Comment=P 2p 5mm
+Change Component Comment : Designator=U9 Old Comment=* New Comment=P 2p 5mm
+Change Component Comment : Designator=U11 Old Comment=* New Comment=P 2p 5mm
+Change Component Comment : Designator=U14 Old Comment=* New Comment=P 2p 5mm
+Change Component Comment : Designator=U15 Old Comment=* New Comment=P 2p 5mm
+Change Component Comment : Designator=P2 Old Comment=* New Comment=P 8p 2.54 SR DW 8P
+Change Component Comment : Designator=P3 Old Comment=* New Comment=P 8p 2.54 SR DW 8P
+Change Component Designator: OldDesignator=P4 NewDesignator=P9
+Change Component Designator: OldDesignator=P5 NewDesignator=P10
+Change Component Designator: OldDesignator=P6 NewDesignator=P11
+Change Component Designator: OldDesignator=U8 NewDesignator=P4
+Change Component Designator: OldDesignator=U9 NewDesignator=P5
+Change Component Designator: OldDesignator=U10 NewDesignator=U8
+Change Component Designator: OldDesignator=U11 NewDesignator=P6
+Change Component Designator: OldDesignator=U12 NewDesignator=U9
+Change Component Designator: OldDesignator=U13 NewDesignator=U10
+Change Component Designator: OldDesignator=U14 NewDesignator=P7
+Change Component Designator: OldDesignator=U15 NewDesignator=P8
+Change Component Designator: OldDesignator=U16 NewDesignator=U11
+Change Component Designator: OldDesignator=U17 NewDesignator=U12
+Change Component Designator: OldDesignator=U18 NewDesignator=U13
+Change Component Designator: OldDesignator=U19 NewDesignator=U14
+Change Component Designator: OldDesignator=U20 NewDesignator=U15
+Change Component Designator: OldDesignator=U21 NewDesignator=U16
+Change component parameters: Designator = "P4"; Footprint = "connector1x2_parafuso"; UniqueID = "\JLMTQSGW"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Price"; Value = "0,24"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "RS VPN"; Value = "896-6696"; VariantName = "[No Variations]"
+Change component parameters: Designator = "P5"; Footprint = "connector1x2_parafuso"; UniqueID = "\UXPUYHLT"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Price"; Value = "0,24"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "RS VPN"; Value = "896-6696"; VariantName = "[No Variations]"
+Change component parameters: Designator = "P6"; Footprint = "connector1x2_parafuso"; UniqueID = "\KHFBAMPO"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Price"; Value = "0,24"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "RS VPN"; Value = "896-6696"; VariantName = "[No Variations]"
+Change component parameters: Designator = "P7"; Footprint = "connector1x2_parafuso"; UniqueID = "\GGFCEEQC"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Price"; Value = "0,24"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "RS VPN"; Value = "896-6696"; VariantName = "[No Variations]"
+Change component parameters: Designator = "P8"; Footprint = "connector1x2_parafuso"; UniqueID = "\OSUQBSYL"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Price"; Value = "0,24"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "RS VPN"; Value = "896-6696"; VariantName = "[No Variations]"
+Change component parameters: Designator = "XMC1"; Footprint = "XMC4500"; UniqueID = "\SILWMMMS"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Farnell VPN"; Value = "2443552"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "14,628"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "RS VPN"; Value = "251-8418"; VariantName = "[No Variations]"
+Change component parameters: Designator = "U9"; Footprint = "SOIC-MIC4126"; UniqueID = "\BFOBURLJ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Equivalente"; Value = "TC4427AEOA"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "LCSC PART #"; Value = "C20551"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser VPN"; Value = "998-MIC4126YME"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "0,756"; VariantName = "[No Variations]"
+Change Net Name : Old Net Name=NetP4_1 New Net Name=NetP9_1
+Change Net Name : Old Net Name=NetP4_2 New Net Name=NetP9_2
+Change Net Name : Old Net Name=NetP5_1 New Net Name=NetP10_1
+Change Net Name : Old Net Name=NetP5_2 New Net Name=NetP10_2
+Change Net Name : Old Net Name=NetP6_1 New Net Name=NetP11_1
+Change Net Name : Old Net Name=NetP6_2 New Net Name=NetP11_2
+Change Net Name : Old Net Name=NetU10_3 New Net Name=NetP6_1
+Change Net Name : Old Net Name=NetU10_4 New Net Name=NetP6_2
+Change Net Name : Old Net Name=NetU13_3 New Net Name=NetP7_1
+Change Net Name : Old Net Name=NetU13_4 New Net Name=NetP7_2

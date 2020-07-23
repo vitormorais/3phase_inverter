@@ -1,0 +1,2 @@
+Added Pin To Net: NetName=TX_CAN Pin=XMC1-47
+Added Pin To Net: NetName=RX_CAN Pin=XMC1-75

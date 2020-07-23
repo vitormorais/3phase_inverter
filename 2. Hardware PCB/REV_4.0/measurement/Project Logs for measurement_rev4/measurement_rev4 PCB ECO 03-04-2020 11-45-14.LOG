@@ -1,0 +1,15 @@
+Removed Pin From Net: NetName=NetCC1_1 Pin=U2-1
+Removed Pin From Net: NetName=NetCC2_1 Pin=U3-1
+Removed Pin From Net: NetName=NetCC3_1 Pin=U4-1
+Removed Pin From Net: NetName=NetCC1_3 Pin=U7-1
+Removed Pin From Net: NetName=NetCC1_3 Pin=U7-2
+Removed Pin From Net: NetName=NetCC2_3 Pin=U8-1
+Removed Pin From Net: NetName=NetCC2_3 Pin=U8-2
+Removed Pin From Net: NetName=NetCC3_3 Pin=U9-1
+Removed Pin From Net: NetName=NetCC3_3 Pin=U9-2
+Removed Member From Class: ClassName=measurement_rev4 Member=U7
+Removed Member From Class: ClassName=measurement_rev4 Member=U8
+Removed Member From Class: ClassName=measurement_rev4 Member=U9
+Added Pin To Net: NetName=NetCC1_3 Pin=U2-1
+Added Pin To Net: NetName=NetCC2_3 Pin=U3-1
+Added Pin To Net: NetName=NetCC3_3 Pin=U4-1

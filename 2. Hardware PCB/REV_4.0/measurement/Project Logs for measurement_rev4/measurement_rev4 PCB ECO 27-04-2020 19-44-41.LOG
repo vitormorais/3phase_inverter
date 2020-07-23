@@ -1,0 +1,41 @@
+Added Component: Designator=U4(NSO8_M)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Code_IPC"; Value = "SOIC127P600-8"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Code_JEDEC"; Value = "MS-012-AA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.maxim-ic.com/"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "http://pdfserv.maxim-ic.com/en/ds/MAX1487-MAX491.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DatasheetVersion"; Value = "Feb-1996"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "13-Apr-2006"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "IPC-7351 Footprint Added."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LCSC Part #"; Value = "C57928"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "8-Pin Small Outline Integrated Circuit 1.27 mm Pitch"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "NSO8"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "16-Jan-2001"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "SN65HVD75DR"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=DRX_D Pin=U4-1
+Added Pin To Net: NetName=NetR8_1 Pin=U4-2
+Added Pin To Net: NetName=NetR8_1 Pin=U4-3
+Added Pin To Net: NetName=DTX_D Pin=U4-4
+Added Pin To Net: NetName=3V3GND Pin=U4-5
+Added Pin To Net: NetName=NetRA1_2 Pin=U4-6
+Added Pin To Net: NetName=NetRB1_2 Pin=U4-7
+Added Pin To Net: NetName=3V3 Pin=U4-8
+Added Member To Class: ClassName=measurement_rev4 Member=Component C1 Capacitor
+Added Member To Class: ClassName=measurement_rev4 Member=Component C2 Capacitor
+Added Member To Class: ClassName=measurement_rev4 Member=Component C3 Capacitor
+Added Member To Class: ClassName=measurement_rev4 Member=Component C11 C 100nF 0805 MLCC 25V X5R
+Added Member To Class: ClassName=measurement_rev4 Member=Component C12 C 1uF 0805 MLCC 25V X5R
+Added Member To Class: ClassName=measurement_rev4 Member=Component C13 C 10uF 0805 MLCC 25V X5R
+Added Member To Class: ClassName=measurement_rev4 Member=Component C14 C 100nF 0805 MLCC 25V X5R
+Added Member To Class: ClassName=measurement_rev4 Member=Component P3 *
+Added Member To Class: ClassName=measurement_rev4 Member=Component R10 R 470 1/8W 0805
+Added Member To Class: ClassName=measurement_rev4 Member=Component R11 R 10k 1/8W 0805
+Added Member To Class: ClassName=measurement_rev4 Member=Component R12 R 10k 1/8W 0805
+Added Member To Class: ClassName=measurement_rev4 Member=Component R16 Resistor
+Added Member To Class: ClassName=measurement_rev4 Member=Component R20 Resistor
+Added Member To Class: ClassName=measurement_rev4 Member=Component U4 IC RS485
+Added Member To Class: ClassName=measurement_rev4 Member=Component U8 *
+Added Member To Class: ClassName=measurement_rev4 Member=Component U9 *

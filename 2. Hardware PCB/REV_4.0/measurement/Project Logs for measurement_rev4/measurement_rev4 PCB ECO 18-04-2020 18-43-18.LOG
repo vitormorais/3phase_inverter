@@ -1,0 +1,7 @@
+Change Component Comment : Designator=R2 Old Comment=470 New Comment=R 470 1/8W 0805 1%
+Change Component Description : Designator=R2 Old Description=Thick film resistor, SMD 0402, 1/16W, 1% New Description=Resistores de Filme Espesso - SMD 1/8Watt 470ohms 1% Commercial Use
+Change component parameters: Designator = "R2"; Footprint = "RESC_0805"; UniqueID = "\PXJNPFRR"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LCSC Part #"; Value = "C17710"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Generic"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "470"; VariantName = "[No Variations]"
